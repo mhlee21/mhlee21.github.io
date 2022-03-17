@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Mihyun Lee">
+
+
+
+
+
+<title>OS&gt;04.CPU 스케줄링 | Mihyun&#39;s Blog</title>
+
+
+
+    <link rel="icon" href="/favicon_mhlee.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Mihyun&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Mihyun&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">OS&gt;04.CPU 스케줄링</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Mihyun Lee</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">February 12, 2022&nbsp;&nbsp;0:00:00</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/OS/">OS</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="04-CPU-스케줄링"><a href="#04-CPU-스케줄링" class="headerlink" title="04. CPU 스케줄링"></a>04. CPU 스케줄링</h1><h2 id="프로세스와-관련한-시스템-콜"><a href="#프로세스와-관련한-시스템-콜" class="headerlink" title="프로세스와 관련한 시스템 콜"></a>프로세스와 관련한 시스템 콜</h2><ul>
+<li><p>fork() : create a child</p>
+</li>
+<li><p>exec() : overlay new image</p>
+</li>
+<li><p>wait() : sleep until is done</p>
+<ul>
+<li><p>프로세스 A가 wait() 시스템 콜을 호출하면</p>
+<ul>
+<li>커널은 child 가 종료될 때 까지 프로세스 A를 sleep 시킨다.(block 상태)</li>
+<li>child process 가 종료되면 커널은 프로세스 A를 깨운다. (ready  상태)</li>
+</ul>
+<p><img src="/2022/02/12/OS-04-CPU-%EC%8A%A4%EC%BC%80%EC%A4%84%EB%A7%81/image-20220205151557952.png" alt="image-20220205151557952"></p>
+</li>
+</ul>
+</li>
+<li><p>exit() : free all the resources, notify parent</p>
+<ul>
+<li>모든 자원을 반납하고 부모 프로세스에게 알림</li>
+<li>자발적 종료<ul>
+<li>마지막 statement 수행 후 exit() 시스템 콜을 통해<br>프로그램에 명시적으로 넣어주지 않아도 main 함수가 리턴되는 위치에 컴파일러가 넣어줌</li>
+</ul>
+</li>
+<li>비자발적 종료<ul>
+<li>부모 프로세스가 자식 프로세스를 강제 종료시킴<ul>
+<li>자식 프로세스가 한계치를 넘어서는 자원요청</li>
+<li>자식에게 할당된 태스크가 더이상 필요하지 않음</li>
+</ul>
+</li>
+<li>키보드로 kill, break  (ex. ctrl+C) 등을 친 경우</li>
+<li>부모가 종료하는 경우<ul>
+<li>부모 프로세스가 종료하기 전에 자식들이 먼저 종료됨</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="프로세스-간-협력"><a href="#프로세스-간-협력" class="headerlink" title="프로세스 간 협력"></a>프로세스 간 협력</h2><p><img src="/2022/02/12/OS-04-CPU-%EC%8A%A4%EC%BC%80%EC%A4%84%EB%A7%81/image-20220205152829034.png" alt="image-20220205152829034"></p>
+<ul>
+<li>독립적 프로세스 (Independent process)<ul>
+<li>프로세스는 각자 주소 공간을 가지고 수행되므로 원칙적으로 하나의 프로세스는 다른 프로세스의 수행에 영향을 미치지 못함</li>
+<li>프로세스는 항상 독자적으로 행동한다. 프로세스 B가 프로세스 A의 메모리 참조하지 못한다.</li>
+</ul>
+</li>
+<li>협력 프로세스 (Cooperating process)</li>
+<li>프로세스 간 협력 메커니즘 (IPC : Interprocess Communication)<ul>
+<li>메시지를 전달하는 방법<ul>
+<li>message passsing</li>
+</ul>
+</li>
+<li>주소 공간을 공유하는 방법<ul>
+<li>shared memory</li>
+<li>thread</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="Message-Passing"><a href="#Message-Passing" class="headerlink" title="Message Passing"></a>Message Passing</h3><p><img src="/2022/02/12/OS-04-CPU-%EC%8A%A4%EC%BC%80%EC%A4%84%EB%A7%81/image-20220205154831283.png" alt="image-20220205154831283"></p>
+<h3 id="IPC-Interprocess-Communication"><a href="#IPC-Interprocess-Communication" class="headerlink" title="IPC (Interprocess Communication)"></a>IPC (Interprocess Communication)</h3><p><img src="/2022/02/12/OS-04-CPU-%EC%8A%A4%EC%BC%80%EC%A4%84%EB%A7%81/image-20220205154931601.png" alt="image-20220205154931601"></p>
+<ul>
+<li>원칙적으로 프로세스는 본인만의 code&#x2F;data&#x2F;stack 만 접근 가능<ul>
+<li>운영체제에게 시스템콜을 통해 부탁해서 메모리의 일부 공유하는 방법</li>
+</ul>
+</li>
+<li>프로세스끼리 서로 신뢰할 수 있다는 전제하에 shared memory 사용해야 한다.</li>
+</ul>
+<h2 id="하나의-프로세스의-일생"><a href="#하나의-프로세스의-일생" class="headerlink" title="하나의 프로세스의 일생"></a>하나의 프로세스의 일생</h2><p><img src="/2022/02/12/OS-04-CPU-%EC%8A%A4%EC%BC%80%EC%A4%84%EB%A7%81/image-20220205155833883.png" alt="image-20220205155833883"></p>
+<ul>
+<li>CPU burst : CPU 가 기계어를 실행</li>
+<li>I&#x2F;O burst : I&#x2F;O 를 실행</li>
+</ul>
+<p><img src="/2022/02/12/OS-04-CPU-%EC%8A%A4%EC%BC%80%EC%A4%84%EB%A7%81/image-20220205160125709.png" alt="image-20220205160125709"></p>
+<ul>
+<li>프로세스는 그 특성에 따라 두 가지로 나눔<ul>
+<li>I&#x2F;O bound process : CPU 를 잡고 계산하는 시간보다 I&#x2F;O 에 많은 시간이 필요한 job</li>
+<li>CPU bound process :  계산 위주의 jop</li>
+</ul>
+</li>
+</ul>
+<h2 id="CPU-scheduler-amp-Dispatcher"><a href="#CPU-scheduler-amp-Dispatcher" class="headerlink" title="CPU scheduler &amp; Dispatcher"></a>CPU scheduler &amp; Dispatcher</h2><ul>
+<li><p>운영체제 코드의 일부 (SW)</p>
+</li>
+<li><p>CPU Scheduler</p>
+<ul>
+<li>Ready  상태의 프로세스 중에서 이번에 CPU 를 줄 프로세스를 고른다.</li>
+</ul>
+</li>
+<li><p>Dispatcher</p>
+<ul>
+<li>CPU 의 제어권을 CPU 스케줄러에 의해 선택된 프로세스에게 넘긴다.</li>
+<li>이 과정을 context switch 라고 한다.</li>
+</ul>
+</li>
+<li><p>CPU 스케줄링이 필요한 경우는 프로세스에게 다음과 같은 상태 변화가 있는 경우이다.</p>
+<p><img src="/2022/02/12/OS-04-CPU-%EC%8A%A4%EC%BC%80%EC%A4%84%EB%A7%81/image-20220205165723169.png" alt="image-20220205165723169"></p>
+</li>
+</ul>
+<h2 id="Scheduling-Crieteria-성능-척도"><a href="#Scheduling-Crieteria-성능-척도" class="headerlink" title="Scheduling Crieteria (성능 척도)"></a>Scheduling Crieteria (성능 척도)</h2><p><img src="/2022/02/12/OS-04-CPU-%EC%8A%A4%EC%BC%80%EC%A4%84%EB%A7%81/image-20220205170058969.png" alt="image-20220205170058969"></p>
+<ul>
+<li>turnaround time<ul>
+<li>CPU를 사용하는 시간 + CPU를 기다리는 시간</li>
+</ul>
+</li>
+<li>대기 시간</li>
+<li><ul>
+<li>CPU 를 쓰러와서 기다린 전체시간 (기다린 시간의 합)</li>
+</ul>
+</li>
+<li>응답시간<ul>
+<li>프로세스가 CPU 를 쓰러 들어와서 최초로 얻게 되기까지 걸리는 시간</li>
+<li>CPU burst 에 들어와서 최초로 CPU 를 얻게되기까지</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="Scheduling-Algorithms"><a href="#Scheduling-Algorithms" class="headerlink" title="Scheduling Algorithms"></a>Scheduling Algorithms</h2><h3 id="FCFS-First-Come-First-Served"><a href="#FCFS-First-Come-First-Served" class="headerlink" title="FCFS (First-Come First-Served)"></a>FCFS (First-Come First-Served)</h3><ul>
+<li>convoy effect : 소요시간이 긴 프로세스가 먼저 도달하여 시간을 잡아먹고 있는 부정적인 현상</li>
+</ul>
+<p><img src="/2022/02/12/OS-04-CPU-%EC%8A%A4%EC%BC%80%EC%A4%84%EB%A7%81/image-20220208001048390.png" alt="image-20220208001048390"></p>
+<p><img src="/2022/02/12/OS-04-CPU-%EC%8A%A4%EC%BC%80%EC%A4%84%EB%A7%81/image-20220208001343693.png" alt="image-20220208001343693"></p>
+<hr>
+<h3 id="SJF-Shortest-Job-First"><a href="#SJF-Shortest-Job-First" class="headerlink" title="SJF (Shortest-Job-First)"></a>SJF (Shortest-Job-First)</h3><ul>
+<li>각 프로세스의 다음번 CPU burst time 을 가지고 스케줄링에 활용</li>
+<li>CPU burst time이 가장 짧은 프로세스를 제일 먼저 스케줄</li>
+<li>priority scheduling의 일종</li>
+<li>두가지 방법<ul>
+<li><strong>Nonpreemptive</strong> : 일단 CPU를 잡으면 이번 CPU burst가 완료될 때까지 CPU 를 선점당하지 않음<br><img src="/2022/02/12/OS-04-CPU-%EC%8A%A4%EC%BC%80%EC%A4%84%EB%A7%81/image-20220208002032852.png" alt="image-20220208002032852"></li>
+<li><strong>Preemptive</strong> : 현재 수행중인 프로세스의 남은 burst time 보다 더 짧은 CPU burst time을 가지는 새로운 프로세스가 도착하면 CPU 를 빼앗김 (&#x3D;SRTF, Shortest-Remaining-Time-First)<br><img src="/2022/02/12/OS-04-CPU-%EC%8A%A4%EC%BC%80%EC%A4%84%EB%A7%81/image-20220208002114969.png" alt="image-20220208002114969"></li>
+</ul>
+</li>
+<li>SJF is optimal<ul>
+<li>주어진 프로세스들에 대해 minimum everage waiting time 을 보장</li>
+</ul>
+</li>
+<li>SJF의 약점<ul>
+<li>starvation 발생 가능 (-&gt; 해결 방법 : aging)</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2022/02/12/OS-04-CPU-%EC%8A%A4%EC%BC%80%EC%A4%84%EB%A7%81/image-20220208004017081.png" alt="image-20220208004017081"></p>
+<blockquote>
+<p>참고</p>
+<p><img src="/2022/02/12/OS-04-CPU-%EC%8A%A4%EC%BC%80%EC%A4%84%EB%A7%81/image-20220208004035672.png" alt="image-20220208004035672"></p>
+<p><img src="/2022/02/12/OS-04-CPU-%EC%8A%A4%EC%BC%80%EC%A4%84%EB%A7%81/image-20220208004427341.png" alt="image-20220208004427341"></p>
+</blockquote>
+<hr>
+<h3 id="RR-Round-Robin"><a href="#RR-Round-Robin" class="headerlink" title="RR (Round Robin)"></a>RR (Round Robin)</h3><ul>
+<li><p>각 프로세스는 동일한 크기의 할당 시간(time quantum)을 가짐 (일반적으로 10-100msec)</p>
+</li>
+<li><p><strong>할당 시간이 지나면 프로세스는 선점 (preempted) 당하고 ready queue 의 제일 뒤에 가서 다시 줄을 선다.</strong></p>
+</li>
+<li><p>n개의 프로세스가 ready queue 에 있고 할당 시간이 <strong>q time unit</strong> 인 경우 각 프로세스는 최대 q time unit 단위로 CPU 시간의 1&#x2F;n 을 얻는다.</p>
+<ul>
+<li><em><strong>어떤 프로세스도 (n-1)q time unit 이상 기다리지 않는다.</strong></em></li>
+</ul>
+</li>
+<li><p>Performance</p>
+<ul>
+<li><p>q large &#x3D;&gt; FCFS</p>
+</li>
+<li><p>q small &#x3D;&gt; context switch 오버헤드가 커진다.</p>
+<p><img src="/2022/02/12/OS-04-CPU-%EC%8A%A4%EC%BC%80%EC%A4%84%EB%A7%81/image-20220208005652598.png" alt="image-20220208005652598"></p>
+</li>
+</ul>
+</li>
+<li><p>SJF 보다 평균 소요시간 길지만 응답시간은 더 짧다.</p>
+</li>
+</ul>
+<p><img src="/2022/02/12/OS-04-CPU-%EC%8A%A4%EC%BC%80%EC%A4%84%EB%A7%81/image-20220208005324881.png" alt="image-20220208005324881"></p>
+<hr>
+<h3 id="Multilevel-Queue"><a href="#Multilevel-Queue" class="headerlink" title="Multilevel Queue"></a>Multilevel Queue</h3><ul>
+<li><p>Ready queue 를 여러개로 분할</p>
+</li>
+<li><p>각 큐는 독립적인 스케줄링 알고리즘을 가짐</p>
+</li>
+<li><p>큐에 대한 스케줄링이 필요</p>
+<ul>
+<li><p>starvation 발생 가능성 높음</p>
+<p>-&gt; Time slice를 통해 각 큐에 CPU time을 적절한 비율로 할당</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2022/02/12/OS-04-CPU-%EC%8A%A4%EC%BC%80%EC%A4%84%EB%A7%81/image-20220208010021367.png" alt="image-20220208010021367"></p>
+<p><img src="/2022/02/12/OS-04-CPU-%EC%8A%A4%EC%BC%80%EC%A4%84%EB%A7%81/image-20220208010339873.png" alt="image-20220208010339873"></p>
+<hr>
+<h3 id="Multilevel-Feedback-Queue"><a href="#Multilevel-Feedback-Queue" class="headerlink" title="Multilevel Feedback Queue"></a>Multilevel Feedback Queue</h3><ul>
+<li>프로세스가 다른 큐로 이동 가능</li>
+<li>aging 을 이와 같은 방식으로 구현할 수 있다.</li>
+<li>ex)</li>
+</ul>
+<p><img src="/2022/02/12/OS-04-CPU-%EC%8A%A4%EC%BC%80%EC%A4%84%EB%A7%81/image-20220208010409688.png" alt="image-20220208010409688"></p>
+<p><img src="/2022/02/12/OS-04-CPU-%EC%8A%A4%EC%BC%80%EC%A4%84%EB%A7%81/image-20220208010717511.png" alt="image-20220208010717511"></p>
+<hr>
+<h3 id="Multi-Processor-Scheduling"><a href="#Multi-Processor-Scheduling" class="headerlink" title="Multi-Processor Scheduling"></a>Multi-Processor Scheduling</h3><ul>
+<li>CPU 가 여러개인 경우 스케줄링은 더욱 복잡해진다.</li>
+</ul>
+<p><img src="/2022/02/12/OS-04-CPU-%EC%8A%A4%EC%BC%80%EC%A4%84%EB%A7%81/image-20220208010822959.png" alt="image-20220208010822959"></p>
+<hr>
+<h3 id="Real-Time-Scheduling"><a href="#Real-Time-Scheduling" class="headerlink" title="Real-Time Scheduling"></a>Real-Time Scheduling</h3><ul>
+<li>Hard real-time systems<ul>
+<li>Hard real-time task 는 정해진 시간안에 반드시 끝내도록 스케줄링 해야함</li>
+</ul>
+</li>
+<li>Soft real-time systems<ul>
+<li>Soft real-time task 는 일반 프로세스에 비해 높은 priority 를 갖도록 해야 함</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="Thread-Scheduling"><a href="#Thread-Scheduling" class="headerlink" title="Thread Scheduling"></a>Thread Scheduling</h3><ul>
+<li>Local Scheduling<ul>
+<li>User level thread 의 경우 사용자 수준의 thread library 에 의해 어떤 thread 를 스케줄할지 결정</li>
+</ul>
+</li>
+<li>Global Scheduling<ul>
+<li>Kernel level thread 의 경우 일반 프로세스와 마찬가지로 커널의 단기 스케줄러가 어떤 thread 를 스케줄할지 결정</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="Algorithm-Evaluation"><a href="#Algorithm-Evaluation" class="headerlink" title="Algorithm Evaluation"></a>Algorithm Evaluation</h2><p>어떤 CPU 스케줄링 알고리즘이 더 좋은지 평가하는 방법</p>
+<ul>
+<li><p>Queueing models</p>
+<ul>
+<li><p>확률 분포로 주어지는 arrival rate 와 service rate등을 통해 각종 performance index 값을 계산</p>
+</li>
+<li><p>아래 그림의 server 를 CPU 라고 보면 된다.</p>
+<p><img src="/2022/02/12/OS-04-CPU-%EC%8A%A4%EC%BC%80%EC%A4%84%EB%A7%81/image-20220210204720251.png" alt="image-20220210204720251"></p>
+</li>
+</ul>
+</li>
+<li><p>Implementation (구현) &amp; Measurement (성능 측정)</p>
+<ul>
+<li>실제 시스템에 알고리즘을 구현하여 실제 작업(workload)에 대해서 성능을 측정 비교</li>
+</ul>
+</li>
+<li><p>Simulation (모의 실험)</p>
+<ul>
+<li>알고리즘을 모의 프로그램으로 작성 후 trace 를 입력으로 하여 결과 비교</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Mihyun Lee</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://github.com/mhlee21/2022/02/12/OS-04-CPU-%EC%8A%A4%EC%BC%80%EC%A4%84%EB%A7%81/">https://github.com/mhlee21/2022/02/12/OS-04-CPU-%EC%8A%A4%EC%BC%80%EC%A4%84%EB%A7%81/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/OS/"># OS</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2022/02/16/OS-05-%EB%B3%91%ED%96%89%EC%A0%9C%EC%96%B4/">OS>05.병행제어</a>
+            
+            
+            <a class="next" rel="next" href="/2022/02/09/OS-03-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-%EA%B4%80%EB%A6%AC/">OS>03.프로세스 관리</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Mihyun Lee | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>

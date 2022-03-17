@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Mihyun Lee">
+
+
+
+
+
+<title>CLI (Command Line Interface) | Mihyun&#39;s Blog</title>
+
+
+
+    <link rel="icon" href="/favicon_mhlee.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Mihyun&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Mihyun&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">CLI (Command Line Interface)</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Mihyun Lee</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">January 13, 2022&nbsp;&nbsp;0:00:00</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/startcamp/">startcamp</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h2 id="CLI"><a href="#CLI" class="headerlink" title="CLI"></a>CLI</h2><p><code>~</code> : <strong>홈 디렉토리</strong> (현재 로그인 된 사용자의 홈 폴더를 의미)</p>
+<p><code>/</code> : <strong>루트 디렉토리</strong> (모든 파일과 폴더를 담고 있는 최상위 폴더)</p>
+<p><strong>절대 경로</strong> : 어떤 위치에서도 접근할 수 있는 경로 (모든 경로를 전부 작성)</p>
+<p><strong>상대 경로</strong> : 현재 작업하고 있는 디렉토리를 기준으로 계산된 상대적 경로</p>
+<p><code>.</code> : 현재 작업하는 위치</p>
+<p><code>..</code> : 현재 작업하는 위치의 상위 위치 (상위폴더&#x2F;부모폴더)</p>
+<h2 id="터미널-명령어"><a href="#터미널-명령어" class="headerlink" title="터미널 명령어"></a>터미널 명령어</h2><h3 id="파일-생성"><a href="#파일-생성" class="headerlink" title="파일 생성"></a>파일 생성</h3><p>touch : 파일 생성 명령어</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`$ <span class="built_in">touch</span> 파일명`</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="폴더-생성"><a href="#폴더-생성" class="headerlink" title="폴더 생성"></a>폴더 생성</h3><p>mkdir : 폴더 생성 명령어</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">mkdir</span> 폴더명</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="파일-x2F-폴더의-목록-확인"><a href="#파일-x2F-폴더의-목록-확인" class="headerlink" title="파일&#x2F;폴더의 목록 확인"></a>파일&#x2F;폴더의 목록 확인</h3><p>ls : 현재 위치의 폴더&#x2F;파일의 목록을 보고 싶을 때 사용하는 명령어</p>
+<p>-a : 접근 가능한 모든 폴더&#x2F;파일 확인</p>
+<p> -l : 자세한 정보까지 확인하고 싶을 때</p>
+<h3 id="파일-x2F-폴더-이동하기"><a href="#파일-x2F-폴더-이동하기" class="headerlink" title="파일&#x2F;폴더 이동하기"></a>파일&#x2F;폴더 이동하기</h3><p>mv : 폴더&#x2F;파일을 다른 위치로 이동하거나 이름 변경할 때 사용</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">mv</span> 이동하려는파일명 이동하는위치</span><br><span class="line">$ <span class="built_in">mv</span> 이름변경하려는파일명 변경하려는이름</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="현재-위치-이동하기"><a href="#현재-위치-이동하기" class="headerlink" title="현재 위치 이동하기"></a>현재 위치 이동하기</h3><p>cd : 현재 위치를 이동하기 위한 명령어</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> 이동할위치</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="폴더-x2F-파일-삭제"><a href="#폴더-x2F-파일-삭제" class="headerlink" title="폴더&#x2F;파일 삭제"></a>폴더&#x2F;파일 삭제</h3><p>rm : 폴더&#x2F;파일 삭제하는 명령어</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">rm</span> 삭제하려는파일명</span><br><span class="line">$ <span class="built_in">rm</span> -r 삭제하려는폴더명</span><br><span class="line"><span class="variable">$rm</span> -rf 폴더명 : 폴더 무조건 삭제</span><br></pre></td></tr></table></figure>
+
+<p><em>주의 : 휴지통 개념이 없음. 즉, 되살릴수 없다!</em></p>
+<h3 id="폴더-x2F-파일-열기"><a href="#폴더-x2F-파일-열기" class="headerlink" title="폴더&#x2F;파일 열기"></a>폴더&#x2F;파일 열기</h3><p>start : 폴더&#x2F;파일을 여는 명령어</p>
+<h3 id="꿀-같은-단축키"><a href="#꿀-같은-단축키" class="headerlink" title="꿀 같은 단축키"></a>꿀 같은 단축키</h3><p><code>위,아래 방향키</code> : 과거에 작성한 명령어를 조회</p>
+<p><code>tab</code> : 자동완성</p>
+<p><code>ctrl + l</code> : 화면 클리어</p>
+<p><code>ctrl + insert</code> : 복사</p>
+<p><code>shift + insert</code> : 붙여넣기</p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Mihyun Lee</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://github.com/mhlee21/2022/01/13/CLI/">https://github.com/mhlee21/2022/01/13/CLI/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/CLI/"># CLI</a>
+                    
+                        <a href="/tags/%ED%84%B0%EB%AF%B8%EB%84%90-%EB%AA%85%EB%A0%B9%EC%96%B4/"># 터미널 명령어</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2022/01/14/git/">Git & Github</a>
+            
+            
+            <a class="next" rel="next" href="/2022/01/13/%EB%A7%88%ED%81%AC%EB%8B%A4%EC%9A%B4/">Markdown</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Mihyun Lee | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>

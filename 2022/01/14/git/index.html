@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Mihyun Lee">
+
+
+
+
+
+<title>Git &amp; Github | Mihyun&#39;s Blog</title>
+
+
+
+    <link rel="icon" href="/favicon_mhlee.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Mihyun&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Mihyun&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">Git &amp; Github</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Mihyun Lee</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">January 14, 2022&nbsp;&nbsp;0:00:00</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/startcamp/">startcamp</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h2 id="Why-Git-amp-Github"><a href="#Why-Git-amp-Github" class="headerlink" title="Why Git &amp; Github?"></a>Why Git &amp; Github?</h2><h3 id="1-Git을-이용한-버전-관리"><a href="#1-Git을-이용한-버전-관리" class="headerlink" title="1. Git을 이용한 버전 관리"></a>1. Git을 이용한 버전 관리</h3><ul>
+<li><p>git : (분산) 버전 관리 프로그램</p>
+<ul>
+<li>버전 : 컴퓨터 소프트웨어의 특정 상태</li>
+<li>관리 : 어떤 일의 사무, 시설이나 물건의 유지&#x2F;개량</li>
+<li>프로그램 : 컴퓨터에서 실행될 때 특정 작업을 수행하는 일련의 명령어들의 모음</li>
+</ul>
+</li>
+<li><p>중앙 집중식 버전 관리</p>
+</li>
+<li><p>분산 버전 관리</p>
+</li>
+</ul>
+<h3 id="2-Github-를-이용한-포트폴리오"><a href="#2-Github-를-이용한-포트폴리오" class="headerlink" title="2. Github 를 이용한 포트폴리오"></a>2. Github 를 이용한 포트폴리오</h3><ul>
+<li>TIL</li>
+</ul>
+<p><img src="/2022/01/14/git/image-20220113160204034.png" alt="image-20220113160204034"></p>
+<h2 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h2><blockquote>
+<p> git 은 분산버전관리시스템(DVCS) Distributed Control System</p>
+<p>소스코드의 버전을 관리하고 이력도 관리할 수 있다.</p>
+</blockquote>
+<h3 id="준비하기"><a href="#준비하기" class="headerlink" title="준비하기"></a>준비하기</h3><ol>
+<li><p>윈도우에 git 을 설치한다. (git bash 설치)</p>
+</li>
+<li><p>초기 설치 완료 후 로컬 컴퓨터에 <code>Author</code> 정보를 설정해야한다.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.email 유저이메일</span><br><span class="line">$ git config --global user.name 유저네임</span><br><span class="line"></span><br><span class="line">$ git config --global -l // 설정값을 확인하는 명령어</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="1-저장소-초기화"><a href="#1-저장소-초기화" class="headerlink" title="1. 저장소 초기화"></a>1. 저장소 초기화</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git init</span><br><span class="line"></span><br><span class="line">~/TIL (master) // master 명 확인으로 git 관리여부 확인</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>Working Directory</th>
+<th>Staging Area</th>
+<th>Local Repository (commit)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>실제 작업되는 공간<br />변경점이 나타나면 이곳에 파일이 등록</td>
+<td>commit 되기 전 임시로 파일들이 보여지는 곳<br />이곳에서 commit 되어도 되는지 파일을 확인</td>
+<td>git 으로 관리되는 파일들의 버전들이 저장되는 곳</td>
+</tr>
+</tbody></table>
+<h4 id="2-상태-확인"><a href="#2-상태-확인" class="headerlink" title="2. 상태 확인"></a>2. 상태 확인</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git status // WD, SA 상태를 확인하기 위한 명령어</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>Untracked</p>
+<ul>
+<li>git 으로 관리되지 않았던 파일이 등록된 경우</li>
+<li>WD에서 해당 단어를 확인할 수 있음</li>
+</ul>
+</li>
+<li><p>Tracked</p>
+<ul>
+<li>New file : git 으로 관리되지 않았던 파일이 Staging Area 에 등록되었을 때 확인할 수 있음</li>
+<li>modified : git 으로 관리되는데 수정된 파일이 Staging Area 에 등록되었을 때 확인할 수 있음</li>
+</ul>
+<p><img src="/2022/01/14/git/58.png" alt="58"></p>
+</li>
+</ul>
+<h4 id="4-gitignore"><a href="#4-gitignore" class="headerlink" title="4. gitignore"></a>4. gitignore</h4><ul>
+<li><p>프로젝트와 관련 없는 파일을 등록하여 commit 되지 않도록 하는 것</p>
+<ul>
+<li>민감한 개인 파일이나</li>
+<li>개인 컴퓨터 설정파일 (OS에서 활용되는 파일)</li>
+<li>IDE 환경 설정 파일 (.idea&#x2F;)</li>
+<li>가상환경 폴더 및 파일</li>
+</ul>
+</li>
+<li><p><code>.gitignore</code> 파일을 생성</p>
+<ul>
+<li>제외하고 싶은 파일을 등록</li>
+<li>파일명을 적어주면 끝</li>
+</ul>
+</li>
+<li><p>gitignore.io 를 이용하면 편하게 <code>.gitignore</code> 파일을 작성할 수 있음</p>
+<ul>
+<li>단, 우리가 생성한 파일은 우리가 직접 등록해야함 (ex. 단순 참고 용도인 파일들)</li>
+</ul>
+</li>
+</ul>
+<h4 id="5-Commit-을-위한-준비"><a href="#5-Commit-을-위한-준비" class="headerlink" title="5. Commit 을 위한 준비"></a>5. Commit 을 위한 준비</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git add 파일명</span><br><span class="line">$ git add . // 현재 폴더 내에 있는 변경/추가된 파일 모두를 등록</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Working Directory 에서 Staging Area 로 관리 파일들을 이동시키는 명령어</li>
+<li>Staging Area 에서 관리 대상에 대한 판단을 하고 commit 여부를 결정</li>
+</ul>
+<h4 id="6-Commit-하기"><a href="#6-Commit-하기" class="headerlink" title="6. Commit 하기"></a>6. Commit 하기</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git commit -m <span class="string">&quot;커밋 메세지를 남기자! 유의미한 내용으로 작성&quot;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>버전 이력을 확정짓는 명령어</li>
+<li>해당 시점의 파일 변경된 내용을 스냅샷으로 기록해 남긴다.</li>
+</ul>
+<h4 id="7-Commit-이력-확인하기"><a href="#7-Commit-이력-확인하기" class="headerlink" title="7. Commit 이력 확인하기"></a>7. Commit 이력 확인하기</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">log</span></span><br><span class="line">$ git <span class="built_in">log</span> --oneline // 한 줄로 축약해서 보여줌</span><br><span class="line">$ git <span class="built_in">log</span> -p // 파일의 변경 내용도 같이 보여줌</span><br><span class="line">$ git <span class="built_in">log</span> -숫자       // 숫자만큼만 보여줌</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="원격-저장소-remote-repository"><a href="#원격-저장소-remote-repository" class="headerlink" title="원격 저장소 (remote repository)"></a>원격 저장소 (remote repository)</h3><ul>
+<li>github&#x2F;gitlab</li>
+</ul>
+<h4 id="1-원격-저장소-등록"><a href="#1-원격-저장소-등록" class="headerlink" title="1. 원격 저장소 등록"></a>1. 원격 저장소 등록</h4><ul>
+<li><p>사용을 하기 위해서는 로컬에 원격 저장소의 url 주소를 등록해야 함</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git remote add 저장소별명(origin) 저장소주소</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>등록된 원격 저장소의 주소를 확인하는 방법</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git remote -v</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>저장소 삭제</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git remote <span class="built_in">rm</span> 저장소별명</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="2-원격-저장소에-commit-내용-보내기"><a href="#2-원격-저장소에-commit-내용-보내기" class="headerlink" title="2. 원격 저장소에 commit 내용 보내기"></a>2. 원격 저장소에 commit 내용 보내기</h4><ul>
+<li><p>로컬에 저장된 commit 을 원격 저장소로 전달하여 분산 버전 관리를 완성하는 부분</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git push 저장소별명 브랜치명</span><br><span class="line">$ git push -u origin master</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>-u : -set-upstream 의 shortcut 형태이고 저장소 별명과 브랜치 명을 설정</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-원격-저장소에서-내려받기"><a href="#3-원격-저장소에서-내려받기" class="headerlink" title="3. 원격 저장소에서 내려받기"></a>3. 원격 저장소에서 내려받기</h4><h5 id="1-git-clone"><a href="#1-git-clone" class="headerlink" title="1. git clone"></a>1. git clone</h5><ul>
+<li><p><code>git init</code>, <code>git remote add</code> 동작이 포함된 내려받기 명령어</p>
+</li>
+<li><p>아무것도 없는 상태일 때 사용</p>
+</li>
+<li><p><code>git clone 리모트레포주소</code></p>
+</li>
+</ul>
+<h5 id="2-git-pull"><a href="#2-git-pull" class="headerlink" title="2. git pull"></a>2. git pull</h5><ul>
+<li><p>remote 서버의 정보를 내려받는 명령어</p>
+</li>
+<li><p>git 이 적용되어 있어야 한다. (.git 폴더가 존재해야함)</p>
+</li>
+<li><p>remote 정보가 등록되어 있어야 한다.</p>
+</li>
+<li><p><code>git pull 리모트별명 브랜치명</code></p>
+</li>
+</ul>
+<h3 id="기타"><a href="#기타" class="headerlink" title="기타)"></a>기타)</h3><h4 id="submodule-warning-메세지를-봤다"><a href="#submodule-warning-메세지를-봤다" class="headerlink" title="submodule warning 메세지를 봤다!!!"></a>submodule warning 메세지를 봤다!!!</h4><ol>
+<li>어떤 폴더가 submodule  인지 확인한다.</li>
+<li>해당 폴더로 찾아가서 .git 폴더를 제거한다.</li>
+<li>이미 Staging Area 에 올라간 상태라면<br><code>git rm -rf --cached 폴더명</code>으로 해당 폴더를 Staging Area 에서 Working Directory 로 내린다.</li>
+<li><code>git status</code> 로 다시 상태를 체크하고</li>
+<li><code>git add</code> 로 staging area 에 다시 올린다.</li>
+<li>그리고 다시 <code>git status</code> 로 staging area 에 올라온 상태를 파악하고</li>
+<li><code>git commit</code> 을 한다.</li>
+</ol>
+<ul>
+<li>CLI 환경에서 (master)가 보이면 <code>git init</code>을 하지 않는게 좋다.</li>
+</ul>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Mihyun Lee</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://github.com/mhlee21/2022/01/14/git/">https://github.com/mhlee21/2022/01/14/git/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/git/"># git</a>
+                    
+                        <a href="/tags/github/"># github</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2022/01/17/python-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%8D%B0%EC%96%B4%EB%AC%B8/">python>데이터&데어문</a>
+            
+            
+            <a class="next" rel="next" href="/2022/01/13/CLI/">CLI (Command Line Interface)</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Mihyun Lee | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>

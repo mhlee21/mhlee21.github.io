@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Mihyun Lee">
+
+
+
+
+
+<title>OS&gt;09.파일시스템 | Mihyun&#39;s Blog</title>
+
+
+
+    <link rel="icon" href="/favicon_mhlee.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Mihyun&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Mihyun&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">OS&gt;09.파일시스템</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Mihyun Lee</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">March 2, 2022&nbsp;&nbsp;19:08:36</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/OS/">OS</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="파일-시스템"><a href="#파일-시스템" class="headerlink" title="파일 시스템"></a>파일 시스템</h1><h2 id="File-and-File-System"><a href="#File-and-File-System" class="headerlink" title="File and File System"></a>File and File System</h2><p><img src="/mhlee21/2022/03/02/OS-09-%ED%8C%8C%EC%9D%BC%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220302193104062.png" alt="image-20220302193104062"></p>
+<ul>
+<li>File</li>
+<li>File attribute (metadata)<ul>
+<li>파일 자체의 내용이 아니라 파일을 관리하기 위한 각종 정보들</li>
+</ul>
+</li>
+<li>File system<ul>
+<li>운영체제에서 파일을 관리하는 부분</li>
+<li>파일,파일의 메타데이터를 저장하고 관리</li>
+</ul>
+</li>
+</ul>
+<h2 id="Directory-and-Logical-Disk"><a href="#Directory-and-Logical-Disk" class="headerlink" title="Directory and Logical Disk"></a>Directory and Logical Disk</h2><p><img src="/mhlee21/2022/03/02/OS-09-%ED%8C%8C%EC%9D%BC%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220302193556268.png" alt="image-20220302193556268"></p>
+<ul>
+<li>Partition <ul>
+<li>운영체제가 보는 논리적인 디스크</li>
+<li>여러개의 물리적인 디스크를 하나의 파티션으로 합칠수도 있음</li>
+</ul>
+</li>
+</ul>
+<h2 id="open"><a href="#open" class="headerlink" title="open()"></a>open()</h2><ul>
+<li>open() : 파일의 메타데이터를 메모리에 올리는 것</li>
+</ul>
+<p><img src="/mhlee21/2022/03/02/OS-09-%ED%8C%8C%EC%9D%BC%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220302193842015.png" alt="image-20220302193842015"></p>
+<p><img src="/mhlee21/2022/03/02/OS-09-%ED%8C%8C%EC%9D%BC%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220302193914210.png" alt="image-20220302193914210"></p>
+<p><img src="/mhlee21/2022/03/02/OS-09-%ED%8C%8C%EC%9D%BC%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220302194557800.png" alt="image-20220302194557800"></p>
+<ul>
+<li>open() 을 통해 root의 메타데이터로부터 b의 메타데이터까지 읽어온다.</li>
+<li>open이 완료되면 b의 fd값을 통해 read함수를 실행시켜 b의 content를 읽어서 메모리에 올린다.</li>
+</ul>
+<h2 id="File-Protection"><a href="#File-Protection" class="headerlink" title="File Protection"></a>File Protection</h2><p><img src="/mhlee21/2022/03/02/OS-09-%ED%8C%8C%EC%9D%BC%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220302194809802.png" alt="image-20220302194809802"></p>
+<ul>
+<li>Access Control 방법에는 세가지가 있다.<ul>
+<li>Access control matrix</li>
+<li>Grouping (일반적으로 사용하는 방법)<ul>
+<li>전체 user 를 owner, group, public 의 세그룹으로 구분</li>
+<li>각 파일에 대해 세 그룹의 접근권한 (rwx)을 3비트씩 표시</li>
+</ul>
+</li>
+<li>Password</li>
+</ul>
+</li>
+</ul>
+<h2 id="File-System의-Mounting"><a href="#File-System의-Mounting" class="headerlink" title="File System의 Mounting"></a>File System의 Mounting</h2><p><img src="/mhlee21/2022/03/02/OS-09-%ED%8C%8C%EC%9D%BC%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220302195313632.png" alt="image-20220302195313632"></p>
+<p><img src="/mhlee21/2022/03/02/OS-09-%ED%8C%8C%EC%9D%BC%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220302195408736.png" alt="image-20220302195408736"></p>
+<h2 id="Access-Methods"><a href="#Access-Methods" class="headerlink" title="Access Methods"></a>Access Methods</h2><p><img src="/mhlee21/2022/03/02/OS-09-%ED%8C%8C%EC%9D%BC%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220302195426457.png" alt="image-20220302195426457"></p>
+<h2 id="Allocation-of-File-Data-in-Disk"><a href="#Allocation-of-File-Data-in-Disk" class="headerlink" title="Allocation of File Data in Disk"></a>Allocation of File Data in Disk</h2><p>디스크에 파일 저장할때는 동일한 크기의 섹터단위로 저장하고 있다. </p>
+<p>따라서 임의의 크기의 파일을 동일한 크기의 block 단위로 나누어 저장하고 있다.</p>
+<h3 id="Contiguous-Allocation"><a href="#Contiguous-Allocation" class="headerlink" title="Contiguous Allocation"></a>Contiguous Allocation</h3><p><img src="/mhlee21/2022/03/02/OS-09-%ED%8C%8C%EC%9D%BC%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220309110630855.png" alt="image-20220309110630855"></p>
+<ul>
+<li>연속할당 : 하나의 파일을 연속된 block에 저장하는 방법</li>
+</ul>
+<p><img src="/mhlee21/2022/03/02/OS-09-%ED%8C%8C%EC%9D%BC%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220309110938929.png" alt="image-20220309110938929"></p>
+<ul>
+<li>단점 <ul>
+<li>외부조각 발생 가능</li>
+<li>파일의 크기를 키우는데 제약이 있다.</li>
+</ul>
+</li>
+<li>장점<ul>
+<li>빠른 I&#x2F;O : Readitme file 또는 process 의 swapping 용도로 사용하기 좋다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="Linked-Allocation"><a href="#Linked-Allocation" class="headerlink" title="Linked Allocation"></a>Linked Allocation</h3><p><img src="/mhlee21/2022/03/02/OS-09-%ED%8C%8C%EC%9D%BC%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220309111418214.png" alt="image-20220309111418214"></p>
+<ul>
+<li>파일의 데이터를 디스크에 연속적으로 할당하지 않고 링크를 통해 연결하는 방법</li>
+<li>파일의 실행위치만 디렉토리가 가지고있고, 다음 실행 위치는 직접 가서 데이터를 읽어봐야 알 수 있음</li>
+</ul>
+<p><img src="/mhlee21/2022/03/02/OS-09-%ED%8C%8C%EC%9D%BC%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220309111653691.png" alt="image-20220309111653691"></p>
+<ul>
+<li>순차 접근만 가능해진다.</li>
+</ul>
+<h3 id="Indexed-Allocation"><a href="#Indexed-Allocation" class="headerlink" title="Indexed Allocation"></a>Indexed Allocation</h3><p><img src="/mhlee21/2022/03/02/OS-09-%ED%8C%8C%EC%9D%BC%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220309111906256.png" alt="image-20220309111906256"></p>
+<ul>
+<li>디렉토리에 인덱스 블럭의 정보만 가지고 있는 방식</li>
+</ul>
+<p><img src="/mhlee21/2022/03/02/OS-09-%ED%8C%8C%EC%9D%BC%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220309112044426.png" alt="image-20220309112044426"></p>
+<h2 id="UNIX-파일-시스템의-구조"><a href="#UNIX-파일-시스템의-구조" class="headerlink" title="UNIX 파일 시스템의 구조"></a>UNIX 파일 시스템의 구조</h2><p><img src="/mhlee21/2022/03/02/OS-09-%ED%8C%8C%EC%9D%BC%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220309112249684.png" alt="image-20220309112249684"></p>
+<p><img src="/mhlee21/2022/03/02/OS-09-%ED%8C%8C%EC%9D%BC%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220309112335493.png" alt="image-20220309112335493"></p>
+<ul>
+<li>Boot block<ul>
+<li>어떤 파일 시스템이던 boot block 이 맨 앞에 있다.</li>
+</ul>
+</li>
+<li>Super block<ul>
+<li>파일 시스템에 관한 총체적인 정보</li>
+</ul>
+</li>
+<li>Inode<ul>
+<li>파일 이름을 제외한 파일의 메타데이터</li>
+<li>실제 운영체제에서는 디렉토리가 파일의 모든 정보 가지고 있지 않고, 일부만 가지고 나머지는 Inode에 저장</li>
+<li>파일의 이름은 디렉토리 파일이 가지고 있다.</li>
+</ul>
+</li>
+<li>Data block<ul>
+<li>파일의 실제 내용 보관</li>
+</ul>
+</li>
+</ul>
+<h2 id="FAT-File-System"><a href="#FAT-File-System" class="headerlink" title="FAT File System"></a>FAT File System</h2><p><img src="/mhlee21/2022/03/02/OS-09-%ED%8C%8C%EC%9D%BC%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220309174315724.png" alt="image-20220309174315724"></p>
+<ul>
+<li>File-allocation table System</li>
+</ul>
+<h2 id="Free-Space-Management"><a href="#Free-Space-Management" class="headerlink" title="Free-Space Management"></a>Free-Space Management</h2><ul>
+<li>비어있는 블록을 관리하는 방법</li>
+</ul>
+<p><img src="/mhlee21/2022/03/02/OS-09-%ED%8C%8C%EC%9D%BC%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220309174754182.png" alt="image-20220309174754182"></p>
+<h3 id="Bit-map-or-bit-vector"><a href="#Bit-map-or-bit-vector" class="headerlink" title="Bit map or bit vector"></a>Bit map or bit vector</h3><ul>
+<li>bit map 은 디스크의 부가적인 공간을 필요로 함</li>
+<li>연속적인 빈 block 을 찾는데 효과적</li>
+</ul>
+<p><img src="/mhlee21/2022/03/02/OS-09-%ED%8C%8C%EC%9D%BC%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220309174946615.png" alt="image-20220309174946615"></p>
+<h3 id="Linked-list"><a href="#Linked-list" class="headerlink" title="Linked list"></a>Linked list</h3><ul>
+<li>모든 free block 들을 링크로 연결, 연속적인 가용 공간을 찾는것이 쉽지 않다.</li>
+</ul>
+<h3 id="Grouping"><a href="#Grouping" class="headerlink" title="Grouping"></a>Grouping</h3><ul>
+<li>linked list방법의 변형</li>
+<li>마지막 포인터가 가리키는 block 이 또 다시 n pointer를 가지는 방법</li>
+</ul>
+<h3 id="Counting"><a href="#Counting" class="headerlink" title="Counting"></a>Counting</h3><ul>
+<li>프로그램들이 종종 여러개의 연속적인 block을 할당하고 반납한다는 성질에 착안</li>
+</ul>
+<h2 id="Directory-Implementation"><a href="#Directory-Implementation" class="headerlink" title="Directory Implementation"></a>Directory Implementation</h2><p><img src="/mhlee21/2022/03/02/OS-09-%ED%8C%8C%EC%9D%BC%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220309175245101.png" alt="image-20220309175245101"></p>
+<ul>
+<li>Linear list<ul>
+<li>file name, metadata 의 리스트로 저장</li>
+<li>디렉토리 내에 파일이 있는지 찾기 위해서 linear search 필요</li>
+</ul>
+</li>
+<li>Hash Table<ul>
+<li>linear list + hashing</li>
+<li>search time을 없앰</li>
+</ul>
+</li>
+</ul>
+<p><img src="/mhlee21/2022/03/02/OS-09-%ED%8C%8C%EC%9D%BC%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220309175553689.png" alt="image-20220309175553689"></p>
+<h2 id="VFS-and-NFS"><a href="#VFS-and-NFS" class="headerlink" title="VFS and NFS"></a>VFS and NFS</h2><p><img src="/mhlee21/2022/03/02/OS-09-%ED%8C%8C%EC%9D%BC%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220309175807140.png" alt="image-20220309175807140"></p>
+<ul>
+<li>Virtual File System (VFS)<ul>
+<li>서로 다른 파일 시스템에 상관 없이 동일한 시스템 콜 인터페이스를 통해 접근할 수 있게 해주는 OS의 layer</li>
+</ul>
+</li>
+<li>Network File System (NFS)<ul>
+<li>서로 다른 컴퓨터가 네트워크로 연결되어 있을 때, 원격으로 다른 컴퓨터에 있는 파일 시스템을 접근할 수 있도록 해주는 분산 파일 시스템</li>
+</ul>
+</li>
+</ul>
+<p><img src="/mhlee21/2022/03/02/OS-09-%ED%8C%8C%EC%9D%BC%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220309175833295.png" alt="image-20220309175833295"></p>
+<h2 id="Page-Cache-and-Buffer-Cache"><a href="#Page-Cache-and-Buffer-Cache" class="headerlink" title="Page Cache and Buffer Cache"></a>Page Cache and Buffer Cache</h2><p><img src="/mhlee21/2022/03/02/OS-09-%ED%8C%8C%EC%9D%BC%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220309180145647.png" alt="image-20220309180145647"></p>
+<p><img src="/mhlee21/2022/03/02/OS-09-%ED%8C%8C%EC%9D%BC%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220309180451140.png" alt="image-20220309180451140"></p>
+<ul>
+<li><p>Memory-mapped I&#x2F;O</p>
+<ul>
+<li><p>파일의 일부를 virtual memory 에 mapping 시킴</p>
+<p>-&gt; 파일을 읽거나 쓰는 접근이 아니고 메모리 공간에 접근하는 것이 됨</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="/mhlee21/2022/03/02/OS-09-%ED%8C%8C%EC%9D%BC%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220309181212113.png" alt="image-20220309181212113"></p>
+<ul>
+<li>Unified Buffer Cache (현대의 UNIX)<ul>
+<li>memory-mapped I&#x2F;O 시 전통적인 File I&#x2F;O 보다 한단계가 줄어들었다.</li>
+</ul>
+</li>
+</ul>
+<h2 id="참고-프로그램의-실행"><a href="#참고-프로그램의-실행" class="headerlink" title="(참고) 프로그램의 실행"></a>(참고) 프로그램의 실행</h2><p><img src="/mhlee21/2022/03/02/OS-09-%ED%8C%8C%EC%9D%BC%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220309181442931.png" alt="image-20220309181442931"></p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Mihyun Lee</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://github.com/mhlee21/2022/03/02/OS-09-%ED%8C%8C%EC%9D%BC%EC%8B%9C%EC%8A%A4%ED%85%9C/">https://github.com/mhlee21/2022/03/02/OS-09-%ED%8C%8C%EC%9D%BC%EC%8B%9C%EC%8A%A4%ED%85%9C/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/OS/"># OS</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2022/03/06/OS-10-%EC%9E%85%EC%B6%9C%EB%A0%A5%EC%8B%9C%EC%8A%A4%ED%85%9C/">OS>10.입출력시스템</a>
+            
+            
+            <a class="next" rel="next" href="/2022/03/02/Django/">Django</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Mihyun Lee | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>

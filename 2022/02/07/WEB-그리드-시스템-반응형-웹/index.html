@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Mihyun Lee">
+
+
+
+
+
+<title>WEB&gt;그리드 시스템/반응형 웹 | Mihyun&#39;s Blog</title>
+
+
+
+    <link rel="icon" href="/favicon_mhlee.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Mihyun&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Mihyun&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">WEB&gt;그리드 시스템/반응형 웹</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Mihyun Lee</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">February 7, 2022&nbsp;&nbsp;0:00:00</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/WEB/">WEB</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="그리드-시스템-x2F-반응형-웹"><a href="#그리드-시스템-x2F-반응형-웹" class="headerlink" title="그리드 시스템&#x2F;반응형 웹"></a>그리드 시스템&#x2F;반응형 웹</h1><h2 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">💡선택자 연습용 사이트</span><br><span class="line">https://flukeout.github.io/</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="/2022/02/07/WEB-%EA%B7%B8%EB%A6%AC%EB%93%9C-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EB%B0%98%EC%9D%91%ED%98%95-%EC%9B%B9/image-20220207090436718.png" alt="image-20220207090436718"></p>
+<h2 id="CSS-Layout"><a href="#CSS-Layout" class="headerlink" title="CSS Layout"></a>CSS Layout</h2><h3 id="CSS-원칙-Ⅰ-Normal-Flow-💡"><a href="#CSS-원칙-Ⅰ-Normal-Flow-💡" class="headerlink" title="CSS 원칙 Ⅰ(Normal Flow)💡"></a>CSS 원칙 Ⅰ(Normal Flow)💡</h3><ul>
+<li>모든 요소는 네모(박스모델)이고, 위에서부터 아래로, 왼쪽에서 오른쪽으로 쌓인다.</li>
+</ul>
+<p><img src="/2022/02/07/WEB-%EA%B7%B8%EB%A6%AC%EB%93%9C-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EB%B0%98%EC%9D%91%ED%98%95-%EC%9B%B9/image-20220207091228410.png" alt="image-20220207091228410"></p>
+<h3 id="float"><a href="#float" class="headerlink" title="float"></a>float</h3><ul>
+<li>💡박스를 왼쪽 혹은 오른쪽으로 이동시켜 텍스트를 포함 <em><strong>인라인 요소들이 주변을 wrapping</strong></em> 하도록 함</li>
+<li>💡요소가 Normal Flow 를 벗어나도록 함</li>
+</ul>
+<p><img src="/2022/02/07/WEB-%EA%B7%B8%EB%A6%AC%EB%93%9C-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EB%B0%98%EC%9D%91%ED%98%95-%EC%9B%B9/image-20220207091641624.png" alt="image-20220207091641624"></p>
+<h4 id="float-속성"><a href="#float-속성" class="headerlink" title="float 속성"></a>float 속성</h4><ul>
+<li>none : 기본값</li>
+<li>left : 요소를 왼쪽으로 띄움</li>
+<li>right : 요소를 오른쪽으로 띄움</li>
+</ul>
+<p><img src="/2022/02/07/WEB-%EA%B7%B8%EB%A6%AC%EB%93%9C-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EB%B0%98%EC%9D%91%ED%98%95-%EC%9B%B9/image-20220207093207857.png" alt="image-20220207093207857"></p>
+<h4 id="Clearing-Float"><a href="#Clearing-Float" class="headerlink" title="Clearing Float"></a>Clearing Float</h4><ol>
+<li>float 요소의 부모를 div 를 감싸준다.</li>
+<li>부모에게 clearfix class 적용</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">.clearfix::after &#123;</span><br><span class="line">	content: &quot;&quot;;</span><br><span class="line">	display: block;</span><br><span class="line">	clear: both;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Float 는 Normal Flow 에서 벗어나 부동 상태 (떠 있음)</li>
+<li>따라서, 이후 요소에 대하여 Float 속성이 적용되지 않도록 Clearing 이 필수적임<ul>
+<li><code>::after</code> : 선택한 요소의 맨 마지막 자식으로 가상요소를 하나 생성<ul>
+<li>보통 content 속성과 함께 짝지어, 요소에 장식용 콘텐츠를 추가할 때 사용</li>
+</ul>
+</li>
+<li>clear 속성 부여</li>
+</ul>
+</li>
+<li>float 는 block 레이아웃의 사용을 뜻하기 때문에 inline 요소에 적용하게 되면 block 요소로 바뀌어 적용된다.</li>
+</ul>
+<blockquote>
+<p>✍️ Float 활용 전략 - Normal Flow 에서 벗어난 레이아웃 구성</p>
+<pre><code>- 원하는 요소들을 float 로 지정하여 배치
+- 부모 요소에 반드시 clearing float 를 하여 이후 요소부터 normal flow 를 가지도록 규정
+</code></pre>
+</blockquote>
+<h3 id="flexbox-💡💡💡"><a href="#flexbox-💡💡💡" class="headerlink" title="flexbox 💡💡💡"></a>flexbox 💡💡💡</h3><ul>
+<li><p>행과 열 형태로 아이템을 배치하는 1차원 레이아웃 모델</p>
+</li>
+<li><p>축</p>
+<ul>
+<li><p>main axis</p>
+</li>
+<li><p>cross axis</p>
+</li>
+<li><p>💡 flex-direction : row (기본값)</p>
+<p><img src="/2022/02/07/WEB-%EA%B7%B8%EB%A6%AC%EB%93%9C-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EB%B0%98%EC%9D%91%ED%98%95-%EC%9B%B9/image-20220207101017034.png" alt="image-20220207101017034"></p>
+</li>
+</ul>
+</li>
+<li><p>Flexbox 구성 요소💡</p>
+<ul>
+<li><p>Flew Container (<strong>부모 요소</strong>)</p>
+<ul>
+<li><p>flexbox 레이아웃을 형성하는 가장 기본적인 모델</p>
+</li>
+<li><p>Flex Item 들이 놓여있는 영역</p>
+</li>
+<li><p>💡display 속성을 flex 혹은 inline-flex 로 지정</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.flex-container</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: flex;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>Flex Item (<strong>자식 요소</strong>)</p>
+<ul>
+<li>컨테이너에 속해 있는 컨텐츠</li>
+<li>💡자손영역에는 영향을 미치지 않고 오직 나의 자식 영역에만 영향을 미친다.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>Q. 왜 Flexbox 를 사용해야 할까?</p>
+<p>float 혹은 position 을 통해서는 </p>
+<pre><code>1. 수직 정렬
+1. 아이템의 너비와 높이 혹은 간격을 동일하게 배치
+</code></pre>
+<p>하는 것이 어렵다.</p>
+</blockquote>
+<h4 id="flex-속성💡💡💡"><a href="#flex-속성💡💡💡" class="headerlink" title="flex 속성💡💡💡"></a>flex 속성💡💡💡</h4><p>[배치 설정]</p>
+<ul>
+<li><p>flex-direction</p>
+<ul>
+<li><p>main axis 기준 방향 설정</p>
+<p><img src="/2022/02/07/WEB-%EA%B7%B8%EB%A6%AC%EB%93%9C-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EB%B0%98%EC%9D%91%ED%98%95-%EC%9B%B9/image-20220207102043840.png" alt="image-20220207102043840"></p>
+</li>
+</ul>
+</li>
+<li><p>flex-wrap</p>
+<ul>
+<li><p>아이템이 컨테이너를 벗어나는 경우 해당 영역 내에 배치되도록 설정</p>
+</li>
+<li><p>nowarp(기본 값) : 한 줄에 배치</p>
+</li>
+<li><p>wrap : 넘치면 그 다음줄로 배치</p>
+<p><img src="/2022/02/07/WEB-%EA%B7%B8%EB%A6%AC%EB%93%9C-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EB%B0%98%EC%9D%91%ED%98%95-%EC%9B%B9/image-20220207102117034.png" alt="image-20220207102117034"></p>
+</li>
+</ul>
+</li>
+<li><p>flex-flow 💡💡💡</p>
+<ul>
+<li>flex-direction과 flex-wrap의 shorthand</li>
+<li><code>flex-flow: row wrap;</code></li>
+</ul>
+</li>
+</ul>
+<p>[공간 나누기]</p>
+<ul>
+<li><p>💡<strong>justify-content</strong> : Main axis 를 기준으로 공간 배분</p>
+<ul>
+<li>flex-start (기본 값) : 아이템을 axis 시작점으로</li>
+<li>flex-end : 아이템들을 axis 끝 쪽으로</li>
+<li>center : 아이템들을 axis 중앙으로</li>
+<li>space-between : 아이템 사이의 간격을 균일하게 분배</li>
+<li>space-around : 아이템을 둘러싼 영역을 균일하게 분배 (가질 수 있는 영역을 반으로 나눠서 양쪽에)</li>
+<li>space-evenly : 전체 영역에서 아이템 간 간격을 균일하게 분배</li>
+</ul>
+<p><img src="/2022/02/07/WEB-%EA%B7%B8%EB%A6%AC%EB%93%9C-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EB%B0%98%EC%9D%91%ED%98%95-%EC%9B%B9/image-20220207102603806.png" alt="image-20220207102603806"></p>
+</li>
+<li><p>align-content : Cross axis 를 기준으로 공간 배분</p>
+</li>
+</ul>
+<p><img src="/2022/02/07/WEB-%EA%B7%B8%EB%A6%AC%EB%93%9C-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EB%B0%98%EC%9D%91%ED%98%95-%EC%9B%B9/image-20220207102613757.png" alt="image-20220207102613757"></p>
+<p>[정렬]</p>
+<ul>
+<li><p>💡<strong>align-items</strong> : 모든 아이템을 Cross axis 를 기준으로 정렬</p>
+<ul>
+<li>💡stretch (기본 값) : 컨테이너를 가득 채움</li>
+<li>flex-start : 위</li>
+<li>flex-end : 아래</li>
+<li>center : 가운데</li>
+<li>💡baseline : 텍스트 baseline 에 기준선을 맞춤</li>
+</ul>
+<p><img src="/2022/02/07/WEB-%EA%B7%B8%EB%A6%AC%EB%93%9C-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EB%B0%98%EC%9D%91%ED%98%95-%EC%9B%B9/image-20220207103128404.png" alt="image-20220207103128404"></p>
+</li>
+<li><p>align-self : 개별 아이템을 Cross axis 를 기준으로 정렬 (컨테이너가 아닌 개별 아이템에 적용하는 속성)</p>
+<p><img src="/2022/02/07/WEB-%EA%B7%B8%EB%A6%AC%EB%93%9C-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EB%B0%98%EC%9D%91%ED%98%95-%EC%9B%B9/image-20220207103139289.png" alt="image-20220207103139289"></p>
+</li>
+</ul>
+<p>[기타 속성]</p>
+<ul>
+<li>💡flex-grow : 남은 영역을 아이템에 분배</li>
+<li>💡order : 배치 순서<ul>
+<li>기본값은 0</li>
+<li>숫자가 클 수록 우선순위는 낮다.</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">💡Flexbox Froggy (https://flexboxfroggy.com/#ko)</span><br><span class="line">* flexbox 연습용 사이트</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>flex-shrink</li>
+<li>flex-basis</li>
+</ul>
+<h3 id="grid"><a href="#grid" class="headerlink" title="grid"></a>grid</h3><h2 id="bootstrap"><a href="#bootstrap" class="headerlink" title="bootstrap"></a>bootstrap</h2><ul>
+<li>웹사이트를 쉽게 만들 수 있게 도와주는 HTML, CSS, JS 프레임워크</li>
+<li>하나의 CSS 로 휴대폰, 태블릿, 데스크탑까지 다양한 기기에서 작동한다.</li>
+<li>사용법</li>
+</ul>
+<p><img src="/2022/02/07/WEB-%EA%B7%B8%EB%A6%AC%EB%93%9C-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EB%B0%98%EC%9D%91%ED%98%95-%EC%9B%B9/image-20220207154359630.png" alt="image-20220207154359630"></p>
+<ul>
+<li><p>더 편한 사용법 : CDN (Content Delivery Network)</p>
+<ul>
+<li>컨텐츠 (CSS, JS, Image, Text 등)을 효율적으로 전달하기 위해 여러 노드에 가진 네트워크에 데이터를 제공하는 시스템</li>
+<li><a target="_blank" rel="noopener" href="https://www.bootstrapcdn.com/">https://www.bootstrapcdn.com/</a></li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">href</span>=<span class="string">&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css&quot;</span> <span class="attr">integrity</span>=<span class="string">&quot;sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3&quot;</span> <span class="attr">crossorigin</span>=<span class="string">&quot;anonymous&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js&quot;</span> <span class="attr">integrity</span>=<span class="string">&quot;sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13&quot;</span> <span class="attr">crossorigin</span>=<span class="string">&quot;anonymous&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>spacing 💡💡💡</p>
+<p><img src="/2022/02/07/WEB-%EA%B7%B8%EB%A6%AC%EB%93%9C-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EB%B0%98%EC%9D%91%ED%98%95-%EC%9B%B9/image-20220207154654998.png" alt="image-20220207154654998"></p>
+</li>
+</ul>
+<h2 id="bootstrap-grid-system-💡💡💡💡"><a href="#bootstrap-grid-system-💡💡💡💡" class="headerlink" title="bootstrap grid system 💡💡💡💡"></a>bootstrap grid system 💡💡💡💡</h2><h3 id="Grid-System-web-design"><a href="#Grid-System-web-design" class="headerlink" title="Grid System (web design)"></a>Grid System (web design)</h3><ul>
+<li><p>요소들의 디자인과 배치에 도움을 주는 시스템</p>
+</li>
+<li><p>기본 요소</p>
+<ul>
+<li><p>Column : 실제 컨텐츠를 포함하는 부분</p>
+</li>
+<li><p>Gutter : 칼럼과 칼럼 사이의 공간 (사이 간격)</p>
+</li>
+<li><p>Container : Column 들을 담고 있는 공간</p>
+<p><img src="/2022/02/07/WEB-%EA%B7%B8%EB%A6%AC%EB%93%9C-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EB%B0%98%EC%9D%91%ED%98%95-%EC%9B%B9/image-20220207151935714.png" alt="image-20220207151935714"></p>
+</li>
+</ul>
+</li>
+<li><p>Bootstrap Grid System 은 flexbox 로 제작됨</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">💡 12개의 column</span><br><span class="line">💡 6개의 grid breakpoints (xs, sm, md, lg, xl, xxl)💡</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/02/07/WEB-%EA%B7%B8%EB%A6%AC%EB%93%9C-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EB%B0%98%EC%9D%91%ED%98%95-%EC%9B%B9/image-20220214004415294.png" alt="image-20220214004415294"></p>
+</li>
+<li><p>💡(Container), <strong>rows, columns</strong> 으로 컨텐츠를 배치하고 정렬</p>
+<ul>
+<li>container는 좌우 공간 확보용일 뿐이다. (가독성을 위함, 필수요소는 아님)</li>
+<li>💡반드시 row를 부모 요소로 넣어준 후  col class 설정해야 grid가 나뉘어진다.</li>
+<li>(부모) class&#x3D;row</li>
+<li>(자식) class&#x3D;col-{숫자}</li>
+</ul>
+<p>(참고)</p>
+</li>
+</ul>
+<p><img src="/2022/02/07/WEB-%EA%B7%B8%EB%A6%AC%EB%93%9C-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EB%B0%98%EC%9D%91%ED%98%95-%EC%9B%B9/image-20220212182015695.png" alt="image-20220212182015695"></p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Mihyun Lee</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://github.com/mhlee21/2022/02/07/WEB-%EA%B7%B8%EB%A6%AC%EB%93%9C-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EB%B0%98%EC%9D%91%ED%98%95-%EC%9B%B9/">https://github.com/mhlee21/2022/02/07/WEB-%EA%B7%B8%EB%A6%AC%EB%93%9C-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EB%B0%98%EC%9D%91%ED%98%95-%EC%9B%B9/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/HTML-CSS/"># HTML/CSS</a>
+                    
+                        <a href="/tags/bootstrap/"># bootstrap</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2022/02/09/OS-03-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-%EA%B4%80%EB%A6%AC/">OS>03.프로세스 관리</a>
+            
+            
+            <a class="next" rel="next" href="/2022/02/05/OS-02-%EC%BB%B4%ED%93%A8%ED%84%B0-%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%9D%98-%EA%B5%AC%EC%A1%B0/">OS>02.컴퓨터 시스템의 구조</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Mihyun Lee | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>

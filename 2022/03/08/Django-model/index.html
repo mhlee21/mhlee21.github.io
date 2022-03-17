@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Mihyun Lee">
+
+
+
+
+
+<title>Django&gt;model | Mihyun&#39;s Blog</title>
+
+
+
+    <link rel="icon" href="/favicon_mhlee.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Mihyun&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Mihyun&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">Django&gt;model</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Mihyun Lee</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">March 8, 2022&nbsp;&nbsp;9:04:47</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/Django/">Django</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="Model"><a href="#Model" class="headerlink" title="Model"></a>Model</h1><ul>
+<li>단일한 데이터에 대한 정보를 가짐<ul>
+<li>사용자가 저장하는 데이터들의 필수적인 필드들과 동작들을 포함</li>
+</ul>
+</li>
+<li>저장된 데이터베이스의 구조 (layout)</li>
+<li>django는 model을 통해 데이터에 접속하고 관리</li>
+<li>일반적으로 각각의 model은 하나의 데이터베이스 테이블에 매핑 됨</li>
+</ul>
+<h2 id="Database"><a href="#Database" class="headerlink" title="Database"></a>Database</h2><ul>
+<li>데이터베이스(DB)<ul>
+<li>체계화된 데이터의 모임</li>
+</ul>
+</li>
+<li>쿼리 (Query)<ul>
+<li>데이터를 조회하기 위한 명령어</li>
+<li>조건에 맞는 데이터를 추출하거나 조작하는 명령어</li>
+<li>“Query를 날린다” -&gt; DB를 조작한다.</li>
+</ul>
+</li>
+<li>데이터베이스 관리 시스템 종류<ul>
+<li>MySQL</li>
+<li>ORACLE db</li>
+<li>MariaDB</li>
+<li>PostgreSQL</li>
+</ul>
+</li>
+</ul>
+<h2 id="Database의-기본-구조"><a href="#Database의-기본-구조" class="headerlink" title="Database의 기본 구조"></a>Database의 기본 구조</h2><ul>
+<li><p>스키마 (Shcema)</p>
+<ul>
+<li>데이터베이스에서 자료의 구조, 표현방법, 관계 등을 정의한 구조(structure)</li>
+<li>데이터데이스의 구조와 제약 조건(자료의 구조, 표현방법, 관계)에 관련한 전반적인 명세를 기술한 것</li>
+<li>관계 (1:N, N:N,…)</li>
+</ul>
+</li>
+<li><p>테이블(table)</p>
+<ul>
+<li>열과 행의 모델을 사용해 조직된 데이터 요소들의 집합. SQL 데이터베이스에서는 테이블을 <code>관계</code>라고도 한다.</li>
+<li>열(column) : 필드(field) or 속성<ul>
+<li>각 열에는 고유한 데이터 형식이 지정된다.</li>
+<li>INTEGER, TEXT, NULL 등</li>
+</ul>
+</li>
+<li>행(row) : 레코드(record) or 튜플<ul>
+<li>테이블의 데이터는 행에 저장된다.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>PK (기본키)</p>
+<ul>
+<li>각 행의 고유값으로 Primary Key로 불린다.</li>
+<li>반드시 설정하여야하며, 데이터베이스 관리 및 관계 설정 시 주요하게 활용된다.</li>
+<li><code>django는 id가 곧 PK이다.</code></li>
+</ul>
+</li>
+</ul>
+<p><img src="/2022/03/08/Django-model/image-20220308123118143.png" alt="image-20220308123118143"></p>
+<h2 id="Model-1"><a href="#Model-1" class="headerlink" title="Model"></a>Model</h2><ul>
+<li>웹 애플리케이션의 데이터를 <strong>구조화</strong>하고 <strong>조작</strong>하기 위한 도구</li>
+</ul>
+<h1 id="ORM"><a href="#ORM" class="headerlink" title="ORM"></a>ORM</h1><ul>
+<li>Object-Relational-Mapping</li>
+<li>객체 지향 프로그래밍 언어를 사용하여 호환되지 않는 유형의 시스템 간(Django-SQL)에 데이터를 변환하는 프로그래밍 기술</li>
+<li>OOP프로그래밍에서 RDBMS을 연동할 때, 데이터베이스와 객체 지향 프로그래밍 언어간의 호환되지 않는 데이터를 변환하는 프로그래밍 기법</li>
+<li>Django는 내장 Django ORM 을 사용함</li>
+</ul>
+<p><img src="/2022/03/08/Django-model/image-20220317233751117.png" alt="image-20220317233751117"></p>
+<h2 id="ORM의-장점과-단점"><a href="#ORM의-장점과-단점" class="headerlink" title="ORM의 장점과 단점"></a>ORM의 장점과 단점</h2><ul>
+<li>장점<ul>
+<li>SQL을 잘 알지 못해도 DB 조작이 가능</li>
+<li>SQL의 절차적 접근이 아닌 객체지향적 접근으로 인한 높은 생산성</li>
+</ul>
+</li>
+<li>단점<ul>
+<li>ORM 만으로 완전한 서비스를 구현하기 어려운 경우가 있음</li>
+</ul>
+</li>
+<li>현대 웹 프레임워크의 요점은 웹 개발의 속도를 높이는 것 (<em><strong>생산성</strong></em>)<ul>
+<li>개발 속도는 ORM을 쓰는 것이 더 빠르지만, 서비스의 속도는 SQL을 직접 사용하는 것이 더 빠르다.</li>
+<li>서비스 런칭 자체는 ORM을 사용하고 서비스를 운영하며 시간이 많이걸리는 부분을 SQL로 최적화 하는 방법을 많이 사용한다.</li>
+</ul>
+</li>
+<li>왜 ORM 을 사용할까?<ul>
+<li><strong>DB를 객체로 조작하기 위해 ORM을 사용한다.</strong></li>
+</ul>
+</li>
+</ul>
+<h2 id="model-py-작성"><a href="#model-py-작성" class="headerlink" title="model.py 작성"></a>model.py 작성</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># articles/models.py</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Article</span>(models.Model):</span><br><span class="line">    title = models.CharField(max_length=<span class="number">10</span>) <span class="comment"># 길이제한 있는 경우 CharField 사용</span></span><br><span class="line">    content = models.TextField() <span class="comment"># 길이제한 없는 경우 TextField 사용</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>각 모델은 django.db.models.Model 클래스의 서브 클래스로 표현</p>
+<ul>
+<li>django.db.models.Model 모듈의 Model 클래스를 상속받음</li>
+</ul>
+</li>
+<li><p>models 모듈을 통해 어떠한 타입의 DB 컬럼을 정의할 것인지 정의</p>
+<ul>
+<li><p>title과 content는 모델의 필드를 나타냄</p>
+</li>
+<li><p>각 필드는 클래스 속성으로 지정되어 있으며, 각 속성은 각 데이터베이스의 열에 매핑</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="사용-모델-필드"><a href="#사용-모델-필드" class="headerlink" title="사용 모델 필드"></a>사용 모델 필드</h2><ul>
+<li><p><code>CharField(max_length=None, **options)</code></p>
+<ul>
+<li><p>길이의 제한이 있는 문자열을 넣을 때 사용</p>
+</li>
+<li><p>CharField의 max_length는 필수 인자</p>
+</li>
+<li><p><strong>필드의 최대 길이(문자)</strong>, 데이터베이스 레벨과 Django의 유효성 검사(값을 검증하는 것)에서 활용</p>
+</li>
+</ul>
+</li>
+<li><p><code>TextField(**options)</code></p>
+<ul>
+<li>글자의 수가 많을 때 사용</li>
+<li>max_length 옵션 작성 시 자동 양식 필드인 textarea 위젯에 반영은 되지만 모델과 데이터베이스 수준에는 적용되지 않음<ul>
+<li>max_length 사용은 CharField에서 사용해야 함</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="Migrations⭐⭐"><a href="#Migrations⭐⭐" class="headerlink" title="Migrations⭐⭐"></a>Migrations⭐⭐</h1><ul>
+<li>django가 model에 생긴 변화를 DB에 반영하는 방법</li>
+</ul>
+<h2 id="commands"><a href="#commands" class="headerlink" title="commands"></a>commands</h2><ul>
+<li><p>마이그레이션 실행 및 DB 스키마를 다루기 위한 몇가지 명령어 (<code>python manage.py [command]</code>)</p>
+<ul>
+<li><p><code>makemigrations</code></p>
+<ul>
+<li>model을 변경한 것에 기반한 새로운 마이그레이션(like 설계도)을 만들 때 사용</li>
+<li>‘migrations&#x2F;0001_initial.py’ 생성 확인</li>
+</ul>
+</li>
+<li><p><code>migrate</code></p>
+<ul>
+<li>마이그레이션을 DB에 반영하기 위해 사용</li>
+<li>설계도를 실제 DB에 반영하는 과정</li>
+<li>모델에서의 변경 사항들과 DB의 스키마가 동기화를 이룸</li>
+<li>0001_initial.py 설계도를 실제 DB에 반영</li>
+</ul>
+</li>
+<li><p><code>sqlmigrate</code></p>
+<ul>
+<li><code>python manage.py sqlmigrate app_name 0001</code></li>
+<li>마이그레이션에 대한 SQL 구문을 보기 위해 사용</li>
+<li>해당 migrations 설계도가 SQL 문으로 어떻게 해석되어 동작할 지 미리 확인할 수 있음</li>
+</ul>
+</li>
+<li><p><code>showmigrations</code></p>
+<ul>
+<li>프로젝트 전체의 마이그레이션 상태를 확인하기 위해 사용</li>
+<li>migrations 설계도들이 migrate 됐는지 안됐는지 여부를 확인할 수 있음</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="추가-모델-필드-작성"><a href="#추가-모델-필드-작성" class="headerlink" title="추가 모델 필드 작성"></a>추가 모델 필드 작성</h2><h3 id="실습"><a href="#실습" class="headerlink" title="실습"></a>실습</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># articles/models.py</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Article</span>(models.Model):</span><br><span class="line">    created_at = models.DateTimeField(auto_now_add=<span class="literal">True</span>) </span><br><span class="line">    <span class="comment"># auto_now_add 데이터가 생성될 때 시간을 자동으로 저장</span></span><br><span class="line">    updated_at = models.DateTimeField(auto_now=<span class="literal">True</span>) </span><br><span class="line">    <span class="comment"># auto_now 현재 시간을 자동으로 저장</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## 참고 ## </span></span><br><span class="line"><span class="comment"># 다른 필드들에 대해서 default 값을 설정하는 대신</span></span><br><span class="line"><span class="comment"># 필드열을 비워두는 것을 허용한다는 의미로 다음과 같이 설정가능하다.</span></span><br><span class="line"><span class="comment"># age = models.IntegerField(null=True)</span></span><br><span class="line"><span class="comment"># null=True : (NULL)</span></span><br><span class="line"><span class="comment"># blank=True : (&#x27;&#x27;)</span></span><br></pre></td></tr></table></figure>
+
+<p>모델에서 필드정보 수정되면 makemigrations 진행</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ python manage.py makemigrations</span><br><span class="line">You are trying to add the field <span class="string">&#x27;created_at&#x27;</span> with <span class="string">&#x27;auto_now_add=True&#x27;</span> to student without a default; the database needs something to populate existing rows.</span><br><span class="line"></span><br><span class="line"> 1) Provide a one-off default now (will be <span class="built_in">set</span> on all existing rows)</span><br><span class="line"> 2) Quit, and <span class="built_in">let</span> me add a default <span class="keyword">in</span> models.py</span><br><span class="line">Select an option:</span><br></pre></td></tr></table></figure>
+
+<p>테이블을 만들 때 created_at 필드에 대한 default 값이 없어서 선택하도록 bash에 출력됨</p>
+<ul>
+<li>1 : django에서 지금 바로 기본값을 설정해줌</li>
+<li>2 : makemigrations 종료하고 py파일에서 직접 default 값 설정함</li>
+</ul>
+<h3 id="DataField’s-options⭐"><a href="#DataField’s-options⭐" class="headerlink" title="DataField’s options⭐"></a>DataField’s options⭐</h3><ul>
+<li><code>auto_now_add</code><ul>
+<li>최초 생성 일자</li>
+<li>Django ORM 이 최초 insert (테이블에 데이터 입력)시에만 현재 날짜와 시간으로 갱신<br>(테이블에 어떤 값을 최초로 넣을 때)</li>
+</ul>
+</li>
+<li><code>auto_now</code><ul>
+<li>최종 수정 일자</li>
+<li>Django ORM이 save를 할 때마다 현재 날짜와 시간으로 갱신</li>
+</ul>
+</li>
+<li>DateTimeField가 아닌 DataField의 options를 확인한 이유<ul>
+<li>DataTimeField는 DateField와 동일한 추가 인자(extra argument)를 사용함</li>
+<li>DataTimeField는 DateField의 서브 클래스</li>
+</ul>
+</li>
+</ul>
+<h2 id="반드시-기억해야-할-migration-3단계⭐"><a href="#반드시-기억해야-할-migration-3단계⭐" class="headerlink" title="반드시 기억해야 할 migration 3단계⭐"></a>반드시 기억해야 할 migration 3단계⭐</h2><ol>
+<li><p><code>models.py</code></p>
+<p>model 변경사항 발생 시</p>
+</li>
+<li><p><code>$ python manage.py makemigrations</code></p>
+<p>migrations 파일 생성</p>
+</li>
+<li><p><code>$ python manage.py migrate</code></p>
+<p>DB 반영(모델과 DB의 동기화)</p>
+</li>
+</ol>
+<h1 id="Database-API"><a href="#Database-API" class="headerlink" title="Database API"></a>Database API</h1><ul>
+<li>“DB를 조작하기 위한 도구”</li>
+<li>Django가 기본적으로 ORM을 제공함에 따른 것으로 DB를 편하게 조작할 수 있도록 도움</li>
+<li>Model을 만들면 Django는 객체들을 만들고 읽고 수정하고 지울 수 있는 database-abstract API를 자동으로 만듦</li>
+<li>database-abstract API 혹은 database-access API라고도 함</li>
+<li><a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/3.2/ref/models/querysets/">QuerySet API reference</a></li>
+</ul>
+<h2 id="Making-Queries"><a href="#Making-Queries" class="headerlink" title="Making Queries"></a>Making Queries</h2><blockquote>
+<p> [클래스명].objects.[메서드]</p>
+</blockquote>
+<p><img src="/2022/03/08/Django-model/image-20220308134706955.png" alt="image-20220308134706955"></p>
+<h2 id="DB-API"><a href="#DB-API" class="headerlink" title="DB API"></a>DB API</h2><ul>
+<li>Manager<ul>
+<li>Django 모델에 데이터베이스 query 작업이 제공되는 인터페이스</li>
+<li>기본적으로 모든 Django 모델 클래스에 objects 라는 Manager 를 추가</li>
+</ul>
+</li>
+<li>QuerySet<ul>
+<li>데이터베이스로부터 전달받은 객체 목록</li>
+<li>queryset 안에 객체는 0개, 1개 혹은 여러 개일 수 있음</li>
+<li>데이터베이스로부터 조회, 필터, 정렬 등을 수행할 수 있음</li>
+</ul>
+</li>
+</ul>
+<h2 id="Django-shell"><a href="#Django-shell" class="headerlink" title="Django shell"></a>Django shell</h2><ul>
+<li>일반 python shell 을 통해서는 장고 프로젝트 환경에 접근할 수 없음</li>
+<li>그래서 장고 프로젝트 설정이 load된 python shell 을 활용해 DB API 구문 테스트 진행</li>
+<li>기본 Django shell보다 더 많은 기능을 제공하는 shell_plus를 사용해서 진행</li>
+</ul>
+<ol>
+<li><p>라이브러리 설치</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ pip install ipython</span><br><span class="line">$ pip install django-extensions</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>라이브러리 등록 및 실행</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># settings.py</span></span><br><span class="line">INSTALLED_APPS = [</span><br><span class="line">  ...,</span><br><span class="line">  <span class="string">&#x27;django_extensions&#x27;</span>,</span><br><span class="line">  ...,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ python manage.py shell_plus</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h1 id="CRUD"><a href="#CRUD" class="headerlink" title="CRUD"></a>CRUD</h1><ul>
+<li>대부분의 컴퓨터 소프트웨어가 가지는 기본적인 데이터 처리 기능인 <code>Create, Read, Update, Delete</code> 를 묶어서 일컫는 말</li>
+</ul>
+<h2 id="CREATE"><a href="#CREATE" class="headerlink" title="CREATE"></a>CREATE</h2><ol>
+<li>인스턴스를 생성 후 인스턴스 변수 설정</li>
+<li>초기 값과 함께 인스턴스 생성</li>
+<li>QuerySet API - create() 사용</li>
+</ol>
+<h3 id="save-method"><a href="#save-method" class="headerlink" title="save()  method"></a><code>save()</code>  method</h3><ul>
+<li>Saving objects</li>
+<li>객체를 데이터베이스에 저장함</li>
+<li>데이터 생성 시 save() 를 호출하기 전에는 객체의 ID 값이 무엇인지 알 수 없음<ul>
+<li>ID 값은 Django 가 아니라 DB에서 계산되기 때문</li>
+</ul>
+</li>
+<li>단순히 모델을 인스턴스화 하는 것은 DB에 영향을 미치지 않기 때문에 반드시 save() 가 필요</li>
+<li><code>__str__</code> : print 호출 시 출력되는 문자열, 작성 후 반드시 shell_plus 를 재시작해야 반영된다.</li>
+</ul>
+<h2 id="READ"><a href="#READ" class="headerlink" title="READ"></a>READ</h2><h3 id="all"><a href="#all" class="headerlink" title="all()"></a><code>all()</code></h3><ul>
+<li><strong>현재 QuerySet의 복사본을 반환</strong></li>
+</ul>
+<h3 id="get"><a href="#get" class="headerlink" title="get()"></a><code>get()</code></h3><ul>
+<li>주어진 lookup 매개변수와 일치하는 <strong>객체를 반환</strong></li>
+<li>객체를 찾을 수 없으면 DoesNotExist 예외를 발생시키고,<br>둘 이상의 객체를 찾으면 MultipleObjectsReturned 예외를 발생 시킴</li>
+<li>위와 같은 특징을 가지고 있기 때문에 <strong>primary key 와 같이 고유(unique)성을 보장하는 조회에서 사용</strong>해야 함</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> render, get_object_or_404</span><br><span class="line">stu = get_object_or_404(Student, pk=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="filter"><a href="#filter" class="headerlink" title="filter()"></a><code>filter()</code></h3><ul>
+<li>주어진 lookup 매개변수와 일치하는 객체를 포함하는 <strong>새 QuerySet을 반환</strong></li>
+</ul>
+<h2 id="UPDATE"><a href="#UPDATE" class="headerlink" title="UPDATE"></a>UPDATE</h2><ol>
+<li>DB에서 수정할 data를 가져온다.</li>
+<li>가져온 데이터의 값을 변경한다.</li>
+<li>save 한다.</li>
+</ol>
+<h2 id="DELETE"><a href="#DELETE" class="headerlink" title="DELETE"></a>DELETE</h2><h3 id="delete"><a href="#delete" class="headerlink" title="delete()"></a><code>delete()</code></h3><ul>
+<li>QuerySet 의 모든 행에 대해 SQL 삭제 쿼리를 수행하고, 삭제된 객체 수와 객체 유형당 삭제 수가 포함된 딕셔너리를 반환</li>
+</ul>
+<h1 id="Admin-Site"><a href="#Admin-Site" class="headerlink" title="Admin Site"></a>Admin Site</h1><h2 id="Automatic-admin-interface"><a href="#Automatic-admin-interface" class="headerlink" title="Automatic admin interface"></a>Automatic admin interface</h2><ul>
+<li>사용자가 아닌 서버의 관리자가 활용하기 위한 페이지</li>
+<li>Model class 를 admin.py 에 등록하고 관리</li>
+<li>django.contrib.auth 모듈에서 제공됨</li>
+<li>record 생성 여부 확인에 매우 유용하며, 직접 record를 삽입할 수도 있음</li>
+</ul>
+<h2 id="admin-생성"><a href="#admin-생성" class="headerlink" title="admin 생성"></a>admin 생성</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ python manage.py createsuperuser</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="admin-등록"><a href="#admin-등록" class="headerlink" title="admin 등록"></a>admin 등록</h2><ul>
+<li><p><code>admin.site.register(Article)</code>⭐</p>
+<ul>
+<li>admin site에 register 하겠다.</li>
+</ul>
+</li>
+<li><p><code>list_display</code></p>
+<ul>
+<li>models.py 정의한 각각의 속성(칼럼)들의 값(레코드)을 admin 페이지에 출력하도록 설정</li>
+</ul>
+</li>
+</ul>
+<p>Model 명 정할땐 단수형으로 생성한다. Django에서 자동으로 복수형을 붙여서 관리해주기 때문이다.</p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Mihyun Lee</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://github.com/mhlee21/2022/03/08/Django-model/">https://github.com/mhlee21/2022/03/08/Django-model/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/Django/"># Django</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2022/03/10/Django-CRUD-with-views/">Django>CRUD with views</a>
+            
+            
+            <a class="next" rel="next" href="/2022/03/06/OS-10-%EC%9E%85%EC%B6%9C%EB%A0%A5%EC%8B%9C%EC%8A%A4%ED%85%9C/">OS>10.입출력시스템</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Mihyun Lee | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>

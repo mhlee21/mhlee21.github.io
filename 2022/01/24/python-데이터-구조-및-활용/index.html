@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Mihyun Lee">
+
+
+
+
+
+<title>python&gt;데이터 구조 및 활용 | Mihyun&#39;s Blog</title>
+
+
+
+    <link rel="icon" href="/favicon_mhlee.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Mihyun&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Mihyun&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">python&gt;데이터 구조 및 활용</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Mihyun Lee</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">January 24, 2022&nbsp;&nbsp;0:00:00</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/python/">python</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h2 id="1-순서가-있는-데이터-구조"><a href="#1-순서가-있는-데이터-구조" class="headerlink" title="1. 순서가 있는 데이터 구조"></a>1. 순서가 있는 데이터 구조</h2><h3 id="1-1-문자열-String-Type"><a href="#1-1-문자열-String-Type" class="headerlink" title="1.1 문자열 (String Type)"></a>1.1 문자열 (String Type)</h3><p><img src="/2022/01/24/python-%E1%84%83%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%90%E1%85%A5-%E1%84%80%E1%85%AE%E1%84%8C%E1%85%A9-%E1%84%86%E1%85%B5%E1%86%BE-%E1%84%92%E1%85%AA%E1%86%AF%E1%84%8B%E1%85%AD%E1%86%BC/image-20220124135119914.png" alt="image-20220124135119914"></p>
+<ul>
+<li><p><code>.replace(ole, new[, count])</code></p>
+<ul>
+<li>바꿀 대상 글자를 새로운 글자로 바꿔서 반환</li>
+<li>count 를 지정하면, 해당 개수만큼만 시행</li>
+</ul>
+</li>
+<li><p><code>strip([chars])</code></p>
+<ul>
+<li>특정한 문자들을 지정하면,<ul>
+<li>양쪽을 제거하거나(strip), 왼쪽을 제거하거나(lstrip), 오른쪽을 제거(rstrip)</li>
+<li>문자열 지정하지 않으면 공백을 제거함</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code>.split([chars])</code></p>
+<ul>
+<li>문자열을 특정한 단위로 나눠 리스트로 변환</li>
+</ul>
+</li>
+<li><p><code>&#39;separator&#39;.join([iterable])</code></p>
+<ul>
+<li><p>반복가능한(iterable) 컨테이너 요소들을 separator(구분자)로 합쳐 문자열 반환</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">&#x27;!&#x27;</span>.join(<span class="string">&#x27;ssafy&#x27;</span>)</span><br><span class="line"><span class="string">&#x27;s!s!a!f!y&#x27;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h3 id="1-2-리스트-List"><a href="#1-2-리스트-List" class="headerlink" title="1.2 리스트 (List)"></a>1.2 리스트 (List)</h3><ul>
+<li><p>순서를 가지는 0개 이상의 객체를 참조하는 자료형</p>
+</li>
+<li><p>항상 대괄호 형태로 출력 : []</p>
+</li>
+</ul>
+<p><img src="/2022/01/24/python-%E1%84%83%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%90%E1%85%A5-%E1%84%80%E1%85%AE%E1%84%8C%E1%85%A9-%E1%84%86%E1%85%B5%E1%86%BE-%E1%84%92%E1%85%AA%E1%86%AF%E1%84%8B%E1%85%AD%E1%86%BC/image-20220124140339989.png" alt="image-20220124140339989"></p>
+<ul>
+<li><code>.append(x)</code><ul>
+<li>리스트 마지막에 항목 x를 추가</li>
+</ul>
+</li>
+<li><code>.extend(iterable)</code><ul>
+<li>리스트에 iterable 의 항목을 추가함</li>
+</ul>
+</li>
+<li><code>.insert(i, x)</code><ul>
+<li>정해진 위치 i에 값 x를 추가함</li>
+<li>i가 리스트 길이보다 큰 경우 맨 위에 추가한다.</li>
+</ul>
+</li>
+<li><code>.remove(x)</code><ul>
+<li>리스트에서 값이 x인 것 삭제 (두개 이상 있어도 하나만 삭제)</li>
+<li>없는 경우 ValueError</li>
+</ul>
+</li>
+<li><code>.pop(i)</code><ul>
+<li>정해진 위치 i에 있는 값을 삭제하고 그 값을 반환함</li>
+<li>i가 지정되지 않으면, 마지막 항목을 삭제하고 반환함</li>
+</ul>
+</li>
+<li><code>.clear()</code><ul>
+<li>모든 항목을 삭제함</li>
+</ul>
+</li>
+<li><code>.index()</code><ul>
+<li>x 값을 찾아 해당 index값을 반환</li>
+<li>없는 경우 ValueError</li>
+</ul>
+</li>
+<li><code>.count(x)</code><ul>
+<li>원하는 값의 개수를 반환함</li>
+</ul>
+</li>
+<li><code>.sort()</code><ul>
+<li>원본 리스트를 정렬함. <code>None</code> 반환</li>
+<li><code>sorted</code> 함수와 비교<ul>
+<li><code>.sort()</code> : 원본을 변경</li>
+<li><code>sorted</code> : 정렬된 리스트를 반환. 원본 변경 없음</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>.reverse()</code><ul>
+<li>순서를 반대로 뒤집음, <code>None</code>반환</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><strong>튜플(tuple)</strong></p>
+<ul>
+<li>순서를 가지는 0개 이상의 객체를 참조하는 자료형</li>
+<li>immutable : 생성 후, 담고 있는 객체 변경이 불가</li>
+<li>튜플을 변경할 수 없기 때문에 값에 영향을 미치지 않는 메소드만을 지원</li>
+</ul>
+</blockquote>
+<h2 id="2-순서가-없는-데이터-구조"><a href="#2-순서가-없는-데이터-구조" class="headerlink" title="2. 순서가 없는 데이터 구조"></a>2. 순서가 없는 데이터 구조</h2><h3 id="2-1-셋-Set"><a href="#2-1-셋-Set" class="headerlink" title="2.1 셋 (Set)"></a>2.1 셋 (Set)</h3><ul>
+<li>순서없이 0개 이상의 해시 가능한 객체를 참조하는 자료형</li>
+<li>mutable : 담고있는 객체를 삽입 변경, 삭제 가능</li>
+</ul>
+<p><img src="/2022/01/24/python-%E1%84%83%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%90%E1%85%A5-%E1%84%80%E1%85%AE%E1%84%8C%E1%85%A9-%E1%84%86%E1%85%B5%E1%86%BE-%E1%84%92%E1%85%AA%E1%86%AF%E1%84%8B%E1%85%AD%E1%86%BC/image-20220124143946302.png" alt="image-20220124143946302"></p>
+<ul>
+<li><code>.add(elem)</code><ul>
+<li>셋에 값을 추가</li>
+</ul>
+</li>
+<li><code>.update(*others)</code><ul>
+<li>여러 값을 추가</li>
+</ul>
+</li>
+<li><code>.remove(elem)</code><ul>
+<li>셋에서 삭제하고, 없으면 KeyError</li>
+</ul>
+</li>
+<li><code>.discard(elem)</code><ul>
+<li>셋에서 삭제하고 없어도 에러가 발생하지 않음</li>
+</ul>
+</li>
+<li><code>.pop()</code><ul>
+<li>임의의 원소를 제거해 반환</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-2-딕셔너리-Dictionary"><a href="#2-2-딕셔너리-Dictionary" class="headerlink" title="2.2 딕셔너리 (Dictionary)"></a>2.2 딕셔너리 (Dictionary)</h3><ul>
+<li>순서 없이 key-value 쌍으로 이루어진 객체를 참조하는 유형</li>
+</ul>
+<p><img src="/2022/01/24/python-%E1%84%83%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%90%E1%85%A5-%E1%84%80%E1%85%AE%E1%84%8C%E1%85%A9-%E1%84%86%E1%85%B5%E1%86%BE-%E1%84%92%E1%85%AA%E1%86%AF%E1%84%8B%E1%85%AD%E1%86%BC/image-20220124144401412.png" alt="image-20220124144401412"></p>
+<ul>
+<li><p><code>.get(key[,default])</code></p>
+<ul>
+<li>key 를 통해 value를 가져옴</li>
+<li>KeyError 가 발생하지 않으며, defult 값을 설정할 수 있음 (기본: None)</li>
+</ul>
+</li>
+<li><p><code>.pop(key[,default])</code></p>
+<ul>
+<li>key 가 딕셔너리에 있으면 제거하고 해당 값을 반환</li>
+<li>그렇지 않으면 default 를 반환</li>
+<li>default 값이 없으면 KeyError</li>
+</ul>
+</li>
+<li><p><code>.update()</code></p>
+<ul>
+<li>값을 제공하는 key, value 로 덮어씀</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>mydict = &#123;<span class="string">&#x27;apple&#x27;</span>:<span class="string">&#x27;사&#x27;</span>, <span class="string">&#x27;banana&#x27;</span>:<span class="string">&#x27;바나나&#x27;</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(mydict)</span><br><span class="line">&#123;<span class="string">&#x27;apple&#x27;</span>: <span class="string">&#x27;사&#x27;</span>, <span class="string">&#x27;banana&#x27;</span>: <span class="string">&#x27;바나나&#x27;</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>mydict.update(apple=<span class="string">&#x27;사과&#x27;</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(mydict)</span><br><span class="line">&#123;<span class="string">&#x27;apple&#x27;</span>: <span class="string">&#x27;사과&#x27;</span>, <span class="string">&#x27;banana&#x27;</span>: <span class="string">&#x27;바나나&#x27;</span>&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="3-얕은-복사-Shallow-Copy-와-깊은-복사-Deep-Copy"><a href="#3-얕은-복사-Shallow-Copy-와-깊은-복사-Deep-Copy" class="headerlink" title="3. 얕은 복사(Shallow Copy) 와 깊은 복사(Deep Copy)"></a>3. 얕은 복사(Shallow Copy) 와 깊은 복사(Deep Copy)</h2><h3 id="3-1-할당-Assignment"><a href="#3-1-할당-Assignment" class="headerlink" title="3.1 할당 (Assignment)"></a>3.1 할당 (Assignment)</h3><p>대입 연산자(&#x3D;)를 통한 복사는 해당 객체에 대한 객체 참조를 복사</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">origin = [<span class="number">1</span>,<span class="number">2</span>]</span><br><span class="line">copy = origin</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="/2022/01/24/python-%E1%84%83%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%90%E1%85%A5-%E1%84%80%E1%85%AE%E1%84%8C%E1%85%A9-%E1%84%86%E1%85%B5%E1%86%BE-%E1%84%92%E1%85%AA%E1%86%AF%E1%84%8B%E1%85%AD%E1%86%BC/image-20220124150559009.png" alt="image-20220124150559009"></p>
+<h3 id="3-2-얕은-복사-Shallow-copy"><a href="#3-2-얕은-복사-Shallow-copy" class="headerlink" title="3.2 얕은 복사 (Shallow copy)"></a>3.2 얕은 복사 (Shallow copy)</h3><p>slice 연산자 활용하여 같은 원소를 가진 리스트지만 연산된 결과를 복사(다른 주소)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">b = a[:]</span><br><span class="line">b[<span class="number">0</span>] = <span class="number">5</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="/2022/01/24/python-%E1%84%83%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%90%E1%85%A5-%E1%84%80%E1%85%AE%E1%84%8C%E1%85%A9-%E1%84%86%E1%85%B5%E1%86%BE-%E1%84%92%E1%85%AA%E1%86%AF%E1%84%8B%E1%85%AD%E1%86%BC/image-20220124150710904.png" alt="image-20220124150710904"></p>
+<ul>
+<li><p>얕은 복사 주의사항</p>
+<ul>
+<li><p>복사하는 리스트의 원소가 주소를 참조하는 경우 deep copy 해야한다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">a = [<span class="number">1</span>,<span class="number">2</span>,[<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;b&#x27;</span>]]</span><br><span class="line">b = a[:]</span><br><span class="line"><span class="built_in">print</span>(a, b)</span><br><span class="line">b[<span class="number">2</span>][<span class="number">0</span>] = <span class="number">0</span></span><br><span class="line"><span class="built_in">print</span>(a, b)</span><br><span class="line">     </span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, [<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>]] [<span class="number">1</span>, <span class="number">2</span>, [<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>]]</span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, [<span class="number">0</span>, <span class="string">&#x27;b&#x27;</span>]] [<span class="number">1</span>, <span class="number">2</span>, [<span class="number">0</span>, <span class="string">&#x27;b&#x27;</span>]]</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/01/24/python-%E1%84%83%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%90%E1%85%A5-%E1%84%80%E1%85%AE%E1%84%8C%E1%85%A9-%E1%84%86%E1%85%B5%E1%86%BE-%E1%84%92%E1%85%AA%E1%86%AF%E1%84%8B%E1%85%AD%E1%86%BC/image-20220124150920451.png" alt="image-20220124150920451"></p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-3-깊은-복사-Deep-copy"><a href="#3-3-깊은-복사-Deep-copy" class="headerlink" title="3.3 깊은 복사 (Deep copy)"></a>3.3 깊은 복사 (Deep copy)</h3><p><code>import copy</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> copy</span><br><span class="line"></span><br><span class="line">a = [<span class="number">1</span>,<span class="number">2</span>,[<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;b&#x27;</span>]]</span><br><span class="line">b = copy.deepcopy(a)</span><br><span class="line"><span class="built_in">print</span>(a, b)</span><br><span class="line">b[<span class="number">2</span>][<span class="number">0</span>] = <span class="number">0</span></span><br><span class="line"><span class="built_in">print</span>(a, b)</span><br><span class="line"></span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, [<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>]] [<span class="number">1</span>, <span class="number">2</span>, [<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>]]</span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, [<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>]] [<span class="number">1</span>, <span class="number">2</span>, [<span class="number">0</span>, <span class="string">&#x27;b&#x27;</span>]]</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/01/24/python-%E1%84%83%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%90%E1%85%A5-%E1%84%80%E1%85%AE%E1%84%8C%E1%85%A9-%E1%84%86%E1%85%B5%E1%86%BE-%E1%84%92%E1%85%AA%E1%86%AF%E1%84%8B%E1%85%AD%E1%86%BC/image-20220124151025766.png" alt="image-20220124151025766"></p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Mihyun Lee</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://github.com/mhlee21/2022/01/24/python-%E1%84%83%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%90%E1%85%A5-%E1%84%80%E1%85%AE%E1%84%8C%E1%85%A9-%E1%84%86%E1%85%B5%E1%86%BE-%E1%84%92%E1%85%AA%E1%86%AF%E1%84%8B%E1%85%AD%E1%86%BC/">https://github.com/mhlee21/2022/01/24/python-%E1%84%83%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%90%E1%85%A5-%E1%84%80%E1%85%AE%E1%84%8C%E1%85%A9-%E1%84%86%E1%85%B5%E1%86%BE-%E1%84%92%E1%85%AA%E1%86%AF%E1%84%8B%E1%85%AD%E1%86%BC/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/python/"># python</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2022/01/26/python-OOP/">python>OOP</a>
+            
+            
+            <a class="next" rel="next" href="/2022/01/24/python-%EC%97%90%EB%9F%AC-%EC%98%88%EC%99%B8-%EC%B2%98%EB%A6%AC/">python>에러/예외 처리</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Mihyun Lee | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>
