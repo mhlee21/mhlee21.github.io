@@ -324,6 +324,9 @@
 </ul>
 </li>
 </ul>
+<blockquote>
+<p>Model 명 정할땐 단수형으로 생성한다. Django에서 자동으로 복수형을 붙여서 관리해주기 때문이다.</p>
+</blockquote>
 <h2 id="사용-모델-필드"><a href="#사용-모델-필드" class="headerlink" title="사용 모델 필드"></a>사용 모델 필드</h2><ul>
 <li><p><code>CharField(max_length=None, **options)</code></p>
 <ul>
@@ -460,7 +463,9 @@
 <h1 id="CRUD"><a href="#CRUD" class="headerlink" title="CRUD"></a>CRUD</h1><ul>
 <li>대부분의 컴퓨터 소프트웨어가 가지는 기본적인 데이터 처리 기능인 <code>Create, Read, Update, Delete</code> 를 묶어서 일컫는 말</li>
 </ul>
-<h2 id="CREATE"><a href="#CREATE" class="headerlink" title="CREATE"></a>CREATE</h2><ol>
+<h2 id="CREATE"><a href="#CREATE" class="headerlink" title="CREATE"></a>CREATE</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 방법 1. 인스턴스 생성 후 인스턴스 변수 설정</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>article = Article()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>article.title = <span class="string">&#x27;first&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>article.django = <span class="string">&#x27;django!&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>article.save()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 방법 2. 초기 값과 함께 인스턴스 생성</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>article = Article(title=<span class="string">&#x27;first&#x27;</span>, content=<span class="string">&#x27;django!&#x27;</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>article.save()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 방법 3. QuerySet API - create() 사용</span></span><br><span class="line"><span class="comment"># 위 2개 방식과는 다르게 바로 DB 에 저장되며 쿼리 표현식을 리턴한다.</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>Article.objects.create(title=<span class="string">&#x27;first&#x27;</span>, content=<span class="string">&#x27;django!&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<ol>
 <li>인스턴스를 생성 후 인스턴스 변수 설정</li>
 <li>초기 값과 함께 인스턴스 생성</li>
 <li>QuerySet API - create() 사용</li>
@@ -472,15 +477,17 @@
 <li>ID 값은 Django 가 아니라 DB에서 계산되기 때문</li>
 </ul>
 </li>
-<li>단순히 모델을 인스턴스화 하는 것은 DB에 영향을 미치지 않기 때문에 반드시 save() 가 필요</li>
+<li><strong>단순히 모델을 인스턴스화 하는 것은 DB에 영향을 미치지 않기 때문에 반드시 save() 가 필요</strong></li>
 <li><code>__str__</code> : print 호출 시 출력되는 문자열, 작성 후 반드시 shell_plus 를 재시작해야 반영된다.</li>
 </ul>
-<h2 id="READ"><a href="#READ" class="headerlink" title="READ"></a>READ</h2><h3 id="all"><a href="#all" class="headerlink" title="all()"></a><code>all()</code></h3><ul>
+<h2 id="READ"><a href="#READ" class="headerlink" title="READ"></a>READ</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># DB에 인스턴스 객체를 얻기 위한 쿼리문 날리기</span></span><br><span class="line"><span class="comment"># 이때, 레코드가 하나만 있으면 인스턴스 객체고, 두개 이상이면 쿼리셋으로 리턴</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>Ariticle.objects.<span class="built_in">all</span>()</span><br><span class="line">&lt;QuerySet []&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="all"><a href="#all" class="headerlink" title="all()"></a><code>all()</code></h3><ul>
 <li><strong>현재 QuerySet의 복사본을 반환</strong></li>
 </ul>
 <h3 id="get"><a href="#get" class="headerlink" title="get()"></a><code>get()</code></h3><ul>
 <li>주어진 lookup 매개변수와 일치하는 <strong>객체를 반환</strong></li>
-<li>객체를 찾을 수 없으면 DoesNotExist 예외를 발생시키고,<br>둘 이상의 객체를 찾으면 MultipleObjectsReturned 예외를 발생 시킴</li>
+<li>객체를 찾을 수 없으면 DoesNotExist 예외를 발생시키고,  둘 이상의 객체를 찾으면 MultipleObjectsReturned 예외를 발생 시킴</li>
 <li>위와 같은 특징을 가지고 있기 때문에 <strong>primary key 와 같이 고유(unique)성을 보장하는 조회에서 사용</strong>해야 함</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> render, get_object_or_404</span><br><span class="line">stu = get_object_or_404(Student, pk=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
@@ -488,14 +495,30 @@
 <h3 id="filter"><a href="#filter" class="headerlink" title="filter()"></a><code>filter()</code></h3><ul>
 <li>주어진 lookup 매개변수와 일치하는 객체를 포함하는 <strong>새 QuerySet을 반환</strong></li>
 </ul>
-<h2 id="UPDATE"><a href="#UPDATE" class="headerlink" title="UPDATE"></a>UPDATE</h2><ol>
+<h2 id="UPDATE"><a href="#UPDATE" class="headerlink" title="UPDATE"></a>UPDATE</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>article = Article.objects.get(pk=<span class="number">1</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>article.title</span><br><span class="line"><span class="string">&#x27;first&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>article.title = <span class="string">&#x27;byebye&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>article.save()</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>article.title</span><br><span class="line"><span class="string">&#x27;byebye&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<ol>
 <li>DB에서 수정할 data를 가져온다.</li>
 <li>가져온 데이터의 값을 변경한다.</li>
 <li>save 한다.</li>
 </ol>
-<h2 id="DELETE"><a href="#DELETE" class="headerlink" title="DELETE"></a>DELETE</h2><h3 id="delete"><a href="#delete" class="headerlink" title="delete()"></a><code>delete()</code></h3><ul>
+<h2 id="DELETE"><a href="#DELETE" class="headerlink" title="DELETE"></a>DELETE</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>article = Article.objects.get(pk=<span class="number">1</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>article.delete()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>Article.objects.get(pk=<span class="number">1</span>)</span><br><span class="line">DoesNotExist: Article matching query does <span class="keyword">not</span> exist.</span><br></pre></td></tr></table></figure>
+
+<h3 id="delete"><a href="#delete" class="headerlink" title="delete()"></a><code>delete()</code></h3><ul>
 <li>QuerySet 의 모든 행에 대해 SQL 삭제 쿼리를 수행하고, 삭제된 객체 수와 객체 유형당 삭제 수가 포함된 딕셔너리를 반환</li>
 </ul>
+<h2 id="Field-lookups"><a href="#Field-lookups" class="headerlink" title="Field lookups"></a>Field lookups</h2><ul>
+<li>조회 시 특정 검색 조건을 지정</li>
+<li>QuerySet 메서드 filter(), exclude() 및 get() 에 대한 키워드 인수로 지정됨</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Article.objects.<span class="built_in">filter</span>(pk__gt=<span class="number">2</span>)</span><br><span class="line">Article.objects.<span class="built_in">filter</span>(content__contains=<span class="string">&#x27;ja&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>⭐️ 데이터 베이스 조작을 위한 다양한 QuerySet API methods 는 해당 공식문서를 반드시 참고하여 학습할 것</p>
+<p><a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/3.2/ref/models/querysets/#">https://docs.djangoproject.com/en/3.2/ref/models/querysets/#</a></p>
+</blockquote>
 <h1 id="Admin-Site"><a href="#Admin-Site" class="headerlink" title="Admin Site"></a>Admin Site</h1><h2 id="Automatic-admin-interface"><a href="#Automatic-admin-interface" class="headerlink" title="Automatic admin interface"></a>Automatic admin interface</h2><ul>
 <li>사용자가 아닌 서버의 관리자가 활용하기 위한 페이지</li>
 <li>Model class 를 admin.py 에 등록하고 관리</li>
@@ -504,21 +527,24 @@
 </ul>
 <h2 id="admin-생성"><a href="#admin-생성" class="headerlink" title="admin 생성"></a>admin 생성</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ python manage.py createsuperuser</span><br></pre></td></tr></table></figure>
 
-
-
-<h2 id="admin-등록"><a href="#admin-등록" class="headerlink" title="admin 등록"></a>admin 등록</h2><ul>
-<li><p><code>admin.site.register(Article)</code>⭐</p>
 <ul>
-<li>admin site에 register 하겠다.</li>
+<li>관리자 계성 생성 후 서버를 실행한 다음 ‘&#x2F;admin’ 으로 가서 관리자 페이지 로그인<ul>
+<li>계정만 만든 경우 Django 관리자 화면에서 아무것도 보이지 않음</li>
 </ul>
 </li>
-<li><p><code>list_display</code></p>
-<ul>
-<li>models.py 정의한 각각의 속성(칼럼)들의 값(레코드)을 admin 페이지에 출력하도록 설정</li>
+<li>내가 만든 Model 을 보기 위해서는 admin.py 에 작성하여 Django 서버에 등록</li>
+<li>❗️auth에 관련된 기본 테이블이 생성되지 않으면 관리자 계정을 생성할 수 없음</li>
 </ul>
+<h2 id="admin-등록"><a href="#admin-등록" class="headerlink" title="admin 등록"></a>admin 등록</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># article/admin.py</span></span><br><span class="line"><span class="keyword">from</span> django.contrib <span class="keyword">import</span> admin</span><br><span class="line"><span class="keyword">from</span> .models <span class="keyword">import</span> Article</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ArticleAdmin</span>(admin.ModelAdmin):</span><br><span class="line">  list_display = (<span class="string">&#x27;pk&#x27;</span>, <span class="string">&#x27;title&#x27;</span>, <span class="string">&#x27;content&#x27;</span>, <span class="string">&#x27;created_at&#x27;</span>, <span class="string">&#x27;updated_at&#x27;</span>,)</span><br><span class="line"></span><br><span class="line"><span class="comment"># ⭐ admin site에 register 하겠다.</span></span><br><span class="line">admin.site.register(Article)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>admin.py는 관리자 사이트에 Article 객체가 관리자 인터페이스를 가지고 있다는 것을 알려주는 것</p>
+</li>
+<li><p>models.py에 정의한 <code>__str__</code> 의 형태로 객체가 표현됨</p>
+</li>
+<li><p><code>list_display</code> : models.py 정의한 각각의 속성(칼럼)들의 값(레코드)을 admin 페이지에 출력하도록 설정</p>
 </li>
 </ul>
-<p>Model 명 정할땐 단수형으로 생성한다. Django에서 자동으로 복수형을 붙여서 관리해주기 때문이다.</p>
 
         </div>
 
