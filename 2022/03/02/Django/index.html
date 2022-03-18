@@ -223,6 +223,9 @@
 <li>World Wide Web</li>
 <li>인터넷에 연결된 컴퓨터를 통해 정보를 공유할 수 있는 전 세계적인 정보 공간</li>
 </ul>
+<blockquote>
+<p>⭐ 정적페이지와 동적페이지 차이</p>
+</blockquote>
 <h2 id="Static-web-page-정적-웹-페이지"><a href="#Static-web-page-정적-웹-페이지" class="headerlink" title="Static web page (정적 웹 페이지)"></a>Static web page (정적 웹 페이지)</h2><ul>
 <li>서버에 미리 저장된 파일이 사용자에게 그대로 전달되는 웹페이지</li>
 <li>서버가 정적 웹 페이지에 대한 요청을 받은 경우 서버는 추가적인 처리 과정 없이 클라이언트에게 응답을 보냄</li>
@@ -295,7 +298,7 @@
 </tr>
 </tbody></table>
 <p><img src="/2022/03/02/Django/image-20220302092304849.png" alt="image-20220302092304849"></p>
-<h1 id="Django-Intro⭐"><a href="#Django-Intro⭐" class="headerlink" title="Django Intro⭐"></a>Django Intro⭐</h1><h2 id="가상환경-설정"><a href="#가상환경-설정" class="headerlink" title="가상환경 설정"></a>가상환경 설정</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ python -m venv venv <span class="comment"># 파이썬 venv 라는 모듈을 실행한다. 뒤에 있는 venv 는 가상환경 이름</span></span><br><span class="line">$ <span class="built_in">source</span> venv/Script/activate</span><br><span class="line">(venv)</span><br><span class="line">$ pip list</span><br><span class="line">Package    Version</span><br><span class="line">---------- -------</span><br><span class="line">pip        21.2.4</span><br><span class="line">setuptools 58.1.0</span><br></pre></td></tr></table></figure>
+<h1 id="Django-Intro"><a href="#Django-Intro" class="headerlink" title="Django Intro"></a>Django Intro</h1><h2 id="가상환경-설정"><a href="#가상환경-설정" class="headerlink" title="가상환경 설정"></a>가상환경 설정</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ python -m venv venv <span class="comment"># 파이썬 venv 라는 모듈을 실행한다. 뒤에 있는 venv 는 가상환경 이름</span></span><br><span class="line">$ <span class="built_in">source</span> venv/Script/activate</span><br><span class="line">(venv)</span><br><span class="line">$ pip list</span><br><span class="line">Package    Version</span><br><span class="line">---------- -------</span><br><span class="line">pip        21.2.4</span><br><span class="line">setuptools 58.1.0</span><br></pre></td></tr></table></figure>
 
 <blockquote>
 <p>vs code 에서 설정 및 확인 방법</p>
@@ -340,26 +343,29 @@
 <li><a target="_blank" rel="noopener" href="http://127.0.0.1:8000/">http://127.0.0.1:8000/</a> 접속 시 다음과 같은 창 뜨면 서버 정상적으로 활성화 된 것</li>
 </ul>
 <p><img src="/2022/03/02/Django/image-20220302095613562.png" alt="image-20220302095613562"></p>
-<h3 id="프로젝트-구조"><a href="#프로젝트-구조" class="headerlink" title="프로젝트 구조"></a>프로젝트 구조</h3><ul>
+<h3 id="프로젝트-구조⭐"><a href="#프로젝트-구조⭐" class="headerlink" title="프로젝트 구조⭐"></a>프로젝트 구조⭐</h3><ul>
 <li><code>__init__.py</code> : Python 에게 이 디렉토리를 하나의 Python 패키지로 다루도록 지시</li>
 <li><code>asgi.py</code> : Asynchronous Server Gateway Interface, django 애플리케이션이 비동기식 웹 서버와 연결 및 소통하는 것을 도움</li>
-<li><code> settings.py</code> : 애플리케이션의 모든 설정을 포함</li>
-<li><code>urls.py</code> : 사이트의 url 과 적절한 views의 연결을 지정</li>
+<li><strong><code> settings.py</code> : 애플리케이션의 모든 설정을 포함</strong></li>
+<li><strong><code>urls.py</code> : 사이트의 url 과 적절한 views의 연결을 지정</strong></li>
 <li><code>wsgi.py</code> : Web Server Gateway Interface, django 애플리케이션이 웹서버와 연결 및 소통하는 것을 도움</li>
-<li><code>manage.py</code> : django 프로젝트와 다양한 방법으로 상호작용하는 커맨드라인 유틸리티</li>
+<li><strong><code>manage.py</code> : django 프로젝트와 다양한 방법으로 상호작용하는 커맨드라인 유틸리티</strong></li>
 </ul>
 <h3 id="Application-생성"><a href="#Application-생성" class="headerlink" title="Application 생성"></a>Application 생성</h3><ul>
 <li>일반적으로 Application명은 <em><strong>복수형</strong></em>으로 하는 것을 권장</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ python manage.py startapp articles</span><br></pre></td></tr></table></figure>
 
-<h3 id="Application-구조"><a href="#Application-구조" class="headerlink" title="Application 구조"></a>Application 구조</h3><ul>
+<h3 id="Application-구조⭐"><a href="#Application-구조⭐" class="headerlink" title="Application 구조⭐"></a>Application 구조⭐</h3><ul>
 <li><code>admin.py</code> : 관리자용 페이지를 설정 하는 곳</li>
 <li><code>apps.py</code> : 앱의 정보가 작성된 곳</li>
 <li><code>models.py</code> : 앱에서 사용하는 Model 을 정의하는 곳</li>
 <li><code>tests.py</code> : 프로젝트의 테스트 코드를 작성하는 곳</li>
 <li><code>views.py</code> : view 함수들이 정의 되는 곳</li>
 </ul>
+<blockquote>
+<p>⭐ urls.py 는 app생성시에는 자동 생성되지 않는다.</p>
+</blockquote>
 <h3 id="Project-amp-Application-⭐"><a href="#Project-amp-Application-⭐" class="headerlink" title="Project &amp; Application ⭐"></a>Project &amp; Application ⭐</h3><ul>
 <li>Project<ul>
 <li>프로젝트는 앱의 집합 (collection of apps)</li>
@@ -383,13 +389,13 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">INSTALLED_APPS = [</span><br><span class="line">    <span class="string">&#x27;articles&#x27;</span>,	<span class="comment"># 첫번째에 application 명 추가!</span></span><br><span class="line">    <span class="string">&#x27;django.contrib.admin&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;django.contrib.auth&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;django.contrib.contenttypes&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;django.contrib.sessions&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;django.contrib.messages&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;django.contrib.staticfiles&#x27;</span>,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p> 💡반드시 생성 후 등록!</p>
+<p> 💡반드시 생성 후 등록!⭐</p>
 <p><code>INSTALLED_APPS</code>에 먼저 등록하고 생성하려면 앱이 생성되지 않음</p>
 </blockquote>
 </li>
 </ul>
 <h1 id="요청과-응답"><a href="#요청과-응답" class="headerlink" title="요청과 응답"></a>요청과 응답</h1><h2 id="URLs-urls-py"><a href="#URLs-urls-py" class="headerlink" title="URLs (urls.py)"></a>URLs (urls.py)</h2><ul>
-<li><p>HTTP 요청(request)을 알맞은 view로 전달</p>
+<li><p>HTTP 요청(request)을 알맞은 view로 전달⭐</p>
 </li>
 <li><p><code>urls.py</code>에서 urlpatterns 리스트에 view 추가</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># firstpjt/urls.py</span></span><br><span class="line"><span class="keyword">from</span> django.contrib <span class="keyword">import</span> admin</span><br><span class="line"><span class="keyword">from</span> django.urls <span class="keyword">import</span> path</span><br><span class="line"><span class="keyword">from</span> articles <span class="keyword">import</span> views <span class="comment"># articles 의 views 모듈 import</span></span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    path(<span class="string">&#x27;admin/&#x27;</span>, admin.site.urls),</span><br><span class="line">    path(<span class="string">&#x27;index/&#x27;</span>, views.index), <span class="comment">#views의 index 함수 호출</span></span><br><span class="line">]</span><br></pre></td></tr></table></figure>
@@ -403,7 +409,7 @@
 </blockquote>
 </li>
 </ul>
-<h2 id="View"><a href="#View" class="headerlink" title="View"></a>View</h2><ul>
+<h2 id="View⭐"><a href="#View⭐" class="headerlink" title="View⭐"></a>View⭐</h2><ul>
 <li>HTTP 요청을 수신하고 HTTP 응답을 반환하는 함수 작성</li>
 <li>Model 을 통해 요청에 맞는 필요 데이터에 접근</li>
 <li>Template에게 HTTP 응답 서식을 맡김</li>
@@ -413,7 +419,7 @@
 
 
 
-<h2 id="Templates"><a href="#Templates" class="headerlink" title="Templates"></a>Templates</h2><ul>
+<h2 id="Templates⭐"><a href="#Templates⭐" class="headerlink" title="Templates⭐"></a>Templates⭐</h2><ul>
 <li>실제 내용을 보여주는데 사용되는 파일</li>
 <li>파일의 구조나 레이아웃을 정의 (ex. HTML)</li>
 <li>Template 파일 경로의 기본값은 <em><strong>app 폴더 안의 templates 폴더</strong></em>로 지정되어 있음</li>
@@ -425,8 +431,9 @@
 <p><img src="/2022/03/02/Django/image-20220302105614554.png" alt="image-20220302105614554"></p>
 </li>
 </ul>
-<h2 id="추가-설정-settings-py"><a href="#추가-설정-settings-py" class="headerlink" title="추가 설정 (settings.py)"></a>추가 설정 (settings.py)</h2><ul>
+<h2 id="추가-설정-settings-py-⭐"><a href="#추가-설정-settings-py-⭐" class="headerlink" title="추가 설정 (settings.py)⭐"></a>추가 설정 (settings.py)⭐</h2><ul>
 <li><code>LANGUAGE_CODE</code><ul>
+<li><code>LANGUAGE_CODE = &#39;ko-kr&#39;</code></li>
 <li>모든 사용자에게 제공되는 번역을 결정</li>
 <li>이 설정이 적용되려면 <code>USE_I18N</code>이 활성화 되어있어야 함</li>
 </ul>
@@ -458,13 +465,14 @@
 </ul>
 </li>
 </ul>
-<h2 id="Django-Template-Language-DTL"><a href="#Django-Template-Language-DTL" class="headerlink" title="Django Template Language (DTL)"></a>Django Template Language (DTL)</h2><ul>
-<li>Django template 에서 사용하는 built-in template system</li>
+<h2 id="Django-Template-Language-DTL-⭐"><a href="#Django-Template-Language-DTL-⭐" class="headerlink" title="Django Template Language (DTL)⭐"></a>Django Template Language (DTL)⭐</h2><ul>
+<li>Django template 에서 사용하는 <strong>built-in template system</strong></li>
 <li>조건, 반복, 변수 치환, 필터 등의 기능을 제공</li>
 <li>단순히 Python 이 HTML에 포함된 것이 아니며, 프로그래밍적 로직이 아니라 <strong>프레젠테이션을 표현하기 위한 것</strong></li>
 <li>Python 처럼 일부 프로그래밍 구조(it, for등)를 사용할 수 있지만, 이것은 해당 Python 코드로 실행되는 것이 아님!</li>
+<li><a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/3.2/ref/templates/builtins/">https://docs.djangoproject.com/en/3.2/ref/templates/builtins/</a> ⭐⭐⭐</li>
 </ul>
-<h2 id="DTL-Syntax"><a href="#DTL-Syntax" class="headerlink" title="DTL Syntax"></a>DTL Syntax</h2><ul>
+<h2 id="DTL-Syntax⭐"><a href="#DTL-Syntax⭐" class="headerlink" title="DTL Syntax⭐"></a>DTL Syntax⭐</h2><ul>
 <li><p>Variable</p>
 <ul>
 <li><code>&#123;&#123; variable &#125;&#125;</code></li>
@@ -513,9 +521,9 @@
 <li>템플릿 상속은 기본적으로 코드의 재사용성에 초점을 맞춤</li>
 <li>템플릿 상속을 사용하면 사이트의 모든 공통 요소를 포함하고, 하위 템플릿이 재정의(override) 할 수 있는 블록을 정의하는 기본 “skeleton” 템플릿을 만들 수 있음</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># settings.py</span></span><br><span class="line">TEMPLATES = [</span><br><span class="line">  &#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="string">&#x27;DIRS&#x27;</span> : [BASE_DIR / <span class="string">&#x27;templates&#x27;</span>],</span><br><span class="line">  &#125;,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># settings.py</span></span><br><span class="line">TEMPLATES = [</span><br><span class="line">  &#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="string">&#x27;DIRS&#x27;</span> : [BASE_DIR / <span class="string">&#x27;templates&#x27;</span>], <span class="comment">###⭐###</span></span><br><span class="line">  &#125;,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
 
-<h3 id="Template-Tag"><a href="#Template-Tag" class="headerlink" title="Template Tag"></a>Template Tag</h3><ul>
+<h3 id="Template-Tag⭐"><a href="#Template-Tag⭐" class="headerlink" title="Template Tag⭐"></a>Template Tag⭐</h3><ul>
 <li><code>&#123;% extends '' %&#125;</code><ul>
 <li>자식(하위) 템플릿이 부모 템플릿을 확장한다는 것을 알림</li>
 <li>⭐️반드시 템플릿 최상단에 작성 되어야 함</li>
@@ -528,7 +536,7 @@
 </li>
 <li><code>&#123;% include '' %&#125;</code><ul>
 <li>템플릿을 로드하고 현재 페이지로 렌더링</li>
-<li>템플릿 내에 다른 템플릿을 포함하는 방법</li>
+<li><em>템플릿 내에 다른 템플릿을 포함하는 방법</em></li>
 <li>주로 파일명 앞에 ‘_’(언더바)를 붙여 include 되는 템플릿을 분류함</li>
 </ul>
 </li>
@@ -548,7 +556,7 @@
 </ul>
 <h1 id="HTML-Form"><a href="#HTML-Form" class="headerlink" title="HTML Form"></a>HTML Form</h1><h2 id="HTML-“form”-element"><a href="#HTML-“form”-element" class="headerlink" title="HTML “form” element"></a>HTML “form” element</h2><ul>
 <li>웹에서 사용자 정보를 입력하는 여러 방식(text, button, checkbox, file, hidden, image, password, radio, reset, submit)을 제공하고, 사용자로부터 입력받은 데이터를 서버로 전송하는 역할을 담당</li>
-<li>핵심 속성 (attribute)<ul>
+<li>핵심 속성 (attribute)⭐<ul>
 <li><strong>action</strong> : 입력된 데이터가 전송될 URL 지정</li>
 <li><strong>method</strong> : 입력 데이터 전달 방식 지정</li>
 </ul>
@@ -558,7 +566,7 @@
 <li>사용자로부터 데이터를 입력 받기 위해 사용</li>
 <li>type 속성에 따라 동작 방식이 달라짐</li>
 <li>핵심 속성 (attribute)<ul>
-<li><strong>name</strong></li>
+<li><strong>name⭐</strong></li>
 <li>중복 가능, 양식을 제출했을 때 name 이라는 이름에 설정된 값을 넘겨서 값을 가져올 수 있음</li>
 <li>주요 용도는 GET&#x2F;POST 방식으로 서버에 전달하는 파라미터 (name은 key, value는 value)로 매핑하는 것</li>
 <li>GET 방식에서는 URL 에서 <code>?key=value&amp;key=value</code>형식으로 데이터를 전달함</li>
@@ -622,7 +630,7 @@
 <li>Dispatcher (발송자, 운항 관리자)로서의 URL</li>
 <li>웹 애플리케이션은 URL 을 통한 클라이언트의 요청에서부터 시작됨</li>
 </ul>
-<h2 id="Variable-Routing"><a href="#Variable-Routing" class="headerlink" title="Variable Routing"></a>Variable Routing</h2><blockquote>
+<h2 id="Variable-Routing⭐"><a href="#Variable-Routing⭐" class="headerlink" title="Variable Routing⭐"></a>Variable Routing⭐</h2><blockquote>
 <p> django에서는 <code>&#39;Dispatcher&#39;</code>로 검색</p>
 </blockquote>
 <ul>
@@ -633,21 +641,21 @@
 <li><p>즉, 변수 값에 따라 하나의 path()에 여러 페이지를 연결 시킬 수 있음</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">path(<span class="string">&#x27;accounts/user/&lt;int:user_pk&gt;/&#x27;</span>, ...)</span><br><span class="line"><span class="comment"># accounts/users/1 -&gt; 1번 user 관련 페이지</span></span><br><span class="line"><span class="comment"># accounts/users/2 -&gt; 2번 user 관련 페이지</span></span><br></pre></td></tr></table></figure></li>
 </ul>
-<h2 id="URL-Path-converters"><a href="#URL-Path-converters" class="headerlink" title="URL Path converters"></a>URL Path converters</h2><ul>
+<h2 id="URL-Path-converters⭐"><a href="#URL-Path-converters⭐" class="headerlink" title="URL Path converters⭐"></a>URL Path converters⭐</h2><ul>
 <li><p>자동으로 설정한 타입으로 형변환해서 전달해준다.</p>
 </li>
-<li><p>str</p>
+<li><p><strong>str</strong></p>
 <ul>
 <li><code>&#39;/&#39;</code> 를 제외하고 비어있지 않은 모든 문자열과 매치</li>
 <li>작성하지 않을 경우 기본 값 (되도록 명시하자!)</li>
 </ul>
 </li>
-<li><p>int</p>
+<li><p><strong>int</strong></p>
 <ul>
 <li>0 또는 양의 정수와 매치</li>
 </ul>
 </li>
-<li><p>slug</p>
+<li><p><strong>slug</strong></p>
 <ul>
 <li>ASCII 문자 또는 숫자, 하이픈 및 밑줄 문자로 구성된 모든 슬러그 문자열과 매치</li>
 <li>ex ) ‘building-your-1st-django-site’</li>
@@ -665,7 +673,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># articles/urls.py 기본 형태</span></span><br><span class="line"><span class="keyword">from</span> django.urls <span class="keyword">import</span> path</span><br><span class="line"><span class="keyword">from</span> . <span class="keyword">import</span> views <span class="comment"># django 는 명시적 상대경로(from .module import ..) 를 권장</span></span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="comment"># ../urls.py</span></span><br><span class="line"><span class="keyword">from</span> django.urls <span class="keyword">import</span> path, include</span><br><span class="line">urlpatterns = [ <span class="comment"># urlpatterns는 언제든지 다른 URLconf 모듈을 포함(include)할 수 있음</span></span><br><span class="line">    ...</span><br><span class="line">    path(<span class="string">&#x27;articles/&#x27;</span>, include(<span class="string">&#x27;articles.urls&#x27;</span>)),</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li><code>include()</code><ul>
+<li><code>include()</code>⭐<ul>
 <li>다른 URLconf(app1&#x2F;urls.py) 들을 참조할 수 있도록 도움</li>
 <li>함수 include() 를 만나게 되면, URL 의 그 시점까지 일치하는 부분을 잘라내고, 남은 문자열 부분을 후속처리를 위해 include 된 URLconf로 전달</li>
 <li><strong>django 는 명시적 상대경로(<code>from .module import ..</code>) 를 권장</strong></li>
@@ -673,7 +681,7 @@
 </li>
 </ul>
 <p><img src="/2022/03/02/Django/image-20220303125532783.png" alt="image-20220303125532783"></p>
-<h2 id="Naming-URL-patterns"><a href="#Naming-URL-patterns" class="headerlink" title="Naming URL patterns"></a>Naming URL patterns</h2><ul>
+<h2 id="Naming-URL-patterns⭐"><a href="#Naming-URL-patterns⭐" class="headerlink" title="Naming URL patterns⭐"></a>Naming URL patterns⭐</h2><ul>
 <li><p>이제는 링크에 URL 을 직접 작성하는 것이 아니라 path() 함수의 name 인자를 정의해서 사용</p>
 </li>
 <li><p>Django Template Tag 중 하나인 url 태그를 사용해서 path() 함수에 작성한 name을 사용할 수 있음</p>
