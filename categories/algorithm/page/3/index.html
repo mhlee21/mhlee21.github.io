@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="robots" content="noindex"><meta><title>Category: algorithm - Mihyun&#039;s Blog</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="Mihyun&#039;s Blog"><meta name="msapplication-TileImage" content="/img/favicon_mhlee.ico"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Mihyun&#039;s Blog"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta property="og:type" content="blog"><meta property="og:title" content="Mihyun&#039;s Blog"><meta property="og:url" content="https://github.com/mhlee21"><meta property="og:site_name" content="Mihyun&#039;s Blog"><meta property="og:locale" content="en_US"><meta property="og:image" content="https://github.com/img/og_image.png"><meta property="article:author" content="Mihyun Lee"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://github.com/mhlee21"},"headline":"Mihyun's Blog","image":["https://github.com/img/og_image.png"],"author":{"@type":"Person","name":"Mihyun Lee"},"publisher":{"@type":"Organization","name":"Mihyun's Blog","logo":{"@type":"ImageObject","url":"https://github.com/img/favicon_mhlee.ico"}},"description":""}</script><link rel="icon" href="/img/favicon_mhlee.ico"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+          Array
+              .from(document.querySelectorAll('.tab-content'))
+              .forEach($tab => {
+                  $tab.classList.add('is-hidden');
+              });
+          Array
+              .from(document.querySelectorAll('.tabs li'))
+              .forEach($tab => {
+                  $tab.classList.remove('is-active');
+              });
+          const $activeTab = document.querySelector(location.hash);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+          const $tabMenu = document.querySelector(`a[href="${location.hash}"]`);
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.0.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/favicon_mhlee.ico" alt="Mihyun&#039;s Blog" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/mhlee21"><i class="fab fa-github"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><div class="card-content"><nav class="breadcrumb" aria-label="breadcrumbs"><ul><li><a href="/categories">Categories</a></li><li class="is-active"><a href="#" aria-current="page">algorithm</a></li></ul></nav></div></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2022-02-25T00:07:03.000Z" title="2022. 2. 25. 오전 9:07:03">2022-02-25</time></span><span class="level-item">Updated&nbsp;<time dateTime="2022-03-16T04:26:26.669Z" title="2022. 3. 16. 오후 1:26:26">2022-03-16</time></span><span class="level-item"><a class="link-muted" href="/categories/algorithm/">algorithm</a></span><span class="level-item">14 minutes read (About 2150 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2022/02/25/queue/">queue</a></h1><div class="content"><h1 id="Queue"><a href="#Queue" class="headerlink" title="Queue"></a>Queue</h1><ul>
+<li><p>스택과 마찬가지로 삽입과 삭제의 위치가 제한적인 자료구조</p>
+<ul>
+<li>큐의 뒤에서는 삽입만 하고, 큐의 앞에서는 삭제만 이루어지는 구조</li>
+</ul>
+</li>
+<li><p>선입선출 (FIFO : First In First Out)</p>
+<ul>
+<li>큐에 삽입한 순서대로 원소가 저장되어, 가장 먼저 삽입된 원소는 가장 먼저 삭제된다.</li>
+</ul>
+</li>
+<li><p>큐의 선입선출 구조</p>
+<ul>
+<li>Front : 마지막으로 삭제된 위치</li>
+<li>Rear : 마지막으로 저장된 위치</li>
+</ul>
+<p><img src="/2022/02/25/queue/image-20220225090929957.png" alt="image-20220225090929957"></p>
+</li>
+</ul>
+<h2 id="큐의-기본-연산"><a href="#큐의-기본-연산" class="headerlink" title="큐의 기본 연산"></a>큐의 기본 연산</h2><ul>
+<li>enQueue (item) : 큐의 뒤쪽 (read 다음) 에 원소를 삽입하는 연산</li>
+<li>deQueue() : 큐의 앞쪽 (front) 에서 원소를 삭제하고 반환하는 연산</li>
+<li>createQueue() : 공백상태의 큐를 생성하는 연산</li>
+<li>isEmpty() : 큐가 공백상태인지를 확인하는 연산</li>
+<li>isFull() : 큐가 포화상태인지를 확인하는 연산</li>
+<li>Qpeek() : 큐의 앞쪽 (front) 에서 원소를 삭제없이 반환하는 연산</li>
+</ul>
+<h2 id="큐의-연산-과정"><a href="#큐의-연산-과정" class="headerlink" title="큐의 연산 과정"></a>큐의 연산 과정</h2><p><img src="/2022/02/25/queue/image-20220225091508273.png" alt="image-20220225091508273"></p>
+<h2 id="선형큐"><a href="#선형큐" class="headerlink" title="선형큐"></a>선형큐</h2><ul>
+<li>1차원 배열을 이용한 큐<ul>
+<li>큐의 크기 &#x3D; 배열의 크기</li>
+<li>front : 저장된 첫번째 원소의 인덱스</li>
+<li>rear : 저장된 마지막 원소의 인덱스</li>
+</ul>
+</li>
+<li>상태표현<ul>
+<li>초기상태 : front &#x3D; rear &#x3D; -1</li>
+<li>공백상태 : front &#x3D;&#x3D; rear</li>
+<li>포화상태 : rear &#x3D;&#x3D; n-1 (n : 배열의 크기, n-1 : 배열의 마지막 인덱스)</li>
+</ul>
+</li>
+</ul>
+<h3 id="선형-큐의-구현"><a href="#선형-큐의-구현" class="headerlink" title="선형 큐의 구현"></a>선형 큐의 구현</h3><ul>
+<li><p>초기 공백 큐 생성</p>
+<ul>
+<li>크기 n 인 1차원 배열 생성</li>
+<li>front와 rear 를 -1 로 초기화</li>
+</ul>
+</li>
+<li><p>삽입 : enQueue(item)</p>
+<ul>
+<li>마지막 원소 뒤에 새로운 원소를 삽입하기 위해<ol>
+<li>rear 값을 증가시켜 새로운 원소를 삽입할 자리를 마련</li>
+<li>그 인덱스에 해당하는 배열원소 Q[rear] 에 item 을 저장</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">enQueue</span>(<span class="params">item</span>):</span><br><span class="line">	<span class="keyword">global</span> rear</span><br><span class="line">	<span class="keyword">if</span> isFull() : <span class="built_in">print</span>(<span class="string">&quot;Queue_Full&quot;</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        rear &lt;- rear + <span class="number">1</span></span><br><span class="line">        Q[rear] &lt;- item</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>삭제 : deQueue()</p>
+<ul>
+<li>가장 앞에 있는 원소를 삭제하기 위해<ol>
+<li>front 값을 하나 증가시켜 큐에 남아있게 될 첫 번째 원소 이동</li>
+<li>새로운 첫번째 원소를 리턴함으로써 삭제와 동일한 기능함</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">deQueue</span>():</span><br><span class="line">    <span class="keyword">if</span> isEmpty():</span><br><span class="line">        Queue_Empty()</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        front &lt;- front + <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> Q[front]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>공백상태 및 포화상태 검사 : isEmpty(), isFull()</p>
+<ul>
+<li>공백상태 : front &#x3D;&#x3D; rear</li>
+<li>포화상태 : rear &#x3D;&#x3D; n-1</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">isEmpty</span>():</span><br><span class="line">    <span class="keyword">return</span> front == rear</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">isFull</span>():</span><br><span class="line">    <span class="keyword">return</span> rear == <span class="built_in">len</span>(Q) - <span class="number">1</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>검색 : Qpeek()</p>
+<ul>
+<li>가장 앞에 있는 원소를 검색하여 반환하는 연산</li>
+<li>현재 front의 한자리 뒤 (front+1) 에 있는 원소, 즉 큐의 첫번째에 있는 원소를 반환</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">Qpeek</span>():</span><br><span class="line">    <span class="keyword">if</span> isEmpty():</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Queue_Empty&quot;</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> Q[front + <span class="number">1</span>]</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="선형-큐-이용시-문제점"><a href="#선형-큐-이용시-문제점" class="headerlink" title="선형 큐 이용시 문제점"></a>선형 큐 이용시 문제점</h3><ul>
+<li>잘못된 포화상태 인식<ul>
+<li>선형 큐를 이용하여 원소의 삽입과 삭제를 계속할 경우, 배열의 앞부분에 활용할 수 있는 공간이 있음에도 불구하고, rear &#x3D; n-1 인 상태 즉, 포화상태로 인식하여 더이상의 삽입을 수행하지 않게 됨</li>
+</ul>
+</li>
+<li>해결방법 1<ul>
+<li>매 연산이 이루어질 때마다 저장된 원소들을 배열의 앞부분으로 모두 이동시킴</li>
+<li>원소 이동에 많은 시간이 소요되어 큐의 효율성이 급격히 떨어짐</li>
+</ul>
+</li>
+<li>해결방법 2<ul>
+<li>1차원 배열을 사용하되, 논리적으로는 배열의 처음과 끝이 연결되어 원형 형태의 큐를 이룬다고 가정하고 사용</li>
+<li>원형 큐의 논리적인 구조</li>
+</ul>
+</li>
+</ul>
+<p>​    <img src="/2022/02/25/queue/image-20220225093617600.png" alt="image-20220225093617600"></p>
+<h2 id="원형-큐"><a href="#원형-큐" class="headerlink" title="원형 큐"></a>원형 큐</h2><ul>
+<li><p>초기 공백 상태</p>
+<ul>
+<li>front &#x3D; rear &#x3D; 0</li>
+</ul>
+</li>
+<li><p>Index 의 순환</p>
+<ul>
+<li>front 와 rear의 위치가 배열의 마지막 인덱스인 n-1 을 가리킨 후, 그 다음에 논리적 순환을 이루어 배열의 처음 인덱스인 0으로 이동해야 함</li>
+<li>이를 위해 나머지 연산자 mod 를 사용함</li>
+</ul>
+</li>
+<li><p>front 변수</p>
+<ul>
+<li>공백 상태와 포화 상태  구분을 쉽게 하기 위해 front가 있는 자리는 사용하지 않고 항상 빈자리로 둠</li>
+</ul>
+</li>
+<li><p>삽입 위치 및 삭제 위치</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>삽입 위치</th>
+<th>삭제 위치</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>선형큐</td>
+<td>rear &#x3D; rear + 1</td>
+<td>front &#x3D; front + 1</td>
+</tr>
+<tr>
+<td>원형큐</td>
+<td>rear &#x3D; (rear + 1) mod n</td>
+<td>front &#x3D; (front + 1) mod n</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<h3 id="원형-큐의-연산-과정"><a href="#원형-큐의-연산-과정" class="headerlink" title="원형 큐의 연산 과정"></a>원형 큐의 연산 과정</h3><p><img src="/2022/02/25/queue/image-20220225094057288.png" alt="image-20220225094057288"></p>
+<h3 id="원형-큐의-구현"><a href="#원형-큐의-구현" class="headerlink" title="원형 큐의 구현"></a>원형 큐의 구현</h3><ul>
+<li><p>초기 공백 큐 생성</p>
+<ul>
+<li>크기 n 인 1차원 배열 생성</li>
+<li>front와 rear를 0으로 초기화</li>
+</ul>
+</li>
+<li><p>공백상태 및 포화상태 검사 : isEmpty(), isFull()</p>
+<ul>
+<li>공백상태 : front &#x3D;&#x3D; rear</li>
+<li>포화상태 : <ul>
+<li>삽입할 rear의 다음위치 &#x3D;&#x3D; 현재 front</li>
+<li>(rear + 1) mod n &#x3D;&#x3D; front</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">ifEmpty</span>():</span><br><span class="line">    <span class="keyword">return</span> front == rear</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">isFull</span>():</span><br><span class="line">    <span class="keyword">return</span> (rear + <span class="number">1</span>) % <span class="built_in">len</span>(cQ) == front</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>삽입 : enQueue(item)</p>
+<ul>
+<li>마지막 원소 뒤에 새로운 원소를 삽입하기 위해<ol>
+<li>rear값을 조정하여 새로운 원소를 삽입할 자리를 마련함 : rear &lt;- (rear + 1) mod n</li>
+<li>그 인덱스에 해당하는 배열원소 cQ[rear]에 item을 저장</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">enQueue</span>(<span class="params">item</span>):</span><br><span class="line">    <span class="keyword">global</span> rear</span><br><span class="line">    <span class="keyword">if</span> isFull():</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Queue_Full&quot;</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        rear = (rear + <span class="number">1</span>) % <span class="built_in">len</span>(cQ)</span><br><span class="line">        cQ[rear] = item</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>삭제 : deQueue(), delete()</p>
+<ul>
+<li>가장 앞에 있는 원소를 삭제하기 위해<ol>
+<li>front값을 조정하여 삭제할 자리를 준비함</li>
+<li>새로운 front 원소를 리턴함으로써 삭제와 동일한 기능함</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">deQueue</span>():</span><br><span class="line">    <span class="keyword">global</span> front</span><br><span class="line">    <span class="keyword">if</span> isEmpty():</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Queue_Empty&quot;</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        front = (front + <span class="number">1</span>) % <span class="built_in">len</span>(cQ)</span><br><span class="line">        <span class="keyword">return</span> cQ[front]</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">delete</span>():</span><br><span class="line">    <span class="keyword">global</span> front</span><br><span class="line">    <span class="keyword">if</span> isEmpty():</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Queue_Empty&quot;</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        front = (front + <span class="number">1</span>) % <span class="built_in">len</span>(cQ)</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="우선순위-큐-Priority-Queue"><a href="#우선순위-큐-Priority-Queue" class="headerlink" title="우선순위 큐(Priority Queue)"></a>우선순위 큐(Priority Queue)</h2><ul>
+<li>우선순위를 가진 항목들을 저장하는 큐</li>
+<li>FIFO 순서가 아니라 우선순위가 높은 순서대로 먼저 나가게 된다.</li>
+<li>우선순위 큐의 적용분야<ul>
+<li>시뮬레이션 시스템</li>
+<li>네트워크 트래픽 제어</li>
+<li>운영체제의 테스크 스케줄링</li>
+</ul>
+</li>
+<li>트리 구조 사용</li>
+</ul>
+<h2 id="큐의-활용-버퍼-Buffer"><a href="#큐의-활용-버퍼-Buffer" class="headerlink" title="큐의 활용 : 버퍼 (Buffer)"></a>큐의 활용 : 버퍼 (Buffer)</h2><ul>
+<li><p>버퍼</p>
+<ul>
+<li>데이터를 한 곳에서 다른 한 곳으로 전송하는 동안 일시적으로 그 데이터를 보관하는 메모리의 영역</li>
+<li>버퍼링 : 버퍼를 활용하는 방식 또는 버퍼를  채우는 동작을 의미</li>
+</ul>
+</li>
+<li><p>버퍼의 자료구조</p>
+<ul>
+<li>버퍼는 일반적으로 입출력 및 네트워크와 관련된 기능에서 이용된다.</li>
+<li>순서대로 입력&#x2F;출력&#x2F;전달되어야 하므로 FIFO 방식의 자료구조인 큐가 활용된다.</li>
+</ul>
+</li>
+</ul>
+<h2 id="BFS-Breadth-First-Search"><a href="#BFS-Breadth-First-Search" class="headerlink" title="BFS (Breadth First Search)"></a>BFS (Breadth First Search)</h2><ul>
+<li><p>너비우선탐색</p>
+<ul>
+<li>탐색 시작점의 인접한 정점들을 먼저 모두 차례로 방문한 후에, 방문했던 정점을 시작점으로 하여 다시 인접한 정점들을 차례로 방문하는 방식</li>
+</ul>
+</li>
+<li><p>인접한 정점들에 대해 탐색을 한 후, 차례로 다시 너비우선탐색을 진행해야하므로, 선입선출 형태의 자료구조인 큐를 활용함</p>
+</li>
+<li><p>다음과 같은 순서로 탐색</p>
+<p><img src="/2022/02/25/queue/image-20220225102143473.png" alt="image-20220225102143473"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">BFS</span>(<span class="params">G, v</span>): <span class="comment"># 그래프 G, 탐색 시작점 v</span></span><br><span class="line">    visited = [<span class="number">0</span>]*(n+<span class="number">1</span>)		<span class="comment"># n : 정점의 개수</span></span><br><span class="line">    queue = []				<span class="comment"># 큐 생성</span></span><br><span class="line">    queue.append(v)		<span class="comment"># 시작점 v를 큐에 삽입</span></span><br><span class="line">    <span class="keyword">while</span> queue:			<span class="comment"># 큐가 비어있지 않은 경우</span></span><br><span class="line">        t = queue.pop(<span class="number">0</span>)	<span class="comment"># 큐의 첫번째 원소 반환</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> visited[t]		<span class="comment"># 방문되지 않은 곳이라면</span></span><br><span class="line">        	visited[t] = <span class="literal">True</span>	<span class="comment"># 방문한 것으로 표시</span></span><br><span class="line">            visit(t)			<span class="comment"># 정점 t에서 할일</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> G[t]:			<span class="comment"># t와 연결된 모든 정점에 대해</span></span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> visited[i]:	<span class="comment"># 방문되지 않은 곳이라면</span></span><br><span class="line">                queue.append(i)	<span class="comment"># 큐에 넣기</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">BFS</span>(<span class="params">G, v, n</span>): <span class="comment"># 그래프 G, 탐색 시작점 v</span></span><br><span class="line">    visited = [<span class="number">0</span>]*(n+<span class="number">1</span>)		<span class="comment"># n : 정점의 개수</span></span><br><span class="line">    queue = []				<span class="comment"># 큐 생성</span></span><br><span class="line">    queue.append(v)		<span class="comment"># 시작점 v를 큐에 삽입</span></span><br><span class="line">    visited[v] = <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> queue:			<span class="comment"># 큐가 비어있지 않은 경우</span></span><br><span class="line">        t = queue.pop(<span class="number">0</span>)	<span class="comment"># 큐의 첫번째 원소 반환</span></span><br><span class="line">        visit(t)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> G[t]:			<span class="comment"># t와 연결된 모든 정점에 대해</span></span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> visited[i]:	<span class="comment"># 방문되지 않은 곳이라면</span></span><br><span class="line">                queue.append(i)	<span class="comment"># 큐에 넣기</span></span><br><span class="line">                visited[i] = visited[n] + <span class="number">1</span> <span class="comment"># n으로 부터 1만큼 이동</span></span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>탐색의 목적에 따라 DFS&#x2F;BFS 적절히 활용하면 중복 탐색을 줄일 수 있다.</p>
+<ul>
+<li>ex) 최단거리는 DFS</li>
+</ul>
+</li>
+</ul>
+<h3 id="미로탐색-SWEA-5105"><a href="#미로탐색-SWEA-5105" class="headerlink" title="미로탐색 (SWEA 5105)"></a>미로탐색 (SWEA 5105)</h3><ul>
+<li>출발-도착 최소 이동거리</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">5</span><br><span class="line">13101</span><br><span class="line">10101</span><br><span class="line">10101</span><br><span class="line">10101</span><br><span class="line">10021</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#1 5</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># bfs</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">fstart</span>(<span class="params">N</span>):</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(N):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(N):</span><br><span class="line">            <span class="keyword">if</span> maze[i][j] == <span class="number">2</span>:</span><br><span class="line">                <span class="keyword">return</span> i, j</span><br><span class="line">	<span class="keyword">return</span> -<span class="number">1</span>, -<span class="number">1</span> <span class="comment"># 못찾으면 -1 리턴</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">bfs</span>(<span class="params">i,j,N</span>):</span><br><span class="line">    visited = [[<span class="number">0</span>]*N <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(N)] <span class="comment"># 미로의 크기만큼 생성</span></span><br><span class="line">    queue = []			<span class="comment"># 큐 생성</span></span><br><span class="line">    queue.append(i,j)	<span class="comment"># 시작점 enqueue</span></span><br><span class="line">	visited[i][j] = <span class="number">1</span>	<span class="comment"># 시작점 방문표시</span></span><br><span class="line">    <span class="keyword">while</span> queue: <span class="comment"># 큐가 비어있지 않으면 반복</span></span><br><span class="line">        i, j = queue.pop(<span class="number">0</span>)	<span class="comment"># dequeue</span></span><br><span class="line">        <span class="keyword">if</span> maze[i][j] == <span class="number">3</span>:</span><br><span class="line">            <span class="keyword">return</span> visited[i][j] - <span class="number">2</span> <span class="comment"># 출발, 도착 칸 제외</span></span><br><span class="line">        <span class="keyword">for</span> di, dj <span class="keyword">in</span> [[<span class="number">0</span>,<span class="number">1</span>],[<span class="number">1</span>,<span class="number">0</span>],[<span class="number">0</span>,-<span class="number">1</span>],[-<span class="number">1</span>,<span class="number">0</span>]]: <span class="comment"># i, j 인접한 칸에 대해</span></span><br><span class="line">            ni, nj = i+di, j+dj <span class="comment"># 주변 칸 좌표</span></span><br><span class="line">            <span class="keyword">if</span> <span class="number">0</span>&lt;=ni&lt;N <span class="keyword">and</span> <span class="number">0</span>&lt;=nj&lt;N <span class="keyword">and</span> maze[ni][nj]!=<span class="number">1</span> <span class="keyword">and</span> visited[ni][nj]==<span class="number">0</span>:</span><br><span class="line">                <span class="comment"># 주변 칸 좌표가 미로를 벗어나지 않고, 벽이 아니고, 방문한적이 없으면</span></span><br><span class="line">                queue.append((ni,nj))</span><br><span class="line">                visited[ni][nj] = visited[i][j] + <span class="number">1</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span> <span class="comment"># 도착지를 찾지 못한 경우</span></span><br><span class="line">    </span><br><span class="line">T = <span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line"><span class="keyword">for</span> tc <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,T+<span class="number">1</span>):</span><br><span class="line">    N = <span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line">    maze = [<span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">int</span>, <span class="built_in">input</span>())) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(N)]</span><br><span class="line">    sti, stj = fstart(N)</span><br><span class="line">    ans = bfs(sti, stj, N)</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">f&#x27;#<span class="subst">&#123;tc&#125;</span> <span class="subst">&#123;ans&#125;</span>&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># dfs (재귀)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">fstart</span>(<span class="params">N</span>):</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(N):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(N):</span><br><span class="line">            <span class="keyword">if</span> maze[i][j] == <span class="number">2</span>:</span><br><span class="line">                <span class="keyword">return</span> i, j</span><br><span class="line">	<span class="keyword">return</span> -<span class="number">1</span>, -<span class="number">1</span> <span class="comment"># 못찾으면 -1 리턴</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">dfs</span>(<span class="params">i,j,N,c</span>): <span class="comment"># 지나온 칸 수</span></span><br><span class="line">    <span class="keyword">global</span> minV</span><br><span class="line">    <span class="keyword">if</span> maze[i][j] == <span class="number">3</span>: <span class="comment"># 목적지에 도착하면 최소거리와 비교</span></span><br><span class="line">        <span class="keyword">if</span> minV &gt; c:</span><br><span class="line">            minV = c</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        maze[i][j] = <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> di,dj <span class="keyword">in</span> [[<span class="number">0</span>,<span class="number">1</span>],[<span class="number">1</span>,<span class="number">0</span>],[<span class="number">0</span>,-<span class="number">1</span>],[-<span class="number">1</span>,<span class="number">0</span>]]:</span><br><span class="line">            ni, nj = i+di, j+dj</span><br><span class="line">            <span class="keyword">if</span> <span class="number">0</span>&lt;=ni&lt;N <span class="keyword">and</span> <span class="number">0</span>&lt;=nj&lt;N <span class="keyword">and</span> maze[ni][nj]!=<span class="number">1</span>:</span><br><span class="line">                dfs(ni,nj,N,c+<span class="number">1</span>)</span><br><span class="line">    	maze[i][j] = <span class="number">0</span></span><br><span class="line">    </span><br><span class="line">T = <span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line"><span class="keyword">for</span> tc <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,T+<span class="number">1</span>):</span><br><span class="line">    N = <span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line">    maze = [<span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">int</span>, <span class="built_in">input</span>())) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(N)]</span><br><span class="line">    sti, stj = fstart(N)</span><br><span class="line">    minV = <span class="number">10000</span></span><br><span class="line">    dfs(sti,stj,N,<span class="number">0</span>)</span><br><span class="line">    <span class="keyword">if</span> minV == <span class="number">1000</span>:</span><br><span class="line">        minV = <span class="number">1</span></span><br><span class="line">	<span class="built_in">print</span>(<span class="string">f&#x27;#<span class="subst">&#123;tc&#125;</span> <span class="subst">&#123;minV-<span class="number">1</span>&#125;</span>&#x27;</span>) <span class="comment"># 출발지 제외하고 출력</span></span><br></pre></td></tr></table></figure>
+
+</div></article></div><nav class="pagination" role="navigation" aria-label="pagination"><div class="pagination-previous"><a href="/categories/algorithm/page/2/">Previous</a></div><div class="pagination-next"><a href="/categories/algorithm/page/4/">Next</a></div><ul class="pagination-list is-hidden-mobile"><li><a class="pagination-link" href="/categories/algorithm/">1</a></li><li><a class="pagination-link" href="/categories/algorithm/page/2/">2</a></li><li><a class="pagination-link is-current" href="/categories/algorithm/page/3/">3</a></li><li><a class="pagination-link" href="/categories/algorithm/page/4/">4</a></li><li><span class="pagination-ellipsis">&hellip;</span></li><li><a class="pagination-link" href="/categories/algorithm/page/7/">7</a></li></ul></nav></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.png" alt="Mihyun Lee"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Mihyun Lee</p><p class="is-size-6 is-block">Hello!👋</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>SSAFY 7th</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Posts</p><a href="/archives"><p class="title">39</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Categories</p><a href="/categories"><p class="title">9</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tags</p><a href="/tags"><p class="title">42</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/mhlee21" target="_blank" rel="noopener">Follow</a></div></div></div><div class="card widget" data-type="links"><div class="card-content"><div class="menu"><h3 class="menu-label">Links</h3><ul class="menu-list"><li><a class="level is-mobile" href="https://hexo.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Hexo</span></span><span class="level-right"><span class="level-item tag">hexo.io</span></span></a></li></ul></div></div></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">Categories</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/Computer-Network/"><span class="level-start"><span class="level-item">Computer Network</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/Django/"><span class="level-start"><span class="level-item">Django</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/categories/JavaScript/"><span class="level-start"><span class="level-item">JavaScript</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/OS/"><span class="level-start"><span class="level-item">OS</span></span><span class="level-end"><span class="level-item tag">10</span></span></a></li><li><a class="level is-mobile" href="/categories/WEB/"><span class="level-start"><span class="level-item">WEB</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/categories/algo-python/"><span class="level-start"><span class="level-item">algo_python</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/categories/algorithm/"><span class="level-start"><span class="level-item">algorithm</span></span><span class="level-end"><span class="level-item tag">7</span></span></a></li><li><a class="level is-mobile" href="/categories/python/"><span class="level-start"><span class="level-item">python</span></span><span class="level-end"><span class="level-item tag">7</span></span></a></li><li><a class="level is-mobile" href="/categories/startcamp/"><span class="level-start"><span class="level-item">startcamp</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li></ul></div></div></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">Recents</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-03-23T02:13:19.000Z">2022-03-23</time></p><p class="title"><a href="/2022/03/23/algo-BOJ-14890-%EA%B2%BD%EC%82%AC%EB%A1%9C-%EA%B3%A8%EB%93%9C3/">algo&gt;BOJ_14890(경사로,골드3)</a></p><p class="categories"><a href="/categories/algo-python/">algo_python</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-03-23T01:45:09.000Z">2022-03-23</time></p><p class="title"><a href="/2022/03/23/%EC%97%94%EB%94%94%EC%95%88-Endianness/">엔디안 (Endianness)</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-03-20T03:57:33.000Z">2022-03-20</time></p><p class="title"><a href="/2022/03/20/JavaScript/">JavaScript</a></p><p class="categories"><a href="/categories/JavaScript/">JavaScript</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-03-16T00:01:24.000Z">2022-03-16</time></p><p class="title"><a href="/2022/03/16/tree/">tree</a></p><p class="categories"><a href="/categories/algorithm/">algorithm</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-03-15T13:47:02.000Z">2022-03-15</time></p><p class="title"><a href="/2022/03/15/Network-01-Roadmap/">Network&gt;01.Roadmap</a></p><p class="categories"><a href="/categories/Computer-Network/">Computer Network</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">Archives</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2022/03/"><span class="level-start"><span class="level-item">March 2022</span></span><span class="level-end"><span class="level-item tag">11</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/02/"><span class="level-start"><span class="level-item">February 2022</span></span><span class="level-end"><span class="level-item tag">17</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/01/"><span class="level-start"><span class="level-item">January 2022</span></span><span class="level-end"><span class="level-item tag">11</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">Tags</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/BFS/"><span class="tag">BFS</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/BOJ/"><span class="tag">BOJ</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Boyer-Moore-algorithm/"><span class="tag">Boyer-Moore algorithm</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Brute-Force/"><span class="tag">Brute Force</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Bubble-sort/"><span class="tag">Bubble sort</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/CLI/"><span class="tag">CLI</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Computer-Network/"><span class="tag">Computer Network</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Counting-sort/"><span class="tag">Counting sort</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/DFS/"><span class="tag">DFS</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/DP/"><span class="tag">DP</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Django/"><span class="tag">Django</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/HTML-CSS/"><span class="tag">HTML/CSS</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Insertion-sort/"><span class="tag">Insertion sort</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/JavaScript/"><span class="tag">JavaScript</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/KMP/"><span class="tag">KMP</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Markdown/"><span class="tag">Markdown</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Merge-sort/"><span class="tag">Merge sort</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/OS/"><span class="tag">OS</span><span class="tag">10</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Quick-sort/"><span class="tag">Quick sort</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Rabin-Karp-algorithm/"><span class="tag">Rabin-Karp algorithm</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Selection-sort/"><span class="tag">Selection sort</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/WEB/"><span class="tag">WEB</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/algorithm/"><span class="tag">algorithm</span><span class="tag">9</span></a></div><div class="control"><a class="tags has-addons" href="/tags/bootstrap/"><span class="tag">bootstrap</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/brute-force/"><span class="tag">brute force</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/data-structure/"><span class="tag">data structure</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/git/"><span class="tag">git</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/github/"><span class="tag">github</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/hexo/"><span class="tag">hexo</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/memoization/"><span class="tag">memoization</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/python/"><span class="tag">python</span><span class="tag">7</span></a></div><div class="control"><a class="tags has-addons" href="/tags/queue/"><span class="tag">queue</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/stack/"><span class="tag">stack</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/tree/"><span class="tag">tree</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EA%B3%84%EC%82%B0%EA%B8%B0/"><span class="tag">계산기</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EB%B0%B1%ED%8A%B8%EB%9E%98%ED%82%B9/"><span class="tag">백트래킹</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EB%B9%85-%EC%98%A4-%ED%91%9C%EA%B8%B0%EB%B2%95/"><span class="tag">빅-오 표기법</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EC%84%A0%ED%98%95%ED%81%90/"><span class="tag">선형큐</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EC%97%94%EB%94%94%EC%95%88/"><span class="tag">엔디안</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EC%9A%B0%EC%84%A0%EC%88%9C%EC%9C%84%ED%81%90/"><span class="tag">우선순위큐</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EC%9B%90%ED%98%95%ED%81%90/"><span class="tag">원형큐</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%ED%84%B0%EB%AF%B8%EB%84%90-%EB%AA%85%EB%A0%B9%EC%96%B4/"><span class="tag">터미널 명령어</span><span class="tag">1</span></a></div></div></div></div></div></div><div class="column column-right is-4-tablet is-4-desktop is-4-widescreen  order-3"><!--!--></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/favicon_mhlee.ico" alt="Mihyun&#039;s Blog" height="28"></a><p class="is-size-7"><span>&copy; 2022 Mihyun Lee</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="Back to top" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "This website uses cookies to improve your experience.",
+          dismiss: "Got it!",
+          allow: "Allow cookies",
+          deny: "Decline",
+          link: "Learn more",
+          policy: "Cookie Policy",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="Type something..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"Type something...","untitled":"(Untitled)","posts":"Posts","pages":"Pages","categories":"Categories","tags":"Tags"});
+        });</script></body></html>

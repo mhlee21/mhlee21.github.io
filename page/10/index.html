@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>Mihyun&#039;s Blog</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="Mihyun&#039;s Blog"><meta name="msapplication-TileImage" content="/img/favicon_mhlee.ico"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Mihyun&#039;s Blog"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta property="og:type" content="blog"><meta property="og:title" content="Mihyun&#039;s Blog"><meta property="og:url" content="https://github.com/mhlee21"><meta property="og:site_name" content="Mihyun&#039;s Blog"><meta property="og:locale" content="en_US"><meta property="og:image" content="https://github.com/img/og_image.png"><meta property="article:author" content="Mihyun Lee"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://github.com/mhlee21"},"headline":"Mihyun's Blog","image":["https://github.com/img/og_image.png"],"author":{"@type":"Person","name":"Mihyun Lee"},"publisher":{"@type":"Organization","name":"Mihyun's Blog","logo":{"@type":"ImageObject","url":"https://github.com/img/favicon_mhlee.ico"}},"description":""}</script><link rel="icon" href="/img/favicon_mhlee.ico"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+          Array
+              .from(document.querySelectorAll('.tab-content'))
+              .forEach($tab => {
+                  $tab.classList.add('is-hidden');
+              });
+          Array
+              .from(document.querySelectorAll('.tabs li'))
+              .forEach($tab => {
+                  $tab.classList.remove('is-active');
+              });
+          const $activeTab = document.querySelector(location.hash);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+          const $tabMenu = document.querySelector(`a[href="${location.hash}"]`);
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.0.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/favicon_mhlee.ico" alt="Mihyun&#039;s Blog" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/mhlee21"><i class="fab fa-github"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2022-03-02T10:08:36.000Z" title="2022. 3. 2. 오후 7:08:36">2022-03-02</time></span><span class="level-item">Updated&nbsp;<time dateTime="2022-03-16T04:26:26.548Z" title="2022. 3. 16. 오후 1:26:26">2022-03-16</time></span><span class="level-item"><a class="link-muted" href="/categories/OS/">OS</a></span><span class="level-item">9 minutes read (About 1291 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2022/03/02/OS-09-%ED%8C%8C%EC%9D%BC%EC%8B%9C%EC%8A%A4%ED%85%9C/">OS&gt;09.파일시스템</a></h1><div class="content"><h1 id="파일-시스템"><a href="#파일-시스템" class="headerlink" title="파일 시스템"></a>파일 시스템</h1><h2 id="File-and-File-System"><a href="#File-and-File-System" class="headerlink" title="File and File System"></a>File and File System</h2><p><img src="/mhlee21/2022/03/02/OS-09-%ED%8C%8C%EC%9D%BC%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220302193104062.png" alt="image-20220302193104062"></p>
+<ul>
+<li>File</li>
+<li>File attribute (metadata)<ul>
+<li>파일 자체의 내용이 아니라 파일을 관리하기 위한 각종 정보들</li>
+</ul>
+</li>
+<li>File system<ul>
+<li>운영체제에서 파일을 관리하는 부분</li>
+<li>파일,파일의 메타데이터를 저장하고 관리</li>
+</ul>
+</li>
+</ul>
+<h2 id="Directory-and-Logical-Disk"><a href="#Directory-and-Logical-Disk" class="headerlink" title="Directory and Logical Disk"></a>Directory and Logical Disk</h2><p><img src="/mhlee21/2022/03/02/OS-09-%ED%8C%8C%EC%9D%BC%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220302193556268.png" alt="image-20220302193556268"></p>
+<ul>
+<li>Partition <ul>
+<li>운영체제가 보는 논리적인 디스크</li>
+<li>여러개의 물리적인 디스크를 하나의 파티션으로 합칠수도 있음</li>
+</ul>
+</li>
+</ul>
+<h2 id="open"><a href="#open" class="headerlink" title="open()"></a>open()</h2><ul>
+<li>open() : 파일의 메타데이터를 메모리에 올리는 것</li>
+</ul>
+<p><img src="/mhlee21/2022/03/02/OS-09-%ED%8C%8C%EC%9D%BC%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220302193842015.png" alt="image-20220302193842015"></p>
+<p><img src="/mhlee21/2022/03/02/OS-09-%ED%8C%8C%EC%9D%BC%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220302193914210.png" alt="image-20220302193914210"></p>
+<p><img src="/mhlee21/2022/03/02/OS-09-%ED%8C%8C%EC%9D%BC%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220302194557800.png" alt="image-20220302194557800"></p>
+<ul>
+<li>open() 을 통해 root의 메타데이터로부터 b의 메타데이터까지 읽어온다.</li>
+<li>open이 완료되면 b의 fd값을 통해 read함수를 실행시켜 b의 content를 읽어서 메모리에 올린다.</li>
+</ul>
+<h2 id="File-Protection"><a href="#File-Protection" class="headerlink" title="File Protection"></a>File Protection</h2><p><img src="/mhlee21/2022/03/02/OS-09-%ED%8C%8C%EC%9D%BC%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220302194809802.png" alt="image-20220302194809802"></p>
+<ul>
+<li>Access Control 방법에는 세가지가 있다.<ul>
+<li>Access control matrix</li>
+<li>Grouping (일반적으로 사용하는 방법)<ul>
+<li>전체 user 를 owner, group, public 의 세그룹으로 구분</li>
+<li>각 파일에 대해 세 그룹의 접근권한 (rwx)을 3비트씩 표시</li>
+</ul>
+</li>
+<li>Password</li>
+</ul>
+</li>
+</ul>
+<h2 id="File-System의-Mounting"><a href="#File-System의-Mounting" class="headerlink" title="File System의 Mounting"></a>File System의 Mounting</h2><p><img src="/mhlee21/2022/03/02/OS-09-%ED%8C%8C%EC%9D%BC%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220302195313632.png" alt="image-20220302195313632"></p>
+<p><img src="/mhlee21/2022/03/02/OS-09-%ED%8C%8C%EC%9D%BC%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220302195408736.png" alt="image-20220302195408736"></p>
+<h2 id="Access-Methods"><a href="#Access-Methods" class="headerlink" title="Access Methods"></a>Access Methods</h2><p><img src="/mhlee21/2022/03/02/OS-09-%ED%8C%8C%EC%9D%BC%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220302195426457.png" alt="image-20220302195426457"></p>
+<h2 id="Allocation-of-File-Data-in-Disk"><a href="#Allocation-of-File-Data-in-Disk" class="headerlink" title="Allocation of File Data in Disk"></a>Allocation of File Data in Disk</h2><p>디스크에 파일 저장할때는 동일한 크기의 섹터단위로 저장하고 있다. </p>
+<p>따라서 임의의 크기의 파일을 동일한 크기의 block 단위로 나누어 저장하고 있다.</p>
+<h3 id="Contiguous-Allocation"><a href="#Contiguous-Allocation" class="headerlink" title="Contiguous Allocation"></a>Contiguous Allocation</h3><p><img src="/mhlee21/2022/03/02/OS-09-%ED%8C%8C%EC%9D%BC%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220309110630855.png" alt="image-20220309110630855"></p>
+<ul>
+<li>연속할당 : 하나의 파일을 연속된 block에 저장하는 방법</li>
+</ul>
+<p><img src="/mhlee21/2022/03/02/OS-09-%ED%8C%8C%EC%9D%BC%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220309110938929.png" alt="image-20220309110938929"></p>
+<ul>
+<li>단점 <ul>
+<li>외부조각 발생 가능</li>
+<li>파일의 크기를 키우는데 제약이 있다.</li>
+</ul>
+</li>
+<li>장점<ul>
+<li>빠른 I&#x2F;O : Readitme file 또는 process 의 swapping 용도로 사용하기 좋다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="Linked-Allocation"><a href="#Linked-Allocation" class="headerlink" title="Linked Allocation"></a>Linked Allocation</h3><p><img src="/mhlee21/2022/03/02/OS-09-%ED%8C%8C%EC%9D%BC%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220309111418214.png" alt="image-20220309111418214"></p>
+<ul>
+<li>파일의 데이터를 디스크에 연속적으로 할당하지 않고 링크를 통해 연결하는 방법</li>
+<li>파일의 실행위치만 디렉토리가 가지고있고, 다음 실행 위치는 직접 가서 데이터를 읽어봐야 알 수 있음</li>
+</ul>
+<p><img src="/mhlee21/2022/03/02/OS-09-%ED%8C%8C%EC%9D%BC%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220309111653691.png" alt="image-20220309111653691"></p>
+<ul>
+<li>순차 접근만 가능해진다.</li>
+</ul>
+<h3 id="Indexed-Allocation"><a href="#Indexed-Allocation" class="headerlink" title="Indexed Allocation"></a>Indexed Allocation</h3><p><img src="/mhlee21/2022/03/02/OS-09-%ED%8C%8C%EC%9D%BC%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220309111906256.png" alt="image-20220309111906256"></p>
+<ul>
+<li>디렉토리에 인덱스 블럭의 정보만 가지고 있는 방식</li>
+</ul>
+<p><img src="/mhlee21/2022/03/02/OS-09-%ED%8C%8C%EC%9D%BC%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220309112044426.png" alt="image-20220309112044426"></p>
+<h2 id="UNIX-파일-시스템의-구조"><a href="#UNIX-파일-시스템의-구조" class="headerlink" title="UNIX 파일 시스템의 구조"></a>UNIX 파일 시스템의 구조</h2><p><img src="/mhlee21/2022/03/02/OS-09-%ED%8C%8C%EC%9D%BC%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220309112249684.png" alt="image-20220309112249684"></p>
+<p><img src="/mhlee21/2022/03/02/OS-09-%ED%8C%8C%EC%9D%BC%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220309112335493.png" alt="image-20220309112335493"></p>
+<ul>
+<li>Boot block<ul>
+<li>어떤 파일 시스템이던 boot block 이 맨 앞에 있다.</li>
+</ul>
+</li>
+<li>Super block<ul>
+<li>파일 시스템에 관한 총체적인 정보</li>
+</ul>
+</li>
+<li>Inode<ul>
+<li>파일 이름을 제외한 파일의 메타데이터</li>
+<li>실제 운영체제에서는 디렉토리가 파일의 모든 정보 가지고 있지 않고, 일부만 가지고 나머지는 Inode에 저장</li>
+<li>파일의 이름은 디렉토리 파일이 가지고 있다.</li>
+</ul>
+</li>
+<li>Data block<ul>
+<li>파일의 실제 내용 보관</li>
+</ul>
+</li>
+</ul>
+<h2 id="FAT-File-System"><a href="#FAT-File-System" class="headerlink" title="FAT File System"></a>FAT File System</h2><p><img src="/mhlee21/2022/03/02/OS-09-%ED%8C%8C%EC%9D%BC%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220309174315724.png" alt="image-20220309174315724"></p>
+<ul>
+<li>File-allocation table System</li>
+</ul>
+<h2 id="Free-Space-Management"><a href="#Free-Space-Management" class="headerlink" title="Free-Space Management"></a>Free-Space Management</h2><ul>
+<li>비어있는 블록을 관리하는 방법</li>
+</ul>
+<p><img src="/mhlee21/2022/03/02/OS-09-%ED%8C%8C%EC%9D%BC%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220309174754182.png" alt="image-20220309174754182"></p>
+<h3 id="Bit-map-or-bit-vector"><a href="#Bit-map-or-bit-vector" class="headerlink" title="Bit map or bit vector"></a>Bit map or bit vector</h3><ul>
+<li>bit map 은 디스크의 부가적인 공간을 필요로 함</li>
+<li>연속적인 빈 block 을 찾는데 효과적</li>
+</ul>
+<p><img src="/mhlee21/2022/03/02/OS-09-%ED%8C%8C%EC%9D%BC%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220309174946615.png" alt="image-20220309174946615"></p>
+<h3 id="Linked-list"><a href="#Linked-list" class="headerlink" title="Linked list"></a>Linked list</h3><ul>
+<li>모든 free block 들을 링크로 연결, 연속적인 가용 공간을 찾는것이 쉽지 않다.</li>
+</ul>
+<h3 id="Grouping"><a href="#Grouping" class="headerlink" title="Grouping"></a>Grouping</h3><ul>
+<li>linked list방법의 변형</li>
+<li>마지막 포인터가 가리키는 block 이 또 다시 n pointer를 가지는 방법</li>
+</ul>
+<h3 id="Counting"><a href="#Counting" class="headerlink" title="Counting"></a>Counting</h3><ul>
+<li>프로그램들이 종종 여러개의 연속적인 block을 할당하고 반납한다는 성질에 착안</li>
+</ul>
+<h2 id="Directory-Implementation"><a href="#Directory-Implementation" class="headerlink" title="Directory Implementation"></a>Directory Implementation</h2><p><img src="/mhlee21/2022/03/02/OS-09-%ED%8C%8C%EC%9D%BC%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220309175245101.png" alt="image-20220309175245101"></p>
+<ul>
+<li>Linear list<ul>
+<li>file name, metadata 의 리스트로 저장</li>
+<li>디렉토리 내에 파일이 있는지 찾기 위해서 linear search 필요</li>
+</ul>
+</li>
+<li>Hash Table<ul>
+<li>linear list + hashing</li>
+<li>search time을 없앰</li>
+</ul>
+</li>
+</ul>
+<p><img src="/mhlee21/2022/03/02/OS-09-%ED%8C%8C%EC%9D%BC%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220309175553689.png" alt="image-20220309175553689"></p>
+<h2 id="VFS-and-NFS"><a href="#VFS-and-NFS" class="headerlink" title="VFS and NFS"></a>VFS and NFS</h2><p><img src="/mhlee21/2022/03/02/OS-09-%ED%8C%8C%EC%9D%BC%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220309175807140.png" alt="image-20220309175807140"></p>
+<ul>
+<li>Virtual File System (VFS)<ul>
+<li>서로 다른 파일 시스템에 상관 없이 동일한 시스템 콜 인터페이스를 통해 접근할 수 있게 해주는 OS의 layer</li>
+</ul>
+</li>
+<li>Network File System (NFS)<ul>
+<li>서로 다른 컴퓨터가 네트워크로 연결되어 있을 때, 원격으로 다른 컴퓨터에 있는 파일 시스템을 접근할 수 있도록 해주는 분산 파일 시스템</li>
+</ul>
+</li>
+</ul>
+<p><img src="/mhlee21/2022/03/02/OS-09-%ED%8C%8C%EC%9D%BC%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220309175833295.png" alt="image-20220309175833295"></p>
+<h2 id="Page-Cache-and-Buffer-Cache"><a href="#Page-Cache-and-Buffer-Cache" class="headerlink" title="Page Cache and Buffer Cache"></a>Page Cache and Buffer Cache</h2><p><img src="/mhlee21/2022/03/02/OS-09-%ED%8C%8C%EC%9D%BC%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220309180145647.png" alt="image-20220309180145647"></p>
+<p><img src="/mhlee21/2022/03/02/OS-09-%ED%8C%8C%EC%9D%BC%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220309180451140.png" alt="image-20220309180451140"></p>
+<ul>
+<li><p>Memory-mapped I&#x2F;O</p>
+<ul>
+<li><p>파일의 일부를 virtual memory 에 mapping 시킴</p>
+<p>-&gt; 파일을 읽거나 쓰는 접근이 아니고 메모리 공간에 접근하는 것이 됨</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="/mhlee21/2022/03/02/OS-09-%ED%8C%8C%EC%9D%BC%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220309181212113.png" alt="image-20220309181212113"></p>
+<ul>
+<li>Unified Buffer Cache (현대의 UNIX)<ul>
+<li>memory-mapped I&#x2F;O 시 전통적인 File I&#x2F;O 보다 한단계가 줄어들었다.</li>
+</ul>
+</li>
+</ul>
+<h2 id="참고-프로그램의-실행"><a href="#참고-프로그램의-실행" class="headerlink" title="(참고) 프로그램의 실행"></a>(참고) 프로그램의 실행</h2><p><img src="/mhlee21/2022/03/02/OS-09-%ED%8C%8C%EC%9D%BC%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220309181442931.png" alt="image-20220309181442931"></p>
+</div></article></div><nav class="pagination" role="navigation" aria-label="pagination"><div class="pagination-previous"><a href="/page/9/">Previous</a></div><div class="pagination-next"><a href="/page/11/">Next</a></div><ul class="pagination-list is-hidden-mobile"><li><a class="pagination-link" href="/">1</a></li><li><span class="pagination-ellipsis">&hellip;</span></li><li><a class="pagination-link" href="/page/9/">9</a></li><li><a class="pagination-link is-current" href="/page/10/">10</a></li><li><a class="pagination-link" href="/page/11/">11</a></li><li><span class="pagination-ellipsis">&hellip;</span></li><li><a class="pagination-link" href="/page/39/">39</a></li></ul></nav></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.png" alt="Mihyun Lee"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Mihyun Lee</p><p class="is-size-6 is-block">Hello!👋</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>SSAFY 7th</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Posts</p><a href="/archives"><p class="title">39</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Categories</p><a href="/categories"><p class="title">9</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tags</p><a href="/tags"><p class="title">42</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/mhlee21" target="_blank" rel="noopener">Follow</a></div></div></div><div class="card widget" data-type="links"><div class="card-content"><div class="menu"><h3 class="menu-label">Links</h3><ul class="menu-list"><li><a class="level is-mobile" href="https://hexo.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Hexo</span></span><span class="level-right"><span class="level-item tag">hexo.io</span></span></a></li></ul></div></div></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">Categories</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/Computer-Network/"><span class="level-start"><span class="level-item">Computer Network</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/Django/"><span class="level-start"><span class="level-item">Django</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/categories/JavaScript/"><span class="level-start"><span class="level-item">JavaScript</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/OS/"><span class="level-start"><span class="level-item">OS</span></span><span class="level-end"><span class="level-item tag">10</span></span></a></li><li><a class="level is-mobile" href="/categories/WEB/"><span class="level-start"><span class="level-item">WEB</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/categories/algo-python/"><span class="level-start"><span class="level-item">algo_python</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/categories/algorithm/"><span class="level-start"><span class="level-item">algorithm</span></span><span class="level-end"><span class="level-item tag">7</span></span></a></li><li><a class="level is-mobile" href="/categories/python/"><span class="level-start"><span class="level-item">python</span></span><span class="level-end"><span class="level-item tag">7</span></span></a></li><li><a class="level is-mobile" href="/categories/startcamp/"><span class="level-start"><span class="level-item">startcamp</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li></ul></div></div></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">Recents</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-03-23T02:13:19.000Z">2022-03-23</time></p><p class="title"><a href="/2022/03/23/algo-BOJ-14890-%EA%B2%BD%EC%82%AC%EB%A1%9C-%EA%B3%A8%EB%93%9C3/">algo&gt;BOJ_14890(경사로,골드3)</a></p><p class="categories"><a href="/categories/algo-python/">algo_python</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-03-23T01:45:09.000Z">2022-03-23</time></p><p class="title"><a href="/2022/03/23/%EC%97%94%EB%94%94%EC%95%88-Endianness/">엔디안 (Endianness)</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-03-20T03:57:33.000Z">2022-03-20</time></p><p class="title"><a href="/2022/03/20/JavaScript/">JavaScript</a></p><p class="categories"><a href="/categories/JavaScript/">JavaScript</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-03-16T00:01:24.000Z">2022-03-16</time></p><p class="title"><a href="/2022/03/16/tree/">tree</a></p><p class="categories"><a href="/categories/algorithm/">algorithm</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-03-15T13:47:02.000Z">2022-03-15</time></p><p class="title"><a href="/2022/03/15/Network-01-Roadmap/">Network&gt;01.Roadmap</a></p><p class="categories"><a href="/categories/Computer-Network/">Computer Network</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">Archives</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2022/03/"><span class="level-start"><span class="level-item">March 2022</span></span><span class="level-end"><span class="level-item tag">11</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/02/"><span class="level-start"><span class="level-item">February 2022</span></span><span class="level-end"><span class="level-item tag">17</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/01/"><span class="level-start"><span class="level-item">January 2022</span></span><span class="level-end"><span class="level-item tag">11</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">Tags</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/BFS/"><span class="tag">BFS</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/BOJ/"><span class="tag">BOJ</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Boyer-Moore-algorithm/"><span class="tag">Boyer-Moore algorithm</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Brute-Force/"><span class="tag">Brute Force</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Bubble-sort/"><span class="tag">Bubble sort</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/CLI/"><span class="tag">CLI</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Computer-Network/"><span class="tag">Computer Network</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Counting-sort/"><span class="tag">Counting sort</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/DFS/"><span class="tag">DFS</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/DP/"><span class="tag">DP</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Django/"><span class="tag">Django</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/HTML-CSS/"><span class="tag">HTML/CSS</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Insertion-sort/"><span class="tag">Insertion sort</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/JavaScript/"><span class="tag">JavaScript</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/KMP/"><span class="tag">KMP</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Markdown/"><span class="tag">Markdown</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Merge-sort/"><span class="tag">Merge sort</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/OS/"><span class="tag">OS</span><span class="tag">10</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Quick-sort/"><span class="tag">Quick sort</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Rabin-Karp-algorithm/"><span class="tag">Rabin-Karp algorithm</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Selection-sort/"><span class="tag">Selection sort</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/WEB/"><span class="tag">WEB</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/algorithm/"><span class="tag">algorithm</span><span class="tag">9</span></a></div><div class="control"><a class="tags has-addons" href="/tags/bootstrap/"><span class="tag">bootstrap</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/brute-force/"><span class="tag">brute force</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/data-structure/"><span class="tag">data structure</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/git/"><span class="tag">git</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/github/"><span class="tag">github</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/hexo/"><span class="tag">hexo</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/memoization/"><span class="tag">memoization</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/python/"><span class="tag">python</span><span class="tag">7</span></a></div><div class="control"><a class="tags has-addons" href="/tags/queue/"><span class="tag">queue</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/stack/"><span class="tag">stack</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/tree/"><span class="tag">tree</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EA%B3%84%EC%82%B0%EA%B8%B0/"><span class="tag">계산기</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EB%B0%B1%ED%8A%B8%EB%9E%98%ED%82%B9/"><span class="tag">백트래킹</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EB%B9%85-%EC%98%A4-%ED%91%9C%EA%B8%B0%EB%B2%95/"><span class="tag">빅-오 표기법</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EC%84%A0%ED%98%95%ED%81%90/"><span class="tag">선형큐</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EC%97%94%EB%94%94%EC%95%88/"><span class="tag">엔디안</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EC%9A%B0%EC%84%A0%EC%88%9C%EC%9C%84%ED%81%90/"><span class="tag">우선순위큐</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EC%9B%90%ED%98%95%ED%81%90/"><span class="tag">원형큐</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%ED%84%B0%EB%AF%B8%EB%84%90-%EB%AA%85%EB%A0%B9%EC%96%B4/"><span class="tag">터미널 명령어</span><span class="tag">1</span></a></div></div></div></div></div></div><div class="column column-right is-4-tablet is-4-desktop is-4-widescreen  order-3"><!--!--></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/favicon_mhlee.ico" alt="Mihyun&#039;s Blog" height="28"></a><p class="is-size-7"><span>&copy; 2022 Mihyun Lee</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="Back to top" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "This website uses cookies to improve your experience.",
+          dismiss: "Got it!",
+          allow: "Allow cookies",
+          deny: "Decline",
+          link: "Learn more",
+          policy: "Cookie Policy",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="Type something..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"Type something...","untitled":"(Untitled)","posts":"Posts","pages":"Pages","categories":"Categories","tags":"Tags"});
+        });</script></body></html>

@@ -1,0 +1,555 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>Mihyun&#039;s Blog</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="Mihyun&#039;s Blog"><meta name="msapplication-TileImage" content="/img/favicon_mhlee.ico"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Mihyun&#039;s Blog"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta property="og:type" content="blog"><meta property="og:title" content="Mihyun&#039;s Blog"><meta property="og:url" content="https://github.com/mhlee21"><meta property="og:site_name" content="Mihyun&#039;s Blog"><meta property="og:locale" content="en_US"><meta property="og:image" content="https://github.com/img/og_image.png"><meta property="article:author" content="Mihyun Lee"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://github.com/mhlee21"},"headline":"Mihyun's Blog","image":["https://github.com/img/og_image.png"],"author":{"@type":"Person","name":"Mihyun Lee"},"publisher":{"@type":"Organization","name":"Mihyun's Blog","logo":{"@type":"ImageObject","url":"https://github.com/img/favicon_mhlee.ico"}},"description":""}</script><link rel="icon" href="/img/favicon_mhlee.ico"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+          Array
+              .from(document.querySelectorAll('.tab-content'))
+              .forEach($tab => {
+                  $tab.classList.add('is-hidden');
+              });
+          Array
+              .from(document.querySelectorAll('.tabs li'))
+              .forEach($tab => {
+                  $tab.classList.remove('is-active');
+              });
+          const $activeTab = document.querySelector(location.hash);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+          const $tabMenu = document.querySelector(`a[href="${location.hash}"]`);
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.0.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/favicon_mhlee.ico" alt="Mihyun&#039;s Blog" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/mhlee21"><i class="fab fa-github"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2022-03-02T00:06:44.000Z" title="2022. 3. 2. 오전 9:06:44">2022-03-02</time></span><span class="level-item">Updated&nbsp;<time dateTime="2022-03-18T07:52:16.395Z" title="2022. 3. 18. 오후 4:52:16">2022-03-18</time></span><span class="level-item"><a class="link-muted" href="/categories/Django/">Django</a></span><span class="level-item">30 minutes read (About 4547 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2022/03/02/Django/">Django</a></h1><div class="content"><h1 id="Web-Framework"><a href="#Web-Framework" class="headerlink" title="Web Framework"></a>Web Framework</h1><h2 id="Django"><a href="#Django" class="headerlink" title="Django"></a>Django</h2><p>Django is a high-level <em><strong>Python web framework</strong></em> that encourages rapid development and clean, pragmatic design. Built by experienced developers, it takes care of much of the hassle of web development, so <em><strong>you can focus on writing your app without needing to reinvent the wheel.</strong></em></p>
+<h2 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h2><ul>
+<li>World Wide Web</li>
+<li>인터넷에 연결된 컴퓨터를 통해 정보를 공유할 수 있는 전 세계적인 정보 공간</li>
+</ul>
+<blockquote>
+<p>⭐ 정적페이지와 동적페이지 차이</p>
+</blockquote>
+<h2 id="Static-web-page-정적-웹-페이지"><a href="#Static-web-page-정적-웹-페이지" class="headerlink" title="Static web page (정적 웹 페이지)"></a>Static web page (정적 웹 페이지)</h2><ul>
+<li>서버에 미리 저장된 파일이 사용자에게 그대로 전달되는 웹페이지</li>
+<li>서버가 정적 웹 페이지에 대한 요청을 받은 경우 서버는 추가적인 처리 과정 없이 클라이언트에게 응답을 보냄</li>
+<li>모든 상황에서 모든 사용자에게 동일한 정보를 표시</li>
+<li>일반적으로 HTML, CSS, JavaScript 로 작성됨</li>
+<li>flat page 라고도 함</li>
+</ul>
+<h2 id="Dynamic-web-page-동적-웹-페이지"><a href="#Dynamic-web-page-동적-웹-페이지" class="headerlink" title="Dynamic web page (동적 웹 페이지)"></a>Dynamic web page (동적 웹 페이지)</h2><ul>
+<li>웹 페이지에 대한 요청을 받은 경우 서버는 추가적인 처리 과정 이후 클라이언트에게 응답을 보냄</li>
+<li>동적 페이지는 방문자와 상호작용하기 때문에 페이지 내용은 그때그때 다름</li>
+<li>서버사이드 프로그래밍 언어 (Python, java, C++등)가 사용되며 파일을 처리하고 데이터베이스와의 상호작용이 이루어짐</li>
+</ul>
+<h2 id="Framework"><a href="#Framework" class="headerlink" title="Framework"></a>Framework</h2><ul>
+<li>프로그래밍에서 특정 운영 체제를 위한 응용 프로그램 표준 구조를 구현하는 클래스와 라이브러리 모임</li>
+<li>재사용할 수 있는 수많은 코드를 프레임워크로 통합함으로써 개발자가 새로운 애플리케이션을 위한 표준 코드를 다시 작성하지 않아도 같이 사용할 수 있도록 도움</li>
+<li>Application Framework 라고도 함</li>
+</ul>
+<h2 id="Web-framework"><a href="#Web-framework" class="headerlink" title="Web framework"></a>Web framework</h2><ul>
+<li><em><strong>웹 페이지를 개발하는 과정에서 겪는 어려움을 줄이는 것이 주 목적</strong></em>으로 데이터베이스 연동, 템플릿 형태의 표준, 세션 관리, 코드 재사용 등의 기능을 포함</li>
+<li>동적인 웹페이지나, 웹 애플리케이션, 웹 서비스 개발 보조용으로 만들어지는 Application Framework 의 일종</li>
+</ul>
+<h2 id="Django를-사용해야-하는-이유"><a href="#Django를-사용해야-하는-이유" class="headerlink" title="Django를 사용해야 하는 이유"></a>Django를 사용해야 하는 이유</h2><ul>
+<li>검증된 Python 언어 기반 Web framework</li>
+<li>대규모 서비스에도 안정적이며 오랫동안 세계적인 기업들에 의해 사용됨<ul>
+<li>spotify, Instagram, Dropbox, Delivery Hero…</li>
+</ul>
+</li>
+</ul>
+<h2 id="Framework-Architecture"><a href="#Framework-Architecture" class="headerlink" title="Framework Architecture"></a>Framework Architecture</h2><ul>
+<li>MVC Design Pattern (model-view-controller)</li>
+<li>소프트웨어 공학에서 사용되는 디자인 패턴 중 하나</li>
+<li>사용자 인터페이스로부터 프로그램 로직을 분리하여 애플리테이션의 시각적 요소나 이면에서 실행되는 부분을 서로 영향없이 쉽게 고칠 수 있는 애플리케이션을 만들 수 있음</li>
+<li>Django 는 <strong>MTV Pattern</strong> (model-template-view) 이라고 함</li>
+</ul>
+<h2 id="MTV-Pattern⭐"><a href="#MTV-Pattern⭐" class="headerlink" title="MTV Pattern⭐"></a>MTV Pattern⭐</h2><ul>
+<li>Model<ul>
+<li>응용프로그램의 데이터 구조를 정의하고 데이터베이스의 기록을 관리(추가, 수정, 삭제)</li>
+</ul>
+</li>
+<li>Template<ul>
+<li>파일의 구조나 레이아웃을 정의</li>
+<li>실제 내용을 보여주는데 사용 (Presentation)</li>
+</ul>
+</li>
+<li>View<ul>
+<li>HTTP 요청을 수신하고 HTTP 응답을 반환</li>
+<li>Model 을 통해 요청을 충족시키는데 필요한 데이터에 접근</li>
+<li>template 에게 응답의 서식 설정을 맡김</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">MVC Pattern</th>
+<th align="center">MTV (Django)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><strong>M</strong>odel</td>
+<td align="center"><strong>M</strong>odel</td>
+</tr>
+<tr>
+<td align="center"><strong>V</strong>iew</td>
+<td align="center"><strong>T</strong>emplate</td>
+</tr>
+<tr>
+<td align="center"><strong>C</strong>ontroller</td>
+<td align="center"><strong>V</strong>iew</td>
+</tr>
+</tbody></table>
+<p><img src="/2022/03/02/Django/image-20220302092304849.png" alt="image-20220302092304849"></p>
+<h1 id="Django-Intro"><a href="#Django-Intro" class="headerlink" title="Django Intro"></a>Django Intro</h1><h2 id="가상환경-설정"><a href="#가상환경-설정" class="headerlink" title="가상환경 설정"></a>가상환경 설정</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ python -m venv venv <span class="comment"># 파이썬 venv 라는 모듈을 실행한다. 뒤에 있는 venv 는 가상환경 이름</span></span><br><span class="line">$ <span class="built_in">source</span> venv/Script/activate</span><br><span class="line">(venv)</span><br><span class="line">$ pip list</span><br><span class="line">Package    Version</span><br><span class="line">---------- -------</span><br><span class="line">pip        21.2.4</span><br><span class="line">setuptools 58.1.0</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>vs code 에서 설정 및 확인 방법</p>
+<p><code>ctrl + shift + p</code> : python select interpreter 에서 현재 디렉토리의 python version 선택</p>
+</blockquote>
+<blockquote>
+<p>❗️ 가상환경은 git으로 관리하지 않는다.</p>
+<ul>
+<li>gitignore 작성 시 venv 추가</li>
+<li><code>pip freeze &gt; requirements.txt</code> 목록으로 관리</li>
+<li>이렇게 생성된 requirements.txt 파일을 git에 올린다.</li>
+</ul>
+<p>💡 requirements.txt로 가상환경 설정하는 법</p>
+<ul>
+<li><code>pip install -r requirements.txt</code></li>
+</ul>
+</blockquote>
+<h2 id="Django-시작하기"><a href="#Django-시작하기" class="headerlink" title="Django 시작하기"></a>Django 시작하기</h2><ul>
+<li>Django 설치 전 가상환경 생성 및 활성화</li>
+</ul>
+<h3 id="Django-설치-현재-3-2버전이-LTS"><a href="#Django-설치-현재-3-2버전이-LTS" class="headerlink" title="Django 설치 (현재 3.2버전이 LTS)"></a>Django 설치 (현재 3.2버전이 LTS)</h3><blockquote>
+<p>LTS (Long Term Support)</p>
+<ul>
+<li>일반적인 경우보다 장기간에 걸쳐 지원하도록 고안된 소프트웨어의 버전</li>
+<li>컴퓨터 소프트웨어의 제품 수명주기 관리 정책</li>
+<li>배포자는 LTS 확정을 통해 장기적이고 안정적인 지원을 보장함</li>
+</ul>
+</blockquote>
+<ul>
+<li>❗️2021년 21월 Django 4.0 릴리즈 이후 버전을 명시하지 않으면 4.0 버전이 설치되니 주의!</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ pip install django==3.2.12</span><br><span class="line">$ pip list</span><br><span class="line">Package    Version</span><br><span class="line">---------- -------</span><br><span class="line">asgiref    3.5.0</span><br><span class="line">Django     3.2.12</span><br><span class="line">pip        21.2.4</span><br><span class="line">pytz       2021.3</span><br><span class="line">setuptools 58.1.0</span><br><span class="line">sqlparse   0.4.2</span><br></pre></td></tr></table></figure>
+
+<h3 id="프로젝트-생성⭐"><a href="#프로젝트-생성⭐" class="headerlink" title="프로젝트 생성⭐"></a>프로젝트 생성⭐</h3><ul>
+<li><code>django-admin startproject &lt;프로젝트명&gt; .</code></li>
+<li>프로젝트 이름에는 python이나 django 에서 사용중인 키워드를 피해야 한다.</li>
+<li>‘-‘ (하이픈) 도 사용할 수 없다.</li>
+<li><code>.</code> 을 붙이지 않으면 manage.py 파일이 프로젝트 파일 아래에 생긴다.</li>
+</ul>
+<h3 id="서버-시작하기-활성화"><a href="#서버-시작하기-활성화" class="headerlink" title="서버 시작하기(활성화)"></a>서버 시작하기(활성화)</h3><ul>
+<li><code>python manage.py runserver</code></li>
+<li><a target="_blank" rel="noopener" href="http://127.0.0.1:8000/">http://127.0.0.1:8000/</a> 접속 시 다음과 같은 창 뜨면 서버 정상적으로 활성화 된 것</li>
+</ul>
+<p><img src="/2022/03/02/Django/image-20220302095613562.png" alt="image-20220302095613562"></p>
+<h3 id="프로젝트-구조⭐"><a href="#프로젝트-구조⭐" class="headerlink" title="프로젝트 구조⭐"></a>프로젝트 구조⭐</h3><ul>
+<li><code>__init__.py</code> : Python 에게 이 디렉토리를 하나의 Python 패키지로 다루도록 지시</li>
+<li><code>asgi.py</code> : Asynchronous Server Gateway Interface, django 애플리케이션이 비동기식 웹 서버와 연결 및 소통하는 것을 도움</li>
+<li><strong><code> settings.py</code> : 애플리케이션의 모든 설정을 포함</strong></li>
+<li><strong><code>urls.py</code> : 사이트의 url 과 적절한 views의 연결을 지정</strong></li>
+<li><code>wsgi.py</code> : Web Server Gateway Interface, django 애플리케이션이 웹서버와 연결 및 소통하는 것을 도움</li>
+<li><strong><code>manage.py</code> : django 프로젝트와 다양한 방법으로 상호작용하는 커맨드라인 유틸리티</strong></li>
+</ul>
+<h3 id="Application-생성"><a href="#Application-생성" class="headerlink" title="Application 생성"></a>Application 생성</h3><ul>
+<li>일반적으로 Application명은 <em><strong>복수형</strong></em>으로 하는 것을 권장</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ python manage.py startapp articles</span><br></pre></td></tr></table></figure>
+
+<h3 id="Application-구조⭐"><a href="#Application-구조⭐" class="headerlink" title="Application 구조⭐"></a>Application 구조⭐</h3><ul>
+<li><code>admin.py</code> : 관리자용 페이지를 설정 하는 곳</li>
+<li><code>apps.py</code> : 앱의 정보가 작성된 곳</li>
+<li><code>models.py</code> : 앱에서 사용하는 Model 을 정의하는 곳</li>
+<li><code>tests.py</code> : 프로젝트의 테스트 코드를 작성하는 곳</li>
+<li><code>views.py</code> : view 함수들이 정의 되는 곳</li>
+</ul>
+<blockquote>
+<p>⭐ urls.py 는 app생성시에는 자동 생성되지 않는다.</p>
+</blockquote>
+<h3 id="Project-amp-Application-⭐"><a href="#Project-amp-Application-⭐" class="headerlink" title="Project &amp; Application ⭐"></a>Project &amp; Application ⭐</h3><ul>
+<li>Project<ul>
+<li>프로젝트는 앱의 집합 (collection of apps)</li>
+<li><strong>프로젝트는 여러 앱이 포함될 수 있음</strong></li>
+<li>앱은 여러 프로젝트에 있을 수 있음</li>
+</ul>
+</li>
+<li>Application<ul>
+<li>앱은 실제 요청을 처리하고 페이지를 보여주고 하는 등의 역할을 담당</li>
+<li>하나의 프로젝트는 여러 앱을 가짐</li>
+<li>일반적으로 앱은 하나의 역할 및 기능 단위로 작성함</li>
+</ul>
+</li>
+</ul>
+<h3 id="앱-Application-등록"><a href="#앱-Application-등록" class="headerlink" title="앱(Application) 등록"></a>앱(Application) 등록</h3><ul>
+<li><p>프로젝트에서 앱을 사용하기 위해서는 반드시 <code>INSTALLED_APPS</code>리스트에 추가해야함</p>
+<ul>
+<li><code>settings.py</code>에 위치</li>
+<li>Django installation 에 활성화 된 모든 앱을 지정하는 문자열 목록</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">INSTALLED_APPS = [</span><br><span class="line">    <span class="string">&#x27;articles&#x27;</span>,	<span class="comment"># 첫번째에 application 명 추가!</span></span><br><span class="line">    <span class="string">&#x27;django.contrib.admin&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;django.contrib.auth&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;django.contrib.contenttypes&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;django.contrib.sessions&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;django.contrib.messages&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;django.contrib.staticfiles&#x27;</span>,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p> 💡반드시 생성 후 등록!⭐</p>
+<p><code>INSTALLED_APPS</code>에 먼저 등록하고 생성하려면 앱이 생성되지 않음</p>
+</blockquote>
+</li>
+</ul>
+<h1 id="요청과-응답"><a href="#요청과-응답" class="headerlink" title="요청과 응답"></a>요청과 응답</h1><h2 id="URLs-urls-py"><a href="#URLs-urls-py" class="headerlink" title="URLs (urls.py)"></a>URLs (urls.py)</h2><ul>
+<li><p>HTTP 요청(request)을 알맞은 view로 전달⭐</p>
+</li>
+<li><p><code>urls.py</code>에서 urlpatterns 리스트에 view 추가</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># firstpjt/urls.py</span></span><br><span class="line"><span class="keyword">from</span> django.contrib <span class="keyword">import</span> admin</span><br><span class="line"><span class="keyword">from</span> django.urls <span class="keyword">import</span> path</span><br><span class="line"><span class="keyword">from</span> articles <span class="keyword">import</span> views <span class="comment"># articles 의 views 모듈 import</span></span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    path(<span class="string">&#x27;admin/&#x27;</span>, admin.site.urls),</span><br><span class="line">    path(<span class="string">&#x27;index/&#x27;</span>, views.index), <span class="comment">#views의 index 함수 호출</span></span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Django 에서는 trailing comma를 권장</p>
+<ul>
+<li>list 마지막의 <code>,</code></li>
+<li>생산성 향상을 위함</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<h2 id="View⭐"><a href="#View⭐" class="headerlink" title="View⭐"></a>View⭐</h2><ul>
+<li>HTTP 요청을 수신하고 HTTP 응답을 반환하는 함수 작성</li>
+<li>Model 을 통해 요청에 맞는 필요 데이터에 접근</li>
+<li>Template에게 HTTP 응답 서식을 맡김</li>
+<li><code>views.py</code>에서 view 함수 생성</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># articles/views.py</span></span><br><span class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> render</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create your views here.</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">index</span>(<span class="params">request</span>):</span><br><span class="line">    <span class="keyword">return</span> render(request, <span class="string">&#x27;index.html&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Templates⭐"><a href="#Templates⭐" class="headerlink" title="Templates⭐"></a>Templates⭐</h2><ul>
+<li>실제 내용을 보여주는데 사용되는 파일</li>
+<li>파일의 구조나 레이아웃을 정의 (ex. HTML)</li>
+<li>Template 파일 경로의 기본값은 <em><strong>app 폴더 안의 templates 폴더</strong></em>로 지정되어 있음</li>
+<li>application 폴더에서 <code>templates</code> 폴더 생성 후 <code>index.html</code>파일 추가</li>
+</ul>
+<p><img src="/2022/03/02/Django/image-20220302105346778.png" alt="image-20220302105346778"></p>
+<ul>
+<li><p>서버 실행 후 <a target="_blank" rel="noopener" href="http://127.0.0.1:8000/index/">http://127.0.0.1:8000/index/</a> 접속하면 index.html 작성 내용 확인 가능</p>
+<p><img src="/2022/03/02/Django/image-20220302105614554.png" alt="image-20220302105614554"></p>
+</li>
+</ul>
+<h2 id="추가-설정-settings-py-⭐"><a href="#추가-설정-settings-py-⭐" class="headerlink" title="추가 설정 (settings.py)⭐"></a>추가 설정 (settings.py)⭐</h2><ul>
+<li><code>LANGUAGE_CODE</code><ul>
+<li><code>LANGUAGE_CODE = &#39;ko-kr&#39;</code></li>
+<li>모든 사용자에게 제공되는 번역을 결정</li>
+<li>이 설정이 적용되려면 <code>USE_I18N</code>이 활성화 되어있어야 함</li>
+</ul>
+</li>
+<li><code>TIME_ZONE</code> <ul>
+<li>데이터베이스 연결의 시간대를 나타내는 문자열 지정</li>
+<li><code>USE_TZ</code>가 True 이고 이 옵션이 설정된 경우 데이터베이스에서 날짜 시간을 읽으면, UTC 대신 새로 설정한 시간대의 인식 날짜&amp;시간이 반환 됨</li>
+</ul>
+</li>
+<li><code>USE_I18N</code><ul>
+<li>Django 의 번역 시스템을 활성화해야 하는지 여부를 지정</li>
+</ul>
+</li>
+<li><code>USE_L10N</code><ul>
+<li>데이터의 지역화 된 형식(localized formatting) 을 기본적으로 활성화할지 여부를 지정</li>
+<li>True일 경우, Django는 현재 locale 의 형식을 사용하여 숫자와 날짜를 표시</li>
+</ul>
+</li>
+<li><code>USE_TZ</code><ul>
+<li>datetimes 가 기본적으로 시간대를 인식하는지 여부를 지정</li>
+<li>True일 경우 Django 는 내부적으로 시간대 인식 날짜&#x2F;시간을 사용</li>
+</ul>
+</li>
+</ul>
+<h1 id="Template"><a href="#Template" class="headerlink" title="Template"></a>Template</h1><h2 id="Django-Template"><a href="#Django-Template" class="headerlink" title="Django Template"></a>Django Template</h2><ul>
+<li>데이터 표현을 제어하는 도구이자 표현에 관련된 로직</li>
+<li>사용하는 built-in system<ul>
+<li>Django template language (DTL)</li>
+</ul>
+</li>
+</ul>
+<h2 id="Django-Template-Language-DTL-⭐"><a href="#Django-Template-Language-DTL-⭐" class="headerlink" title="Django Template Language (DTL)⭐"></a>Django Template Language (DTL)⭐</h2><ul>
+<li>Django template 에서 사용하는 <strong>built-in template system</strong></li>
+<li>조건, 반복, 변수 치환, 필터 등의 기능을 제공</li>
+<li>단순히 Python 이 HTML에 포함된 것이 아니며, 프로그래밍적 로직이 아니라 <strong>프레젠테이션을 표현하기 위한 것</strong></li>
+<li>Python 처럼 일부 프로그래밍 구조(it, for등)를 사용할 수 있지만, 이것은 해당 Python 코드로 실행되는 것이 아님!</li>
+<li><a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/3.2/ref/templates/builtins/">https://docs.djangoproject.com/en/3.2/ref/templates/builtins/</a> ⭐⭐⭐</li>
+</ul>
+<h2 id="DTL-Syntax⭐"><a href="#DTL-Syntax⭐" class="headerlink" title="DTL Syntax⭐"></a>DTL Syntax⭐</h2><ul>
+<li><p>Variable</p>
+<ul>
+<li><code>&#123;&#123; variable &#125;&#125;</code></li>
+<li>render()를 사용하여 views.py 에서 정의한 변수를 template 파일로 넘겨 사용하는 것</li>
+<li>변수 명은 영어, 숫자와 밑줄(_)의 조합으로 구성될 수 있으나 밑줄로는 시작할 수 없음<ul>
+<li>공백이나 구두점 문자 또한 사용할 수 없음</li>
+</ul>
+</li>
+<li>dot(.)를 사용하여 변수 속성에 접근할 수 있음</li>
+<li>render()의 세번째 인자로 <code>&#123;&#39;key&#39;: value&#125;</code> 와 같이 딕셔너리 형태로 넘겨주며,<br>여기서 정의한 key 에 해당하는 문자열이 template 에서 사용 가능한 변수명(variable)이 됨</li>
+</ul>
+</li>
+<li><p>Filters</p>
+<ul>
+<li><code>&#123;&#123; variable|filter&#125;&#125;</code></li>
+<li>표시할 변수를 수정할 때 사용</li>
+<li>60개의 built-in template filters 를 제공</li>
+<li>chained 가 가능하며 일부 필터는 인자를 받기도 함</li>
+</ul>
+</li>
+<li><p>Tags</p>
+<ul>
+<li><code>&#123;% tag %&#125;</code></li>
+<li>출력 텍스트를 만들거나, 반복 또는 논리를 수행하여 제어 흐름을 만드는 등 변수보다 복잡한 일들을 수행</li>
+<li>일부 태그는 시작과 종료태그가 필요<ul>
+<li><code>&#123;% if %&#125;&#123;% endif %&#125;</code></li>
+<li>약 24개의 built-in template tags 를 제공</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Comments</p>
+<ul>
+<li>한줄 주석 : &#96;&#96;</li>
+<li>여러줄 주석: <code>&#123;% comment %&#125;&#123;% endcomment %&#125;</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="코드-작성-순서"><a href="#코드-작성-순서" class="headerlink" title="코드 작성 순서"></a>코드 작성 순서</h2><ul>
+<li>데이터의 흐름에 맞추어 작성<ul>
+<li><code>urls.py</code> -&gt; <code>views.py</code> -&gt; <code>templates</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="Template-inheritance-템플릿-상속"><a href="#Template-inheritance-템플릿-상속" class="headerlink" title="Template inheritance (템플릿 상속)"></a>Template inheritance (템플릿 상속)</h2><ul>
+<li>템플릿 상속은 기본적으로 코드의 재사용성에 초점을 맞춤</li>
+<li>템플릿 상속을 사용하면 사이트의 모든 공통 요소를 포함하고, 하위 템플릿이 재정의(override) 할 수 있는 블록을 정의하는 기본 “skeleton” 템플릿을 만들 수 있음</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># settings.py</span></span><br><span class="line">TEMPLATES = [</span><br><span class="line">  &#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="string">&#x27;DIRS&#x27;</span> : [BASE_DIR / <span class="string">&#x27;templates&#x27;</span>], <span class="comment">###⭐###</span></span><br><span class="line">  &#125;,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<h3 id="Template-Tag⭐"><a href="#Template-Tag⭐" class="headerlink" title="Template Tag⭐"></a>Template Tag⭐</h3><ul>
+<li><code>&#123;% extends '' %&#125;</code><ul>
+<li>자식(하위) 템플릿이 부모 템플릿을 확장한다는 것을 알림</li>
+<li>⭐️반드시 템플릿 최상단에 작성 되어야 함</li>
+</ul>
+</li>
+<li><code>&#123;% block content %&#125; &#123;% endblock %&#125;</code><ul>
+<li>하위 템플릿에서 재지정(overridden)할 수 있는 블록을 정의</li>
+<li>즉, 하위 템플릿이 채울 수 있는 공간</li>
+</ul>
+</li>
+<li><code>&#123;% include '' %&#125;</code><ul>
+<li>템플릿을 로드하고 현재 페이지로 렌더링</li>
+<li><em>템플릿 내에 다른 템플릿을 포함하는 방법</em></li>
+<li>주로 파일명 앞에 ‘_’(언더바)를 붙여 include 되는 템플릿을 분류함</li>
+</ul>
+</li>
+</ul>
+<h3 id="Django-template-system-feat-Django-설계-철학"><a href="#Django-template-system-feat-Django-설계-철학" class="headerlink" title="Django template system (feat. Django 설계 철학)"></a>Django template system (feat. Django 설계 철학)</h3><ul>
+<li>표현과 로직(view)을 분리<ul>
+<li>템플릿 시스템은 표현을 제어하는 도구이자 표현에 관련된 로직일 뿐이라고 생각한다.</li>
+<li>즉, 템플릿 시스템은 이러한 기본목표를 넘어서는 기능을 지원하지 말아야 한다.</li>
+</ul>
+</li>
+<li>중복을 배제<ul>
+<li>대다수의 동적 웹사이트는 공통 header, footer, navbar 같은 사이트 공통 디자인을 갖는다.</li>
+<li>Django 템플릿 시스템을 이러한 요소를 한 곳에 저장하기 쉽게 하여 중복 코드를 없애야 한다.</li>
+<li>이것이 템플릿 상속의 기초가 되는 철학이다.</li>
+</ul>
+</li>
+</ul>
+<h1 id="HTML-Form"><a href="#HTML-Form" class="headerlink" title="HTML Form"></a>HTML Form</h1><h2 id="HTML-“form”-element"><a href="#HTML-“form”-element" class="headerlink" title="HTML “form” element"></a>HTML “form” element</h2><ul>
+<li>웹에서 사용자 정보를 입력하는 여러 방식(text, button, checkbox, file, hidden, image, password, radio, reset, submit)을 제공하고, 사용자로부터 입력받은 데이터를 서버로 전송하는 역할을 담당</li>
+<li>핵심 속성 (attribute)⭐<ul>
+<li><strong>action</strong> : 입력된 데이터가 전송될 URL 지정</li>
+<li><strong>method</strong> : 입력 데이터 전달 방식 지정</li>
+</ul>
+</li>
+</ul>
+<h2 id="HTML-“input”-element"><a href="#HTML-“input”-element" class="headerlink" title="HTML “input” element"></a>HTML “input” element</h2><ul>
+<li>사용자로부터 데이터를 입력 받기 위해 사용</li>
+<li>type 속성에 따라 동작 방식이 달라짐</li>
+<li>핵심 속성 (attribute)<ul>
+<li><strong>name⭐</strong></li>
+<li>중복 가능, 양식을 제출했을 때 name 이라는 이름에 설정된 값을 넘겨서 값을 가져올 수 있음</li>
+<li>주요 용도는 GET&#x2F;POST 방식으로 서버에 전달하는 파라미터 (name은 key, value는 value)로 매핑하는 것</li>
+<li>GET 방식에서는 URL 에서 <code>?key=value&amp;key=value</code>형식으로 데이터를 전달함</li>
+</ul>
+</li>
+</ul>
+<h2 id="HTML-“label”-element"><a href="#HTML-“label”-element" class="headerlink" title="HTML “label” element"></a>HTML “label” element</h2><ul>
+<li>사용자 인터페이스 항목에 대한 설명 (caption)을 나타냄</li>
+<li>label 을 input 요소와 연결하기<ol>
+<li>input 에 id 속성 부여</li>
+<li>label 에는 input 의 id와 동일한 값의 for 속성이 필요</li>
+</ol>
+</li>
+<li>label 과 input 요소 연결의 주요 이점<ul>
+<li>시각적인 기능 뿐만 아니라 화면 리더기에서 label 을 읽어 사용자가 입력해야 하는 텍스트가 무엇인지 더 쉽게 이해할 수 있도록 돕는 프로그래밍적 이점도 있음</li>
+<li>label 을 클릭해서 input 에 초점(focus)를 맞추거나 활성화(activate) 시킬 수 있음</li>
+</ul>
+</li>
+</ul>
+<h2 id="HTML-“for”-attribute"><a href="#HTML-“for”-attribute" class="headerlink" title="HTML “for” attribute"></a>HTML “for” attribute</h2><ul>
+<li><p>for 속성의 값과 일치하는 id를 가진 문서의 첫번째 요소를 제어</p>
+<ul>
+<li>연결된 요소가 labelable elements 인 경우 이 요소에 대한 labeled control 이 됨</li>
+</ul>
+<blockquote>
+<p>labelable elements?</p>
+<ul>
+<li>label 요소와 연결할 수 있는 요소</li>
+<li>button, input(not hidden type), select, textarea, …</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<h2 id="HTML-“id”-attribute"><a href="#HTML-“id”-attribute" class="headerlink" title="HTML “id” attribute"></a>HTML “id” attribute</h2><ul>
+<li>전체 문서에서 고유(must be unique)해야 하는 식별자를 정의</li>
+<li>사용 목적<ul>
+<li>linking, scripting, styling 시 요소를 식별</li>
+</ul>
+</li>
+</ul>
+<h2 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h2><ul>
+<li>HyperText Transfer Protocol</li>
+<li>웹에서 이루어지는 모든 데이터 교환의 기초</li>
+<li>주어진 리소스가 수행 할 작업을 나타내는 request methods를 정의</li>
+<li>HTTP request method 종류<ul>
+<li>GET, POST, PUT, DELETE …</li>
+<li>django 에서는 GET과 POST 만 지원</li>
+</ul>
+</li>
+</ul>
+<h3 id="HTTP-request-method-“GET”"><a href="#HTTP-request-method-“GET”" class="headerlink" title="HTTP request method - “GET”"></a>HTTP request method - “GET”</h3><ul>
+<li>서버로부터 <strong>정보를 조회</strong>하는 데 사용</li>
+<li>데이터를 가져올 때만 사용해야 함</li>
+<li>데이터를 서버로 전송할 때 body 가 아닌 Query String Parameters 를 통해 전송<ul>
+<li>Query String Parameters : 주소로 데이터가 전달되는 형태 (<code>?key=value&amp;key=value</code>)</li>
+</ul>
+</li>
+<li>우리는 서버에 요청을 하면 HTML 문서 파일 한장을 받는데, 이때 사용하는 요청의 방식이 GET</li>
+</ul>
+<h1 id="URL"><a href="#URL" class="headerlink" title="URL"></a>URL</h1><h2 id="Django-URLs"><a href="#Django-URLs" class="headerlink" title="Django URLs"></a>Django URLs</h2><ul>
+<li>Dispatcher (발송자, 운항 관리자)로서의 URL</li>
+<li>웹 애플리케이션은 URL 을 통한 클라이언트의 요청에서부터 시작됨</li>
+</ul>
+<h2 id="Variable-Routing⭐"><a href="#Variable-Routing⭐" class="headerlink" title="Variable Routing⭐"></a>Variable Routing⭐</h2><blockquote>
+<p> django에서는 <code>&#39;Dispatcher&#39;</code>로 검색</p>
+</blockquote>
+<ul>
+<li><p>URL 주소를 변수로 사용하는 것 (url 주소에서 일부에다가 data를 담아서 보내는 것)</p>
+</li>
+<li><p>URL 의 일부를 변수로 지정하여 view 함수의 인자로 넘길 수 있음</p>
+</li>
+<li><p>즉, 변수 값에 따라 하나의 path()에 여러 페이지를 연결 시킬 수 있음</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">path(<span class="string">&#x27;accounts/user/&lt;int:user_pk&gt;/&#x27;</span>, ...)</span><br><span class="line"><span class="comment"># accounts/users/1 -&gt; 1번 user 관련 페이지</span></span><br><span class="line"><span class="comment"># accounts/users/2 -&gt; 2번 user 관련 페이지</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="URL-Path-converters⭐"><a href="#URL-Path-converters⭐" class="headerlink" title="URL Path converters⭐"></a>URL Path converters⭐</h2><ul>
+<li><p>자동으로 설정한 타입으로 형변환해서 전달해준다.</p>
+</li>
+<li><p><strong>str</strong></p>
+<ul>
+<li><code>&#39;/&#39;</code> 를 제외하고 비어있지 않은 모든 문자열과 매치</li>
+<li>작성하지 않을 경우 기본 값 (되도록 명시하자!)</li>
+</ul>
+</li>
+<li><p><strong>int</strong></p>
+<ul>
+<li>0 또는 양의 정수와 매치</li>
+</ul>
+</li>
+<li><p><strong>slug</strong></p>
+<ul>
+<li>ASCII 문자 또는 숫자, 하이픈 및 밑줄 문자로 구성된 모든 슬러그 문자열과 매치</li>
+<li>ex ) ‘building-your-1st-django-site’</li>
+</ul>
+</li>
+<li><p>uuid</p>
+</li>
+<li><p>path</p>
+</li>
+</ul>
+<h2 id="App-URL-mapping"><a href="#App-URL-mapping" class="headerlink" title="App URL mapping"></a>App URL mapping</h2><ul>
+<li>app의 view 함수가 많아지면서 사용하는 path() 또한 많아지고, app 또한 더 많이 작성되기 때문에 프로젝트의 urls.py 에서 모두 관리하는 것은 프로젝트 유지보수에 좋지 않음</li>
+<li>이제는 <strong>각 app에 urls.py를 작성</strong>하게 됨</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># articles/urls.py 기본 형태</span></span><br><span class="line"><span class="keyword">from</span> django.urls <span class="keyword">import</span> path</span><br><span class="line"><span class="keyword">from</span> . <span class="keyword">import</span> views <span class="comment"># django 는 명시적 상대경로(from .module import ..) 를 권장</span></span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="comment"># ../urls.py</span></span><br><span class="line"><span class="keyword">from</span> django.urls <span class="keyword">import</span> path, include</span><br><span class="line">urlpatterns = [ <span class="comment"># urlpatterns는 언제든지 다른 URLconf 모듈을 포함(include)할 수 있음</span></span><br><span class="line">    ...</span><br><span class="line">    path(<span class="string">&#x27;articles/&#x27;</span>, include(<span class="string">&#x27;articles.urls&#x27;</span>)),</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>include()</code>⭐<ul>
+<li>다른 URLconf(app1&#x2F;urls.py) 들을 참조할 수 있도록 도움</li>
+<li>함수 include() 를 만나게 되면, URL 의 그 시점까지 일치하는 부분을 잘라내고, 남은 문자열 부분을 후속처리를 위해 include 된 URLconf로 전달</li>
+<li><strong>django 는 명시적 상대경로(<code>from .module import ..</code>) 를 권장</strong></li>
+</ul>
+</li>
+</ul>
+<p><img src="/2022/03/02/Django/image-20220303125532783.png" alt="image-20220303125532783"></p>
+<h2 id="Naming-URL-patterns⭐"><a href="#Naming-URL-patterns⭐" class="headerlink" title="Naming URL patterns⭐"></a>Naming URL patterns⭐</h2><ul>
+<li><p>이제는 링크에 URL 을 직접 작성하는 것이 아니라 path() 함수의 name 인자를 정의해서 사용</p>
+</li>
+<li><p>Django Template Tag 중 하나인 url 태그를 사용해서 path() 함수에 작성한 name을 사용할 수 있음</p>
+</li>
+<li><p>url 설정에 정의된 특정한 경로들의 의존성을 제거할 수 있음</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># urls.py에서 다음과 같이 설정</span></span><br><span class="line">path(<span class="string">&#x27;index/&#x27;</span>, views.index, name=<span class="string">&#x27;index&#x27;</span>),</span><br><span class="line"></span><br><span class="line"><span class="comment"># html에서의 사용</span></span><br><span class="line">&lt;a href=<span class="string">&quot;&#123;% url &#x27;index&#x27; %&#125;&quot;</span>&gt;메인 페이지&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>&#123;% url ' ' %&#125;</code></p>
+<ul>
+<li>주어진 URL 패턴 이름 및 선택적 매개 변수와 일치하는 절대경로주소를 반환</li>
+<li>템플릿에 URL 을 하드코딩하지 않고도 DRY 원칙을 위반하지 않으면서 링크를 출력하는 방법</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>DRY (Don’t Repeat Yourself)</p>
+</blockquote>
+</div></article></div><nav class="pagination" role="navigation" aria-label="pagination"><div class="pagination-previous"><a href="/page/10/">Previous</a></div><div class="pagination-next"><a href="/page/12/">Next</a></div><ul class="pagination-list is-hidden-mobile"><li><a class="pagination-link" href="/">1</a></li><li><span class="pagination-ellipsis">&hellip;</span></li><li><a class="pagination-link" href="/page/10/">10</a></li><li><a class="pagination-link is-current" href="/page/11/">11</a></li><li><a class="pagination-link" href="/page/12/">12</a></li><li><span class="pagination-ellipsis">&hellip;</span></li><li><a class="pagination-link" href="/page/39/">39</a></li></ul></nav></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.png" alt="Mihyun Lee"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Mihyun Lee</p><p class="is-size-6 is-block">Hello!👋</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>SSAFY 7th</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Posts</p><a href="/archives"><p class="title">39</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Categories</p><a href="/categories"><p class="title">9</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tags</p><a href="/tags"><p class="title">42</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/mhlee21" target="_blank" rel="noopener">Follow</a></div></div></div><div class="card widget" data-type="links"><div class="card-content"><div class="menu"><h3 class="menu-label">Links</h3><ul class="menu-list"><li><a class="level is-mobile" href="https://hexo.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Hexo</span></span><span class="level-right"><span class="level-item tag">hexo.io</span></span></a></li></ul></div></div></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">Categories</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/Computer-Network/"><span class="level-start"><span class="level-item">Computer Network</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/Django/"><span class="level-start"><span class="level-item">Django</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/categories/JavaScript/"><span class="level-start"><span class="level-item">JavaScript</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/OS/"><span class="level-start"><span class="level-item">OS</span></span><span class="level-end"><span class="level-item tag">10</span></span></a></li><li><a class="level is-mobile" href="/categories/WEB/"><span class="level-start"><span class="level-item">WEB</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/categories/algo-python/"><span class="level-start"><span class="level-item">algo_python</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/categories/algorithm/"><span class="level-start"><span class="level-item">algorithm</span></span><span class="level-end"><span class="level-item tag">7</span></span></a></li><li><a class="level is-mobile" href="/categories/python/"><span class="level-start"><span class="level-item">python</span></span><span class="level-end"><span class="level-item tag">7</span></span></a></li><li><a class="level is-mobile" href="/categories/startcamp/"><span class="level-start"><span class="level-item">startcamp</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li></ul></div></div></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">Recents</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-03-23T02:13:19.000Z">2022-03-23</time></p><p class="title"><a href="/2022/03/23/algo-BOJ-14890-%EA%B2%BD%EC%82%AC%EB%A1%9C-%EA%B3%A8%EB%93%9C3/">algo&gt;BOJ_14890(경사로,골드3)</a></p><p class="categories"><a href="/categories/algo-python/">algo_python</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-03-23T01:45:09.000Z">2022-03-23</time></p><p class="title"><a href="/2022/03/23/%EC%97%94%EB%94%94%EC%95%88-Endianness/">엔디안 (Endianness)</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-03-20T03:57:33.000Z">2022-03-20</time></p><p class="title"><a href="/2022/03/20/JavaScript/">JavaScript</a></p><p class="categories"><a href="/categories/JavaScript/">JavaScript</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-03-16T00:01:24.000Z">2022-03-16</time></p><p class="title"><a href="/2022/03/16/tree/">tree</a></p><p class="categories"><a href="/categories/algorithm/">algorithm</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-03-15T13:47:02.000Z">2022-03-15</time></p><p class="title"><a href="/2022/03/15/Network-01-Roadmap/">Network&gt;01.Roadmap</a></p><p class="categories"><a href="/categories/Computer-Network/">Computer Network</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">Archives</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2022/03/"><span class="level-start"><span class="level-item">March 2022</span></span><span class="level-end"><span class="level-item tag">11</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/02/"><span class="level-start"><span class="level-item">February 2022</span></span><span class="level-end"><span class="level-item tag">17</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/01/"><span class="level-start"><span class="level-item">January 2022</span></span><span class="level-end"><span class="level-item tag">11</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">Tags</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/BFS/"><span class="tag">BFS</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/BOJ/"><span class="tag">BOJ</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Boyer-Moore-algorithm/"><span class="tag">Boyer-Moore algorithm</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Brute-Force/"><span class="tag">Brute Force</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Bubble-sort/"><span class="tag">Bubble sort</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/CLI/"><span class="tag">CLI</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Computer-Network/"><span class="tag">Computer Network</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Counting-sort/"><span class="tag">Counting sort</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/DFS/"><span class="tag">DFS</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/DP/"><span class="tag">DP</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Django/"><span class="tag">Django</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/HTML-CSS/"><span class="tag">HTML/CSS</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Insertion-sort/"><span class="tag">Insertion sort</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/JavaScript/"><span class="tag">JavaScript</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/KMP/"><span class="tag">KMP</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Markdown/"><span class="tag">Markdown</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Merge-sort/"><span class="tag">Merge sort</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/OS/"><span class="tag">OS</span><span class="tag">10</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Quick-sort/"><span class="tag">Quick sort</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Rabin-Karp-algorithm/"><span class="tag">Rabin-Karp algorithm</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Selection-sort/"><span class="tag">Selection sort</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/WEB/"><span class="tag">WEB</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/algorithm/"><span class="tag">algorithm</span><span class="tag">9</span></a></div><div class="control"><a class="tags has-addons" href="/tags/bootstrap/"><span class="tag">bootstrap</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/brute-force/"><span class="tag">brute force</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/data-structure/"><span class="tag">data structure</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/git/"><span class="tag">git</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/github/"><span class="tag">github</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/hexo/"><span class="tag">hexo</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/memoization/"><span class="tag">memoization</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/python/"><span class="tag">python</span><span class="tag">7</span></a></div><div class="control"><a class="tags has-addons" href="/tags/queue/"><span class="tag">queue</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/stack/"><span class="tag">stack</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/tree/"><span class="tag">tree</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EA%B3%84%EC%82%B0%EA%B8%B0/"><span class="tag">계산기</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EB%B0%B1%ED%8A%B8%EB%9E%98%ED%82%B9/"><span class="tag">백트래킹</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EB%B9%85-%EC%98%A4-%ED%91%9C%EA%B8%B0%EB%B2%95/"><span class="tag">빅-오 표기법</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EC%84%A0%ED%98%95%ED%81%90/"><span class="tag">선형큐</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EC%97%94%EB%94%94%EC%95%88/"><span class="tag">엔디안</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EC%9A%B0%EC%84%A0%EC%88%9C%EC%9C%84%ED%81%90/"><span class="tag">우선순위큐</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EC%9B%90%ED%98%95%ED%81%90/"><span class="tag">원형큐</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%ED%84%B0%EB%AF%B8%EB%84%90-%EB%AA%85%EB%A0%B9%EC%96%B4/"><span class="tag">터미널 명령어</span><span class="tag">1</span></a></div></div></div></div></div></div><div class="column column-right is-4-tablet is-4-desktop is-4-widescreen  order-3"><!--!--></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/favicon_mhlee.ico" alt="Mihyun&#039;s Blog" height="28"></a><p class="is-size-7"><span>&copy; 2022 Mihyun Lee</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="Back to top" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "This website uses cookies to improve your experience.",
+          dismiss: "Got it!",
+          allow: "Allow cookies",
+          deny: "Decline",
+          link: "Learn more",
+          policy: "Cookie Policy",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="Type something..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"Type something...","untitled":"(Untitled)","posts":"Posts","pages":"Pages","categories":"Categories","tags":"Tags"});
+        });</script></body></html>

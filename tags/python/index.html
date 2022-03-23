@@ -1,216 +1,224 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="robots" content="noindex"><meta><title>Tag: python - Mihyun&#039;s Blog</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="Mihyun&#039;s Blog"><meta name="msapplication-TileImage" content="/img/favicon_mhlee.ico"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Mihyun&#039;s Blog"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta property="og:type" content="blog"><meta property="og:title" content="Mihyun&#039;s Blog"><meta property="og:url" content="https://github.com/mhlee21"><meta property="og:site_name" content="Mihyun&#039;s Blog"><meta property="og:locale" content="en_US"><meta property="og:image" content="https://github.com/img/og_image.png"><meta property="article:author" content="Mihyun Lee"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://github.com/mhlee21"},"headline":"Mihyun's Blog","image":["https://github.com/img/og_image.png"],"author":{"@type":"Person","name":"Mihyun Lee"},"publisher":{"@type":"Organization","name":"Mihyun's Blog","logo":{"@type":"ImageObject","url":"https://github.com/img/favicon_mhlee.ico"}},"description":""}</script><link rel="icon" href="/img/favicon_mhlee.ico"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+          Array
+              .from(document.querySelectorAll('.tab-content'))
+              .forEach($tab => {
+                  $tab.classList.add('is-hidden');
+              });
+          Array
+              .from(document.querySelectorAll('.tabs li'))
+              .forEach($tab => {
+                  $tab.classList.remove('is-active');
+              });
+          const $activeTab = document.querySelector(location.hash);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+          const $tabMenu = document.querySelector(`a[href="${location.hash}"]`);
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.0.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/favicon_mhlee.ico" alt="Mihyun&#039;s Blog" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/mhlee21"><i class="fab fa-github"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><div class="card-content"><nav class="breadcrumb" aria-label="breadcrumbs"><ul><li><a href="/tags">Tags</a></li><li class="is-active"><a href="#" aria-current="page">python</a></li></ul></nav></div></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2022-01-25T15:00:00.000Z" title="2022. 1. 26. 오전 12:00:00">2022-01-26</time></span><span class="level-item">Updated&nbsp;<time dateTime="2022-03-16T04:26:26.654Z" title="2022. 3. 16. 오후 1:26:26">2022-03-16</time></span><span class="level-item"><a class="link-muted" href="/categories/python/">python</a></span><span class="level-item">9 minutes read (About 1422 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2022/01/26/python-OOP/">python&gt;OOP</a></h1><div class="content"><p>Object-Oriented Programming</p>
+<h2 id="1-객체지향-프로그래밍"><a href="#1-객체지향-프로그래밍" class="headerlink" title="1. 객체지향 프로그래밍"></a>1. 객체지향 프로그래밍</h2><h3 id="1-1-객체지향-프로그래밍"><a href="#1-1-객체지향-프로그래밍" class="headerlink" title="1.1 객체지향 프로그래밍"></a>1.1 객체지향 프로그래밍</h3><p>파이썬은 모두 객체(object)로 이뤄져 있다.</p>
+<p>객체(object)는 특정 타입의 인스턴스(instance)이다.</p>
+<ul>
+<li>123, 900, 5는 모두 int의 인스턴스</li>
+<li>‘hello’, ‘bye’는 모두 string 의 인스턴스</li>
+<li>[232, 89,1], [] 은 모두 list의 인스턴스</li>
+</ul>
+<h4 id="객체의-특징"><a href="#객체의-특징" class="headerlink" title="객체의 특징"></a>객체의 특징</h4><ul>
+<li>타입 (type) : 어떤 연산자와 조작 가능한가?</li>
+<li>속성 (attribute) : 어떤 상태(데이터)를 가지는가?</li>
+<li>기능 (method) : 어떤 행위(함수)를 할수 있는가?</li>
+</ul>
+<p><img src="/2022/01/26/python-OOP/image-20220126093453878.png" alt="image-20220126093453878"></p>
+<h4 id="객체지향-프로그래밍"><a href="#객체지향-프로그래밍" class="headerlink" title="객체지향 프로그래밍"></a>객체지향 프로그래밍</h4><p>데이터가 스스로 매소드를 가지고 있고, 그걸 활용해서 데이터가 변화한다.</p>
+<ul>
+<li>장점<ul>
+<li>프로그램을 유연하고 변경이 용이하게 만들기 때문에 대규모 소프트웨어 개발에 많이 사용된다.</li>
+<li>프로그래밍을 더 배우기 싶게 하고 소프트웨어 개발과 보수를 간편하게 한다.</li>
+<li>보다 직관적인 코드 분석을 가능하게 한다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-2-OOP-기초"><a href="#1-2-OOP-기초" class="headerlink" title="1.2 OOP 기초"></a>1.2 OOP 기초</h3><h4 id="기본-문법"><a href="#기본-문법" class="headerlink" title="기본 문법"></a>기본 문법</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 클래스 정의</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Myclass</span>:</span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 인스턴스 생성</span></span><br><span class="line">my_instance = My <span class="keyword">class</span>()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 메서드 호출</span></span><br><span class="line">my_instance.my_method()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 속성</span></span><br><span class="line">my_instance.my_attribute</span><br></pre></td></tr></table></figure>
 
-<head>
-    <meta charset="UTF-8">
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<h4 id="클래스와-인스턴스"><a href="#클래스와-인스턴스" class="headerlink" title="클래스와 인스턴스"></a>클래스와 인스턴스</h4><ul>
+<li><p>객체의 틀(클래스)을 가지고, 객체(인스턴스)를 생성한다.</p>
+<ul>
+<li><p>클래스 : 객체들의 분류</p>
+</li>
+<li><p>인스턴스 : 하나하나의 실체</p>
+</li>
+<li><p>속성 : 특정 데이터 타입&#x2F;클래스의 객체들이 가지게 될 상태&#x2F;데이터를 의미</p>
+</li>
+<li><p>메서드 : 특정 데이터 타입&#x2F;클래스의 객체에 공통적으로 적용 가능한 행위(함수)</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="객체-비교하기"><a href="#객체-비교하기" class="headerlink" title="객체 비교하기"></a>객체 비교하기</h4><ul>
+<li><code>==</code><ul>
+<li>equal</li>
+<li>변수가 참조하는 객체가 동등한(내용이 같은) 경우 True</li>
+<li>두 객체가 같아 보이지만 실제로 동일한 대상을 가리키고 있다고 확인해 준 것은 아님</li>
+</ul>
+</li>
+<li><code>is</code><ul>
+<li>idential</li>
+<li>두 변수가 동일한 객체를 가리키는 경우 True</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-3-인스턴스"><a href="#1-3-인스턴스" class="headerlink" title="1.3 인스턴스"></a>1.3 인스턴스</h3><h4 id="1-3-1-인스턴스-변수"><a href="#1-3-1-인스턴스-변수" class="headerlink" title="1.3.1 인스턴스 변수"></a>1.3.1 인스턴스 변수</h4><ul>
+<li>인스턴스 변수란?<ul>
+<li>인스턴스가 개인적으로 가지고 있는 속성</li>
+<li>각 인스턴스들의 고유한 변수</li>
+</ul>
+</li>
+<li>생성자 메소드에서 <code>self.&lt;name&gt;</code>으로 정의</li>
+<li>인스턴스가 생성된 이후 <code>&lt;instance&gt;.&lt;name&gt;</code>으로 접근 및 할당</li>
+</ul>
+<h4 id="1-3-2-인스턴스-메서드"><a href="#1-3-2-인스턴스-메서드" class="headerlink" title="1.3.2 인스턴스 메서드"></a>1.3.2 인스턴스 메서드</h4><h3 id="1-4-클래스"><a href="#1-4-클래스" class="headerlink" title="1.4 클래스"></a>1.4 클래스</h3><h3 id="1-5-매소드-정리"><a href="#1-5-매소드-정리" class="headerlink" title="1.5 매소드 정리"></a>1.5 매소드 정리</h3><p><img src="/2022/01/26/python-OOP/image-20220126141645427.png" alt="image-20220126141645427"></p>
+<ul>
+<li>인스턴스 메소드<ul>
+<li>self 매개변수를 통해 동일한 객체에 정의된 속성 및 다른 메소드에 자유롭게 접근 가능</li>
+<li>클래스 자체에도 접근 가능 -&gt; 인스턴스 메소드가 클래스 상태를 수정할 수도 있음</li>
+</ul>
+</li>
+<li>클래스 메소드<ul>
+<li><code>@classmethod</code></li>
+<li>클래스를 가리키는 cls 매개 변수를 받음</li>
+<li>cls 인자에만 접근할 수 있기 때문에 객체 인스턴스 상태를 수정할 수 없음</li>
+</ul>
+</li>
+<li>스태틱 메소드<ul>
+<li><code>@staticmethod</code></li>
+<li>임의 개수의 매개변수를 받을 수 있지만, self 나 매개변수는 사용하지 않음</li>
+<li>객체 상태나 클래스 상태를 수정할 수 없음</li>
+<li>일반 함수처럼 동작하지만 클래스의 이름공간에 귀속됨<ul>
+<li>주로 해당 클래스로 한정하는 용도로 사용</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyClass</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">method</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27;instance method&#x27;</span>, self</span><br><span class="line"></span><br><span class="line"><span class="meta">    @classmethod</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">classmethod</span>(<span class="params">cls</span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27;class method&#x27;</span>, cls</span><br><span class="line"></span><br><span class="line"><span class="meta">    @staticmethod</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">staticmethod</span>():</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27;static method&#x27;</span></span><br><span class="line"></span><br><span class="line">obj = MyClass()</span><br><span class="line"><span class="built_in">print</span>(obj.method())</span><br><span class="line"><span class="built_in">print</span>(MyClass.<span class="built_in">classmethod</span>())</span><br><span class="line"><span class="built_in">print</span>(MyClass.<span class="built_in">staticmethod</span>())</span><br></pre></td></tr></table></figure>
 
-    <meta name="author" content="Mihyun Lee">
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(<span class="string">&#x27;instance method&#x27;</span>, &lt;__main__.MyClass object at 0x000001F9250A3D30&gt;)</span><br><span class="line">(<span class="string">&#x27;class method&#x27;</span>, &lt;class <span class="string">&#x27;__main__.MyClass&#x27;</span>&gt;)</span><br><span class="line">static method</span><br></pre></td></tr></table></figure>
 
-
-
-
-
-<title>Tag: python | Mihyun&#39;s Blog</title>
-
-
-
-    <link rel="icon" href="/favicon_mhlee.ico">
-
-
-
-
-    <!-- stylesheets list from _config.yml -->
-    
-    <link rel="stylesheet" href="/css/style.css">
-    
-
-
-
-    <!-- scripts list from _config.yml -->
-    
-    <script src="/js/script.js"></script>
-    
-    <script src="/js/tocbot.min.js"></script>
-    
-
-
-
-    
-    
-        
-    
-
-
-<meta name="generator" content="Hexo 6.0.0"></head>
-
-<body>
-    <script>
-        // this function is used to check current theme before page loaded.
-        (() => {
-            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
-            const isDark = currentTheme === 'dark';
-            const pagebody = document.getElementsByTagName('body')[0]
-            if (isDark) {
-                pagebody.classList.add('dark-theme');
-                // mobile
-                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
-            } else {
-                pagebody.classList.remove('dark-theme');
-                // mobile
-                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+<p><img src="/2022/01/26/python-OOP/image-20220127130631388.png" alt="image-20220127130631388"></p>
+<p>인스턴스에서 클래스 메소드, 스태틱 메소드 접근 가능하지만, 일반적으로 그렇게 사용하지는 않는다.</p>
+<h2 id="2-객체-지향의-핵심-개념"><a href="#2-객체-지향의-핵심-개념" class="headerlink" title="2. 객체 지향의 핵심 개념"></a>2. 객체 지향의 핵심 개념</h2><h3 id="2-1-추상화"><a href="#2-1-추상화" class="headerlink" title="2.1 추상화"></a>2.1 추상화</h3><h3 id="2-2-상속"><a href="#2-2-상속" class="headerlink" title="2.2 상속"></a>2.2 상속</h3><ul>
+<li><p>두 클래스 사이 부모 - 자식 관계를 정립하는 것</p>
+</li>
+<li><p>클래스는 상속이 가능함</p>
+<ul>
+<li>모든 파이썬 클래스는 object 를 상속받음</li>
+</ul>
+</li>
+<li><p>하위 클래스는 상위 클래스에 정의된 속성, 행동, 관계 및 제약 조건을 모두 상속받음</p>
+</li>
+<li><p>부모 클래스의 속성, 메소드가 자식클래스에 상속되므로, 코드 재사용성이 높아짐</p>
+</li>
+</ul>
+<h4 id="2-2-1-상속-관련-함수와-메소드"><a href="#2-2-1-상속-관련-함수와-메소드" class="headerlink" title="2.2.1 상속 관련 함수와 메소드"></a>2.2.1 상속 관련 함수와 메소드</h4><ul>
+<li><code>isinstance(object, classinfo)</code><ul>
+<li>classinfo의 instance 이거나 subclass 인 경우 True</li>
+</ul>
+</li>
+<li><code>super()</code><ul>
+<li>자식클래스에서 부모 클래스를 사용하고 싶은 경우</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><strong>상속 정리</strong></p>
+<ul>
+<li>파이썬의 모든 클래스는 object 로부터 상속됨</li>
+<li>부모 클래스의 모든 요소(속성, 메소드)가 상속됨</li>
+</ul>
+</blockquote>
+<h4 id="2-2-2-다중-상속"><a href="#2-2-2-다중-상속" class="headerlink" title="2.2.2 다중 상속"></a>2.2.2 다중 상속</h4><ul>
+<li>두 개 이상의 클래스를 상속받는 경우</li>
+<li>상속 받은 모든 클래스의 요소를 활용 가능함</li>
+<li>중복된 속성이나 메서드가 있는 경우 <strong>상속 순서(먼저 상속된 클래스가 win) 에 의해 결정</strong>됨</li>
+</ul>
+<h3 id="2-3-다형성-Polymorphism"><a href="#2-3-다형성-Polymorphism" class="headerlink" title="2.3 다형성 (Polymorphism)"></a>2.3 다형성 (Polymorphism)</h3><ul>
+<li>동일한 메소드가 클래스에 따라 다르게 행동할 수 있다.</li>
+<li>즉, 서로 다른 클래스에 속해있는 객체들이 동일한 메시지에 대해 다른 방식으로 응답될 수 있다.</li>
+</ul>
+<h4 id="2-3-1-메소드-오버라이딩"><a href="#2-3-1-메소드-오버라이딩" class="headerlink" title="2.3.1 메소드 오버라이딩"></a>2.3.1 메소드 오버라이딩</h4><ul>
+<li>상속받은 메소드를 재정의</li>
+<li>상속받은 클래스에서 같은 이름의 메소드로 덮어씀</li>
+<li>부모 클래스의 메소드를 실행시키고 싶은 경우 super를 활용</li>
+</ul>
+<blockquote>
+<p> 파이썬에서 오버로딩은 지원하지 않는다</p>
+<p> 오버라이딩(함수 재정의)만 지원한다.</p>
+<p> (참고) 연산자 오버로딩은 지원한다.</p>
+<p> ​    [] + [] &#x3D; [] , 1+2 &#x3D; 3</p>
+</blockquote>
+<h3 id="2-4-캡슐화-Encapsulation"><a href="#2-4-캡슐화-Encapsulation" class="headerlink" title="2.4 캡슐화 (Encapsulation)"></a>2.4 캡슐화 (Encapsulation)</h3><ul>
+<li>객체의 일부 구현 내용에 대한 외부로부터 직접적인 액세스를 차단</li>
+<li>파이썬에서 <em><strong>암묵적</strong></em>으로 존재하지만, <em><strong>언어적으로는 존재하지 않음</strong></em><ul>
+<li>Public Access Modifier</li>
+<li>Protected Access Modifier</li>
+<li>Private Access Modifier</li>
+</ul>
+</li>
+</ul>
+</div></article></div><nav class="pagination" role="navigation" aria-label="pagination"><div class="pagination-previous is-invisible is-hidden-mobile"><a href="/tags/python/page/0/">Previous</a></div><div class="pagination-next"><a href="/tags/python/page/2/">Next</a></div><ul class="pagination-list is-hidden-mobile"><li><a class="pagination-link is-current" href="/tags/python/">1</a></li><li><a class="pagination-link" href="/tags/python/page/2/">2</a></li><li><span class="pagination-ellipsis">&hellip;</span></li><li><a class="pagination-link" href="/tags/python/page/7/">7</a></li></ul></nav></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.png" alt="Mihyun Lee"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Mihyun Lee</p><p class="is-size-6 is-block">Hello!👋</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>SSAFY 7th</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Posts</p><a href="/archives"><p class="title">39</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Categories</p><a href="/categories"><p class="title">9</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tags</p><a href="/tags"><p class="title">42</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/mhlee21" target="_blank" rel="noopener">Follow</a></div></div></div><div class="card widget" data-type="links"><div class="card-content"><div class="menu"><h3 class="menu-label">Links</h3><ul class="menu-list"><li><a class="level is-mobile" href="https://hexo.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Hexo</span></span><span class="level-right"><span class="level-item tag">hexo.io</span></span></a></li></ul></div></div></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">Categories</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/Computer-Network/"><span class="level-start"><span class="level-item">Computer Network</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/Django/"><span class="level-start"><span class="level-item">Django</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/categories/JavaScript/"><span class="level-start"><span class="level-item">JavaScript</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/OS/"><span class="level-start"><span class="level-item">OS</span></span><span class="level-end"><span class="level-item tag">10</span></span></a></li><li><a class="level is-mobile" href="/categories/WEB/"><span class="level-start"><span class="level-item">WEB</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/categories/algo-python/"><span class="level-start"><span class="level-item">algo_python</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/categories/algorithm/"><span class="level-start"><span class="level-item">algorithm</span></span><span class="level-end"><span class="level-item tag">7</span></span></a></li><li><a class="level is-mobile" href="/categories/python/"><span class="level-start"><span class="level-item">python</span></span><span class="level-end"><span class="level-item tag">7</span></span></a></li><li><a class="level is-mobile" href="/categories/startcamp/"><span class="level-start"><span class="level-item">startcamp</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li></ul></div></div></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">Recents</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-03-23T02:13:19.000Z">2022-03-23</time></p><p class="title"><a href="/2022/03/23/algo-BOJ-14890-%EA%B2%BD%EC%82%AC%EB%A1%9C-%EA%B3%A8%EB%93%9C3/">algo&gt;BOJ_14890(경사로,골드3)</a></p><p class="categories"><a href="/categories/algo-python/">algo_python</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-03-23T01:45:09.000Z">2022-03-23</time></p><p class="title"><a href="/2022/03/23/%EC%97%94%EB%94%94%EC%95%88-Endianness/">엔디안 (Endianness)</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-03-20T03:57:33.000Z">2022-03-20</time></p><p class="title"><a href="/2022/03/20/JavaScript/">JavaScript</a></p><p class="categories"><a href="/categories/JavaScript/">JavaScript</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-03-16T00:01:24.000Z">2022-03-16</time></p><p class="title"><a href="/2022/03/16/tree/">tree</a></p><p class="categories"><a href="/categories/algorithm/">algorithm</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-03-15T13:47:02.000Z">2022-03-15</time></p><p class="title"><a href="/2022/03/15/Network-01-Roadmap/">Network&gt;01.Roadmap</a></p><p class="categories"><a href="/categories/Computer-Network/">Computer Network</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">Archives</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2022/03/"><span class="level-start"><span class="level-item">March 2022</span></span><span class="level-end"><span class="level-item tag">11</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/02/"><span class="level-start"><span class="level-item">February 2022</span></span><span class="level-end"><span class="level-item tag">17</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/01/"><span class="level-start"><span class="level-item">January 2022</span></span><span class="level-end"><span class="level-item tag">11</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">Tags</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/BFS/"><span class="tag">BFS</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/BOJ/"><span class="tag">BOJ</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Boyer-Moore-algorithm/"><span class="tag">Boyer-Moore algorithm</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Brute-Force/"><span class="tag">Brute Force</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Bubble-sort/"><span class="tag">Bubble sort</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/CLI/"><span class="tag">CLI</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Computer-Network/"><span class="tag">Computer Network</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Counting-sort/"><span class="tag">Counting sort</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/DFS/"><span class="tag">DFS</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/DP/"><span class="tag">DP</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Django/"><span class="tag">Django</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/HTML-CSS/"><span class="tag">HTML/CSS</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Insertion-sort/"><span class="tag">Insertion sort</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/JavaScript/"><span class="tag">JavaScript</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/KMP/"><span class="tag">KMP</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Markdown/"><span class="tag">Markdown</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Merge-sort/"><span class="tag">Merge sort</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/OS/"><span class="tag">OS</span><span class="tag">10</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Quick-sort/"><span class="tag">Quick sort</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Rabin-Karp-algorithm/"><span class="tag">Rabin-Karp algorithm</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Selection-sort/"><span class="tag">Selection sort</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/WEB/"><span class="tag">WEB</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/algorithm/"><span class="tag">algorithm</span><span class="tag">9</span></a></div><div class="control"><a class="tags has-addons" href="/tags/bootstrap/"><span class="tag">bootstrap</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/brute-force/"><span class="tag">brute force</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/data-structure/"><span class="tag">data structure</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/git/"><span class="tag">git</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/github/"><span class="tag">github</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/hexo/"><span class="tag">hexo</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/memoization/"><span class="tag">memoization</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/python/"><span class="tag">python</span><span class="tag">7</span></a></div><div class="control"><a class="tags has-addons" href="/tags/queue/"><span class="tag">queue</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/stack/"><span class="tag">stack</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/tree/"><span class="tag">tree</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EA%B3%84%EC%82%B0%EA%B8%B0/"><span class="tag">계산기</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EB%B0%B1%ED%8A%B8%EB%9E%98%ED%82%B9/"><span class="tag">백트래킹</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EB%B9%85-%EC%98%A4-%ED%91%9C%EA%B8%B0%EB%B2%95/"><span class="tag">빅-오 표기법</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EC%84%A0%ED%98%95%ED%81%90/"><span class="tag">선형큐</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EC%97%94%EB%94%94%EC%95%88/"><span class="tag">엔디안</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EC%9A%B0%EC%84%A0%EC%88%9C%EC%9C%84%ED%81%90/"><span class="tag">우선순위큐</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EC%9B%90%ED%98%95%ED%81%90/"><span class="tag">원형큐</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%ED%84%B0%EB%AF%B8%EB%84%90-%EB%AA%85%EB%A0%B9%EC%96%B4/"><span class="tag">터미널 명령어</span><span class="tag">1</span></a></div></div></div></div></div></div><div class="column column-right is-4-tablet is-4-desktop is-4-widescreen  order-3"><!--!--></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/favicon_mhlee.ico" alt="Mihyun&#039;s Blog" height="28"></a><p class="is-size-7"><span>&copy; 2022 Mihyun Lee</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
             }
-        })();
-    </script>
-
-    <div class="wrapper">
-        <header>
-    <nav class="navbar">
-        <div class="container">
-            <div class="navbar-header header-logo"><a href="/">Mihyun&#39;s Blog</a></div>
-            <div class="menu navbar-right">
-                
-                    <a class="menu-item" href="/archives">Posts</a>
-                
-                    <a class="menu-item" href="/category">Categories</a>
-                
-                    <a class="menu-item" href="/tag">Tags</a>
-                
-                    <a class="menu-item" href="/about">About</a>
-                
-                <input id="switch_default" type="checkbox" class="switch_default">
-                <label for="switch_default" class="toggleBtn"></label>
-            </div>
-        </div>
-    </nav>
-
-    
-    <nav class="navbar-mobile" id="nav-mobile">
-        <div class="container">
-            <div class="navbar-header">
-                <div>
-                    <a href="/">Mihyun&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
-                </div>
-                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
-            </div>
-            <div class="menu" id="mobile-menu">
-                
-                    <a class="menu-item" href="/archives">Posts</a>
-                
-                    <a class="menu-item" href="/category">Categories</a>
-                
-                    <a class="menu-item" href="/tag">Tags</a>
-                
-                    <a class="menu-item" href="/about">About</a>
-                
-            </div>
-        </div>
-    </nav>
-
-</header>
-<script>
-    var mobileBtn = function f() {
-        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
-        var mobileMenu = document.getElementById("mobile-menu");
-        if(toggleMenu.classList.contains("active")){
-           toggleMenu.classList.remove("active")
-            mobileMenu.classList.remove("active")
-        }else{
-            toggleMenu.classList.add("active")
-            mobileMenu.classList.add("active")
-        }
-    }
-</script>
-            <div class="main">
-                
-
-    
-<div class="container">
-    <div class="post-wrap tags">
-        <h2 class="post-title">-&nbsp;Tag&nbsp;·&nbsp;python-</h2>
-    </div>
-    <div class="post-wrap archive">
-    
-    
-        
-
-        
-            <h3>2022</h3>
-        
-
-        <article class="archive-item">
-            <a class="archive-item-link" href="/2022/01/26/python-OOP/">python&gt;OOP</a>
-            <span class="archive-item-date">January 26, 2022</span>
-        </article>
-    
-        
-
-        
-
-        <article class="archive-item">
-            <a class="archive-item-link" href="/2022/01/24/python-%E1%84%83%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%90%E1%85%A5-%E1%84%80%E1%85%AE%E1%84%8C%E1%85%A9-%E1%84%86%E1%85%B5%E1%86%BE-%E1%84%92%E1%85%AA%E1%86%AF%E1%84%8B%E1%85%AD%E1%86%BC/">python&gt;데이터 구조 및 활용</a>
-            <span class="archive-item-date">January 24, 2022</span>
-        </article>
-    
-        
-
-        
-
-        <article class="archive-item">
-            <a class="archive-item-link" href="/2022/01/24/python-%EC%97%90%EB%9F%AC-%EC%98%88%EC%99%B8-%EC%B2%98%EB%A6%AC/">python&gt;에러/예외 처리</a>
-            <span class="archive-item-date">January 24, 2022</span>
-        </article>
-    
-        
-
-        
-
-        <article class="archive-item">
-            <a class="archive-item-link" href="/2022/01/19/python-%EB%AA%A8%EB%93%88/">python&gt;모듈</a>
-            <span class="archive-item-date">January 19, 2022</span>
-        </article>
-    
-        
-
-        
-
-        <article class="archive-item">
-            <a class="archive-item-link" href="/2022/01/19/python-%ED%95%A8%EC%88%98/">python&gt;함수</a>
-            <span class="archive-item-date">January 19, 2022</span>
-        </article>
-    
-        
-
-        
-
-        <article class="archive-item">
-            <a class="archive-item-link" href="/2022/01/18/python-%EC%B0%B8%EA%B3%A0/">python&gt;참고</a>
-            <span class="archive-item-date">January 18, 2022</span>
-        </article>
-    
-        
-
-        
-
-        <article class="archive-item">
-            <a class="archive-item-link" href="/2022/01/17/python-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%8D%B0%EC%96%B4%EB%AC%B8/">python&gt;데이터&amp;데어문</a>
-            <span class="archive-item-date">January 17, 2022</span>
-        </article>
-    
-    
-</div>
-</div>
-
-            </div>
-            <footer id="footer" class="footer">
-    <div class="copyright">
-        <span>© Mihyun Lee | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
-    </div>
-</footer>
-
-    </div>
-</body>
-
-</html>
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="Back to top" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "This website uses cookies to improve your experience.",
+          dismiss: "Got it!",
+          allow: "Allow cookies",
+          deny: "Decline",
+          link: "Learn more",
+          policy: "Cookie Policy",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="Type something..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"Type something...","untitled":"(Untitled)","posts":"Posts","pages":"Pages","categories":"Categories","tags":"Tags"});
+        });</script></body></html>

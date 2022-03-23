@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="robots" content="noindex"><meta><title>Category: OS - Mihyun&#039;s Blog</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="Mihyun&#039;s Blog"><meta name="msapplication-TileImage" content="/img/favicon_mhlee.ico"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Mihyun&#039;s Blog"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta property="og:type" content="blog"><meta property="og:title" content="Mihyun&#039;s Blog"><meta property="og:url" content="https://github.com/mhlee21"><meta property="og:site_name" content="Mihyun&#039;s Blog"><meta property="og:locale" content="en_US"><meta property="og:image" content="https://github.com/img/og_image.png"><meta property="article:author" content="Mihyun Lee"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://github.com/mhlee21"},"headline":"Mihyun's Blog","image":["https://github.com/img/og_image.png"],"author":{"@type":"Person","name":"Mihyun Lee"},"publisher":{"@type":"Organization","name":"Mihyun's Blog","logo":{"@type":"ImageObject","url":"https://github.com/img/favicon_mhlee.ico"}},"description":""}</script><link rel="icon" href="/img/favicon_mhlee.ico"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+          Array
+              .from(document.querySelectorAll('.tab-content'))
+              .forEach($tab => {
+                  $tab.classList.add('is-hidden');
+              });
+          Array
+              .from(document.querySelectorAll('.tabs li'))
+              .forEach($tab => {
+                  $tab.classList.remove('is-active');
+              });
+          const $activeTab = document.querySelector(location.hash);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+          const $tabMenu = document.querySelector(`a[href="${location.hash}"]`);
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.0.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/favicon_mhlee.ico" alt="Mihyun&#039;s Blog" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/mhlee21"><i class="fab fa-github"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><div class="card-content"><nav class="breadcrumb" aria-label="breadcrumbs"><ul><li><a href="/categories">Categories</a></li><li class="is-active"><a href="#" aria-current="page">OS</a></li></ul></nav></div></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2022-02-22T15:00:00.000Z" title="2022. 2. 23. 오전 12:00:00">2022-02-23</time></span><span class="level-item">Updated&nbsp;<time dateTime="2022-03-16T04:26:26.484Z" title="2022. 3. 16. 오후 1:26:26">2022-03-16</time></span><span class="level-item"><a class="link-muted" href="/categories/OS/">OS</a></span><span class="level-item">16 minutes read (About 2424 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2022/02/23/OS-07-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EA%B4%80%EB%A6%AC/">OS&gt;07.메모리 관리</a></h1><div class="content"><h1 id="08-메모리-관리"><a href="#08-메모리-관리" class="headerlink" title="08. 메모리 관리"></a>08. 메모리 관리</h1><h2 id="Logical-vs-Physical-address"><a href="#Logical-vs-Physical-address" class="headerlink" title="Logical vs Physical address"></a>Logical vs Physical address</h2><p><img src="/2022/02/23/OS-07-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EA%B4%80%EB%A6%AC/image-20220218232722420.png" alt="image-20220218232722420"></p>
+<ul>
+<li>Logical address<ul>
+<li>가상 메모리 (&#x3D;virtual address)</li>
+</ul>
+</li>
+<li>Physical address<ul>
+<li>메모리의 물리적인 주소</li>
+</ul>
+</li>
+</ul>
+<h2 id="Address-Binding"><a href="#Address-Binding" class="headerlink" title="Address Binding"></a>Address Binding</h2><p><img src="/2022/02/23/OS-07-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EA%B4%80%EB%A6%AC/image-20220218233129463.png" alt="image-20220218233129463"></p>
+<p><img src="/2022/02/23/OS-07-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EA%B4%80%EB%A6%AC/image-20220218233226024.png" alt="image-20220218233226024"></p>
+<ul>
+<li>logical address 가 physical address로 바뀌는 시점이 언제인가?</li>
+<li>Compile time binding<ul>
+<li>컴파일 시 바인딩 됨</li>
+<li>비효율적 (physical address 0번부터 시작하지 않으면 재컴파일 해야함)</li>
+<li>현대 운영체제에서 적합하지 않음</li>
+</ul>
+</li>
+<li>Load time binding<ul>
+<li>프로그램 실행되는 시점에 바인딩</li>
+</ul>
+</li>
+<li>Run time binding<ul>
+<li>실행 시에 물리적인 주소 바인딩 되지만, 수행이 시작된 이후에도 메모리 위치를 옮길 수 있음</li>
+<li>바인딩을 점검하는 과정 필요</li>
+<li>하드웨어적인 지원 필요 (MMU)</li>
+</ul>
+</li>
+</ul>
+<h3 id="MMU"><a href="#MMU" class="headerlink" title="MMU"></a>MMU</h3><p><img src="/2022/02/23/OS-07-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EA%B4%80%EB%A6%AC/image-20220218235754874.png" alt="image-20220218235754874"></p>
+<p><img src="/2022/02/23/OS-07-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EA%B4%80%EB%A6%AC/image-20220218235306932.png" alt="image-20220218235306932"></p>
+<ul>
+<li>다음과 같은 주소변환 환경에서는 MMU 가 register 2개 필요하다.<ul>
+<li>Relocation register</li>
+<li>Limit register</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2022/02/23/OS-07-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EA%B4%80%EB%A6%AC/image-20220218235630520.png" alt="image-20220218235630520"></p>
+<h2 id="용어-설명"><a href="#용어-설명" class="headerlink" title="용어 설명"></a>용어 설명</h2><h3 id="Dynamic-Loading"><a href="#Dynamic-Loading" class="headerlink" title="Dynamic Loading"></a>Dynamic Loading</h3><p><img src="/2022/02/23/OS-07-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EA%B4%80%EB%A6%AC/image-20220218235944349.png" alt="image-20220218235944349"></p>
+<ul>
+<li>프로세스를 한꺼번에 메모리에 올리는 것이 아니라 해당 루틴이 불릴 때 올리는 것</li>
+<li>운영체제의 지원 없이 프로그램에서 구현 가능, 현대의 운영체제에서도 메모리를 다 올리지 않고 필요한 부분만 올리지만 운영체제에서 지원한다는 차이가 있음</li>
+</ul>
+<h3 id="Overlays"><a href="#Overlays" class="headerlink" title="Overlays"></a>Overlays</h3><p><img src="/2022/02/23/OS-07-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EA%B4%80%EB%A6%AC/image-20220219000426450.png" alt="image-20220219000426450"></p>
+<ul>
+<li>필요한 부분만을 메모리에 올리는 것</li>
+<li>Dynamic Loading 와 Overlays 비슷한 개념<ul>
+<li>overlay 는 초창기 시스템에서 프로세스의 크기가 메모리보다 클 때 사용되었던 방법</li>
+</ul>
+</li>
+</ul>
+<h3 id="Swapping"><a href="#Swapping" class="headerlink" title="Swapping"></a>Swapping</h3><p><img src="/2022/02/23/OS-07-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EA%B4%80%EB%A6%AC/image-20220219000620615.png" alt="image-20220219000620615"></p>
+<ul>
+<li>프로세스를 일시적으로 메모리에서 backing store(&#x3D;swap area)로  <strong>통째로</strong> 쫓아내는 것</li>
+<li>Swap in : Suspended 상태가 됨</li>
+<li>Swap out : Suspended 상태가 풀림</li>
+<li>swaping 을 통해 메모리 공간을 효율적으로 사용하기 위해서는 run time binding 을 지원하는 하드웨어가 더 유리하다.</li>
+<li>swap time은 대부분 데이터가 transfer 되는데 걸리는 시간(transfer time)이다.<ul>
+<li>데이터의 양이 많기 때문</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2022/02/23/OS-07-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EA%B4%80%EB%A6%AC/image-20220219000726921.png" alt="image-20220219000726921"></p>
+<h3 id="Dynamic-Linking"><a href="#Dynamic-Linking" class="headerlink" title="Dynamic Linking"></a>Dynamic Linking</h3><p><img src="/2022/02/23/OS-07-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EA%B4%80%EB%A6%AC/image-20220219001558880.png" alt="image-20220219001558880"></p>
+<ul>
+<li>linking : 코드와 라이브러리 연결하는 작업</li>
+<li>Dynamic linking<ul>
+<li>linking 을 실행 시간까지 미루는 기법</li>
+<li>라이브러리를 찾기 위한 위치정보(stub) 만 실행파일에 포함</li>
+<li>shared library : dynamic linking을 하는 라이브러리<ul>
+<li><code>*.so</code> : 리눅스</li>
+<li><code>*.dll</code> : 윈도우</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="Allocation-of-Physical-Memory"><a href="#Allocation-of-Physical-Memory" class="headerlink" title="Allocation of Physical Memory"></a>Allocation of Physical Memory</h2><p><img src="/2022/02/23/OS-07-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EA%B4%80%EB%A6%AC/image-20220219002219636.png" alt="image-20220219002219636"></p>
+<h3 id="Contiquous-allocation-연속-할당"><a href="#Contiquous-allocation-연속-할당" class="headerlink" title="Contiquous allocation (연속 할당)"></a>Contiquous allocation (연속 할당)</h3><ul>
+<li>메모리의 연속적인 공간에 적재되는 것</li>
+<li>💡 <em><strong>현대 운영체제는 사용하지 않고 있는 방법</strong></em></li>
+</ul>
+<p><img src="/2022/02/23/OS-07-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EA%B4%80%EB%A6%AC/image-20220219002451482.png" alt="image-20220219002451482"></p>
+<p><img src="/2022/02/23/OS-07-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EA%B4%80%EB%A6%AC/image-20220219002525198.png" alt="image-20220219002525198"></p>
+<ul>
+<li>고정 분할 방식<ul>
+<li>내부 조각 : 분할의 크기가 정해져있는데 프로그램의 크기가 더 작아서 자투리 공간이 낭비된다.</li>
+<li>외부 조각 : 분할의 크기가 너무 작아서 사용되지 않는 부분이 생긴다.</li>
+</ul>
+</li>
+<li>가변 분할 방식<ul>
+<li>내부 조각으로 인해 낭비될 일이 없음</li>
+<li>외부 조각은 여전히 발생 가능함</li>
+</ul>
+</li>
+</ul>
+<h4 id="Hole"><a href="#Hole" class="headerlink" title="Hole"></a>Hole</h4><p><img src="/2022/02/23/OS-07-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EA%B4%80%EB%A6%AC/image-20220219003108625.png" alt="image-20220219003108625"></p>
+<h4 id="Dynamic-Storage-Allocation-Problem"><a href="#Dynamic-Storage-Allocation-Problem" class="headerlink" title="Dynamic Storage-Allocation Problem"></a>Dynamic Storage-Allocation Problem</h4><ul>
+<li>비어있는 hole 중 어느곳에 프로세스를 올릴것인지?</li>
+<li>First-fit &#x2F; Best-fit &#x2F; Worst-fit</li>
+<li>Compaction<ul>
+<li>hole을 모아서 하나의 큰 block을 만드는 것</li>
+<li>비용이 많이 듬</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2022/02/23/OS-07-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EA%B4%80%EB%A6%AC/image-20220219003222610.png" alt="image-20220219003222610"></p>
+<p><img src="/2022/02/23/OS-07-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EA%B4%80%EB%A6%AC/image-20220219003549439.png" alt="image-20220219003549439"></p>
+<h3 id="Noncontiguous-allocation-불연속-할당"><a href="#Noncontiguous-allocation-불연속-할당" class="headerlink" title="Noncontiguous allocation (불연속 할당)"></a>Noncontiguous allocation (불연속 할당)</h3><ul>
+<li>하나의 프로세스가 메모리의 여러 영역에 분산되어 적재되는 것</li>
+<li>Paging</li>
+<li>Segmentation</li>
+<li>Paged Segmentation</li>
+</ul>
+<h3 id="Paging"><a href="#Paging" class="headerlink" title="Paging"></a>Paging</h3><p><img src="/2022/02/23/OS-07-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EA%B4%80%EB%A6%AC/image-20220222213040502.png" alt="image-20220222213040502"></p>
+<ul>
+<li><p>External fragmentation 발생 안함 : 연속 할당(가변 분할)은 프로그램의 크기가 제각각이라 hole이 생긴다. paging 기법은 메모리를 동일한 크기로 잘랐기 때문에 hole이 생기지 않는다.</p>
+</li>
+<li><p>Internal fragmentation 발생 가능 : page 단위로 자르다보니 page보다 작아서 내부조각 생길 수 있다.</p>
+</li>
+</ul>
+<p><img src="/2022/02/23/OS-07-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EA%B4%80%EB%A6%AC/image-20220222214021748.png" alt="image-20220222214021748"></p>
+<p><img src="/2022/02/23/OS-07-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EA%B4%80%EB%A6%AC/image-20220222213645010.png" alt="image-20220222213645010"></p>
+<ul>
+<li>page table을 사용하여 logical address 를 physical address로 변환</li>
+<li>0번 엔트리, 1번 엔트리… 그림은 4개의 엔트리로 구성되어 있음</li>
+<li>1번 프레임이 어느 프레임에 올라가있는지 알기 위해서는 page table 의 1번 엔트리를 보면 된다. -&gt; 4번 프레임</li>
+</ul>
+<h4 id="Page-Table"><a href="#Page-Table" class="headerlink" title="Page Table"></a>Page Table</h4><p><img src="/2022/02/23/OS-07-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EA%B4%80%EB%A6%AC/image-20220222215139686.png" alt="image-20220222215139686"></p>
+<ul>
+<li>page table은 main memory 에 상주</li>
+<li>PTBR 은 page table을 가리킴</li>
+<li>PTLR 은 테이블 크기를 보관</li>
+<li>TLB : 주소 변환을 빠르게 하기 위한 일종의 cache memory</li>
+</ul>
+<h4 id="TLB"><a href="#TLB" class="headerlink" title="TLB"></a>TLB</h4><p><img src="/2022/02/23/OS-07-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EA%B4%80%EB%A6%AC/image-20220222215548573.png" alt="image-20220222215548573"></p>
+<p><img src="/2022/02/23/OS-07-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EA%B4%80%EB%A6%AC/image-20220222220136211.png" alt="image-20220222220136211"></p>
+<ul>
+<li><p>TLB는 인덱스로 접근하는 것이 아니라 일부만 가지고 있기 때문에 TLB에서 정보를 찾기 위해서는 논리적인 page 번호와 물리적인 frame 번호를 모두 가지고 있어야 한다.</p>
+</li>
+<li><p>page table은 page 위치만 알고있으면 page의 크기 알기 때문에 바로 프레임 찾을 수 있다.</p>
+</li>
+<li><p>각각의 프로세스마다 page table이 있다. </p>
+<ul>
+<li>context switch 할 때마다 TLB flush 된다. (overhead)</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2022/02/23/OS-07-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EA%B4%80%EB%A6%AC/image-20220222220333354.png" alt="image-20220222220333354"></p>
+<h4 id="Two-Level-Page-Table"><a href="#Two-Level-Page-Table" class="headerlink" title="Two-Level Page Table"></a>Two-Level Page Table</h4><p><img src="/2022/02/23/OS-07-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EA%B4%80%EB%A6%AC/image-20220222220607157.png" alt="image-20220222220607157"></p>
+<p><img src="/2022/02/23/OS-07-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EA%B4%80%EB%A6%AC/image-20220222220836056.png" alt="image-20220222220836056"></p>
+<ul>
+<li><p>주소를 주면, outer-page table, page table 를 거쳐서 메모리의 위치를 얻게된다.</p>
+</li>
+<li><p>시간적, 공간적으로 손해 같지만 그렇지 않다. why?</p>
+</li>
+<li><p>outer-page table에서 사용안되는 주소값은 null 로 되어있어서 page table에서 아예 주소공간 만들어지지 않는다.</p>
+</li>
+</ul>
+<p><img src="/2022/02/23/OS-07-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EA%B4%80%EB%A6%AC/image-20220222222853083.png" alt="image-20220222222853083"></p>
+<p><img src="/2022/02/23/OS-07-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EA%B4%80%EB%A6%AC/image-20220222223025751.png" alt="image-20220222223025751"></p>
+<ul>
+<li><p>p1, p2 &#x3D; 10bit, 10bit</p>
+</li>
+<li><p>d : page offset (12bit &#x2F; 4K &#x3D;2^12)</p>
+</li>
+<li><p>2단계 페이징 테이블에서도 outer-page 테이블의 시작위치는 PTBR이 가지고 있다. page table 의 시작위치는 outer-page table이 가지고 있다.</p>
+</li>
+</ul>
+<h4 id="Multilevel-Paging-and-Performance"><a href="#Multilevel-Paging-and-Performance" class="headerlink" title="Multilevel Paging and Performance"></a>Multilevel Paging and Performance</h4><p><img src="/2022/02/23/OS-07-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EA%B4%80%EB%A6%AC/image-20220222223807615.png" alt="image-20220222223807615"></p>
+<h4 id="valid-bit-in-a-Page-Table"><a href="#valid-bit-in-a-Page-Table" class="headerlink" title="valid bit in a Page Table"></a>valid bit in a Page Table</h4><p><img src="/2022/02/23/OS-07-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EA%B4%80%EB%A6%AC/image-20220222224412984.png" alt="image-20220222224412984"></p>
+<ul>
+<li>frame 번호 뿐 아니라 bit가 하나 더 필요하다.<ul>
+<li>v (valid) : 해당 페이지가 메모리에 올라가 있는 경우</li>
+<li>i (invalid) : 해당 페이지가 메모리에 올라가 있지 않고 디스크에 내려가 있는 경우<ul>
+<li>해당 페이지를 사용하지 않거나,</li>
+<li>해당 페이지가 물리적인 메모리에 올라가있지 않을때</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2022/02/23/OS-07-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EA%B4%80%EB%A6%AC/image-20220222224456343.png" alt="image-20220222224456343"></p>
+<ul>
+<li>Protection bit<ul>
+<li>페이지 테이블은 프로세스마다 있기 때문에 주소변환 하더라도 자신의 프로세스 주소만 접근 가능하다. protection bit는 접근 주체가 아니라 (프로세스는 어차피 접근 가능) read&#x2F;write&#x2F;read-only 가 가능한 페이지인지를 검사하는 bit</li>
+<li>code 의 경우 read-only : write를 못하게 막아줌</li>
+</ul>
+</li>
+</ul>
+<h4 id="Inverted-Page-Table"><a href="#Inverted-Page-Table" class="headerlink" title="Inverted Page Table"></a>Inverted Page Table</h4><p><img src="/2022/02/23/OS-07-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EA%B4%80%EB%A6%AC/image-20220222225619475.png" alt="image-20220222225619475"></p>
+<p><img src="/2022/02/23/OS-07-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EA%B4%80%EB%A6%AC/image-20220222225629699.png" alt="image-20220222225629699"></p>
+<ul>
+<li>원래 page table 은 논리 주소로부터 물리 주소값을 얻기 위해 사용되는 것</li>
+<li>프로세스마다 page table이 존재하여 메모리의 낭비가 심함</li>
+<li>이것을 보완하기 위해 물리적인 page frame 번호마다 page table이 존재<ul>
+<li>이것이 <code>inverted page table</code></li>
+</ul>
+</li>
+<li>inverted page table<ul>
+<li>물리적인 주소를 가지고 논리적인 주소를 알아내기 쉬운 구조</li>
+<li>장점 : system-wide 하게 page table 하나만 있으면 된다.</li>
+<li>단점 : 주소변환은 논리적인 주소를 물리적인 주소로 바꿔야하는데 inverted table은 물리적인 주소로부터 논리적인 주소값을 얻어내기 쉬운 구조로 되어있음. 주소를 변환하기 위해 page table을 모두 lookup 해야하는 overhead가 크다. 논리적인 페이지 번호 외에 어떤 프로세스의 페이지 번호인가를 나타내는 pid값을 추가로 저장해야 한다.</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2022/02/23/OS-07-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EA%B4%80%EB%A6%AC/image-20220222230305195.png" alt="image-20220222230305195"></p>
+<h4 id="Shared-Page"><a href="#Shared-Page" class="headerlink" title="Shared Page"></a>Shared Page</h4><p><img src="/2022/02/23/OS-07-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EA%B4%80%EB%A6%AC/image-20220222230547266.png" alt="image-20220222230547266"></p>
+<p><img src="/2022/02/23/OS-07-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EA%B4%80%EB%A6%AC/image-20220222230617271.png" alt="image-20220222230617271"></p>
+<ul>
+<li>동일한 프로그램이 프로세스 3개로 실행되었다고 가정했을 때<ul>
+<li>code 부분은 똑같고 data 부분만 다를 것</li>
+<li>동일한 코드가 물리적 메모리에 여러번 올라가면 메모리 낭비 -&gt; shared code</li>
+</ul>
+</li>
+<li>Shared code (&#x3D; Re-entrant Code &#x3D; Pure code) 의 제약조건<ul>
+<li>read-only 로 하여 프로세스 간에 하나의 code만 메모리에 올림</li>
+<li>shared code 는 동일한 logical address 위치에 있어야 한다.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="Segmentation"><a href="#Segmentation" class="headerlink" title="Segmentation"></a>Segmentation</h3><p><img src="/2022/02/23/OS-07-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EA%B4%80%EB%A6%AC/image-20220222231726121.png" alt="image-20220222231726121"></p>
+<ul>
+<li>프로그램을 의미 단위인 여러개의 segment로 구성</li>
+<li>일반적으로 code, data, stack 으로 나뉨</li>
+</ul>
+<p><img src="/2022/02/23/OS-07-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EA%B4%80%EB%A6%AC/image-20220222231806568.png" alt="image-20220222231806568"></p>
+<p><img src="/2022/02/23/OS-07-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EA%B4%80%EB%A6%AC/image-20220222231833028.png" alt="image-20220222231833028"></p>
+<ul>
+<li><p>s : segment number</p>
+</li>
+<li><p>d : segment offset</p>
+</li>
+<li><p>segment table</p>
+<ul>
+<li>각각의 엔트리는 물리적 주소의 시작위치 뿐만 아니라 세그먼트의 길이 정보도 가지고 있다.<br>(page는 모두 같은 크기로 나뉘어 있어 길이정보 필요없음)</li>
+<li>offset이 limit을 벗어나는 위치를 접근하려 하면 trap 을 건다.</li>
+</ul>
+</li>
+<li><p>STBR : 메모리 상에 segment table이 어디있는지 시작위치를 가지고있음</p>
+</li>
+<li><p>STLR : segment table의 길이 (process가 몇개의 segment 로 구성되었는지)</p>
+<ul>
+<li>프로그램이 사용하는 segment number s는 STLR보다 항상 작다.</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2022/02/23/OS-07-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EA%B4%80%EB%A6%AC/image-20220222232751393.png" alt="image-20220222232751393"></p>
+<ul>
+<li>segment 길이가 다 제각각이기 때문에 외부조각 생길 수 있다.</li>
+</ul>
+<p><img src="/2022/02/23/OS-07-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EA%B4%80%EB%A6%AC/image-20220222232836674.png" alt="image-20220222232836674"></p>
+<ul>
+<li>단점 : external fragmentation 발생 가능</li>
+<li>장점 : segmentation 은 의미단위이기 때문에 공유와 보안에 있어서 paging 보다 훨씬 효과적이다.<ul>
+<li>Protection : Valid bit &amp; read&#x2F;write&#x2F;Execution 권한 bit<ul>
+<li>paging은 크기단위로 잘랐기 때문에 page 마다 권한 설정 시 추가적인 제약조건이 필요할 수 있는데, segment 는 의미 단위이기 때문에 이런 문제 발생하지 않는다.</li>
+</ul>
+</li>
+<li>Sharing : shared segment<ul>
+<li>같은 segment number</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2022/02/23/OS-07-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EA%B4%80%EB%A6%AC/image-20220222233546476.png" alt="image-20220222233546476"></p>
+<p>프로세스 별로 paging 기법의 경우 엔트리가 100만개, segment 는 n개이므로 메모리 관리 측면에서 장점이 있다.</p>
+<p>💡 하지만 실제로 시스템에서는 paging 기법을 사용하고 있다. (pure segmentation 은 사용하지 않음)</p>
+<hr>
+<h3 id="Segmentation-with-Paging"><a href="#Segmentation-with-Paging" class="headerlink" title="Segmentation with Paging"></a>Segmentation with Paging</h3><p><img src="/2022/02/23/OS-07-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EA%B4%80%EB%A6%AC/image-20220222234004341.png" alt="image-20220222234004341"></p>
+<ul>
+<li>segment table에서 해당 엔트리는 base address가 아닌 page table의 base address를 가지고 있음</li>
+<li>segment table<ul>
+<li>segment length : segment가 page 몇개로 구성되어 있는가</li>
+<li>page-table base address</li>
+</ul>
+</li>
+</ul>
+</div></article></div><nav class="pagination" role="navigation" aria-label="pagination"><div class="pagination-previous"><a href="/categories/OS/page/3/">Previous</a></div><div class="pagination-next"><a href="/categories/OS/page/5/">Next</a></div><ul class="pagination-list is-hidden-mobile"><li><a class="pagination-link" href="/categories/OS/">1</a></li><li><a class="pagination-link" href="/categories/OS/page/2/">2</a></li><li><a class="pagination-link" href="/categories/OS/page/3/">3</a></li><li><a class="pagination-link is-current" href="/categories/OS/page/4/">4</a></li><li><a class="pagination-link" href="/categories/OS/page/5/">5</a></li><li><span class="pagination-ellipsis">&hellip;</span></li><li><a class="pagination-link" href="/categories/OS/page/10/">10</a></li></ul></nav></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.png" alt="Mihyun Lee"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Mihyun Lee</p><p class="is-size-6 is-block">Hello!👋</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>SSAFY 7th</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Posts</p><a href="/archives"><p class="title">39</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Categories</p><a href="/categories"><p class="title">9</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tags</p><a href="/tags"><p class="title">42</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/mhlee21" target="_blank" rel="noopener">Follow</a></div></div></div><div class="card widget" data-type="links"><div class="card-content"><div class="menu"><h3 class="menu-label">Links</h3><ul class="menu-list"><li><a class="level is-mobile" href="https://hexo.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Hexo</span></span><span class="level-right"><span class="level-item tag">hexo.io</span></span></a></li></ul></div></div></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">Categories</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/Computer-Network/"><span class="level-start"><span class="level-item">Computer Network</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/Django/"><span class="level-start"><span class="level-item">Django</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/categories/JavaScript/"><span class="level-start"><span class="level-item">JavaScript</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/OS/"><span class="level-start"><span class="level-item">OS</span></span><span class="level-end"><span class="level-item tag">10</span></span></a></li><li><a class="level is-mobile" href="/categories/WEB/"><span class="level-start"><span class="level-item">WEB</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/categories/algo-python/"><span class="level-start"><span class="level-item">algo_python</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/categories/algorithm/"><span class="level-start"><span class="level-item">algorithm</span></span><span class="level-end"><span class="level-item tag">7</span></span></a></li><li><a class="level is-mobile" href="/categories/python/"><span class="level-start"><span class="level-item">python</span></span><span class="level-end"><span class="level-item tag">7</span></span></a></li><li><a class="level is-mobile" href="/categories/startcamp/"><span class="level-start"><span class="level-item">startcamp</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li></ul></div></div></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">Recents</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-03-23T02:13:19.000Z">2022-03-23</time></p><p class="title"><a href="/2022/03/23/algo-BOJ-14890-%EA%B2%BD%EC%82%AC%EB%A1%9C-%EA%B3%A8%EB%93%9C3/">algo&gt;BOJ_14890(경사로,골드3)</a></p><p class="categories"><a href="/categories/algo-python/">algo_python</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-03-23T01:45:09.000Z">2022-03-23</time></p><p class="title"><a href="/2022/03/23/%EC%97%94%EB%94%94%EC%95%88-Endianness/">엔디안 (Endianness)</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-03-20T03:57:33.000Z">2022-03-20</time></p><p class="title"><a href="/2022/03/20/JavaScript/">JavaScript</a></p><p class="categories"><a href="/categories/JavaScript/">JavaScript</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-03-16T00:01:24.000Z">2022-03-16</time></p><p class="title"><a href="/2022/03/16/tree/">tree</a></p><p class="categories"><a href="/categories/algorithm/">algorithm</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-03-15T13:47:02.000Z">2022-03-15</time></p><p class="title"><a href="/2022/03/15/Network-01-Roadmap/">Network&gt;01.Roadmap</a></p><p class="categories"><a href="/categories/Computer-Network/">Computer Network</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">Archives</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2022/03/"><span class="level-start"><span class="level-item">March 2022</span></span><span class="level-end"><span class="level-item tag">11</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/02/"><span class="level-start"><span class="level-item">February 2022</span></span><span class="level-end"><span class="level-item tag">17</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/01/"><span class="level-start"><span class="level-item">January 2022</span></span><span class="level-end"><span class="level-item tag">11</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">Tags</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/BFS/"><span class="tag">BFS</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/BOJ/"><span class="tag">BOJ</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Boyer-Moore-algorithm/"><span class="tag">Boyer-Moore algorithm</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Brute-Force/"><span class="tag">Brute Force</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Bubble-sort/"><span class="tag">Bubble sort</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/CLI/"><span class="tag">CLI</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Computer-Network/"><span class="tag">Computer Network</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Counting-sort/"><span class="tag">Counting sort</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/DFS/"><span class="tag">DFS</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/DP/"><span class="tag">DP</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Django/"><span class="tag">Django</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/HTML-CSS/"><span class="tag">HTML/CSS</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Insertion-sort/"><span class="tag">Insertion sort</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/JavaScript/"><span class="tag">JavaScript</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/KMP/"><span class="tag">KMP</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Markdown/"><span class="tag">Markdown</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Merge-sort/"><span class="tag">Merge sort</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/OS/"><span class="tag">OS</span><span class="tag">10</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Quick-sort/"><span class="tag">Quick sort</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Rabin-Karp-algorithm/"><span class="tag">Rabin-Karp algorithm</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Selection-sort/"><span class="tag">Selection sort</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/WEB/"><span class="tag">WEB</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/algorithm/"><span class="tag">algorithm</span><span class="tag">9</span></a></div><div class="control"><a class="tags has-addons" href="/tags/bootstrap/"><span class="tag">bootstrap</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/brute-force/"><span class="tag">brute force</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/data-structure/"><span class="tag">data structure</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/git/"><span class="tag">git</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/github/"><span class="tag">github</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/hexo/"><span class="tag">hexo</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/memoization/"><span class="tag">memoization</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/python/"><span class="tag">python</span><span class="tag">7</span></a></div><div class="control"><a class="tags has-addons" href="/tags/queue/"><span class="tag">queue</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/stack/"><span class="tag">stack</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/tree/"><span class="tag">tree</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EA%B3%84%EC%82%B0%EA%B8%B0/"><span class="tag">계산기</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EB%B0%B1%ED%8A%B8%EB%9E%98%ED%82%B9/"><span class="tag">백트래킹</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EB%B9%85-%EC%98%A4-%ED%91%9C%EA%B8%B0%EB%B2%95/"><span class="tag">빅-오 표기법</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EC%84%A0%ED%98%95%ED%81%90/"><span class="tag">선형큐</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EC%97%94%EB%94%94%EC%95%88/"><span class="tag">엔디안</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EC%9A%B0%EC%84%A0%EC%88%9C%EC%9C%84%ED%81%90/"><span class="tag">우선순위큐</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EC%9B%90%ED%98%95%ED%81%90/"><span class="tag">원형큐</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%ED%84%B0%EB%AF%B8%EB%84%90-%EB%AA%85%EB%A0%B9%EC%96%B4/"><span class="tag">터미널 명령어</span><span class="tag">1</span></a></div></div></div></div></div></div><div class="column column-right is-4-tablet is-4-desktop is-4-widescreen  order-3"><!--!--></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/favicon_mhlee.ico" alt="Mihyun&#039;s Blog" height="28"></a><p class="is-size-7"><span>&copy; 2022 Mihyun Lee</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="Back to top" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "This website uses cookies to improve your experience.",
+          dismiss: "Got it!",
+          allow: "Allow cookies",
+          deny: "Decline",
+          link: "Learn more",
+          policy: "Cookie Policy",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="Type something..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"Type something...","untitled":"(Untitled)","posts":"Posts","pages":"Pages","categories":"Categories","tags":"Tags"});
+        });</script></body></html>
