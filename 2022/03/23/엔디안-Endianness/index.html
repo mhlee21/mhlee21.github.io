@@ -13,7 +13,7 @@
 
 
 
-<title>JavaScript | Mihyun&#39;s Blog</title>
+<title>엔디안 (Endianness) | Mihyun&#39;s Blog</title>
 
 
 
@@ -193,7 +193,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">JavaScript</h1>
+            <h1 class="post-title">엔디안 (Endianness)</h1>
             
                 <div class="post-meta">
                     
@@ -202,41 +202,47 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">March 20, 2022&nbsp;&nbsp;12:57:33</a>
+                        Date: <a href="#">March 23, 2022&nbsp;&nbsp;10:45:09</a>
                         </span>
                     
-                    
-                        <span class="post-category">
-                    Category:
-                            
-                                <a href="/categories/JavaScript/">JavaScript</a>
-                            
-                        </span>
                     
                 </div>
             
         </header>
 
         <div class="post-content">
-            <blockquote>
-<p>바닐라 JS로 크롬 앱 만들기 - Javascript for Beginners</p>
-<p><a target="_blank" rel="noopener" href="https://nomadcoders.co/javascript-for-beginners">https://nomadcoders.co/javascript-for-beginners</a></p>
-</blockquote>
-<h1 id="1-변수-선언"><a href="#1-변수-선언" class="headerlink" title="1. 변수 선언"></a>1. 변수 선언</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">let</span> b = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">var</span> c = <span class="number">3</span>;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>const</code> : 재선언 금지, 재할당 금지</li>
-<li><code>let</code> : 재선언 금지, 재할당 가능</li>
-<li><code>var</code> : 재선언 가능, 재할당 가능</li>
+            <h1 id="엔디안"><a href="#엔디안" class="headerlink" title="엔디안"></a>엔디안</h1><ul>
+<li>컴퓨터의 메모리와 같은 1차원의 공간에 여러 개의 연속된 대상을 배열하는 방법을 의미하며, HW 아키텍처마다 다르다.</li>
 </ul>
-<h1 id="2-Object"><a href="#2-Object" class="headerlink" title="2. Object"></a>2. Object</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> player = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&quot;nico&quot;</span>,</span><br><span class="line">  <span class="attr">say</span>: <span class="keyword">function</span>(<span class="params">otherPersonName</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;Hello &quot;</span> + otherPersonName + <span class="string">&quot; nice to meet you!&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="3-querySelector"><a href="#3-querySelector" class="headerlink" title="3. querySelector()"></a>3. querySelector()</h1><p>MND : <a target="_blank" rel="noopener" href="https://developer.mozilla.org/ko/docs/Web/API/Document/querySelector">https://developer.mozilla.org/ko/docs/Web/API/Document/querySelector</a></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;hello&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Grab me!<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> title = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;.hello h1&quot;</span>);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>💡주의 : 속도 향상을 위해 바이트 단위와 워드 단위를 변환하여 연산할 때 올바르게 이해하지 않으면 오류를 발생 시킬 수 있다.</p>
+</blockquote>
+<h2 id="빅-엔디안-Big-endian"><a href="#빅-엔디안-Big-endian" class="headerlink" title="빅 엔디안 (Big-endian)"></a>빅 엔디안 (Big-endian)</h2><ul>
+<li>보통 큰 단위가 앞에 나옴, 네트워크</li>
+</ul>
+<h2 id="리틀-엔디안-Little-endian"><a href="#리틀-엔디안-Little-endian" class="headerlink" title="리틀 엔디안 (Little-endian)"></a>리틀 엔디안 (Little-endian)</h2><ul>
+<li>작은 단위가 앞에 나옴. 대다수 데스크탑 컴퓨터</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>종류</th>
+<th>0x1234</th>
+<th>0x12345678</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>빅 엔디안</td>
+<td>12 34</td>
+<td>12 34 56 78</td>
+</tr>
+<tr>
+<td>리틀 엔디안</td>
+<td>34 12</td>
+<td>78 56 34 12</td>
+</tr>
+</tbody></table>
+<h2 id="엔디안-확인-코드"><a href="#엔디안-확인-코드" class="headerlink" title="엔디안 확인 코드"></a>엔디안 확인 코드</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="built_in">print</span>(sys.byteorder)</span><br></pre></td></tr></table></figure>
 
 
         </div>
@@ -252,7 +258,7 @@
                 
                     <p class="copyright-item">
                         <span>Permalink:</span>
-                        <span><a href="https://github.com/mhlee21/2022/03/20/JavaScript/">https://github.com/mhlee21/2022/03/20/JavaScript/</a></span>
+                        <span><a href="https://github.com/mhlee21/2022/03/23/%EC%97%94%EB%94%94%EC%95%88-Endianness/">https://github.com/mhlee21/2022/03/23/%EC%97%94%EB%94%94%EC%95%88-Endianness/</a></span>
                     </p>
                 
                 
@@ -276,9 +282,7 @@
                 <span class="tag">
                     
                     
-                        <a href="/tags/JavaScript/"># JavaScript</a>
-                    
-                        <a href="/tags/WEB/"># WEB</a>
+                        <a href="/tags/%EC%97%94%EB%94%94%EC%95%88/"># 엔디안</a>
                     
                         
                 </span>
@@ -291,10 +295,10 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2022/03/23/%EC%97%94%EB%94%94%EC%95%88-Endianness/">엔디안 (Endianness)</a>
+                <a class="prev" rel="prev" href="/2022/03/23/algo-BOJ-14890-%EA%B2%BD%EC%82%AC%EB%A1%9C-%EA%B3%A8%EB%93%9C3/">algo>BOJ_14890(경사로,골드3)</a>
             
             
-            <a class="next" rel="next" href="/2022/03/16/tree/">tree</a>
+            <a class="next" rel="next" href="/2022/03/20/JavaScript/">JavaScript</a>
             
         </section>
 

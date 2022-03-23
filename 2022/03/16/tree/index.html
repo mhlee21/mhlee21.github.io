@@ -246,8 +246,10 @@
 </ul>
 </li>
 </ul>
-<p><img src="/mhlee21/2022/03/16/tree/image-20220316090741007.png" alt="image-20220316090741007"></p>
-<h1 id="이진-트리"><a href="#이진-트리" class="headerlink" title="이진 트리"></a>이진 트리</h1><p><img src="/mhlee21/2022/03/16/tree/image-20220316092827444.png" alt="image-20220316092827444"></p>
+<img src="/2022/03/16/tree/image-20220316090741007.png" class="" title="image-20220316090741007">
+
+<h1 id="이진-트리"><a href="#이진-트리" class="headerlink" title="이진 트리"></a>이진 트리</h1><img src="/2022/03/16/tree/image-20220316092827444.png" class="" title="image-20220316092827444">
+
 <ul>
 <li>모든 노드들이 2개의 서브트리를 갖는 특별한 형태의 트리</li>
 <li>각 노드가 자식 노드를 최대한 2개 까지만 가질 수 있는 트리<ul>
@@ -291,13 +293,16 @@
 </ul>
 <h3 id="전위순회-preorder-traversal"><a href="#전위순회-preorder-traversal" class="headerlink" title="전위순회 (preorder traversal)"></a>전위순회 (preorder traversal)</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">preorder_traverse</span>(<span class="params">T</span>):</span><br><span class="line">    <span class="keyword">if</span> T:</span><br><span class="line">        visit(T)</span><br><span class="line">        preorder_traverse(T.left)</span><br><span class="line">        preorder_traverse(T.right)</span><br></pre></td></tr></table></figure>
 
-<p><img src="/mhlee21/2022/03/16/tree/image-20220316094758944.png" alt="image-20220316094758944"></p>
+<img src="/2022/03/16/tree/image-20220316094758944.png" class="" title="image-20220316094758944">
+
 <h3 id="중위순회-inorder-traversal"><a href="#중위순회-inorder-traversal" class="headerlink" title="중위순회 (inorder traversal)"></a>중위순회 (inorder traversal)</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">preorder_traverse</span>(<span class="params">T</span>):</span><br><span class="line">    <span class="keyword">if</span> T:</span><br><span class="line">        preorder_traverse(T.left)</span><br><span class="line">        visit(T)</span><br><span class="line">        preorder_traverse(T.right)</span><br></pre></td></tr></table></figure>
 
-<p><img src="/mhlee21/2022/03/16/tree/image-20220316100214264.png" alt="image-20220316100214264"></p>
+<img src="/2022/03/16/tree/image-20220316100214264.png" class="" title="image-20220316100214264">
+
 <h3 id="후위순회-postorder-traversal"><a href="#후위순회-postorder-traversal" class="headerlink" title="후위순회 (postorder traversal)"></a>후위순회 (postorder traversal)</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">preorder_traverse</span>(<span class="params">T</span>):</span><br><span class="line">    <span class="keyword">if</span> T:</span><br><span class="line">        preorder_traverse(T.left)</span><br><span class="line">        preorder_traverse(T.right)</span><br><span class="line">        visit(T)</span><br></pre></td></tr></table></figure>
 
-<p><img src="/mhlee21/2022/03/16/tree/image-20220316102238305.png" alt="image-20220316102238305"></p>
+<img src="/2022/03/16/tree/image-20220316102238305.png" class="" title="image-20220316102238305">
+
 <h2 id="이진트리의-표현"><a href="#이진트리의-표현" class="headerlink" title="이진트리의 표현"></a>이진트리의 표현</h2><h3 id="배열을-이용한-이진-트리의-표현"><a href="#배열을-이용한-이진-트리의-표현" class="headerlink" title="배열을 이용한 이진 트리의 표현"></a>배열을 이용한 이진 트리의 표현</h3><img src="tree/image-20220316103853501.png" alt="image-20220316103853501" style="zoom:50%;" />
 
 <img src="tree/image-20220316105103665.png" alt="image-20220316105103665" style="zoom:50%;" />
