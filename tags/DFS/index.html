@@ -1,280 +1,162 @@
-<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="robots" content="noindex"><meta><title>Tag: DFS - Mihyun&#039;s Blog</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="Mihyun&#039;s Blog"><meta name="msapplication-TileImage" content="/img/favicon_mhlee.ico"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Mihyun&#039;s Blog"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta property="og:type" content="blog"><meta property="og:title" content="Mihyun&#039;s Blog"><meta property="og:url" content="https://github.com/mhlee21"><meta property="og:site_name" content="Mihyun&#039;s Blog"><meta property="og:locale" content="en_US"><meta property="og:image" content="https://github.com/img/og_image.png"><meta property="article:author" content="Mihyun Lee"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://github.com/mhlee21"},"headline":"Mihyun's Blog","image":["https://github.com/img/og_image.png"],"author":{"@type":"Person","name":"Mihyun Lee"},"publisher":{"@type":"Organization","name":"Mihyun's Blog","logo":{"@type":"ImageObject","url":"https://github.com/img/favicon_mhlee.ico"}},"description":""}</script><link rel="icon" href="/img/favicon_mhlee.ico"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
-  (function () {
-      function switchTab() {
-          if (!location.hash) {
-            return;
-          }
-          Array
-              .from(document.querySelectorAll('.tab-content'))
-              .forEach($tab => {
-                  $tab.classList.add('is-hidden');
-              });
-          Array
-              .from(document.querySelectorAll('.tabs li'))
-              .forEach($tab => {
-                  $tab.classList.remove('is-active');
-              });
-          const $activeTab = document.querySelector(location.hash);
-          if ($activeTab) {
-              $activeTab.classList.remove('is-hidden');
-          }
-          const $tabMenu = document.querySelector(`a[href="${location.hash}"]`);
-          if ($tabMenu) {
-              $tabMenu.parentElement.classList.add('is-active');
-          }
-      }
-      switchTab();
-      window.addEventListener('hashchange', switchTab, false);
-  })();
-  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.0.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/favicon_mhlee.ico" alt="Mihyun&#039;s Blog" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/mhlee21"><i class="fab fa-github"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><div class="card-content"><nav class="breadcrumb" aria-label="breadcrumbs"><ul><li><a href="/tags">Tags</a></li><li class="is-active"><a href="#" aria-current="page">DFS</a></li></ul></nav></div></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2022-02-22T00:42:08.000Z" title="2022. 2. 22. 오전 9:42:08">2022-02-22</time></span><span class="level-item">Updated&nbsp;<time dateTime="2022-03-16T04:26:26.673Z" title="2022. 3. 16. 오후 1:26:26">2022-03-16</time></span><span class="level-item"><a class="link-muted" href="/categories/algorithm/">algorithm</a></span><span class="level-item">15 minutes read (About 2245 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2022/02/22/stack/">stack</a></h1><div class="content"><h1 id="스택"><a href="#스택" class="headerlink" title="스택"></a>스택</h1><ul>
-<li>물건을 쌓아 올린듯, <strong>자료를 쌓아 올린</strong> 형태의 자료구조</li>
-<li><strong>LIFO (Last-In-First-Out, 후입선출)</strong> : 가장 마지막에 들어간 것이, 가장 처음에 나온다.</li>
-<li>가장 위에서만 데이터의 삽입&amp;삭제가 일어난다.</li>
-<li>스택의 연산 (메서드)<ul>
-<li>createstack : 스택을 생성하는 연산, size 필요</li>
-<li>isempty : 스택이 현재 비어있는지를 확인, true&#x2F;false 리턴</li>
-<li>isfull : 스택이 현재 꽉 차있는지를 확인, true&#x2F;false 리턴</li>
-<li>push : 스택에 새로운 데이터 요소를 삽입하는 연산</li>
-<li>pop : 스택에서 가장 위에 있는 요소를 제거하는 연산, 데이터 반환</li>
-<li>peek : 스택에서 가장 위에 있는 요소를 반환하는 연산 (데이터를 확인하고 싶은 경우)</li>
-</ul>
-</li>
-<li>스택의 데이터 구조<ul>
-<li>top : 스택의 가장 위에 있는 위치를 저장하고 있는 데이터</li>
-<li>size : 스택의 크기를 저장하고 잇는 데이터</li>
-<li>items : 스택에 담길 데이터를 저장</li>
-</ul>
-</li>
-</ul>
-<h2 id="스택의-삽입-x2F-삭제-과정"><a href="#스택의-삽입-x2F-삭제-과정" class="headerlink" title="스택의 삽입&#x2F;삭제 과정"></a>스택의 삽입&#x2F;삭제 과정</h2><ul>
-<li>push<ol>
-<li>top을 증가시킴</li>
-<li>top이 가리키는 자리에 원소를 저장</li>
-</ol>
-</li>
-<li>pop<ol>
-<li>원소를 반환함</li>
-<li>top 을 감소시킴</li>
-</ol>
-</li>
-</ul>
-<h2 id="스택의-응용-1-괄호-검사"><a href="#스택의-응용-1-괄호-검사" class="headerlink" title="스택의 응용 1: 괄호 검사"></a>스택의 응용 1: 괄호 검사</h2><ul>
-<li><p>조건</p>
-<ol>
-<li>왼쪽 괄호의 개수와 오른쪽 괄호의 개수가 같아야 한다.</li>
-<li>같은 괄호에서 왼쪽 괄호는 오른쪽 괄호보다 먼저 나와야 한다.</li>
-<li>괄호 사이에는 포함 관계만 존재한다.</li>
-</ol>
-</li>
-<li><p>문자열에 있는 괄호를 차례대로 조사하면서 왼쪽 괄호를 만나면 스택에 삽입, 오른쪽 괄호를 만나면 스택에서 top 괄호를 삭제한 후 오른쪽 괄호와 짝이 맞는지를 검사한다.</p>
-</li>
-<li><p>이때, 스택이 비어있으면 조건 1 또는 조건 2에 위배되고, 짝이 맞지 않으면 조건 3에 위배된다.</p>
-</li>
-<li><p>마지막 괄호까지 조사한 후에도 스택에 괄호가 남아있으면 조건 1에 위배된다.</p>
-</li>
-</ul>
-<h2 id="스택의-응용-2-function-call"><a href="#스택의-응용-2-function-call" class="headerlink" title="스택의 응용 2 : function call"></a>스택의 응용 2 : function call</h2><ul>
-<li>프로그램에서 함수 호출과 복귀에 따른 수행 순서를 관리<ul>
-<li>함수 호출이 발생하면 호출한 함수 수행에 필요한 지역변수, 매개변수 및 수행 후 복귀할 주소 등의 정보를 스택 프레임(stack frame) 에 저장하여 시스템 스택에 삽입</li>
-<li>함수의 실행이 끝나면 시스템 스택의 top 원소를 삭제(pop)하면서 프레임에 저장되어있던 복귀주소를 확인하고 복귀</li>
-<li>함수 호출과 복귀에 따라 이 과정을 반복하여 전체 프로그램 수행이 종료되면 시스템 스택은 공백 스택이 된다.</li>
-</ul>
-</li>
-</ul>
-<p><img src="/2022/02/22/stack/image-20220221144726902.png" alt="image-20220221144726902"></p>
-<p><br/><br/></p>
-<h1 id="재귀호출"><a href="#재귀호출" class="headerlink" title="재귀호출"></a>재귀호출</h1><ul>
-<li>자기 자신을 호출하여 순환 수행되는 것</li>
-<li>함수에서 실행해야 하는 작업의 특성에 따라 일반적인 호출방식보다 재귀호출 방식을 사용하여 함수를 만들면 프로그램의 크기를 줄이고 간단하게 작성</li>
-</ul>
-<p><img src="/2022/02/22/stack/image-20220221144953508.png" alt="image-20220221144953508"></p>
-<p> <br/><br/></p>
-<h1 id="Memoization-amp-DP"><a href="#Memoization-amp-DP" class="headerlink" title="Memoization &amp; DP"></a>Memoization &amp; DP</h1><h2 id="Memoization"><a href="#Memoization" class="headerlink" title="Memoization"></a>Memoization</h2><ul>
-<li><strong>이전에 계산한 값을 메모리에 저장</strong>해서 매번 다시 계산하지 않도록 하여 전체적인 실행속도를 빠르게 하는 기술</li>
-<li>💡동적 계획법의 핵심</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># memo 를 위한 배열을 할당하고, 모두 0으로 초기화</span></span><br><span class="line"><span class="comment"># memo[0]을 0으로 memo[1]는 1로 초기화 한다.</span></span><br><span class="line"></span><br><span class="line">memo = [<span class="number">0</span>,<span class="number">1</span>]</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">fibo1</span>(<span class="params">n</span>):</span><br><span class="line">    <span class="keyword">global</span> memo</span><br><span class="line">    <span class="keyword">if</span> n &gt;= <span class="number">2</span> <span class="keyword">and</span> <span class="built_in">len</span>(memo) &lt; n:</span><br><span class="line">        memo.append(fifo1(n-<span class="number">1</span>) + fifo(n-<span class="number">2</span>))</span><br><span class="line">       <span class="keyword">return</span> memo[n]</span><br></pre></td></tr></table></figure>
+<!DOCTYPE html>
+<html lang="en">
 
-<h2 id="DP-Dynamic-Programming"><a href="#DP-Dynamic-Programming" class="headerlink" title="DP (Dynamic Programming)"></a>DP (Dynamic Programming)</h2><ul>
-<li><p>동적 계획 알고리즘은 그리디 알고리즘과 같이 최적화 문제를 해결하는 알고리즘이다.</p>
-</li>
-<li><p>Memoization 과의 차이점</p>
-<ul>
-<li>Memoization은 함수의 실행 결과를 저장하는 것이라면, DP는 이전 값을 이용해 다음 값을 얻을 수 있다.</li>
-<li>중복계산을 피하기 위해 계산결과를 저장해두는 Memoization을 사용할 수 있다.</li>
-</ul>
-</li>
-<li><p>분할 정복 과의 차이점</p>
-<ul>
-<li>분할 정복도 큰 문제를 작은 문제로 나누어 푸는 것이 동적 계획법과 같지만, 계산한 부분문제를 한번만 사용하고 더이상 쓰지 않는다.</li>
-</ul>
-</li>
-<li><p>먼저 입력 크기가 작은 부분문제들을 모두 해결한 후에, 그 해들을 이용하여 보다 큰 크기의 부분 문제들을 해결하여, 최종적으로 원래 주어진 입력의 문제를 해결하는 알고리즘이다.</p>
-<ol>
-<li>문제를 부분 문제로 분할한다.</li>
-<li>부분 문제로 나누는 일을 끝냈으면 가장 작은 부분문제부터 해를 구한다.</li>
-<li>그 결과는 테이블에 저장하고, 테이블에 저장된 부분문제의 해를 이용하여 상위 문제의 해를 구한다.</li>
-</ol>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">fibo2</span>(<span class="params">n</span>):</span><br><span class="line">    f = [<span class="number">0</span>,<span class="number">1</span>]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>, n+<span class="number">1</span>):</span><br><span class="line">        f.append(f[i-<span class="number">1</span>]+f[i-<span class="number">2</span>])</span><br><span class="line">    <span class="keyword">return</span> f[n]</span><br></pre></td></tr></table></figure>
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-<h3 id="DP의-구현-방식"><a href="#DP의-구현-방식" class="headerlink" title="DP의 구현 방식"></a>DP의 구현 방식</h3><ul>
-<li>recursive 방식 : fibo1()</li>
-<li>iterative 방식 : fibo2()</li>
-<li>memoization 을 재귀적 구조에 사용하는 것보다 반복적 구조로 DP를 구현한 것이 성능면에서 보다 효율적이다.<ul>
-<li>재귀적 구조는 내부에 시스템 호출 스택을 사용하는 오버헤드가 발생하기 때문이다.</li>
-</ul>
-</li>
-</ul>
-<p><br/><br/></p>
-<h1 id="DFS"><a href="#DFS" class="headerlink" title="DFS"></a>DFS</h1><ul>
-<li><p>비선형구조인 그래프 구조는 그래프로 표현된 모든 자료를 빠짐없이 검색하는 것이 중요</p>
-</li>
-<li><p>두가지 방법</p>
-<ul>
-<li>너비 우선 탐색 (Breadth First Search, BFS)</li>
-<li>깊이 우선 탐색 (Depth First Search, DFS)<ul>
-<li>재귀를 이용해서 구현</li>
-<li>반복을 이용해서 구현 - stack 사용</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>가장 마지막에 만났던 갈림길의 정점으로 되돌아가서 다시 깊이 우선 탐색을 반복해야 하므로 후입선출 구조의 스택 사용</p>
-<ol>
-<li><p>시작 정점 v를 결정하여 방문한다.</p>
-</li>
-<li><p>정점 v에 인접한 정점 중에서</p>
-<ul>
-<li><p>방문하지 않은 정점 w가 있으면, 정점 v를 스택에 push 하고 정점 w를 방문한다. 그리고 w를 v로 하여 다시 2를 반복한다.</p>
-</li>
-<li><p>방문하지 않은 정점이 없으면, 탐색의 방향을 바꾸기 위해 스택을 pop 하여 받은 가장 마지막 방문 정점을 v로 하여 다시 2를 반복한다.</p>
-</li>
-</ul>
-</li>
-</ol>
-<ol start="3">
-<li>스택이 공백이 될 때 까지 2를 반복한다.</li>
-</ol>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">visited[], stack[] 초기화</span><br><span class="line">DFS(v)</span><br><span class="line">	v 방문;</span><br><span class="line">    visited[v] &lt;- true;</span><br><span class="line">    do &#123;</span><br><span class="line">        <span class="keyword">if</span> (v의 인접 정점 중 방문 안한 w 찾기)</span><br><span class="line">        	push(v);</span><br><span class="line">        	<span class="keyword">while</span>(w)&#123;</span><br><span class="line">                w 방문;</span><br><span class="line">                visited[w] &lt;- true;</span><br><span class="line">                push(w);</span><br><span class="line">                v &lt;- w;</span><br><span class="line">                v의 인접 정점 중 방문 안한 w 찾기</span><br><span class="line">            &#125;</span><br><span class="line">        v &lt;- pop(stack);</span><br><span class="line">    &#125; <span class="keyword">while</span>(v)</span><br></pre></td></tr></table></figure>
-
-<p><br/><br/></p>
-<h1 id="스택의-응용"><a href="#스택의-응용" class="headerlink" title="스택의 응용"></a>스택의 응용</h1><h2 id="계산기"><a href="#계산기" class="headerlink" title="계산기"></a>계산기</h2><ul>
-<li><p>문자열로 된 계산식이 주어질 때, 스택을 이용하여 이 계산식의 값을 계산할 수 있다.</p>
-</li>
-<li><p>중위 표기법(Infix notation)을 후위 표기법(Postfix notation) 으로 변환하는 방법</p>
-<ol>
-<li><p>‘(‘를 만나면 스택에 push 한다.</p>
-</li>
-<li><p>‘)’를 만나면 스택에서 ‘(‘ 가 나올때 까지 pop 하여 출력하고, ‘(‘ 는 pop하여 버린다.</p>
-</li>
-<li><p>연산자를 만나면 스택에서 그 연산자보다 낮은 우선순위의 연산자를 만날 때 까지 pop 하여 출력한 뒤에 자신을 push 한다.</p>
-</li>
-<li><p>피 연산자는 그냥 출력한다.</p>
-</li>
-<li><p>모든 입력이 끝나면 스택에 있는 연산자들을 모두 pop 하여 출력한다.</p>
-</li>
-</ol>
-</li>
-<li><p>후위 표기법 수식의 계산</p>
-<ol>
-<li><p>숫자를 만나면 숫자는 스택에 push한다.</p>
-</li>
-<li><p>연산자를 만나면 스택에서 pop을 두번 하여 그 두 데이터를 가지고 연산한 다음 결과를 스택에 push 한다.</p>
-</li>
-</ol>
-</li>
-</ul>
-<h2 id="백트래킹"><a href="#백트래킹" class="headerlink" title="백트래킹"></a>백트래킹</h2><ul>
-<li>해를 찾는 도중에 ‘막히면’ (즉, 해가 아니면) 되돌아가서 다시 해를 찾아 가는 기법</li>
-<li>최적화(optimization) 문제와 결정(decision) 문제를 해결할 수 있다.</li>
-<li>결정문제 : 문제의 조건을 만족하는 해가 존재하는지의 여부를 ‘yes’ 또는 ‘no’ 로 답하는 문제</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>문제</th>
-<th>url</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>미로찾기</td>
-<td><a target="_blank" rel="noopener" href="https://www.acmicpc.net/problem/2178">https://www.acmicpc.net/problem/2178</a></td>
-</tr>
-<tr>
-<td>n-Queen</td>
-<td><a target="_blank" rel="noopener" href="https://www.acmicpc.net/problem/9663">https://www.acmicpc.net/problem/9663</a></td>
-</tr>
-<tr>
-<td>Map coloring</td>
-<td></td>
-</tr>
-<tr>
-<td>부분집합의 합(Subset Sum)</td>
-<td><a target="_blank" rel="noopener" href="https://www.acmicpc.net/problem/1182">https://www.acmicpc.net/problem/1182</a></td>
-</tr>
-</tbody></table>
-<ul>
-<li>백트래킹과 DFS의 차이<ul>
-<li>깊이 우선 탐색이 모든 경로를 추적하는데 비해, 백트래킹은 불필요한 경로를 조기에 차단</li>
-<li>Pruning (가지치기) : 어떤 노드에서 출발하는 경로가 해결책으로 이어질 것 같지 않으면 더이상 그 경로를 따라가지 않음으로써 시도의 횟수를 줄임</li>
-</ul>
-</li>
-</ul>
-<p>[ 일반 백트래킹 알고리즘]</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">checknode</span>(<span class="params">v</span>):</span><br><span class="line">    <span class="keyword">if</span> promising(v):</span><br><span class="line">        <span class="keyword">if</span> there <span class="keyword">is</span> a solution at v:</span><br><span class="line">            write the solution</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">for</span> u <span class="keyword">in</span> each child of v:</span><br><span class="line">                checknode(u)</span><br></pre></td></tr></table></figure>
+    <meta name="author" content="Mihyun Lee">
 
 
 
-<p>[부분집합 구하기]</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">def backtrack(a,k,input):</span><br><span class="line">	global MAXCANDIDATES</span><br><span class="line">	c = [0] * MAXCANDIDATES</span><br><span class="line">	</span><br><span class="line">	if k == input:</span><br><span class="line">		process_solution(a,k) # 답이면 원하는 작업을 한다.</span><br><span class="line">	else:</span><br><span class="line">		k += 1</span><br><span class="line">		ncandidates = construct_candidates(a,k,input,c)</span><br><span class="line">		for i in range(ncandidates):</span><br><span class="line">            a[k] = c[i]</span><br><span class="line">            </span><br><span class="line">            backtrack(a,k,input)</span><br><span class="line">		</span><br><span class="line">def construct_candidates(a,k,input,c):</span><br><span class="line">	c[0] = True</span><br><span class="line">	c[1] = False</span><br><span class="line">	return 2</span><br><span class="line">	</span><br><span class="line">MAXCANDIDATES = 2</span><br><span class="line">NMAX = 4</span><br><span class="line">a = [0] * NMAX</span><br><span class="line">backtrack(a,0,3)</span><br></pre></td></tr></table></figure>
 
-</div></article></div></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.png" alt="Mihyun Lee"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Mihyun Lee</p><p class="is-size-6 is-block">Hello!👋</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>SSAFY 7th</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Posts</p><a href="/archives"><p class="title">39</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Categories</p><a href="/categories"><p class="title">9</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tags</p><a href="/tags"><p class="title">42</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/mhlee21" target="_blank" rel="noopener">Follow</a></div></div></div><div class="card widget" data-type="links"><div class="card-content"><div class="menu"><h3 class="menu-label">Links</h3><ul class="menu-list"><li><a class="level is-mobile" href="https://hexo.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Hexo</span></span><span class="level-right"><span class="level-item tag">hexo.io</span></span></a></li></ul></div></div></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">Categories</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/Computer-Network/"><span class="level-start"><span class="level-item">Computer Network</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/Django/"><span class="level-start"><span class="level-item">Django</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/categories/JavaScript/"><span class="level-start"><span class="level-item">JavaScript</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/OS/"><span class="level-start"><span class="level-item">OS</span></span><span class="level-end"><span class="level-item tag">10</span></span></a></li><li><a class="level is-mobile" href="/categories/WEB/"><span class="level-start"><span class="level-item">WEB</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/categories/algo-python/"><span class="level-start"><span class="level-item">algo_python</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/categories/algorithm/"><span class="level-start"><span class="level-item">algorithm</span></span><span class="level-end"><span class="level-item tag">7</span></span></a></li><li><a class="level is-mobile" href="/categories/python/"><span class="level-start"><span class="level-item">python</span></span><span class="level-end"><span class="level-item tag">7</span></span></a></li><li><a class="level is-mobile" href="/categories/startcamp/"><span class="level-start"><span class="level-item">startcamp</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li></ul></div></div></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">Recents</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-03-23T02:13:19.000Z">2022-03-23</time></p><p class="title"><a href="/2022/03/23/algo-BOJ-14890-%EA%B2%BD%EC%82%AC%EB%A1%9C-%EA%B3%A8%EB%93%9C3/">algo&gt;BOJ_14890(경사로,골드3)</a></p><p class="categories"><a href="/categories/algo-python/">algo_python</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-03-23T01:45:09.000Z">2022-03-23</time></p><p class="title"><a href="/2022/03/23/%EC%97%94%EB%94%94%EC%95%88-Endianness/">엔디안 (Endianness)</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-03-20T03:57:33.000Z">2022-03-20</time></p><p class="title"><a href="/2022/03/20/JavaScript/">JavaScript</a></p><p class="categories"><a href="/categories/JavaScript/">JavaScript</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-03-16T00:01:24.000Z">2022-03-16</time></p><p class="title"><a href="/2022/03/16/tree/">tree</a></p><p class="categories"><a href="/categories/algorithm/">algorithm</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-03-15T13:47:02.000Z">2022-03-15</time></p><p class="title"><a href="/2022/03/15/Network-01-Roadmap/">Network&gt;01.Roadmap</a></p><p class="categories"><a href="/categories/Computer-Network/">Computer Network</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">Archives</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2022/03/"><span class="level-start"><span class="level-item">March 2022</span></span><span class="level-end"><span class="level-item tag">11</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/02/"><span class="level-start"><span class="level-item">February 2022</span></span><span class="level-end"><span class="level-item tag">17</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/01/"><span class="level-start"><span class="level-item">January 2022</span></span><span class="level-end"><span class="level-item tag">11</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">Tags</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/BFS/"><span class="tag">BFS</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/BOJ/"><span class="tag">BOJ</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Boyer-Moore-algorithm/"><span class="tag">Boyer-Moore algorithm</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Brute-Force/"><span class="tag">Brute Force</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Bubble-sort/"><span class="tag">Bubble sort</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/CLI/"><span class="tag">CLI</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Computer-Network/"><span class="tag">Computer Network</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Counting-sort/"><span class="tag">Counting sort</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/DFS/"><span class="tag">DFS</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/DP/"><span class="tag">DP</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Django/"><span class="tag">Django</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/HTML-CSS/"><span class="tag">HTML/CSS</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Insertion-sort/"><span class="tag">Insertion sort</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/JavaScript/"><span class="tag">JavaScript</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/KMP/"><span class="tag">KMP</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Markdown/"><span class="tag">Markdown</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Merge-sort/"><span class="tag">Merge sort</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/OS/"><span class="tag">OS</span><span class="tag">10</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Quick-sort/"><span class="tag">Quick sort</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Rabin-Karp-algorithm/"><span class="tag">Rabin-Karp algorithm</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Selection-sort/"><span class="tag">Selection sort</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/WEB/"><span class="tag">WEB</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/algorithm/"><span class="tag">algorithm</span><span class="tag">9</span></a></div><div class="control"><a class="tags has-addons" href="/tags/bootstrap/"><span class="tag">bootstrap</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/brute-force/"><span class="tag">brute force</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/data-structure/"><span class="tag">data structure</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/git/"><span class="tag">git</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/github/"><span class="tag">github</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/hexo/"><span class="tag">hexo</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/memoization/"><span class="tag">memoization</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/python/"><span class="tag">python</span><span class="tag">7</span></a></div><div class="control"><a class="tags has-addons" href="/tags/queue/"><span class="tag">queue</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/stack/"><span class="tag">stack</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/tree/"><span class="tag">tree</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EA%B3%84%EC%82%B0%EA%B8%B0/"><span class="tag">계산기</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EB%B0%B1%ED%8A%B8%EB%9E%98%ED%82%B9/"><span class="tag">백트래킹</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EB%B9%85-%EC%98%A4-%ED%91%9C%EA%B8%B0%EB%B2%95/"><span class="tag">빅-오 표기법</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EC%84%A0%ED%98%95%ED%81%90/"><span class="tag">선형큐</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EC%97%94%EB%94%94%EC%95%88/"><span class="tag">엔디안</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EC%9A%B0%EC%84%A0%EC%88%9C%EC%9C%84%ED%81%90/"><span class="tag">우선순위큐</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EC%9B%90%ED%98%95%ED%81%90/"><span class="tag">원형큐</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%ED%84%B0%EB%AF%B8%EB%84%90-%EB%AA%85%EB%A0%B9%EC%96%B4/"><span class="tag">터미널 명령어</span><span class="tag">1</span></a></div></div></div></div></div></div><div class="column column-right is-4-tablet is-4-desktop is-4-widescreen  order-3"><!--!--></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/favicon_mhlee.ico" alt="Mihyun&#039;s Blog" height="28"></a><p class="is-size-7"><span>&copy; 2022 Mihyun Lee</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
-            article: {
-                highlight: {
-                    clipboard: true,
-                    fold: 'unfolded'
-                }
+
+<title>Tag: DFS | Mihyun&#39;s Blog</title>
+
+
+
+    <link rel="icon" href="/favicon_mhlee.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
             }
-        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="Back to top" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
-      window.cookieconsent.initialise({
-        type: "info",
-        theme: "edgeless",
-        static: false,
-        position: "bottom-left",
-        content: {
-          message: "This website uses cookies to improve your experience.",
-          dismiss: "Got it!",
-          allow: "Allow cookies",
-          deny: "Decline",
-          link: "Learn more",
-          policy: "Cookie Policy",
-          href: "https://www.cookiesandyou.com/",
-        },
-        palette: {
-          popup: {
-            background: "#edeff5",
-            text: "#838391"
-          },
-          button: {
-            background: "#4b81e8"
-          },
-        },
-      });
-    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
-            if (typeof $.fn.lightGallery === 'function') {
-                $('.article').lightGallery({ selector: '.gallery-item' });
-            }
-            if (typeof $.fn.justifiedGallery === 'function') {
-                if ($('.justified-gallery > p > .gallery-item').length) {
-                    $('.justified-gallery > p > .gallery-item').unwrap();
-                }
-                $('.justified-gallery').justifiedGallery();
-            }
-        });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="Type something..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
-            loadInsight({"contentUrl":"/content.json"}, {"hint":"Type something...","untitled":"(Untitled)","posts":"Posts","pages":"Pages","categories":"Categories","tags":"Tags"});
-        });</script></body></html>
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Mihyun&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Mihyun&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                
+
+    
+<div class="container">
+    <div class="post-wrap tags">
+        <h2 class="post-title">-&nbsp;Tag&nbsp;·&nbsp;DFS-</h2>
+    </div>
+    <div class="post-wrap archive">
+    
+    
+        
+
+        
+            <h3>2022</h3>
+        
+
+        <article class="archive-item">
+            <a class="archive-item-link" href="/2022/02/22/stack/">stack</a>
+            <span class="archive-item-date">February 22, 2022</span>
+        </article>
+    
+    
+</div>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Mihyun Lee | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>

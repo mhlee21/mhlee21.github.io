@@ -1,281 +1,243 @@
-<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="robots" content="noindex"><meta><title>Tag: OS - Mihyun&#039;s Blog</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="Mihyun&#039;s Blog"><meta name="msapplication-TileImage" content="/img/favicon_mhlee.ico"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Mihyun&#039;s Blog"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta property="og:type" content="blog"><meta property="og:title" content="Mihyun&#039;s Blog"><meta property="og:url" content="https://github.com/mhlee21"><meta property="og:site_name" content="Mihyun&#039;s Blog"><meta property="og:locale" content="en_US"><meta property="og:image" content="https://github.com/img/og_image.png"><meta property="article:author" content="Mihyun Lee"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://github.com/mhlee21"},"headline":"Mihyun's Blog","image":["https://github.com/img/og_image.png"],"author":{"@type":"Person","name":"Mihyun Lee"},"publisher":{"@type":"Organization","name":"Mihyun's Blog","logo":{"@type":"ImageObject","url":"https://github.com/img/favicon_mhlee.ico"}},"description":""}</script><link rel="icon" href="/img/favicon_mhlee.ico"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
-  (function () {
-      function switchTab() {
-          if (!location.hash) {
-            return;
-          }
-          Array
-              .from(document.querySelectorAll('.tab-content'))
-              .forEach($tab => {
-                  $tab.classList.add('is-hidden');
-              });
-          Array
-              .from(document.querySelectorAll('.tabs li'))
-              .forEach($tab => {
-                  $tab.classList.remove('is-active');
-              });
-          const $activeTab = document.querySelector(location.hash);
-          if ($activeTab) {
-              $activeTab.classList.remove('is-hidden');
-          }
-          const $tabMenu = document.querySelector(`a[href="${location.hash}"]`);
-          if ($tabMenu) {
-              $tabMenu.parentElement.classList.add('is-active');
-          }
-      }
-      switchTab();
-      window.addEventListener('hashchange', switchTab, false);
-  })();
-  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.0.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/favicon_mhlee.ico" alt="Mihyun&#039;s Blog" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/mhlee21"><i class="fab fa-github"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><div class="card-content"><nav class="breadcrumb" aria-label="breadcrumbs"><ul><li><a href="/tags">Tags</a></li><li class="is-active"><a href="#" aria-current="page">OS</a></li></ul></nav></div></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2022-03-06T10:04:27.000Z" title="2022. 3. 6. 오후 7:04:27">2022-03-06</time></span><span class="level-item">Updated&nbsp;<time dateTime="2022-03-16T04:26:26.585Z" title="2022. 3. 16. 오후 1:26:26">2022-03-16</time></span><span class="level-item"><a class="link-muted" href="/categories/OS/">OS</a></span><span class="level-item">11 minutes read (About 1618 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2022/03/06/OS-10-%EC%9E%85%EC%B6%9C%EB%A0%A5%EC%8B%9C%EC%8A%A4%ED%85%9C/">OS&gt;10.입출력시스템</a></h1><div class="content"><h1 id="10-입출력-시스템"><a href="#10-입출력-시스템" class="headerlink" title="10. 입출력 시스템"></a>10. 입출력 시스템</h1><h2 id="Disk-Scheduling"><a href="#Disk-Scheduling" class="headerlink" title="Disk Scheduling"></a>Disk Scheduling</h2><p><img src="/2022/03/06/OS-10-%EC%9E%85%EC%B6%9C%EB%A0%A5%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220306164450708.png" alt="image-20220306164450708"></p>
-<ul>
-<li>cylinder : 하드디스크를 구성하고 있는 모든 원판 상에 위치하고 있는 단일 트랙 위치(같은 트랙번호를 갖는 각 면에 있는 트랙들의 집합)</li>
-</ul>
-<h3 id="Disk-Structure"><a href="#Disk-Structure" class="headerlink" title="Disk Structure"></a>Disk Structure</h3><p><img src="/2022/03/06/OS-10-%EC%9E%85%EC%B6%9C%EB%A0%A5%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220306164718745.png" alt="image-20220306164718745"></p>
-<ul>
-<li>logical block : 디스크 외부에서 보는 디스크의 단위 정보 저장 공간들</li>
-<li>sector : 하드 드라이브의  최소 기억 단위</li>
-<li>디스크 내부에서는 디스크 컨트롤러가 원판, 트랙, 섹터번호 알려줘야 데이터 찾을 수 있다.</li>
-<li>디스크 외부에서는 logical block 번호 이용하여 데이터를 찾는다.</li>
-</ul>
-<h3 id="Disk-Management"><a href="#Disk-Management" class="headerlink" title="Disk Management"></a>Disk Management</h3><p><img src="/2022/03/06/OS-10-%EC%9E%85%EC%B6%9C%EB%A0%A5%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220306165153812.png" alt="image-20220306165153812"></p>
-<ul>
-<li>physical formatting : 디스크 컨트롤러가 디스크를 섹터 단위로 나누는 과정<ul>
-<li>디스크를 만들고 처음으로 하는 과정</li>
-<li>섹터는 header + (실제)data + trailer 로 구성</li>
-<li>header&#x2F;trailer : 컨트롤러가 디스크를 관리하기 위한 정보</li>
-</ul>
-</li>
-<li>partitioning : 디스크를 논리적인 디스크로 나누는 과정<ul>
-<li>C드라이브, D드라이브…</li>
-</ul>
-</li>
-<li>Logical formatting : 파티셔닝한 논리적 디스크에 파일 시스템을 설치하는 것</li>
-<li>Booting<ul>
-<li>ROM : 전원을 꺼도 데이터가 사라지지 않는 메모리</li>
-<li>small bootstrap loader 를 실행 (-&gt; 디스크의 0번 sector를 load해라)</li>
-</ul>
-</li>
-</ul>
-<h3 id="Disk-Scheduling-1"><a href="#Disk-Scheduling-1" class="headerlink" title="Disk Scheduling"></a>Disk Scheduling</h3><ul>
-<li>Access time<ul>
-<li>Seek time : 헤드를 해당 실린더로 움직이는데 걸리는 시간</li>
-<li>Rotational latency : 헤드와 섹터가 만나기까지 걸리는 회전지연시간, seek time 의 1&#x2F;10 정도 걸림</li>
-<li>Transfer : 실제 데이터의 전송시간, seektime에 비해 굉장히 작은 시간</li>
-<li>디스크를 효율적으로 관리하려면 헤드의 이동 거리를 줄이는 것이 중요</li>
-</ul>
-</li>
-<li>Disk bandwidth (대역폭) : 단위 시간당 전송된 바이트의 수<ul>
-<li>bandwidth 를 높이기 위해 disk scheduling을 잘해야한다.</li>
-</ul>
-</li>
-<li>Disk Scheduling : <strong>seek time을 최소화 하는것이 목표</strong></li>
-</ul>
-<h2 id="Disk-Scheduling-Algorithm"><a href="#Disk-Scheduling-Algorithm" class="headerlink" title="Disk Scheduling Algorithm"></a>Disk Scheduling Algorithm</h2><ul>
-<li>큐에 다음과 같은 실린더 위치의 요청이 존재하는 경우 디스크 헤드 53번에서 시작한 각 알고리즘의 수행 결과는 ? (실린더 위치는 0-199)<ul>
-<li>98, 183, 37, 122, 14, 124, 65, 67</li>
-</ul>
-</li>
-</ul>
-<h3 id="FCFS-First-Come-First-Served"><a href="#FCFS-First-Come-First-Served" class="headerlink" title="FCFS (First Come First Served)"></a>FCFS (First Come First Served)</h3><ul>
-<li>선착순 처리</li>
-<li>헤드의 이동 상당히 빈번</li>
-</ul>
-<p><img src="/2022/03/06/OS-10-%EC%9E%85%EC%B6%9C%EB%A0%A5%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220306170436930.png" alt="image-20220306170436930"></p>
-<h3 id="SSTF-Shortest-Seek-Time-First"><a href="#SSTF-Shortest-Seek-Time-First" class="headerlink" title="SSTF (Shortest Seek Time First)"></a>SSTF (Shortest Seek Time First)</h3><ul>
-<li>현재 위치부터 seek time이 가장 작은 요청부터 우선 처리</li>
-<li>head의 이동거리는 짧아질 수 있지만 starvation 의 문제가 있다.</li>
-</ul>
-<p><img src="/2022/03/06/OS-10-%EC%9E%85%EC%B6%9C%EB%A0%A5%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220306171020367.png" alt="image-20220306171020367"></p>
-<h3 id="SCAN⭐"><a href="#SCAN⭐" class="headerlink" title="SCAN⭐"></a>SCAN⭐</h3><ul>
-<li>disk scheduling 에서 가장 핵심적인 방법</li>
-<li>head가 한쪽 끝에서 다른쪽 끝으로 이동하며 처리할 수 있는 모든 요청을 처리하고 지나간다.</li>
-</ul>
-<p><img src="/2022/03/06/OS-10-%EC%9E%85%EC%B6%9C%EB%A0%A5%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220306171314335.png" alt="image-20220306171314335"></p>
-<p><img src="/2022/03/06/OS-10-%EC%9E%85%EC%B6%9C%EB%A0%A5%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220306171953828.png" alt="image-20220306171953828"></p>
-<h3 id="C-SCAN"><a href="#C-SCAN" class="headerlink" title="C-SCAN"></a>C-SCAN</h3><ul>
-<li>디스크 헤드가 한쪽 끝에 도달하면 바로 출발점으로 다시 이동</li>
-</ul>
-<p><img src="/2022/03/06/OS-10-%EC%9E%85%EC%B6%9C%EB%A0%A5%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220306172010120.png" alt="image-20220306172010120"></p>
-<p><img src="/2022/03/06/OS-10-%EC%9E%85%EC%B6%9C%EB%A0%A5%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220306174707567.png" alt="image-20220306174707567"></p>
-<h3 id="Other-Algorithms"><a href="#Other-Algorithms" class="headerlink" title="Other Algorithms"></a>Other Algorithms</h3><p><img src="/2022/03/06/OS-10-%EC%9E%85%EC%B6%9C%EB%A0%A5%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220306172354782.png" alt="image-20220306172354782"></p>
-<p><img src="/2022/03/06/OS-10-%EC%9E%85%EC%B6%9C%EB%A0%A5%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220306174628115.png" alt="image-20220306174628115"></p>
-<ul>
-<li>Look : 가려는 방향에 더이상 요청없으면 바로 턴</li>
-</ul>
-<p><img src="/2022/03/06/OS-10-%EC%9E%85%EC%B6%9C%EB%A0%A5%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220306174746959.png" alt="image-20220306174746959"></p>
-<ul>
-<li>디스크 스케줄링 알고리즘은 OS 와 별도의 모듈로 작성되어야 한다.</li>
-</ul>
-<h2 id="Swap-space-Management"><a href="#Swap-space-Management" class="headerlink" title="Swap-space Management"></a>Swap-space Management</h2><p><img src="/2022/03/06/OS-10-%EC%9E%85%EC%B6%9C%EB%A0%A5%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220306174850443.png" alt="image-20220306174850443"></p>
-<ul>
-<li>Swap-space<ul>
-<li>전원을 끄면 사라질 정보들이기 때문에 공간 효율성보다는 속도 효율성이 우선</li>
-<li>헤드의 이동 줄이기 위해 큰 단위로 데이터를 읽고 쓴다.</li>
-</ul>
-</li>
-</ul>
-<h2 id="RAID"><a href="#RAID" class="headerlink" title="RAID"></a>RAID</h2><p><img src="/2022/03/06/OS-10-%EC%9E%85%EC%B6%9C%EB%A0%A5%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220306175223277.png" alt="image-20220306175223277"></p>
-<ul>
-<li>신뢰성 향상<ul>
-<li>데이터를 서로 다른 디스크에 중복 저장</li>
-<li>완전 중복 저장을 하면 공간 낭비가 심하므로 최소한의 중복을 통해 신뢰성을 높일 수도 있다.<ul>
-<li>parity : 일종의 축약된 정보</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="UNIX-파일-시스템"><a href="#UNIX-파일-시스템" class="headerlink" title="UNIX 파일 시스템"></a>UNIX 파일 시스템</h2><p><img src="/2022/03/06/OS-10-%EC%9E%85%EC%B6%9C%EB%A0%A5%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220306181802932.png" alt="image-20220306181802932"></p>
-<ul>
-<li>파일 시스템 구성 : super block + i-node block + data block<ul>
-<li>i-node block 하나에는 i-node 여러개가 들어간다.</li>
-</ul>
-</li>
-</ul>
-<p><img src="/2022/03/06/OS-10-%EC%9E%85%EC%B6%9C%EB%A0%A5%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220306181319466.png" alt="image-20220306181319466"></p>
-<hr>
-<p>(참고. 파일시스템의 변천사)</p>
-<p><img src="/2022/03/06/OS-10-%EC%9E%85%EC%B6%9C%EB%A0%A5%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220306181343145.png" alt="image-20220306181343145"></p>
-<hr>
-<h2 id="Ext2-파일-시스템"><a href="#Ext2-파일-시스템" class="headerlink" title="Ext2 파일 시스템"></a>Ext2 파일 시스템</h2><p><img src="/2022/03/06/OS-10-%EC%9E%85%EC%B6%9C%EB%A0%A5%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220306181511200.png" alt="image-20220306181511200"></p>
-<ul>
-<li>데이터를 15개의 포인터 블록으로 구성<ul>
-<li>12 Direct ptr : 직접 데이터를 가리킴</li>
-<li>3 Indirect ptr : 큰 file 표현 시 사용</li>
-</ul>
-</li>
-</ul>
-<p><img src="/2022/03/06/OS-10-%EC%9E%85%EC%B6%9C%EB%A0%A5%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220306181900335.png" alt="image-20220306181900335"></p>
-<ul>
-<li>블록의 그룹화<ul>
-<li>각각의 그룹에 메타 데이터와 실제 데이터를 같이 배치 -&gt; 디스크 헤드의 이동시간 줄임</li>
-</ul>
-</li>
-<li>수퍼블록을 그룹마다 중복 저장하여 디스크 오류(배드 섹터)에 대비</li>
-</ul>
-<p><img src="/2022/03/06/OS-10-%EC%9E%85%EC%B6%9C%EB%A0%A5%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220306181921829.png" alt="image-20220306181921829"></p>
-<p><img src="/2022/03/06/OS-10-%EC%9E%85%EC%B6%9C%EB%A0%A5%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220306182150157.png" alt="image-20220306182150157"></p>
-<ul>
-<li>inode table &#x2F; data block : 실제 아이노드와 데이터가 저장되는 위치</li>
-</ul>
-<p><img src="/2022/03/06/OS-10-%EC%9E%85%EC%B6%9C%EB%A0%A5%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220306182313415.png" alt="image-20220306182313415"></p>
-<ul>
-<li>Ext2와 Ext4의 구조는 거의 동일</li>
-<li>Ext4는 여러 플랫폼에서 사용되고 있다.</li>
-<li>저널링??</li>
-</ul>
-<h2 id="저널링-Journaling"><a href="#저널링-Journaling" class="headerlink" title="저널링 (Journaling)"></a>저널링 (Journaling)</h2><p><img src="/2022/03/06/OS-10-%EC%9E%85%EC%B6%9C%EB%A0%A5%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220306182543006.png" alt="image-20220306182543006"></p>
-<p><img src="/2022/03/06/OS-10-%EC%9E%85%EC%B6%9C%EB%A0%A5%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220306182625560.png" alt="image-20220306182625560"></p>
-<p><img src="/2022/03/06/OS-10-%EC%9E%85%EC%B6%9C%EB%A0%A5%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220306182648984.png" alt="image-20220306182648984"></p>
-<ul>
-<li>전원이 나가면 버퍼캐시 내용이 휘발된다.</li>
-<li>재부팅하면 파일시스템에는 Inconsistent data만 남는다. (깨진 데이터)</li>
-</ul>
-<p><img src="/2022/03/06/OS-10-%EC%9E%85%EC%B6%9C%EB%A0%A5%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220306183206178.png" alt="image-20220306183206178"></p>
-<ul>
-<li>journaling<ul>
-<li>수정된 내용을 주기적으로 저널영역에 기록</li>
-</ul>
-</li>
-</ul>
-<h3 id="Ext4의-저널링"><a href="#Ext4의-저널링" class="headerlink" title="Ext4의 저널링"></a>Ext4의 저널링</h3><p><img src="/2022/03/06/OS-10-%EC%9E%85%EC%B6%9C%EB%A0%A5%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220306183558086.png" alt="image-20220306183558086"></p>
-<ul>
-<li><p>메타데이터 저널링 모드</p>
-<ul>
-<li><p>체크 포인팅 주기가 오면 journal area의 메타데이터를 파일 시스템에 반영한다.</p>
-</li>
-<li><p>메타데이터에는 파일 시스템의 구조정보(위치정보)가 있다. </p>
-</li>
-<li><p>메타데이터를 저널링하면 파일 시스템 자체가 깨어지는 것 방지할 수 있지만, 일반 데이터는 깨질 수 있는 가능성이 존재한다.</p>
-</li>
-</ul>
-</li>
-</ul>
-<p><img src="/2022/03/06/OS-10-%EC%9E%85%EC%B6%9C%EB%A0%A5%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220306183738315.png" alt="image-20220306183738315"></p>
-<ul>
-<li>데이터 저널링 모드<ul>
-<li>파일 시스템뿐 아니라 데이터도 깨지지 않는다.</li>
-</ul>
-</li>
-</ul>
-<h2 id="버퍼캐시-교체-알고리즘"><a href="#버퍼캐시-교체-알고리즘" class="headerlink" title="버퍼캐시 교체 알고리즘"></a>버퍼캐시 교체 알고리즘</h2><p><img src="/2022/03/06/OS-10-%EC%9E%85%EC%B6%9C%EB%A0%A5%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220306184135366.png" alt="image-20220306184135366"></p>
-<ul>
-<li>LRU 단점 : 자주 사용되는 블록에 대한 고려 X</li>
-<li>LFU 단점 : 사용횟수만 고려하고 최근 사용된 블록에 대한 고려 X</li>
-</ul>
-<h3 id="LRFU-알고리즘"><a href="#LRFU-알고리즘" class="headerlink" title="LRFU 알고리즘"></a>LRFU 알고리즘</h3><p><img src="/2022/03/06/OS-10-%EC%9E%85%EC%B6%9C%EB%A0%A5%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220306184330120.png" alt="image-20220306184330120"></p>
-<ul>
-<li><p>각각의 block 에 대해 value를 계산하고 그 값이 가장 작은 블록을 버퍼캐시에서 삭제</p>
-</li>
-<li><p>LFU 적 성질 : 사용 횟소가 많으면 value 가 커지게 된다.</p>
-</li>
-<li><p>LRU 적 성질 : 최근 사용된 블록일 수록 value 의 증가에 더 큰 기여</p>
-</li>
-<li><p>실효성</p>
-<ul>
-<li>Space overhead</li>
-<li>Time overhead</li>
-</ul>
-</li>
-</ul>
-<p><img src="/2022/03/06/OS-10-%EC%9E%85%EC%B6%9C%EB%A0%A5%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220306184756327.png" alt="image-20220306184756327"></p>
-<ul>
-<li>아무리 시간이 흐르더라도 시간정보 t 만으로 계산이 가능하다. 모든 block 정보 가지고있을 필요 없어서 space overhead 해결 가능</li>
-</ul>
-<p><img src="/2022/03/06/OS-10-%EC%9E%85%EC%B6%9C%EB%A0%A5%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220306185252955.png" alt="image-20220306185252955"></p>
-<ul>
-<li>블럭들이 재사용되지 않는 이상 value의 대소관계 변하지 않는다.</li>
-<li>Heap 을 이용하여 구현</li>
-</ul>
-<p><img src="/2022/03/06/OS-10-%EC%9E%85%EC%B6%9C%EB%A0%A5%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220306185406419.png" alt="image-20220306185406419"></p>
-<p><img src="/2022/03/06/OS-10-%EC%9E%85%EC%B6%9C%EB%A0%A5%EC%8B%9C%EC%8A%A4%ED%85%9C/image-20220306185700729.png" alt="image-20220306185700729"></p>
-<ul>
-<li>지금은 LRFU 보다 성능 좋은 알고리즘도 많다.</li>
-<li>LRFU : LRU 와 LFU 의 단점 보완하면서 효율적으로 구현할 수 있는 알고리즘</li>
-</ul>
-</div></article></div><nav class="pagination" role="navigation" aria-label="pagination"><div class="pagination-previous is-invisible is-hidden-mobile"><a href="/tags/OS/page/0/">Previous</a></div><div class="pagination-next"><a href="/tags/OS/page/2/">Next</a></div><ul class="pagination-list is-hidden-mobile"><li><a class="pagination-link is-current" href="/tags/OS/">1</a></li><li><a class="pagination-link" href="/tags/OS/page/2/">2</a></li><li><span class="pagination-ellipsis">&hellip;</span></li><li><a class="pagination-link" href="/tags/OS/page/10/">10</a></li></ul></nav></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.png" alt="Mihyun Lee"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Mihyun Lee</p><p class="is-size-6 is-block">Hello!👋</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>SSAFY 7th</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Posts</p><a href="/archives"><p class="title">39</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Categories</p><a href="/categories"><p class="title">9</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tags</p><a href="/tags"><p class="title">42</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/mhlee21" target="_blank" rel="noopener">Follow</a></div></div></div><div class="card widget" data-type="links"><div class="card-content"><div class="menu"><h3 class="menu-label">Links</h3><ul class="menu-list"><li><a class="level is-mobile" href="https://hexo.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Hexo</span></span><span class="level-right"><span class="level-item tag">hexo.io</span></span></a></li></ul></div></div></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">Categories</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/Computer-Network/"><span class="level-start"><span class="level-item">Computer Network</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/Django/"><span class="level-start"><span class="level-item">Django</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/categories/JavaScript/"><span class="level-start"><span class="level-item">JavaScript</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/OS/"><span class="level-start"><span class="level-item">OS</span></span><span class="level-end"><span class="level-item tag">10</span></span></a></li><li><a class="level is-mobile" href="/categories/WEB/"><span class="level-start"><span class="level-item">WEB</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/categories/algo-python/"><span class="level-start"><span class="level-item">algo_python</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/categories/algorithm/"><span class="level-start"><span class="level-item">algorithm</span></span><span class="level-end"><span class="level-item tag">7</span></span></a></li><li><a class="level is-mobile" href="/categories/python/"><span class="level-start"><span class="level-item">python</span></span><span class="level-end"><span class="level-item tag">7</span></span></a></li><li><a class="level is-mobile" href="/categories/startcamp/"><span class="level-start"><span class="level-item">startcamp</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li></ul></div></div></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">Recents</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-03-23T02:13:19.000Z">2022-03-23</time></p><p class="title"><a href="/2022/03/23/algo-BOJ-14890-%EA%B2%BD%EC%82%AC%EB%A1%9C-%EA%B3%A8%EB%93%9C3/">algo&gt;BOJ_14890(경사로,골드3)</a></p><p class="categories"><a href="/categories/algo-python/">algo_python</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-03-23T01:45:09.000Z">2022-03-23</time></p><p class="title"><a href="/2022/03/23/%EC%97%94%EB%94%94%EC%95%88-Endianness/">엔디안 (Endianness)</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-03-20T03:57:33.000Z">2022-03-20</time></p><p class="title"><a href="/2022/03/20/JavaScript/">JavaScript</a></p><p class="categories"><a href="/categories/JavaScript/">JavaScript</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-03-16T00:01:24.000Z">2022-03-16</time></p><p class="title"><a href="/2022/03/16/tree/">tree</a></p><p class="categories"><a href="/categories/algorithm/">algorithm</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-03-15T13:47:02.000Z">2022-03-15</time></p><p class="title"><a href="/2022/03/15/Network-01-Roadmap/">Network&gt;01.Roadmap</a></p><p class="categories"><a href="/categories/Computer-Network/">Computer Network</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">Archives</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2022/03/"><span class="level-start"><span class="level-item">March 2022</span></span><span class="level-end"><span class="level-item tag">11</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/02/"><span class="level-start"><span class="level-item">February 2022</span></span><span class="level-end"><span class="level-item tag">17</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/01/"><span class="level-start"><span class="level-item">January 2022</span></span><span class="level-end"><span class="level-item tag">11</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">Tags</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/BFS/"><span class="tag">BFS</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/BOJ/"><span class="tag">BOJ</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Boyer-Moore-algorithm/"><span class="tag">Boyer-Moore algorithm</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Brute-Force/"><span class="tag">Brute Force</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Bubble-sort/"><span class="tag">Bubble sort</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/CLI/"><span class="tag">CLI</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Computer-Network/"><span class="tag">Computer Network</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Counting-sort/"><span class="tag">Counting sort</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/DFS/"><span class="tag">DFS</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/DP/"><span class="tag">DP</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Django/"><span class="tag">Django</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/HTML-CSS/"><span class="tag">HTML/CSS</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Insertion-sort/"><span class="tag">Insertion sort</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/JavaScript/"><span class="tag">JavaScript</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/KMP/"><span class="tag">KMP</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Markdown/"><span class="tag">Markdown</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Merge-sort/"><span class="tag">Merge sort</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/OS/"><span class="tag">OS</span><span class="tag">10</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Quick-sort/"><span class="tag">Quick sort</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Rabin-Karp-algorithm/"><span class="tag">Rabin-Karp algorithm</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Selection-sort/"><span class="tag">Selection sort</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/WEB/"><span class="tag">WEB</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/algorithm/"><span class="tag">algorithm</span><span class="tag">9</span></a></div><div class="control"><a class="tags has-addons" href="/tags/bootstrap/"><span class="tag">bootstrap</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/brute-force/"><span class="tag">brute force</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/data-structure/"><span class="tag">data structure</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/git/"><span class="tag">git</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/github/"><span class="tag">github</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/hexo/"><span class="tag">hexo</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/memoization/"><span class="tag">memoization</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/python/"><span class="tag">python</span><span class="tag">7</span></a></div><div class="control"><a class="tags has-addons" href="/tags/queue/"><span class="tag">queue</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/stack/"><span class="tag">stack</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/tree/"><span class="tag">tree</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EA%B3%84%EC%82%B0%EA%B8%B0/"><span class="tag">계산기</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EB%B0%B1%ED%8A%B8%EB%9E%98%ED%82%B9/"><span class="tag">백트래킹</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EB%B9%85-%EC%98%A4-%ED%91%9C%EA%B8%B0%EB%B2%95/"><span class="tag">빅-오 표기법</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EC%84%A0%ED%98%95%ED%81%90/"><span class="tag">선형큐</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EC%97%94%EB%94%94%EC%95%88/"><span class="tag">엔디안</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EC%9A%B0%EC%84%A0%EC%88%9C%EC%9C%84%ED%81%90/"><span class="tag">우선순위큐</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EC%9B%90%ED%98%95%ED%81%90/"><span class="tag">원형큐</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%ED%84%B0%EB%AF%B8%EB%84%90-%EB%AA%85%EB%A0%B9%EC%96%B4/"><span class="tag">터미널 명령어</span><span class="tag">1</span></a></div></div></div></div></div></div><div class="column column-right is-4-tablet is-4-desktop is-4-widescreen  order-3"><!--!--></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/favicon_mhlee.ico" alt="Mihyun&#039;s Blog" height="28"></a><p class="is-size-7"><span>&copy; 2022 Mihyun Lee</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
-            article: {
-                highlight: {
-                    clipboard: true,
-                    fold: 'unfolded'
-                }
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Mihyun Lee">
+
+
+
+
+
+<title>Tag: OS | Mihyun&#39;s Blog</title>
+
+
+
+    <link rel="icon" href="/favicon_mhlee.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
             }
-        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="Back to top" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
-      window.cookieconsent.initialise({
-        type: "info",
-        theme: "edgeless",
-        static: false,
-        position: "bottom-left",
-        content: {
-          message: "This website uses cookies to improve your experience.",
-          dismiss: "Got it!",
-          allow: "Allow cookies",
-          deny: "Decline",
-          link: "Learn more",
-          policy: "Cookie Policy",
-          href: "https://www.cookiesandyou.com/",
-        },
-        palette: {
-          popup: {
-            background: "#edeff5",
-            text: "#838391"
-          },
-          button: {
-            background: "#4b81e8"
-          },
-        },
-      });
-    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
-            if (typeof $.fn.lightGallery === 'function') {
-                $('.article').lightGallery({ selector: '.gallery-item' });
-            }
-            if (typeof $.fn.justifiedGallery === 'function') {
-                if ($('.justified-gallery > p > .gallery-item').length) {
-                    $('.justified-gallery > p > .gallery-item').unwrap();
-                }
-                $('.justified-gallery').justifiedGallery();
-            }
-        });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="Type something..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
-            loadInsight({"contentUrl":"/content.json"}, {"hint":"Type something...","untitled":"(Untitled)","posts":"Posts","pages":"Pages","categories":"Categories","tags":"Tags"});
-        });</script></body></html>
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Mihyun&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Mihyun&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                
+
+    
+<div class="container">
+    <div class="post-wrap tags">
+        <h2 class="post-title">-&nbsp;Tag&nbsp;·&nbsp;OS-</h2>
+    </div>
+    <div class="post-wrap archive">
+    
+    
+        
+
+        
+            <h3>2022</h3>
+        
+
+        <article class="archive-item">
+            <a class="archive-item-link" href="/2022/03/06/OS-10-%EC%9E%85%EC%B6%9C%EB%A0%A5%EC%8B%9C%EC%8A%A4%ED%85%9C/">OS&gt;10.입출력시스템</a>
+            <span class="archive-item-date">March 6, 2022</span>
+        </article>
+    
+        
+
+        
+
+        <article class="archive-item">
+            <a class="archive-item-link" href="/2022/03/02/OS-09-%ED%8C%8C%EC%9D%BC%EC%8B%9C%EC%8A%A4%ED%85%9C/">OS&gt;09.파일시스템</a>
+            <span class="archive-item-date">March 2, 2022</span>
+        </article>
+    
+        
+
+        
+
+        <article class="archive-item">
+            <a class="archive-item-link" href="/2022/02/26/OS-08-%EA%B0%80%EC%83%81%EB%A9%94%EB%AA%A8%EB%A6%AC/">OS&gt;08.가상메모리</a>
+            <span class="archive-item-date">February 26, 2022</span>
+        </article>
+    
+        
+
+        
+
+        <article class="archive-item">
+            <a class="archive-item-link" href="/2022/02/23/OS-07-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EA%B4%80%EB%A6%AC/">OS&gt;07.메모리 관리</a>
+            <span class="archive-item-date">February 23, 2022</span>
+        </article>
+    
+        
+
+        
+
+        <article class="archive-item">
+            <a class="archive-item-link" href="/2022/02/19/OS-06-%EB%8D%B0%EB%93%9C%EB%9D%BD/">OS&gt;06.데드락</a>
+            <span class="archive-item-date">February 19, 2022</span>
+        </article>
+    
+        
+
+        
+
+        <article class="archive-item">
+            <a class="archive-item-link" href="/2022/02/16/OS-05-%EB%B3%91%ED%96%89%EC%A0%9C%EC%96%B4/">OS&gt;05.병행제어</a>
+            <span class="archive-item-date">February 16, 2022</span>
+        </article>
+    
+        
+
+        
+
+        <article class="archive-item">
+            <a class="archive-item-link" href="/2022/02/12/OS-04-CPU-%EC%8A%A4%EC%BC%80%EC%A4%84%EB%A7%81/">OS&gt;04.CPU 스케줄링</a>
+            <span class="archive-item-date">February 12, 2022</span>
+        </article>
+    
+        
+
+        
+
+        <article class="archive-item">
+            <a class="archive-item-link" href="/2022/02/09/OS-03-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-%EA%B4%80%EB%A6%AC/">OS&gt;03.프로세스 관리</a>
+            <span class="archive-item-date">February 9, 2022</span>
+        </article>
+    
+        
+
+        
+
+        <article class="archive-item">
+            <a class="archive-item-link" href="/2022/02/05/OS-02-%EC%BB%B4%ED%93%A8%ED%84%B0-%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%9D%98-%EA%B5%AC%EC%A1%B0/">OS&gt;02.컴퓨터 시스템의 구조</a>
+            <span class="archive-item-date">February 5, 2022</span>
+        </article>
+    
+        
+
+        
+
+        <article class="archive-item">
+            <a class="archive-item-link" href="/2022/01/29/OS-01-%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C-%EA%B0%9C%EC%9A%94/">OS&gt;01.운영체제 개요</a>
+            <span class="archive-item-date">January 29, 2022</span>
+        </article>
+    
+    
+</div>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Mihyun Lee | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>
