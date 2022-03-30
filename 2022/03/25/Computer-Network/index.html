@@ -366,6 +366,17 @@
 <h3 id="socket-programming"><a href="#socket-programming" class="headerlink" title="socket programming"></a>socket programming</h3><h1 id="3-Transport-Layer"><a href="#3-Transport-Layer" class="headerlink" title="3. Transport Layer"></a>3. Transport Layer</h1><h3 id="Multiplexing-x2F-demultiplexing"><a href="#Multiplexing-x2F-demultiplexing" class="headerlink" title="Multiplexing&#x2F;demultiplexing"></a>Multiplexing&#x2F;demultiplexing</h3><p><img src="/2022/03/25/Computer-Network/image-20220330084048648.png" alt="image-20220330084048648"></p>
 <p><img src="/2022/03/25/Computer-Network/image-20220330084340282.png" alt="image-20220330084340282"></p>
 <p><img src="/2022/03/25/Computer-Network/image-20220330084815140.png" alt="image-20220330084815140"></p>
+<p><img src="/2022/03/25/Computer-Network/image-20220330184910288.png" alt="image-20220330184910288"></p>
+<h3 id="UDP-checksum"><a href="#UDP-checksum" class="headerlink" title="UDP checksum"></a>UDP checksum</h3><ul>
+<li>체크섬(checksum) 이란 네트워크를 통해서 전송된 데이터의 값이 변경되었는지 (무결성) 를 검사하는 값으로, 이를 통해 수신된 데이터에 오류가 없는지 여부를 확인한다.</li>
+<li>UDP Checksum 을 계산하기 위해서는 IP Header 와 UDP header에 있는 일부 정보들을 가져와 IPv4 Pseudo Header 를 만든 후에 계산해 줘야 한다.</li>
+</ul>
+<h3 id="TCP-Sequence-number-amp-ACK-number"><a href="#TCP-Sequence-number-amp-ACK-number" class="headerlink" title="TCP Sequence number &amp; ACK number"></a>TCP Sequence number &amp; ACK number</h3><h3 id="TCP-Flow-Control-흐름제어"><a href="#TCP-Flow-Control-흐름제어" class="headerlink" title="TCP : Flow Control (흐름제어)"></a>TCP : Flow Control (흐름제어)</h3><p>송신측과 수신측의 데이터 처리 속도 차이를 해결하기 위한 기법</p>
+<ul>
+<li>stop and wait</li>
+<li>Sliding window</li>
+</ul>
+<h3 id="TCP-Congestion-Control-혼잡제어"><a href="#TCP-Congestion-Control-혼잡제어" class="headerlink" title="TCP : Congestion Control (혼잡제어)"></a>TCP : Congestion Control (혼잡제어)</h3><p>송신측의 데이터 전달과 네트워크의 데이터 처리 속도 차이를 해결하기 위한 기법</p>
 
         </div>
 
