@@ -246,8 +246,8 @@
 </ul>
 </li>
 </ul>
-<p><img src="/mhlee21/2022/03/16/tree/image-20220316090741007.png" alt="image-20220316090741007"></p>
-<h1 id="이진-트리"><a href="#이진-트리" class="headerlink" title="이진 트리"></a>이진 트리</h1><p><img src="/mhlee21/2022/03/16/tree/image-20220316092827444.png" alt="image-20220316092827444"></p>
+<p><img src="/2022/03/16/tree/image-20220316090741007.png" alt="image-20220316090741007"></p>
+<h1 id="이진-트리"><a href="#이진-트리" class="headerlink" title="이진 트리"></a>이진 트리</h1><p><img src="/2022/03/16/tree/image-20220316092827444.png" alt="image-20220316092827444"></p>
 <ul>
 <li>모든 노드들이 2개의 서브트리를 갖는 특별한 형태의 트리</li>
 <li>각 노드가 자식 노드를 최대한 2개 까지만 가질 수 있는 트리<ul>
@@ -266,7 +266,7 @@
 <h2 id="완전-이진-트리-Complete-Binary-Tree"><a href="#완전-이진-트리-Complete-Binary-Tree" class="headerlink" title="완전 이진 트리 (Complete Binary Tree)"></a>완전 이진 트리 (Complete Binary Tree)</h2><ul>
 <li>높이가 h 이고 노드 수가 n개 일 때, 포화 이진트리의 노드번호 1번부터 n 번까지 빈자리가 없는 이진트리</li>
 </ul>
-<img src="tree/image-20220316093059448.png" alt="image-20220316093059448" style="zoom:50%;" />
+<img src="image-20220316093059448.png" alt="image-20220316093059448" style="zoom:50%;" />
 
 <h2 id="편향-이진-트리-Skewed-Binary-Tree"><a href="#편향-이진-트리-Skewed-Binary-Tree" class="headerlink" title="편향 이진 트리 (Skewed Binary Tree)"></a>편향 이진 트리 (Skewed Binary Tree)</h2><ul>
 <li>높이 h 에 대한 최소 개수의 노드를 가지면서 한쪽 방향의 자식 노드만을 가진 이진 트리<ul>
@@ -275,7 +275,7 @@
 </ul>
 </li>
 </ul>
-<img src="tree/image-20220316093151596.png" alt="image-20220316093151596" style="zoom:50%;" />
+<img src="image-20220316093151596.png" alt="image-20220316093151596" style="zoom:50%;" />
 
 <h2 id="순회-traversal"><a href="#순회-traversal" class="headerlink" title="순회 (traversal)"></a>순회 (traversal)</h2><blockquote>
 <p>트리는 비 선형 구조이기 때문에 선형 구조에서와 같이 선후 연결 관계를 알 수 없다. 따라서 특별한 방법이 필요하다.</p>
@@ -291,14 +291,14 @@
 </ul>
 <h3 id="전위순회-preorder-traversal"><a href="#전위순회-preorder-traversal" class="headerlink" title="전위순회 (preorder traversal)"></a>전위순회 (preorder traversal)</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">preorder_traverse</span>(<span class="params">T</span>):</span><br><span class="line">    <span class="keyword">if</span> T:</span><br><span class="line">        visit(T)</span><br><span class="line">        preorder_traverse(T.left)</span><br><span class="line">        preorder_traverse(T.right)</span><br></pre></td></tr></table></figure>
 
-<p><img src="/mhlee21/2022/03/16/tree/image-20220316094758944.png" alt="image-20220316094758944"></p>
+<p><img src="/2022/03/16/tree/image-20220316094758944.png" alt="image-20220316094758944"></p>
 <h3 id="중위순회-inorder-traversal"><a href="#중위순회-inorder-traversal" class="headerlink" title="중위순회 (inorder traversal)"></a>중위순회 (inorder traversal)</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">preorder_traverse</span>(<span class="params">T</span>):</span><br><span class="line">    <span class="keyword">if</span> T:</span><br><span class="line">        preorder_traverse(T.left)</span><br><span class="line">        visit(T)</span><br><span class="line">        preorder_traverse(T.right)</span><br></pre></td></tr></table></figure>
 
-<p><img src="/mhlee21/2022/03/16/tree/image-20220316100214264.png" alt="image-20220316100214264"></p>
+<p><img src="/2022/03/16/tree/image-20220316100214264.png" alt="image-20220316100214264"></p>
 <h3 id="후위순회-postorder-traversal"><a href="#후위순회-postorder-traversal" class="headerlink" title="후위순회 (postorder traversal)"></a>후위순회 (postorder traversal)</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">preorder_traverse</span>(<span class="params">T</span>):</span><br><span class="line">    <span class="keyword">if</span> T:</span><br><span class="line">        preorder_traverse(T.left)</span><br><span class="line">        preorder_traverse(T.right)</span><br><span class="line">        visit(T)</span><br></pre></td></tr></table></figure>
 
-<p><img src="/mhlee21/2022/03/16/tree/image-20220316102238305.png" alt="image-20220316102238305"></p>
-<h2 id="이진트리의-표현"><a href="#이진트리의-표현" class="headerlink" title="이진트리의 표현"></a>이진트리의 표현</h2><h3 id="배열을-이용한-이진-트리의-표현"><a href="#배열을-이용한-이진-트리의-표현" class="headerlink" title="배열을 이용한 이진 트리의 표현"></a>배열을 이용한 이진 트리의 표현</h3><img src="tree/image-20220316103853501.png" alt="image-20220316103853501" style="zoom:50%;" />
+<p><img src="/2022/03/16/tree/image-20220316102238305.png" alt="image-20220316102238305"></p>
+<h2 id="이진트리의-표현"><a href="#이진트리의-표현" class="headerlink" title="이진트리의 표현"></a>이진트리의 표현</h2><h3 id="배열을-이용한-이진-트리의-표현"><a href="#배열을-이용한-이진-트리의-표현" class="headerlink" title="배열을 이용한 이진 트리의 표현"></a>배열을 이용한 이진 트리의 표현</h3><img src="image-20220316103853501.png" alt="image-20220316103853501" style="zoom:50%;" />
 
 <img src="tree/image-20220316105103665.png" alt="image-20220316105103665" style="zoom:50%;" />
 
@@ -318,7 +318,7 @@
 </ul>
 </li>
 </ul>
-<img src="tree/image-20220316105138223.png" alt="image-20220316105138223" style="zoom:50%;" />
+<img src="image-20220316105138223.png" alt="image-20220316105138223" style="zoom:50%;" />
 
 <h3 id="이진트리-저장-및-순회-실습-코드"><a href="#이진트리-저장-및-순회-실습-코드" class="headerlink" title="이진트리 저장 및 순회 실습 코드"></a>이진트리 저장 및 순회 실습 코드</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">4</span></span><br><span class="line"><span class="string">1 2 1 3 3 4 3 5</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">pre_order</span>(<span class="params">v</span>):</span><br><span class="line">    <span class="keyword">if</span> v: <span class="comment"># 0번 정점이 없으므로... 0번은 자식이 없는 경우를 표시</span></span><br><span class="line">        <span class="built_in">print</span>(v) <span class="comment"># visit(v)</span></span><br><span class="line">        pre_order(ch1[v])</span><br><span class="line">        pre_order(ch2[v])</span><br><span class="line"></span><br><span class="line">E = <span class="built_in">int</span>(<span class="built_in">input</span>()) <span class="comment"># edge 수</span></span><br><span class="line">arr = <span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">int</span>, <span class="built_in">input</span>().split()))</span><br><span class="line">V = E + <span class="number">1</span> <span class="comment"># 정점 수 == 1번부터 V번까지 정점이 있을 때 마지막 정점</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 부모 번호를 인덱스로 자식번호 저장</span></span><br><span class="line">ch1 = [<span class="number">0</span>]*(V+<span class="number">1</span>)</span><br><span class="line">ch2 = [<span class="number">0</span>]*(V+<span class="number">1</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(E):</span><br><span class="line">    p, c = arr[i*<span class="number">2</span>], arr[i*<span class="number">2</span>+<span class="number">1</span>]</span><br><span class="line">    <span class="keyword">if</span> ch1[p] == <span class="number">0</span>:</span><br><span class="line">        ch1[p] = c</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        ch2[p] = c</span><br><span class="line"><span class="built_in">print</span>(ch1)</span><br><span class="line"><span class="built_in">print</span>(ch2)</span><br><span class="line">pre_order(<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
 
@@ -341,22 +341,7 @@
                     </p>
                 
                 
-                    <p class="copyright-item">
-                        <span>Permalink:</span>
-                        <span><a href="https://github.com/mhlee21/2022/03/16/tree/">https://github.com/mhlee21/2022/03/16/tree/</a></span>
-                    </p>
                 
-                
-                    <p class="copyright-item">
-                        <span>License:</span>
-                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
-                    </p>
-                
-                
-                     <p class="copyright-item">
-                         <span>Slogan:</span>
-                         <span>Do you believe in <strong>DESTINY</strong>?</span>
-                     </p>
                 
 
             </section>
