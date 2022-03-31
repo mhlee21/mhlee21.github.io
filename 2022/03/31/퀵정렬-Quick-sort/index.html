@@ -13,7 +13,7 @@
 
 
 
-<title>이진검색(binary search) | Mihyun&#39;s Blog</title>
+<title>퀵정렬(Quick sort) | Mihyun&#39;s Blog</title>
 
 
 
@@ -193,7 +193,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">이진검색(binary search)</h1>
+            <h1 class="post-title">퀵정렬(Quick sort)</h1>
             
                 <div class="post-meta">
                     
@@ -202,7 +202,7 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">March 30, 2022&nbsp;&nbsp;11:20:26</a>
+                        Date: <a href="#">March 31, 2022&nbsp;&nbsp;16:01:43</a>
                         </span>
                     
                     
@@ -218,28 +218,29 @@
         </header>
 
         <div class="post-content">
-            <h1 id="이진-검색"><a href="#이진-검색" class="headerlink" title="이진 검색"></a>이진 검색</h1><p>자료의 가운데에 있는 항목의 키 값과 비교하여 다음 검색의 위치를 결정하고 검색을 계속 진행하는 방법</p>
+            <h1 id="Quick-sort"><a href="#Quick-sort" class="headerlink" title="Quick sort"></a>Quick sort</h1><p>pivot 을 중심으로, 이보다 작은 것은 왼편, 큰 것은 오른편에 위치 시킨다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">quicksort</span>(<span class="params">a, begin, end</span>):</span><br><span class="line">    <span class="keyword">if</span> begin &lt; end:</span><br><span class="line">        p = partition(a, begin, end) <span class="comment"># 확정된 피봇 위치를 기준으로</span></span><br><span class="line">        quicksort(a, begin, p-<span class="number">1</span>) <span class="comment"># 왼쪽 구간에 대해 퀵 정렬을 다시 수행한다.</span></span><br><span class="line">        quicksort(a, p+<span class="number">1</span>, end) <span class="comment"># 오른쪽 구간에 대해 퀵 정렬을 다시 수행한다.</span></span><br></pre></td></tr></table></figure>
+
 <ul>
-<li>목적 키를 찾을 때 까지 이진 검색을 순환적으로 반복 수행함으로써 검색 범위를 반으로 줄여나가면서 보다 빠르게 검색을 수행함</li>
+<li>알고리즘 기법 : 분할 정복</li>
+<li>최악의 경우 O(N^2) 지만, 평균적으로는 가장 빠르다. O(nlogn)</li>
+<li>분할 방법에 따라 Hoare(호어), Lomuto(로무토) 방법이 존재한다.</li>
+<li>Hoare 방식이 더 유리하다. 평균적으로 swap을 3배 이상 덜 발생시키기 때문이다.</li>
 </ul>
 <blockquote>
-<p> 💡 이진 검색을 하기 위해서는 자료가 정렬된 상태여야 한다.</p>
-</blockquote>
-<h2 id="검색-과정"><a href="#검색-과정" class="headerlink" title="검색 과정"></a>검색 과정</h2><ol>
-<li>자료의 중앙에 있는 원소를 고른다.</li>
-<li>중앙 원소의 값과 찾고자 하는 목표 값을 비교한다.</li>
-<li>목표 값이 중앙 원소의 값보다 작으면 자료의 왼쪽 반에 대해서 새로 검색을 수행하고, 크다면 자료의 오른쪽 반에 대해서 새로 검색을 수행한다.</li>
-<li>찾고자 하는 값을 찾을 때까지 1~3의 과정을 반복한다.</li>
+<ol>
+<li><p>피봇 값보다 큰 값들은 오른쪽, 작은 값들은 왼쪽 집합에 위치시킴</p>
+</li>
+<li><p>피봇 값을 두 집합의 가운데에 위치시킴</p>
+<p>2 과정을 거친 피봇 값은 다음 정렬 과정에서 제외되며, 피봇값이 위치한 곳은 정렬된 상태일 대 자기가 있어야 할 위치에 놓임</p>
+</li>
 </ol>
-<h2 id="알고리즘-반복구조"><a href="#알고리즘-반복구조" class="headerlink" title="알고리즘 : 반복구조"></a>알고리즘 : 반복구조</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">binary_search</span>(<span class="params">n,s,k</span>):</span><br><span class="line">  low = <span class="number">0</span></span><br><span class="line">  high = n-<span class="number">1</span></span><br><span class="line">  <span class="keyword">while</span> low &lt;= high:</span><br><span class="line">    mid = low + (high - low)//<span class="number">2</span></span><br><span class="line">    <span class="keyword">if</span> s[mid] == k:</span><br><span class="line">      <span class="keyword">return</span> mid</span><br><span class="line">    <span class="keyword">elif</span> s[mid] &gt; k:</span><br><span class="line">      high = mid-<span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">      low = mid+<span class="number">1</span></span><br><span class="line">  <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line"></span><br><span class="line">arr = [<span class="number">2</span>,<span class="number">4</span>,<span class="number">7</span>,<span class="number">9</span>,<span class="number">11</span>,<span class="number">19</span>,<span class="number">23</span>]</span><br><span class="line">res = binary_search(<span class="built_in">len</span>(arr),arr,<span class="number">11</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&#x27;[<span class="subst">&#123;res&#125;</span>] <span class="subst">&#123;arr[res]&#125;</span>&#x27;</span>)</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h2 id="Hoare-Partition-알고리즘"><a href="#Hoare-Partition-알고리즘" class="headerlink" title="Hoare-Partition 알고리즘"></a>Hoare-Partition 알고리즘</h2><p><img src="/2022/03/31/%ED%80%B5%EC%A0%95%EB%A0%AC-Quick-sort/image-20220331164829296.png" alt="image-20220331164829296"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">partition</span>(<span class="params">a, begin, end</span>):</span><br><span class="line">    pivot = arr[begin]</span><br><span class="line">    i = begin</span><br><span class="line">    j = end</span><br><span class="line">    <span class="keyword">while</span> i&lt;=j:</span><br><span class="line">        <span class="keyword">while</span> i &lt;= j <span class="keyword">and</span> a[i] &lt;= pivot: i += <span class="number">1</span></span><br><span class="line">        <span class="keyword">while</span> i &lt;= j <span class="keyword">and</span> a[j] &gt;= pivot: j -= <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> i&lt;j:</span><br><span class="line">            a[i], a[j] = a[j], a[i]</span><br><span class="line">    a[begin], arr[j] = arr[j], arr[begin]</span><br><span class="line">    <span class="keyword">return</span> j</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[4] 11</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="알고리즘-재귀구조"><a href="#알고리즘-재귀구조" class="headerlink" title="알고리즘 : 재귀구조"></a>알고리즘 : 재귀구조</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">binary_search</span>(<span class="params">s,low,high,key</span>):</span><br><span class="line">  <span class="keyword">if</span> low &gt; high:</span><br><span class="line">    <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line">  <span class="keyword">else</span>:</span><br><span class="line">    mid = (low+high)//<span class="number">2</span></span><br><span class="line">    <span class="keyword">if</span> key == s[mid]:</span><br><span class="line">      <span class="keyword">return</span> mid</span><br><span class="line">    <span class="keyword">elif</span> key &lt; s[mid]:</span><br><span class="line">      <span class="keyword">return</span> binary_search(s,low,mid-<span class="number">1</span>,key)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">      <span class="keyword">return</span> binary_search(s,mid+<span class="number">1</span>,high,key)</span><br><span class="line"></span><br><span class="line">arr = [<span class="number">2</span>,<span class="number">4</span>,<span class="number">7</span>,<span class="number">9</span>,<span class="number">11</span>,<span class="number">19</span>,<span class="number">23</span>]</span><br><span class="line">res = binary_search(arr,<span class="number">0</span>,<span class="built_in">len</span>(arr),<span class="number">4</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&#x27;[<span class="subst">&#123;res&#125;</span>] <span class="subst">&#123;arr[res]&#125;</span>&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[1] 4</span><br></pre></td></tr></table></figure>
+<h2 id="Lomuto-partition-알고리즘"><a href="#Lomuto-partition-알고리즘" class="headerlink" title="Lomuto-partition 알고리즘"></a>Lomuto-partition 알고리즘</h2><p><img src="/2022/03/31/%ED%80%B5%EC%A0%95%EB%A0%AC-Quick-sort/image-20220331164837560.png" alt="image-20220331164837560"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">partition</span>(<span class="params">a, begin, end</span>):</span><br><span class="line">    pivot = a[end]</span><br><span class="line">    i = begin - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(begin,end):</span><br><span class="line">        <span class="keyword">if</span> a[j] &lt; pivot:</span><br><span class="line">            i += <span class="number">1</span></span><br><span class="line">            a[i], a[j] = a[j], a[i]</span><br><span class="line">    pivotIdx = i+<span class="number">1</span></span><br><span class="line">    a[pivotIdx], a[end] = a[end], a[pivotIdx]</span><br><span class="line">    <span class="keyword">return</span> pivotIdx</span><br></pre></td></tr></table></figure>
 
 
         </div>
@@ -266,7 +267,9 @@
                     
                         <a href="/tags/algorithm/"># algorithm</a>
                     
-                        <a href="/tags/%EC%9D%B4%EC%A7%84%EA%B2%80%EC%83%89/"># 이진검색</a>
+                        <a href="/tags/quick-sort/"># quick sort</a>
+                    
+                        <a href="/tags/sort/"># sort</a>
                     
                         
                 </span>
@@ -279,10 +282,8 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2022/03/31/%ED%80%B5%EC%A0%95%EB%A0%AC-Quick-sort/">퀵정렬(Quick sort)</a>
             
-            
-            <a class="next" rel="next" href="/2022/03/25/Computer-Network/">Computer Network</a>
+            <a class="next" rel="next" href="/2022/03/30/%EC%9D%B4%EC%A7%84%EA%B2%80%EC%83%89-binary-search/">이진검색(binary search)</a>
             
         </section>
 
