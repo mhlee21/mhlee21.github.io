@@ -13,7 +13,7 @@
 
 
 
-<title>퀵정렬(Quick sort) | Mihyun&#39;s Blog</title>
+<title>병합정렬(Merge sort) | Mihyun&#39;s Blog</title>
 
 
 
@@ -193,7 +193,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">퀵정렬(Quick sort)</h1>
+            <h1 class="post-title">병합정렬(Merge sort)</h1>
             
                 <div class="post-meta">
                     
@@ -202,7 +202,7 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">March 31, 2022&nbsp;&nbsp;16:01:43</a>
+                        Date: <a href="#">March 31, 2022&nbsp;&nbsp;20:46:02</a>
                         </span>
                     
                     
@@ -218,29 +218,15 @@
         </header>
 
         <div class="post-content">
-            <h1 id="Quick-sort"><a href="#Quick-sort" class="headerlink" title="Quick sort"></a>Quick sort</h1><p>pivot 을 중심으로, 이보다 작은 것은 왼편, 큰 것은 오른편에 위치 시킨다.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">quicksort</span>(<span class="params">a, begin, end</span>):</span><br><span class="line">    <span class="keyword">if</span> begin &lt; end:</span><br><span class="line">        p = partition(a, begin, end) <span class="comment"># 확정된 피봇 위치를 기준으로</span></span><br><span class="line">        quicksort(a, begin, p-<span class="number">1</span>) <span class="comment"># 왼쪽 구간에 대해 퀵 정렬을 다시 수행한다.</span></span><br><span class="line">        quicksort(a, p+<span class="number">1</span>, end) <span class="comment"># 오른쪽 구간에 대해 퀵 정렬을 다시 수행한다.</span></span><br></pre></td></tr></table></figure>
-
+            <h1 id="Merge-sort-병합정렬"><a href="#Merge-sort-병합정렬" class="headerlink" title="Merge sort (병합정렬)"></a>Merge sort (병합정렬)</h1><p>여러개의 정렬된 자료의 집합을 병합하여 한 개의 정렬된 집합으로 만드는 방식</p>
 <ul>
-<li>알고리즘 기법 : 분할 정복</li>
-<li>최악의 경우 O(N^2) 지만, 평균적으로는 가장 빠르다. O(nlogn)</li>
-<li>분할 방법에 따라 Hoare(호어), Lomuto(로무토) 방법이 존재한다.</li>
-<li>Hoare 방식이 더 유리하다. 평균적으로 swap을 3배 이상 덜 발생시키기 때문이다.</li>
+<li>시간복잡도 : O(n log n)</li>
 </ul>
-<blockquote>
-<ol>
-<li><p>피봇 값보다 큰 값들은 오른쪽, 작은 값들은 왼쪽 집합에 위치시킴</p>
-</li>
-<li><p>피봇 값을 두 집합의 가운데에 위치시킴</p>
-<p>2 과정을 거친 피봇 값은 다음 정렬 과정에서 제외되며, 피봇값이 위치한 곳은 정렬된 상태일 대 자기가 있어야 할 위치에 놓임</p>
-</li>
-</ol>
-</blockquote>
-<h2 id="Hoare-Partition-알고리즘"><a href="#Hoare-Partition-알고리즘" class="headerlink" title="Hoare-Partition 알고리즘"></a>Hoare-Partition 알고리즘</h2><p><img src="/2022/03/31/%ED%80%B5%EC%A0%95%EB%A0%AC-Quick-sort/image-20220331164829296.png" alt="image-20220331164829296"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">partition</span>(<span class="params">a, begin, end</span>):</span><br><span class="line">    pivot = arr[begin]</span><br><span class="line">    i = begin</span><br><span class="line">    j = end</span><br><span class="line">    <span class="keyword">while</span> i&lt;=j:</span><br><span class="line">        <span class="keyword">while</span> i &lt;= j <span class="keyword">and</span> a[i] &lt;= pivot: i += <span class="number">1</span></span><br><span class="line">        <span class="keyword">while</span> i &lt;= j <span class="keyword">and</span> a[j] &gt;= pivot: j -= <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> i&lt;j:</span><br><span class="line">            a[i], a[j] = a[j], a[i]</span><br><span class="line">    a[begin], arr[j] = arr[j], arr[begin]</span><br><span class="line">    <span class="keyword">return</span> j</span><br></pre></td></tr></table></figure>
+<h2 id="분할-단계"><a href="#분할-단계" class="headerlink" title="분할 단계"></a>분할 단계</h2><p><img src="/2022/03/31/%EB%B3%91%ED%95%A9%EC%A0%95%EB%A0%AC-Merge-sort/image-20220331204815871.png" alt="image-20220331204815871"></p>
+<h2 id="병합-단계"><a href="#병합-단계" class="headerlink" title="병합 단계"></a>병합 단계</h2><p><img src="/2022/03/31/%EB%B3%91%ED%95%A9%EC%A0%95%EB%A0%AC-Merge-sort/image-20220331204835149.png" alt="image-20220331204835149"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">merge_sort</span>(<span class="params">arr</span>):</span><br><span class="line">  <span class="keyword">if</span> <span class="built_in">len</span>(arr) == <span class="number">1</span>:</span><br><span class="line">    <span class="keyword">return</span> arr</span><br><span class="line"></span><br><span class="line">  <span class="comment"># 분할 과정</span></span><br><span class="line">  mid = <span class="built_in">len</span>(arr)//<span class="number">2</span></span><br><span class="line">  left = merge_sort(arr[:mid])</span><br><span class="line">  right = merge_sort(arr[mid:])</span><br><span class="line">  </span><br><span class="line">  <span class="comment"># 병합 과정</span></span><br><span class="line">  merged_arr = []</span><br><span class="line">  l = h = <span class="number">0</span></span><br><span class="line">  <span class="keyword">while</span> l &lt; <span class="built_in">len</span>(left) <span class="keyword">and</span> h &lt; <span class="built_in">len</span>(right):</span><br><span class="line">    <span class="keyword">if</span> left[l] &lt; right[h]:</span><br><span class="line">      merged_arr.append(left[l])</span><br><span class="line">      l += <span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">      merged_arr.append(right[l])</span><br><span class="line">      h += <span class="number">1</span></span><br><span class="line">  merged_arr += left[l:]</span><br><span class="line">  merged_arr += right[h:]</span><br><span class="line">  <span class="keyword">return</span> merged_arr</span><br><span class="line"></span><br><span class="line">arr = [<span class="number">69</span>,<span class="number">10</span>,<span class="number">30</span>,<span class="number">2</span>,<span class="number">16</span>,<span class="number">8</span>,<span class="number">31</span>,<span class="number">22</span>]</span><br><span class="line"><span class="built_in">print</span>(merge_sort(arr))</span><br></pre></td></tr></table></figure>
 
-<h2 id="Lomuto-partition-알고리즘"><a href="#Lomuto-partition-알고리즘" class="headerlink" title="Lomuto-partition 알고리즘"></a>Lomuto-partition 알고리즘</h2><p><img src="/2022/03/31/%ED%80%B5%EC%A0%95%EB%A0%AC-Quick-sort/image-20220331164837560.png" alt="image-20220331164837560"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">partition</span>(<span class="params">a, begin, end</span>):</span><br><span class="line">    pivot = a[end]</span><br><span class="line">    i = begin - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(begin,end):</span><br><span class="line">        <span class="keyword">if</span> a[j] &lt; pivot:</span><br><span class="line">            i += <span class="number">1</span></span><br><span class="line">            a[i], a[j] = a[j], a[i]</span><br><span class="line">    pivotIdx = i+<span class="number">1</span></span><br><span class="line">    a[pivotIdx], a[end] = a[end], a[pivotIdx]</span><br><span class="line">    <span class="keyword">return</span> pivotIdx</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[2, 16, 10, 22, 22, 30, 31, 69]</span><br></pre></td></tr></table></figure>
 
 
         </div>
@@ -267,7 +253,7 @@
                     
                         <a href="/tags/algorithm/"># algorithm</a>
                     
-                        <a href="/tags/quick-sort/"># quick sort</a>
+                        <a href="/tags/Merge-sort/"># Merge sort</a>
                     
                         <a href="/tags/sort/"># sort</a>
                     
@@ -282,10 +268,8 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2022/03/31/%EB%B3%91%ED%95%A9%EC%A0%95%EB%A0%AC-Merge-sort/">병합정렬(Merge sort)</a>
             
-            
-            <a class="next" rel="next" href="/2022/03/30/%EC%9D%B4%EC%A7%84%EA%B2%80%EC%83%89-binary-search/">이진검색(binary search)</a>
+            <a class="next" rel="next" href="/2022/03/31/%ED%80%B5%EC%A0%95%EB%A0%AC-Quick-sort/">퀵정렬(Quick sort)</a>
             
         </section>
 
