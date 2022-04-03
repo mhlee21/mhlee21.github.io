@@ -13,7 +13,7 @@
 
 
 
-<title>DB | Mihyun&#39;s Blog</title>
+<title>힙(heap) | Mihyun&#39;s Blog</title>
 
 
 
@@ -193,7 +193,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">DB</h1>
+            <h1 class="post-title">힙(heap)</h1>
             
                 <div class="post-meta">
                     
@@ -202,117 +202,78 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">April 3, 2022&nbsp;&nbsp;23:36:01</a>
+                        Date: <a href="#">April 4, 2022&nbsp;&nbsp;0:27:21</a>
                         </span>
                     
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/algorithm/">algorithm</a>
+                            
+                        </span>
                     
                 </div>
             
         </header>
 
         <div class="post-content">
-            <h1 id="Database"><a href="#Database" class="headerlink" title="Database"></a>Database</h1><ul>
-<li>데이터베이스는 체계화된 데이터의 모임</li>
-<li>여러사람이 공유하고 사용할 목적으로 통합 관리되는 정보의 집합</li>
-<li>논리적으로 연관된 (하나 이상의) 자료의 모음으로 그 내용을 고도로 구조화 함으로써 검색과 갱신의 효율화를 꾀한 것</li>
-<li>즉, 몇 개의 자료 파일을 조직적으로 통합하여 자료 항목의 중복을 없애고 자료를 구조화하여 기억시켜 놓은 자료의 집합체</li>
+            <h1 id="힙-heap"><a href="#힙-heap" class="headerlink" title="힙 (heap)"></a>힙 (heap)</h1><ul>
+<li>완전 이진 트리에 있는 노드 중에서 <strong>키 값이 가장 큰 노드</strong>나 <strong>키 값이 가장 작은 노드</strong>를 찾기 위해 만든 자료구조</li>
+<li>최대 힙 (max heap)<ul>
+<li>키 값이 가장 큰 노드를 찾기 위한 완전 이진 트리</li>
+<li>루트 노드 : 키 값이 가장 큰 노드</li>
 </ul>
-<h2 id="데이터베이스로-얻는-장점들"><a href="#데이터베이스로-얻는-장점들" class="headerlink" title="데이터베이스로 얻는 장점들"></a>데이터베이스로 얻는 장점들</h2><ul>
-<li>데이터 중복 최소화</li>
-<li>데이터 무결성 (정확한 정보를 보장)</li>
-<li>데이터 일관성</li>
-<li>데이터 독립성 (물리적&#x2F;논리적)</li>
-<li>데이터 표준화</li>
-<li>데이터 보안 유지</li>
+</li>
+<li>최소 힙 (min heap)<ul>
+<li>키 값이 가장 작은 노드를 찾기 위한 완전 이진 트리</li>
+<li>루트 노드 : 키 값이 가장 작은 노드</li>
 </ul>
-<p><img src="/2022/04/03/DB/image-20220314123513041.png" alt="image-20220314123513041"></p>
-<h2 id="RDB"><a href="#RDB" class="headerlink" title="RDB"></a>RDB</h2><ul>
-<li><p>Relational Database</p>
 </li>
-<li><p>키(key) 와 값(value) 들의 간단한 관계 (relation)를 표(table) 형태로 정리한 데이터베이스</p>
+</ul>
+<p><img src="/2022/04/04/heap/image-20220330152334689.png" alt="image-20220330152334689"></p>
+<h2 id="힙-연산-삽입"><a href="#힙-연산-삽입" class="headerlink" title="힙 연산 - 삽입"></a>힙 연산 - 삽입</h2><p><img src="/2022/04/04/heap/image-20220330153153486.png" alt="image-20220330153153486"></p>
+<h2 id="힙-연산-삭제"><a href="#힙-연산-삭제" class="headerlink" title="힙 연산 - 삭제"></a>힙 연산 - 삭제</h2><ul>
+<li>힙에서는 루트 노드의 원소만을 삭제할 수 있다.</li>
+<li>루트 노드의 원소를 삭제하여 반환한다.</li>
+<li>힙의 종류에 따라 최대값 또는 최소값을 구할 수 있다.</li>
+</ul>
+<p><img src="/2022/04/04/heap/image-20220330153300987.png" alt="image-20220330153300987"></p>
+<h2 id="힙의-활용"><a href="#힙의-활용" class="headerlink" title="힙의 활용"></a>힙의 활용</h2><ul>
+<li><strong>우선순위 큐</strong><ul>
+<li>우선순위 큐를 구현하는 가장 효과적인 방법이 힙을 사용하는 것이다.</li>
+<li>노드 하나의 추가&#x2F;삭제가 시간 복잡도 O(logN)이고 최대값&#x2F;최소값을 O(1)에 구할 수 있다.</li>
+<li>완전 정렬보다 관리 비용이 적다.</li>
+</ul>
 </li>
-<li><p>관계형 모델에 기반</p>
-</li>
-<li><p><strong>스키마</strong>(schema) : 데이터데이스에서 자료의 구조, 표현방법, 관계 등 전반적인 명세를 기술한 것</p>
-</li>
-<li><p><strong>테이블</strong>(table) :  열(컬럼&#x2F;필드)과 행(레코드&#x2F;값)의 모델을 사용해 조직된 데이터 요소들의 집합</p>
-</li>
-<li><p><strong>열</strong>(column) : 각 열에는 고유한 데이터 형식이 지정됨</p>
-</li>
-<li><p><strong>행</strong>(row) : 실제 데이터가 저장되는 형태</p>
-</li>
-<li><p><strong>기본키</strong>(Primary Key) : 각 행(레코드)의 고유 값</p>
+</ul>
+<blockquote>
+<p> 배열을 통해 트리 형태를 쉽게 구현할 수 있다.</p>
 <ul>
-<li>반드시 설정해야 하며, 데이터베이스 관리 및 관계 설정 시 주요하게 활용 됨</li>
+<li>부모나 자식 노드를 O(1)연산으로 쉽게 찾을 수 있다.</li>
+<li>n위치에 있는 노드의 자식은 2n과 2n+1에 위치한다.</li>
+<li>완전 이진 트리의 특성에 의해 추가&#x2F;삭제의 위치는 자료의 시작과 끝 인덱스로 쉽게 판단할 수 있다.</li>
+</ul>
+</blockquote>
+<ul>
+<li><strong>힙 정렬</strong><ul>
+<li>힙 자료구조를 이용해서 이진탐색과 유사한 방법으로 수행된다.</li>
+<li>정렬을 위한 2단계<ul>
+<li>하나의 값을 힙에 삽입한다. (반복)</li>
+<li>힙에서 순차적(오름차순)으로 값을 하나씩 제거한다.</li>
+</ul>
+</li>
+<li>힙 정렬의 시간 복잡도<ul>
+<li>N개의 노드 삽입 연산 + N개의 노드 삭제 연산</li>
+<li>삽입과 삭제 연산은 각각 O(logN)이다.</li>
+<li>따라서, 전체 정렬을 O(NlogN)이다.</li>
+</ul>
+</li>
+<li><strong>힙 정렬은 배열에 저장된 자료를 정렬하기에 유용하다.</strong></li>
 </ul>
 </li>
 </ul>
-<h2 id="RDBMS"><a href="#RDBMS" class="headerlink" title="RDBMS"></a>RDBMS</h2><h3 id="관계형-데이터베이스-관리-시스템-RDBMS"><a href="#관계형-데이터베이스-관리-시스템-RDBMS" class="headerlink" title="관계형 데이터베이스 관리 시스템 (RDBMS)"></a>관계형 데이터베이스 관리 시스템 (RDBMS)</h3><ul>
-<li>Reletional Database Management System</li>
-<li>관계형 모델을 기반으로 하는 데이터베이스 관리시스템</li>
-<li>예시) MySQL, SQLite, PostgreSQL, ORACLE, MS SQL</li>
-</ul>
-<h3 id="SQLite"><a href="#SQLite" class="headerlink" title="SQLite"></a>SQLite</h3><p>서버 형태가 아닌 파일 형식으로 응용 프로그램에 넣어서 사용하는 비교적 가벼운 데이터베이스</p>
-<p>구글 안드로이드 운영체제에 기본적으로 탑재된 데이터베이스이며, 임베디드 소프트웨어에도 많이 활용됨</p>
-<p>로컬에서 간단한 DB 구성을 할 수 있으며, 오픈소스 프로젝트이기 때문에 자유롭게 사용가능</p>
-<h3 id="Sqlite-Data-Type"><a href="#Sqlite-Data-Type" class="headerlink" title="Sqlite Data Type"></a>Sqlite Data Type</h3><ul>
-<li>NULL</li>
-<li>INTEGER<ul>
-<li>크기에 따라 0,1,2,3,4,6</li>
-</ul>
-</li>
-<li>REAL</li>
-<li>TEXT</li>
-<li>BLOG</li>
-</ul>
-<h1 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h1><ul>
-<li><p>관계형 데이터베이스 관리 시스템의 데이터관리를 위해 설계된 특수 목적 프로그래밍 언어</p>
-</li>
-<li><p>데이터베이스 스키마 생성 및 수정</p>
-</li>
-<li><p>자료의 검색 및 관리</p>
-</li>
-<li><p>데이터베이스 객체 접근 조정 관리</p>
-</li>
-<li><p>SQL 분류</p>
-<table>
-<thead>
-<tr>
-<th>분류</th>
-<th>개념</th>
-<th>예시</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>DDL<br />(Data Definition Language)</td>
-<td>관계형 데이터베이스 구조(테이블, 스키마)를 정의하기 위한 명령어</td>
-<td>CREATE<br /> DROP<br /> ALTER</td>
-</tr>
-<tr>
-<td>DML<br />(Data Manipulation Language)</td>
-<td>데이터를 저장, 조회, 수정, 삭제등을 하기 위한 명령어</td>
-<td>INSERT<br /> SELECT<br /> UPDATE<br /> DELETE</td>
-</tr>
-<tr>
-<td>DCL<br /> (Data Contol Language)</td>
-<td>데이터베이스 사용자의 권한 제어를 위해 사용하는 명령어</td>
-<td>GRANT<br /> REVOKE</td>
-</tr>
-<tr>
-<td>TCL</td>
-<td></td>
-<td>COMMIT<br /> ROLLBACK</td>
-</tr>
-</tbody></table>
-</li>
-</ul>
-<h2 id="DML-Data-Manipulation-Language"><a href="#DML-Data-Manipulation-Language" class="headerlink" title="DML (Data Manipulation Language)"></a>DML (Data Manipulation Language)</h2><ul>
-<li>INSERT : 새로운 데이터 삽입(추가)</li>
-<li>SELECT : 저장되어있는 데이터 조회</li>
-<li>UPDATE : 저장되어 있는 데이터 갱신</li>
-<li>DELETE : 저장되어 있는 데이터 삭제</li>
-</ul>
-<h2 id="DDL-Data-Definition-Language"><a href="#DDL-Data-Definition-Language" class="headerlink" title="DDL (Data Definition Language)"></a>DDL (Data Definition Language)</h2>
+
         </div>
 
         
@@ -334,6 +295,12 @@
                 <span>Tag(s):</span>
                 <span class="tag">
                     
+                    
+                        <a href="/tags/heap/"># heap</a>
+                    
+                        <a href="/tags/tree/"># tree</a>
+                    
+                        
                 </span>
             </div>
             <div>
@@ -344,10 +311,8 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2022/04/04/heap/">힙(heap)</a>
             
-            
-            <a class="next" rel="next" href="/2022/04/01/%EA%B7%B8%EB%9E%98%ED%94%84/">그래프(Graph)</a>
+            <a class="next" rel="next" href="/2022/04/03/DB/">DB</a>
             
         </section>
 
