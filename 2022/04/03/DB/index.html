@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Mihyun Lee">
+
+
+
+
+
+<title>DB | Mihyun&#39;s Blog</title>
+
+
+
+    <link rel="icon" href="/favicon_mhlee.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Mihyun&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Mihyun&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">DB</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Mihyun Lee</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">April 3, 2022&nbsp;&nbsp;23:36:01</a>
+                        </span>
+                    
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="Database"><a href="#Database" class="headerlink" title="Database"></a>Database</h1><ul>
+<li>데이터베이스는 체계화된 데이터의 모임</li>
+<li>여러사람이 공유하고 사용할 목적으로 통합 관리되는 정보의 집합</li>
+<li>논리적으로 연관된 (하나 이상의) 자료의 모음으로 그 내용을 고도로 구조화 함으로써 검색과 갱신의 효율화를 꾀한 것</li>
+<li>즉, 몇 개의 자료 파일을 조직적으로 통합하여 자료 항목의 중복을 없애고 자료를 구조화하여 기억시켜 놓은 자료의 집합체</li>
+</ul>
+<h2 id="데이터베이스로-얻는-장점들"><a href="#데이터베이스로-얻는-장점들" class="headerlink" title="데이터베이스로 얻는 장점들"></a>데이터베이스로 얻는 장점들</h2><ul>
+<li>데이터 중복 최소화</li>
+<li>데이터 무결성 (정확한 정보를 보장)</li>
+<li>데이터 일관성</li>
+<li>데이터 독립성 (물리적&#x2F;논리적)</li>
+<li>데이터 표준화</li>
+<li>데이터 보안 유지</li>
+</ul>
+<p><img src="/mhlee21/2022/04/03/DB/image-20220314123513041.png" alt="image-20220314123513041"></p>
+<h2 id="RDB"><a href="#RDB" class="headerlink" title="RDB"></a>RDB</h2><ul>
+<li><p>Relational Database</p>
+</li>
+<li><p>키(key) 와 값(value) 들의 간단한 관계 (relation)를 표(table) 형태로 정리한 데이터베이스</p>
+</li>
+<li><p>관계형 모델에 기반</p>
+</li>
+<li><p><strong>스키마</strong>(schema) : 데이터데이스에서 자료의 구조, 표현방법, 관계 등 전반적인 명세를 기술한 것</p>
+</li>
+<li><p><strong>테이블</strong>(table) :  열(컬럼&#x2F;필드)과 행(레코드&#x2F;값)의 모델을 사용해 조직된 데이터 요소들의 집합</p>
+</li>
+<li><p><strong>열</strong>(column) : 각 열에는 고유한 데이터 형식이 지정됨</p>
+</li>
+<li><p><strong>행</strong>(row) : 실제 데이터가 저장되는 형태</p>
+</li>
+<li><p><strong>기본키</strong>(Primary Key) : 각 행(레코드)의 고유 값</p>
+<ul>
+<li>반드시 설정해야 하며, 데이터베이스 관리 및 관계 설정 시 주요하게 활용 됨</li>
+</ul>
+</li>
+</ul>
+<h2 id="RDBMS"><a href="#RDBMS" class="headerlink" title="RDBMS"></a>RDBMS</h2><h3 id="관계형-데이터베이스-관리-시스템-RDBMS"><a href="#관계형-데이터베이스-관리-시스템-RDBMS" class="headerlink" title="관계형 데이터베이스 관리 시스템 (RDBMS)"></a>관계형 데이터베이스 관리 시스템 (RDBMS)</h3><ul>
+<li>Reletional Database Management System</li>
+<li>관계형 모델을 기반으로 하는 데이터베이스 관리시스템</li>
+<li>예시) MySQL, SQLite, PostgreSQL, ORACLE, MS SQL</li>
+</ul>
+<h3 id="SQLite"><a href="#SQLite" class="headerlink" title="SQLite"></a>SQLite</h3><p>서버 형태가 아닌 파일 형식으로 응용 프로그램에 넣어서 사용하는 비교적 가벼운 데이터베이스</p>
+<p>구글 안드로이드 운영체제에 기본적으로 탑재된 데이터베이스이며, 임베디드 소프트웨어에도 많이 활용됨</p>
+<p>로컬에서 간단한 DB 구성을 할 수 있으며, 오픈소스 프로젝트이기 때문에 자유롭게 사용가능</p>
+<h3 id="Sqlite-Data-Type"><a href="#Sqlite-Data-Type" class="headerlink" title="Sqlite Data Type"></a>Sqlite Data Type</h3><ul>
+<li>NULL</li>
+<li>INTEGER<ul>
+<li>크기에 따라 0,1,2,3,4,6</li>
+</ul>
+</li>
+<li>REAL</li>
+<li>TEXT</li>
+<li>BLOG</li>
+</ul>
+<h1 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h1><ul>
+<li><p>관계형 데이터베이스 관리 시스템의 데이터관리를 위해 설계된 특수 목적 프로그래밍 언어</p>
+</li>
+<li><p>데이터베이스 스키마 생성 및 수정</p>
+</li>
+<li><p>자료의 검색 및 관리</p>
+</li>
+<li><p>데이터베이스 객체 접근 조정 관리</p>
+</li>
+<li><p>SQL 분류</p>
+<table>
+<thead>
+<tr>
+<th>분류</th>
+<th>개념</th>
+<th>예시</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>DDL<br />(Data Definition Language)</td>
+<td>관계형 데이터베이스 구조(테이블, 스키마)를 정의하기 위한 명령어</td>
+<td>CREATE<br /> DROP<br /> ALTER</td>
+</tr>
+<tr>
+<td>DML<br />(Data Manipulation Language)</td>
+<td>데이터를 저장, 조회, 수정, 삭제등을 하기 위한 명령어</td>
+<td>INSERT<br /> SELECT<br /> UPDATE<br /> DELETE</td>
+</tr>
+<tr>
+<td>DCL<br /> (Data Contol Language)</td>
+<td>데이터베이스 사용자의 권한 제어를 위해 사용하는 명령어</td>
+<td>GRANT<br /> REVOKE</td>
+</tr>
+<tr>
+<td>TCL</td>
+<td></td>
+<td>COMMIT<br /> ROLLBACK</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<h2 id="DML-Data-Manipulation-Language"><a href="#DML-Data-Manipulation-Language" class="headerlink" title="DML (Data Manipulation Language)"></a>DML (Data Manipulation Language)</h2><ul>
+<li>INSERT : 새로운 데이터 삽입(추가)</li>
+<li>SELECT : 저장되어있는 데이터 조회</li>
+<li>UPDATE : 저장되어 있는 데이터 갱신</li>
+<li>DELETE : 저장되어 있는 데이터 삭제</li>
+</ul>
+<h2 id="DDL-Data-Definition-Language"><a href="#DDL-Data-Definition-Language" class="headerlink" title="DDL (Data Definition Language)"></a>DDL (Data Definition Language)</h2>
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Mihyun Lee</span>
+                    </p>
+                
+                
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+            
+            <a class="next" rel="next" href="/2022/04/01/%EA%B7%B8%EB%9E%98%ED%94%84/">그래프</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Mihyun Lee | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>
