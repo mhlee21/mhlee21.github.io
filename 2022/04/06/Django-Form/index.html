@@ -13,7 +13,7 @@
 
 
 
-<title>힙(heap) | Mihyun&#39;s Blog</title>
+<title>Django&gt;Form | Mihyun&#39;s Blog</title>
 
 
 
@@ -193,7 +193,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">힙(heap)</h1>
+            <h1 class="post-title">Django&gt;Form</h1>
             
                 <div class="post-meta">
                     
@@ -202,14 +202,14 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">April 4, 2022&nbsp;&nbsp;0:27:21</a>
+                        Date: <a href="#">April 6, 2022&nbsp;&nbsp;8:36:27</a>
                         </span>
                     
                     
                         <span class="post-category">
                     Category:
                             
-                                <a href="/categories/algorithm/">algorithm</a>
+                                <a href="/categories/Django/">Django</a>
                             
                         </span>
                     
@@ -218,61 +218,62 @@
         </header>
 
         <div class="post-content">
-            <h1 id="힙-heap"><a href="#힙-heap" class="headerlink" title="힙 (heap)"></a>힙 (heap)</h1><ul>
-<li>완전 이진 트리에 있는 노드 중에서 <strong>키 값이 가장 큰 노드</strong>나 <strong>키 값이 가장 작은 노드</strong>를 찾기 위해 만든 자료구조</li>
-<li>최대 힙 (max heap)<ul>
-<li>키 값이 가장 큰 노드를 찾기 위한 완전 이진 트리</li>
-<li>루트 노드 : 키 값이 가장 큰 노드</li>
+            <h1 id="Django-Form-Class"><a href="#Django-Form-Class" class="headerlink" title="Django Form Class"></a>Django Form Class</h1><ul>
+<li><p>우리는 지금까지 HTML form, input 을 통해서 사용자로부터 데이터를 받았다.</p>
+</li>
+<li><p>이렇게 직접 사용자의 데이터를 받으면 입력된 데이터의 유효성을 검증하고, 필요시에 입력된 데이터를 검증 결과와 함께 다시 표시한다.</p>
+<ul>
+<li>사용자가 입력한 데이터는 개발자가 요구한 형식이 아닐 수 있음을 항상 생각해야 한다.</li>
 </ul>
 </li>
-<li>최소 힙 (min heap)<ul>
-<li>키 값이 가장 작은 노드를 찾기 위한 완전 이진 트리</li>
-<li>루트 노드 : 키 값이 가장 작은 노드</li>
+<li><p>유효성 검증 : 사용자가 입력한 데이터를 검증하는 것</p>
+<ul>
+<li>이 과정을 코드로 모두 구현하는 것은 많은 노력이 필요한 작업이다.</li>
+</ul>
+</li>
+<li><p>​    Django 는 이러한 과중한 작업과 반복 코드를 줄여줌으로써 이 작업을 훨씬 쉽게 만들어준다.</p>
+<ul>
+<li>“Django Form”</li>
 </ul>
 </li>
 </ul>
-<p><img src="/2022/04/04/heap/image-20220330152334689.png" alt="image-20220330152334689"></p>
-<h2 id="힙-연산-삽입"><a href="#힙-연산-삽입" class="headerlink" title="힙 연산 - 삽입"></a>힙 연산 - 삽입</h2><p><img src="/2022/04/04/heap/image-20220330153153486.png" alt="image-20220330153153486"></p>
-<h2 id="힙-연산-삭제"><a href="#힙-연산-삭제" class="headerlink" title="힙 연산 - 삭제"></a>힙 연산 - 삭제</h2><ul>
-<li>힙에서는 루트 노드의 원소만을 삭제할 수 있다.</li>
-<li>루트 노드의 원소를 삭제하여 반환한다.</li>
-<li>힙의 종류에 따라 최대값 또는 최소값을 구할 수 있다.</li>
-</ul>
-<p><img src="/2022/04/04/heap/image-20220330153300987.png" alt="image-20220330153300987"></p>
-<h2 id="힙의-활용"><a href="#힙의-활용" class="headerlink" title="힙의 활용"></a>힙의 활용</h2><ul>
-<li><strong>우선순위 큐</strong><ul>
-<li>우선순위 큐를 구현하는 가장 효과적인 방법이 힙을 사용하는 것이다.</li>
-<li>노드 하나의 추가&#x2F;삭제가 시간 복잡도 O(logN)이고 최대값&#x2F;최소값을 O(1)에 구할 수 있다.</li>
-<li>완전 정렬보다 관리 비용이 적다.</li>
-</ul>
+<h2 id="Django’s-forms"><a href="#Django’s-forms" class="headerlink" title="Django’s forms"></a>Django’s forms</h2><ul>
+<li><p>Form은 Django의 유효성 검사 도구 중 하나로 외부의 악의적 공격 및 데이터 손상에 대한 중요한 방어 수단</p>
 </li>
+<li><p>Django는 Form 과 관련된 유효성 검사를 단순화하고 자동화 할 수 있는 기능을 제공하여 개발자로 하여금 직접 작정하는 코드보다 더 안전하고 빠르게 수행하는 코드를 작성할 수 있게함</p>
+</li>
+<li><p>Django 는 form에 관련된 작업의 아래 세 부분을 처리해줌</p>
+<ol>
+<li><p>렌더링을 위한 데이터 준비 및 재구성</p>
+</li>
+<li><p>데이터에 대한 HTML forms 생성</p>
+</li>
+<li><p>클라이언트로부터 받은 데이터 수신 및 처리</p>
+</li>
+</ol>
+</li>
+</ul>
+<h2 id="The-Django-‘Form-Class’"><a href="#The-Django-‘Form-Class’" class="headerlink" title="The Django ‘Form Class’"></a>The Django ‘Form Class’</h2><ul>
+<li>Django Form 관리 시스템의 핵심</li>
+<li>Form 내 field, field 배치, 디스플레이 widget, label, 초기값, 유효하지 않은 field에 관련된 에러 메세지를 결정</li>
+<li>Django는 사용자의 데이터를 받을 때 해야 할 과중한 작업(데이터 유효성 검증, 필요 시 입력된 데이터 검증 결과 재출력, 유효한 데이터에 대해 요구되는 동작 수행 등)과 반복 코드를 줄여줌</li>
+</ul>
+<h1 id="ModelForm"><a href="#ModelForm" class="headerlink" title="ModelForm"></a>ModelForm</h1><ul>
+<li>Django Form 을 사용하다 보면 Model에 정의한 필드를 유저로부터 입력받기 위해 Form 에서 Model 필드를 재정의하는 행위가 중복될 수 있음</li>
+<li>그래서 Django는 Model을 통해 Form Class 를 만들 수 있는 ModelForm 이라는 Helper 를 제공</li>
 </ul>
 <blockquote>
-<p> 배열을 통해 트리 형태를 쉽게 구현할 수 있다.</p>
-<ul>
-<li>부모나 자식 노드를 O(1)연산으로 쉽게 찾을 수 있다.</li>
-<li>n위치에 있는 노드의 자식은 2n과 2n+1에 위치한다.</li>
-<li>완전 이진 트리의 특성에 의해 추가&#x2F;삭제의 위치는 자료의 시작과 끝 인덱스로 쉽게 판단할 수 있다.</li>
-</ul>
+<p>💡 모델폼이 쉽게 해주는 것</p>
+<ol>
+<li>모델 필드 속성에 맞는 html element를 만들어주고</li>
+<li>이를 통해 받은 데이터를 view 함수에서 유효성 검사를 할 수 있도록 함</li>
+</ol>
 </blockquote>
-<ul>
-<li><strong>힙 정렬</strong><ul>
-<li>힙 자료구조를 이용해서 이진탐색과 유사한 방법으로 수행된다.</li>
-<li>정렬을 위한 2단계<ul>
-<li>하나의 값을 힙에 삽입한다. (반복)</li>
-<li>힙에서 순차적(오름차순)으로 값을 하나씩 제거한다.</li>
-</ul>
-</li>
-<li>힙 정렬의 시간 복잡도<ul>
-<li>N개의 노드 삽입 연산 + N개의 노드 삭제 연산</li>
-<li>삽입과 삭제 연산은 각각 O(logN)이다.</li>
-<li>따라서, 전체 정렬을 O(NlogN)이다.</li>
-</ul>
-</li>
-<li><strong>힙 정렬은 배열에 저장된 자료를 정렬하기에 유용하다.</strong></li>
-</ul>
-</li>
-</ul>
+<blockquote>
+<p>Form : 사용자로부터 입력받지만 서버에 저장할 필요 없는 경우 (ex. Login, password 변경)</p>
+<p>ModelForm : 사용자로부터 입력받아 서버에 저장하는 경우</p>
+</blockquote>
+<h1 id="Rendering-fields-manually"><a href="#Rendering-fields-manually" class="headerlink" title="Rendering fields manually"></a>Rendering fields manually</h1><p><img src="/mhlee21/2022/04/06/Django-Form/image-20220406165627393.png" alt="image-20220406165627393"></p>
 
         </div>
 
@@ -296,9 +297,7 @@
                 <span class="tag">
                     
                     
-                        <a href="/tags/heap/"># heap</a>
-                    
-                        <a href="/tags/tree/"># tree</a>
+                        <a href="/tags/Django/"># Django</a>
                     
                         
                 </span>
@@ -311,10 +310,8 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2022/04/06/Django-Form/">Django>Form</a>
             
-            
-            <a class="next" rel="next" href="/2022/04/03/DB/">DB</a>
+            <a class="next" rel="next" href="/2022/04/04/heap/">힙(heap)</a>
             
         </section>
 
