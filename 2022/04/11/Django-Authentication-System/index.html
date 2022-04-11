@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Mihyun Lee">
+
+
+
+
+
+<title>Django&gt;Authentication System | Mihyun&#39;s Blog</title>
+
+
+
+    <link rel="icon" href="/favicon_mhlee.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Mihyun&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Mihyun&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">Django&gt;Authentication System</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Mihyun Lee</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">April 11, 2022&nbsp;&nbsp;9:07:32</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/Django/">Django</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="The-Django-Authentication-System"><a href="#The-Django-Authentication-System" class="headerlink" title="The Django Authentication System"></a>The Django Authentication System</h1><ul>
+<li>Django 인증 시스템은 Django.contrib.auth 에 Django contrib module로 제공</li>
+<li>필수 구성은 settings.py에 이미 포함되어 있으며 INSTALLED_APPS 설정에 나열된 아래 두 항목으로 구성됨</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">INSTALLED_APPS = [</span><br><span class="line">    <span class="string">&#x27;articles&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;accounts&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;django_extensions&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;django.contrib.admin&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;django.contrib.auth&#x27;</span>, <span class="comment">## 1. 인증 프레임워트의 핵심과 기본 모델을 포함💡</span></span><br><span class="line">    <span class="string">&#x27;django.contrib.contenttypes&#x27;</span>, <span class="comment">## 2. 사용자가 생성한 모델과 권한을 연결할 수 있음💡</span></span><br><span class="line">    <span class="string">&#x27;django.contrib.sessions&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;django.contrib.messages&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;django.contrib.staticfiles&#x27;</span>,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>Django 인증 시스템은 인증(Authentication)과 권한(Authorization) 부여를 함께 제공(처리)하며, 이러한 기능이 어느 정도 결합되어 일반적으로 인증 시스템이라고 함</p>
+</li>
+<li><p>Authentication (인증)</p>
+<ul>
+<li>신원 확인</li>
+<li>사용자가 자신이 누구인지 확인하는 것</li>
+</ul>
+</li>
+<li><p>Authorization (권한, 허가)</p>
+<ul>
+<li>권한 부여</li>
+<li>인증된 사용자가 수행할 수 있는 작업을 결정</li>
+</ul>
+</li>
+</ul>
+<h2 id="실습"><a href="#실습" class="headerlink" title="실습"></a>실습</h2><h3 id="두번째-앱-accounts-생성하기"><a href="#두번째-앱-accounts-생성하기" class="headerlink" title="두번째 앱(accounts) 생성하기"></a>두번째 앱(accounts) 생성하기</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ python manage.py startapp accounts</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>App 이름이 반드시 accounts일 필요는 없음</li>
+<li>단, <strong>auth와 관련해 Django 내부적으로 accounts라는 이름으로 사용되고 있기 때문에 되도록 accounts로 지정하는 것을 권장</strong></li>
+</ul>
+<h1 id="쿠키와-세션"><a href="#쿠키와-세션" class="headerlink" title="쿠키와 세션"></a>쿠키와 세션</h1><h2 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h2><ul>
+<li>Hyper Text Transfer Protocol<ul>
+<li>HTML 문서와 같은 리소스(자원, 데이터) 들을 가져올 수 있도록 해주는 프로토콜(규칙, 규약)</li>
+<li>웹에서 이루어지는 모든 데이터 교환의 기초</li>
+<li>클라이언트-서버 프로토콜이기도 함</li>
+</ul>
+</li>
+<li>비연결지향(connectionless)<ul>
+<li>서버는 요청에 대한 응답을 보낸 후 연결을 끊음</li>
+</ul>
+</li>
+<li>무상태(stateless)<ul>
+<li>연결을 끊는 순간 클라이언트와 서버간의 통신이 끝나며 상태 정보가 유지되지 않음</li>
+<li>클라이언트와 서버가 주고 받는 메세지들은 서로 완전히 독립적임</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p> 클라이언트와 서버의 지속적인 관계를 유지하기 위해 쿠키와 세션이 존재</p>
+</blockquote>
+<h2 id="쿠키-Cookie"><a href="#쿠키-Cookie" class="headerlink" title="쿠키(Cookie)"></a>쿠키(Cookie)</h2><ul>
+<li>서버가 사용자의 웹 브라우저에 전송하는 작은 데이터 조각</li>
+<li>사용자가 웹사이트를 방문할 경우 해당 웹사이트의 서버를 통해 사용자의 컴퓨터에 설치(placed-on)되는 작은 기록 정보 파일<ul>
+<li>브라우저(클라이언트)는 쿠키를 로컬에 KEY-VALUE 의 데이터 형식으로 저장</li>
+<li>이렇게 쿠키를 저장해 놓았다가, 동일한 서버에 재 요청 시 저장된 쿠키를 함께 전송</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>[참고] 소프트웨어가 아니기 때문에 프로그램처럼 실행될 수 없으며 악성코드를 설치할 수 없지만, 사용자의 행동을 추적하거나 쿠키를 훔쳐서 해당 사용자의 계정 접근 권한을 획득할 수도 있음</p>
+</blockquote>
+<ul>
+<li>HTTP 쿠키는 상태가 있는 세션을 만들어 줌</li>
+<li>쿠키는 두 요청이 동일한 브라우저에서 들어왔는지 아닌지를 판단할 때 주로 사용<ul>
+<li>이를 이용해 사용자의 로그인 상태를 유지할 수 있음</li>
+<li>상태가 없는 (stateless) HTTP 프로토콜에서 상태 정보를 기억 시켜주기 때문</li>
+</ul>
+</li>
+</ul>
+<p>&#x3D;&gt; 웹페이지에 접속하면 요청한 웹 페이지를 받으며 쿠키를 저장하고, 클라이언트가 같은 서버에 재 요청 시 요청과 함께 쿠키도 전송</p>
+<h3 id="요청과-응답"><a href="#요청과-응답" class="headerlink" title="요청과 응답"></a>요청과 응답</h3><p><img src="/2022/04/11/Django-Authentication-System/image-20220411131003215.png" alt="image-20220411131003215"></p>
+<h3 id="쿠키의-사용-목적"><a href="#쿠키의-사용-목적" class="headerlink" title="쿠키의 사용 목적"></a>쿠키의 사용 목적</h3><ol>
+<li>세션 관리</li>
+<li>개인화</li>
+<li>트래킹</li>
+</ol>
+<h2 id="세션"><a href="#세션" class="headerlink" title="세션"></a>세션</h2><h2 id="쿠키-lifetime-수명"><a href="#쿠키-lifetime-수명" class="headerlink" title="쿠키 lifetime (수명)"></a>쿠키 lifetime (수명)</h2><h2 id="Session-in-Django"><a href="#Session-in-Django" class="headerlink" title="Session in Django"></a>Session in Django</h2><h1 id="로그인"><a href="#로그인" class="headerlink" title="로그인"></a>로그인</h1><ul>
+<li>로그인은 session을 create 하는 로직과 같음</li>
+<li>Django는 우리가 session의 메커니즘을 생각하지 않게끔 도움을 줌</li>
+<li>이를 위해 인증에 관한 built-in forms를 제공</li>
+</ul>
+<h2 id="AuthenticationForm"><a href="#AuthenticationForm" class="headerlink" title="AuthenticationForm"></a>AuthenticationForm</h2><ul>
+<li>사용자 로그인을 위한 Form</li>
+<li>request를 첫번째 인자로 취함</li>
+<li></li>
+</ul>
+<h1 id="Authentication-data-in-templates"><a href="#Authentication-data-in-templates" class="headerlink" title="Authentication data in templates"></a>Authentication data in templates</h1><h1 id="로그아웃"><a href="#로그아웃" class="headerlink" title="로그아웃"></a>로그아웃</h1><h1 id="로그인-사용자에-대한-접근-제한"><a href="#로그인-사용자에-대한-접근-제한" class="headerlink" title="로그인 사용자에 대한 접근 제한"></a>로그인 사용자에 대한 접근 제한</h1><h1 id="회원가입"><a href="#회원가입" class="headerlink" title="회원가입"></a>회원가입</h1><h1 id="회원탈퇴"><a href="#회원탈퇴" class="headerlink" title="회원탈퇴"></a>회원탈퇴</h1><h1 id="회원정보-수정"><a href="#회원정보-수정" class="headerlink" title="회원정보 수정"></a>회원정보 수정</h1><h1 id="비밀번호-변경"><a href="#비밀번호-변경" class="headerlink" title="비밀번호 변경"></a>비밀번호 변경</h1><h1 id="마무리"><a href="#마무리" class="headerlink" title="마무리"></a>마무리</h1>
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Mihyun Lee</span>
+                    </p>
+                
+                
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/Django/"># Django</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+            
+            <a class="next" rel="next" href="/2022/04/06/Django-Form/">Django>Form</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Mihyun Lee | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>
