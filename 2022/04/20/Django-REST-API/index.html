@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Mihyun Lee">
+
+
+
+
+
+<title>Django&gt;REST API | Mihyun&#39;s Blog</title>
+
+
+
+    <link rel="icon" href="/favicon_mhlee.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Mihyun&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Mihyun&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">Django&gt;REST API</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Mihyun Lee</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">April 20, 2022&nbsp;&nbsp;12:53:16</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/Django/">Django</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h1><ul>
+<li>HyperText Transfer Protocol</li>
+<li>웹 상에서 컨텐츠를 전송하기 위한 약속</li>
+<li>HTML 문서와 같은 리소스들을 가져올 수 있도록 하는 프로토콜(규칙, 약속)</li>
+<li>웹에서 이루어지는 모든 데이터 교환의 기초<ul>
+<li>요청 (request) : 클라이언트에 의해 전송되는 메세지</li>
+<li>응답 (response) : 서버에서 응답으로 전송되는 메시지</li>
+</ul>
+</li>
+<li>HTTP request methods<ul>
+<li>자원에 대한 행위를 정의</li>
+<li>주어진 리소스에 수행하길 원하는 행동을 나타냄</li>
+<li>GET, POST, PUT, DELETE…</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2022/04/20/Django-REST-API/image-20220420232423748.png" alt="image-20220420232423748"></p>
+<ul>
+<li><p>HTTP response status codes</p>
+<ul>
+<li>특정 HTTP 요청이 성공적으로 완료되었는지 여부를 나타냄</li>
+<li>응답은 5개의 그룹으로 나뉘어짐</li>
+</ul>
+<img src="image-20220420232935302.png" alt="image-20220420232935302" style="zoom:50%;" /></li>
+</ul>
+<h3 id="웹에서의-리소스-식별"><a href="#웹에서의-리소스-식별" class="headerlink" title="웹에서의 리소스 식별"></a>웹에서의 리소스 식별</h3><ul>
+<li>HTTP 요청의 대상을 리소스(resource, 자원) 라고 함</li>
+<li>리소스는 문서, 사진 또는 기타 어떤 것이든 될 수 있음</li>
+<li>각 리소스는 리소스 식별을 위해 HTTP 전체에서 사용되는 URI(Uniform Resource Identifier)로 식별됨</li>
+</ul>
+<h3 id="URL"><a href="#URL" class="headerlink" title="URL"></a>URL</h3><ul>
+<li>Uniform Resource Locator</li>
+<li>통합 자원 위치</li>
+<li>과거에는 실제 자원의 위치를 나타냈지만 현재는 추상화된 의미론적인 구성</li>
+<li>‘웹 주소’, ‘링크’ 라고도 불림</li>
+</ul>
+<h3 id="URN"><a href="#URN" class="headerlink" title="URN"></a>URN</h3><ul>
+<li>Uniform Resource Name</li>
+<li>통합 자원 이름</li>
+<li>URL 과 달리 자원의 위치에 영향을 받지 않는 유일한 이름 역할을 함</li>
+</ul>
+<h2 id="URI"><a href="#URI" class="headerlink" title="URI"></a>URI</h2><ul>
+<li>Uniform Resource Identifier</li>
+<li>통합 자원 식별자</li>
+<li>인터넷의 자원을 식별하는 유일한 주소(정보의 자원을 표현)</li>
+<li>인터넷에서 자원을 식별하거나 이름을 지정하는데 사용되는 간단한 문자열</li>
+<li>하위 개념 : URL, URN</li>
+<li>URI는 크게 URL과 URN으로 나눌 수 있지만, URN을 사용하는 비중이 매우 적기 때문에 일반적으로 URL은 URI와 같은 의미처럼 사용하기도 함</li>
+</ul>
+<h3 id="URI의-구조"><a href="#URI의-구조" class="headerlink" title="URI의 구조"></a>URI의 구조</h3><ul>
+<li><p>Scheme (protocol)</p>
+<ul>
+<li>브라우저가 사용해야 하는 프로토콜</li>
+</ul>
+<p><img src="/2022/04/20/Django-REST-API/image-20220420233803134.png" alt="image-20220420233803134"></p>
+</li>
+<li><p>Host (Domain name)</p>
+<ul>
+<li>요청을 받는 웹 서버의 이름</li>
+<li>IP address 를 직접 사용할 수 있지만, 실 사용시 불편하므로 웹에서 자주 사용되지는 않음</li>
+</ul>
+<p><img src="/2022/04/20/Django-REST-API/image-20220420233821150.png" alt="image-20220420233821150"></p>
+</li>
+<li><p>Port</p>
+<ul>
+<li>HTTP : 80</li>
+<li>HTTPS : 443</li>
+</ul>
+<p><img src="/2022/04/20/Django-REST-API/image-20220420233832116.png" alt="image-20220420233832116"></p>
+</li>
+<li><p>Path</p>
+<ul>
+<li>웹 서버상의 리소스 경로</li>
+<li>초기에는 실제 파일이 위치한 물리적인 위치를 나타냈지만, 오늘날은 물리적인 실제 위치가 아닌 추상화 형태의 구조로 표현</li>
+</ul>
+<p><img src="/2022/04/20/Django-REST-API/image-20220420233843096.png" alt="image-20220420233843096"></p>
+</li>
+<li><p>Query(Identifier)</p>
+<ul>
+<li>Query String Parameters</li>
+<li>웹 서버에 제공되는 추가적인 매개변수</li>
+<li>&amp; 로 구분되는 key-value 목록</li>
+</ul>
+<p><img src="/2022/04/20/Django-REST-API/image-20220420233854375.png" alt="image-20220420233854375"></p>
+</li>
+<li><p>Fragment</p>
+<ul>
+<li>Anchor</li>
+<li>자원 안에서 북마크의 한 종류를 나타냄</li>
+<li>브라우저에게 해당 문서의 특정 부분을 보여주기 위한 방법</li>
+<li><code>#</code> 뒤의 부분은 요청이 서버에 보내지지 않음</li>
+</ul>
+<p><img src="/2022/04/20/Django-REST-API/image-20220420233905850.png" alt="image-20220420233905850"></p>
+</li>
+</ul>
+<h1 id="RESTful-API"><a href="#RESTful-API" class="headerlink" title="RESTful API"></a>RESTful API</h1><h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><ul>
+<li><p>Application Programming Interface</p>
+</li>
+<li><p>프로그래밍 언어가 제공하는 기능을 수행할 수 있게 만든 인터페이스</p>
+<ul>
+<li>애플리케이션과 프로그래밍으로 소통하는 방법</li>
+<li>CLI는 명령줄, GUI는 그래픽, API는 프로그래밍을 통해 특정한 기능 수행</li>
+</ul>
+</li>
+<li><p>Web API</p>
+<ul>
+<li>웹 애플리케이션 개발에서 다른 서비스에 요청을 보내고 응답을 받기 위해 정의된 명세</li>
+<li>현재 웹 개발은 모든 것을 직접 개발하기 보다 여러 OpenAPI를 활용하는 추세</li>
+</ul>
+</li>
+<li><p>응답 데이터 타입</p>
+<ul>
+<li>HTML, XML, JSON 등</li>
+</ul>
+</li>
+</ul>
+<h2 id="REST"><a href="#REST" class="headerlink" title="REST"></a>REST</h2><ul>
+<li><strong>RE</strong>presentational <strong>S</strong>tate <strong>T</strong>ransfer</li>
+<li>API server를 개발하기 위한 일종의 <em>소프트웨어 설계 방법론</em></li>
+<li>네트워크 구조(Network Architecture) 원리의 모음<ul>
+<li>자원을 정의하고 자원에 대한 주소를 지정하는 전반적인 방법</li>
+</ul>
+</li>
+<li>RESTful : REST 원리를 따르는 시스템</li>
+<li>자원을 정의하는 방법에 대한 고민 : 정의된 자원을 어디에 위치 시킬 것인가</li>
+</ul>
+<h3 id="REST의-자원과-주소의-지정-방법"><a href="#REST의-자원과-주소의-지정-방법" class="headerlink" title="REST의 자원과 주소의 지정 방법"></a>REST의 자원과 주소의 지정 방법</h3><ol>
+<li>자원 : URI</li>
+<li>행위 : HTTP Method</li>
+<li>표현<ul>
+<li>자원과 행위를 통해 궁극적으로 표현되는 (추상화된) 결과물</li>
+<li>JSON으로 표현된 데이터를 제공</li>
+</ul>
+</li>
+</ol>
+<h3 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h3><ul>
+<li>JSON (JavaScript Object Notaion)<ul>
+<li>JSON is a lightweight data-interchange format</li>
+<li>JavaScript 의 표기법을 따른 단순 문자열</li>
+</ul>
+</li>
+<li>사람이 읽거나 쓰기 쉽고 기계가 파싱(해석, 분석)하고 만들어내기 쉬움</li>
+<li>파이썬의 dictionary, 자바스크립트의 object 처럼 C계열의 언어가 갖고있는 자료구조로 쉽게 변화할 수 있는 key-value 형태의 구조를 갖고 있음</li>
+</ul>
+<h3 id="REST-1"><a href="#REST-1" class="headerlink" title="REST"></a>REST</h3><ul>
+<li>REST의 핵심 규칙<ol>
+<li>‘정보’는 URI로 표현</li>
+<li>자원에 대한 ‘행위’는 HTTP method로 표현 (GET, POST, PUT, DELETE)</li>
+</ol>
+</li>
+<li>설계 방법론은 지키지 않앟을 때 잃는 것보다 지켰을 때 얻는 것이 훨씬 많음<ul>
+<li>단, 설계 방법론을 지키지 않더라도 동작 여부에 큰 영향을 미치지는 않음</li>
+</ul>
+</li>
+</ul>
+<h3 id="RESTful-API-1"><a href="#RESTful-API-1" class="headerlink" title="RESTful API"></a>RESTful API</h3><ul>
+<li>REST 원리를 따라 설계한 API</li>
+<li>RESTful services, 혹은 simply REST services 라고도 부름</li>
+<li>프로그래밍을 통해 클라이언트의 요청에 JSON을 응답하는 서버를 구성<ul>
+<li>지금까지 사용자의 입장에서 썼던 API를 제공자의 입장이 되어 개발해보기</li>
+</ul>
+</li>
+</ul>
+<h1 id="Response"><a href="#Response" class="headerlink" title="Response"></a>Response</h1><h2 id="Django-REST-Framework-DRF"><a href="#Django-REST-Framework-DRF" class="headerlink" title="Django REST Framework (DRF)"></a>Django REST Framework (DRF)</h2><ul>
+<li><p>Web API 구축을 위한 강력한 Toolkit을 제공하는 라이브러리</p>
+</li>
+<li><p>DRF 의 Serializer는 Django의 Form 및 ModelForm 클래스와 매우 유사하게 구성되고 작동함</p>
+</li>
+<li><p>Web API</p>
+<ul>
+<li>웹 애플리케이션 개발에서 다른 서비스에 요청을 보내고 응답을 받기 위해 정의된 명세</li>
+</ul>
+</li>
+<li><p>Django ModelForm vs. DRF Serializer</p>
+<p><img src="/2022/04/20/Django-REST-API/image-20220420152255984.png" alt="image-20220420152255984"></p>
+</li>
+</ul>
+<h1 id="Single-Model"><a href="#Single-Model" class="headerlink" title="Single Model"></a>Single Model</h1><h2 id="DRF-with-Single-Model"><a href="#DRF-with-Single-Model" class="headerlink" title="DRF with Single Model"></a>DRF with Single Model</h2><ul>
+<li>단일 모델 data를 직렬화(Serialization)하여 JSON으로 변환하는 방법에 대한 학습</li>
+<li>단일 모델을 두고 CRUD 로직을 수행 가능하도록 설계</li>
+<li>API 개발을 위한 핵심 기능을 제공하는 도구 활용<ul>
+<li>DRF built-in form</li>
+<li>Postman</li>
+</ul>
+</li>
+</ul>
+<h2 id="Create-Dummy-Data"><a href="#Create-Dummy-Data" class="headerlink" title="Create Dummy Data"></a>Create Dummy Data</h2><p>django-seed 라이브러리를 사용해 모델 구조에 맞는 데이터 생성</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ python manage.py migrate</span><br><span class="line">$ python manage.py seed articles --number=20</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="1-N-Relation"><a href="#1-N-Relation" class="headerlink" title="1:N Relation"></a>1:N Relation</h1>
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Mihyun Lee</span>
+                    </p>
+                
+                
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/Django/"># Django</a>
+                    
+                        <a href="/tags/REST-API/"># REST API</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+            
+            <a class="next" rel="next" href="/2022/04/18/DB-3/">DB-3</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Mihyun Lee | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>
