@@ -227,6 +227,11 @@
 <li>응답 (response) : 서버에서 응답으로 전송되는 메시지</li>
 </ul>
 </li>
+<li>기본 특성 : 쿠키와 세션을 통해 서버 상태를 요청과 연결하도록 함<ul>
+<li>Stateless</li>
+<li>Connectionless</li>
+</ul>
+</li>
 <li>HTTP request methods<ul>
 <li>자원에 대한 행위를 정의</li>
 <li>주어진 리소스에 수행하길 원하는 행동을 나타냄</li>
@@ -234,6 +239,16 @@
 </ul>
 </li>
 </ul>
+<blockquote>
+<p>PATCH</p>
+<ul>
+<li><p>리소스의 부분적인 수정을 할 때에 사용된다.</p>
+</li>
+<li><p>멱등성을 가지지 않는다.</p>
+</li>
+</ul>
+<p>비밀번호 수정의 경우 PUT 메소드를 사용한다.</p>
+</blockquote>
 <p><img src="/2022/04/20/Django-REST-API/image-20220420232423748.png" alt="image-20220420232423748"></p>
 <ul>
 <li><p>HTTP response status codes</p>
@@ -368,7 +383,7 @@
 <li>자원에 대한 ‘행위’는 HTTP method로 표현 (GET, POST, PUT, DELETE)</li>
 </ol>
 </li>
-<li>설계 방법론은 지키지 않앟을 때 잃는 것보다 지켰을 때 얻는 것이 훨씬 많음<ul>
+<li>설계 방법론은 지키지 않았을 때 잃는 것보다 지켰을 때 얻는 것이 훨씬 많음<ul>
 <li>단, 설계 방법론을 지키지 않더라도 동작 여부에 큰 영향을 미치지는 않음</li>
 </ul>
 </li>
@@ -381,7 +396,70 @@
 </ul>
 </li>
 </ul>
-<h1 id="Response"><a href="#Response" class="headerlink" title="Response"></a>Response</h1><h2 id="Django-REST-Framework-DRF"><a href="#Django-REST-Framework-DRF" class="headerlink" title="Django REST Framework (DRF)"></a>Django REST Framework (DRF)</h2><ul>
+<h1 id="Response"><a href="#Response" class="headerlink" title="Response"></a>Response</h1><h3 id="Create-Dummy-Data"><a href="#Create-Dummy-Data" class="headerlink" title="Create Dummy Data"></a>Create Dummy Data</h3><ul>
+<li>Django-seed 라이브러리를 사용해 모델구조에 맞는 데이터 생성</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">python manage.py migrate</span><br><span class="line">python manage.py seed articles --number=20</span><br></pre></td></tr></table></figure>
+
+<h2 id="1-HTML"><a href="#1-HTML" class="headerlink" title="1. HTML"></a>1. HTML</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># views.py</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">article_html</span>(<span class="params">request</span>):</span><br><span class="line">    articles = Article.objects.<span class="built_in">all</span>()</span><br><span class="line">    context = &#123;</span><br><span class="line">        <span class="string">&#x27;articles&#x27;</span>: articles,</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> render(request, <span class="string">&#x27;articles/article.html&#x27;</span>, context)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="2-JsonResponse"><a href="#2-JsonResponse" class="headerlink" title="2. JsonResponse"></a>2. JsonResponse</h2><ul>
+<li>JsonResponse 객체를 활용한 JSON 데이터 응답</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># views.py</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">article_json_1</span>(<span class="params">request</span>):</span><br><span class="line">    articles = Article.objects.<span class="built_in">all</span>()</span><br><span class="line">    articles_json = []</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> article <span class="keyword">in</span> articles:</span><br><span class="line">        articles_json.append(</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="string">&#x27;id&#x27;</span>: article.pk,</span><br><span class="line">                <span class="string">&#x27;title&#x27;</span>: article.title,</span><br><span class="line">                <span class="string">&#x27;content&#x27;</span>: article.content,</span><br><span class="line">                <span class="string">&#x27;created_at&#x27;</span>: article.created_at,</span><br><span class="line">                <span class="string">&#x27;updated_at&#x27;</span>: article.updated_at,</span><br><span class="line">            &#125;</span><br><span class="line">        )</span><br><span class="line">    <span class="keyword">return</span> JsonResponse(articles_json, safe=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><strong>JsonResponse</strong> objects</p>
+<ul>
+<li><p>JSON-encoded response 를 만드는 HttpResponse의 서브 클래스</p>
+</li>
+<li><p>“safe” parameter</p>
+<ul>
+<li>True (기본값)</li>
+<li>dict 이외의 객체를 직렬화(Serialization) 하려면 False로 설정해야 함</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">response = JsonResponse(&#123;<span class="string">&#x27;foo&#x27;</span>: <span class="string">&#x27;bar&#x27;</span>&#125;)</span><br><span class="line">response = JsonResponse([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>], safe=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h3 id="🔍-Serialization"><a href="#🔍-Serialization" class="headerlink" title="🔍 Serialization"></a>🔍 Serialization</h3><ul>
+<li>직렬화</li>
+<li>데이터 구조나 객체 상태를 동일하거나 다른 컴퓨터 환경에 저장하고, 나중에 재구성할 수 있는 포맷으로 변환하는 과정</li>
+<li>Serializers in Django<ul>
+<li>Queryset 및 Model Instance 와 같은 복잡한 데이터를 JSON, XML 등의 유형으로 쉽게 변환할 수 있는 Python 데이터 타입으로 만들어 줌</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-Django-Serializer"><a href="#3-Django-Serializer" class="headerlink" title="3. Django Serializer"></a>3. Django Serializer</h2><ul>
+<li>Django의 내장 HttpResponse를 활용한 JSON 응답</li>
+<li>주어진 모델 정보를 활용하기 때문에 이전과 달리 필드를 개별적으로 직접 만들어 줄 필요 없음</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># views.py</span></span><br><span class="line"><span class="keyword">from</span> django.http.response <span class="keyword">import</span> JsonResponse, HttpResponse</span><br><span class="line"><span class="keyword">from</span> django.core <span class="keyword">import</span> serializers</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">article_json_2</span>(<span class="params">request</span>):</span><br><span class="line">    articles = Article.objects.<span class="built_in">all</span>()</span><br><span class="line">    data = serializers.serialize(<span class="string">&#x27;json&#x27;</span>, articles)</span><br><span class="line">    <span class="keyword">return</span> HttpResponse(data, content_type=<span class="string">&#x27;application/json&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="4-Django-REST-Framework"><a href="#4-Django-REST-Framework" class="headerlink" title="4. Django REST Framework"></a>4. Django REST Framework</h2><ul>
+<li>Django REST Framework(DFR) 라이브러리를 사용한 JSON 응답</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install djangorestframework</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">INSTALLED_APPS = [</span><br><span class="line">		...</span><br><span class="line">    <span class="string">&#x27;rest_framework&#x27;</span>,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Article 모델에 맞춰 자동으로 필드를 생성해 serialize 해주는 ModelSerializer 확인</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># articles/serializers.py</span></span><br><span class="line"><span class="keyword">from</span> rest_framework <span class="keyword">import</span> serializers</span><br><span class="line"><span class="keyword">from</span> .models <span class="keyword">import</span> Article</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ArticleSerializer</span>(serializers.ModelSerializer):</span><br><span class="line">    <span class="keyword">class</span> <span class="title class_">Meta</span>:</span><br><span class="line">        model = Article</span><br><span class="line">        fields = <span class="string">&#x27;__all__&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>DRF 의 Response() 를 활용해 Serialize 된 JSON 객체 응답</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># views.py</span></span><br><span class="line"><span class="keyword">from</span> rest_framework.decorators <span class="keyword">import</span> api_view</span><br><span class="line"><span class="keyword">from</span> rest_framework.response <span class="keyword">import</span> Response</span><br><span class="line"><span class="keyword">from</span> .serializers <span class="keyword">import</span> ArticleSerializer</span><br><span class="line"></span><br><span class="line"><span class="comment"># @api_view([&#x27;GET&#x27;])</span></span><br><span class="line"><span class="meta">@api_view()</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">article_json_3</span>(<span class="params">request</span>):</span><br><span class="line">    articles = Article.objects.<span class="built_in">all</span>()</span><br><span class="line">    serializer = ArticleSerializer(articles, many=<span class="literal">True</span>)</span><br><span class="line">    <span class="keyword">return</span> Response(serializer.data)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Django-REST-Framework-DRF"><a href="#Django-REST-Framework-DRF" class="headerlink" title="Django REST Framework (DRF)"></a>Django REST Framework (DRF)</h2><ul>
 <li><p>Web API 구축을 위한 강력한 Toolkit을 제공하는 라이브러리</p>
 </li>
 <li><p>DRF 의 Serializer는 Django의 Form 및 ModelForm 클래스와 매우 유사하게 구성되고 작동함</p>
@@ -404,12 +482,119 @@
 </ul>
 </li>
 </ul>
-<h2 id="Create-Dummy-Data"><a href="#Create-Dummy-Data" class="headerlink" title="Create Dummy Data"></a>Create Dummy Data</h2><p>django-seed 라이브러리를 사용해 모델 구조에 맞는 데이터 생성</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ python manage.py migrate</span><br><span class="line">$ python manage.py seed articles --number=20</span><br></pre></td></tr></table></figure>
+<h2 id="ModelSerializer"><a href="#ModelSerializer" class="headerlink" title="ModelSerializer"></a>ModelSerializer</h2><ul>
+<li><p>모델 필드에 해당하는 필드가 있는 Serializer 클래스를 자동으로 만들 수 있는 shortcut</p>
+</li>
+<li><p>아래 핵심 기능을 제공</p>
+<ol>
+<li>모델 정보에 맞춰 자동으로 필드 생성</li>
+<li>Serializer 에 대한 유효성 검사기를 자동으로 생성</li>
+<li><code>.create()</code> &amp; <code>.update()</code> 의 간단한 기본 구현이 포함됨</li>
+</ol>
+</li>
+<li><p>Model 필드를 어떻게 ‘직렬화’ 할 지 설정하는 것이 핵심</p>
+</li>
+<li><p>이 과정은 Django 에서 Model 의 필드를 설정하는 것과 동일함</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># articles/serializers.py</span></span><br><span class="line"><span class="keyword">from</span> rest_framework <span class="keyword">import</span> serializers</span><br><span class="line"><span class="keyword">from</span> .models <span class="keyword">import</span> Article</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ArtlcleListSerializer</span>(serializers.ModelSerializer):</span><br><span class="line"></span><br><span class="line">    <span class="keyword">class</span> <span class="title class_">Meta</span>:</span><br><span class="line">        model = Article</span><br><span class="line">        fields = (<span class="string">&#x27;id&#x27;</span>, <span class="string">&#x27;title&#x27;</span>,)</span><br></pre></td></tr></table></figure>
+
+<h3 id="39-many-39-argument"><a href="#39-many-39-argument" class="headerlink" title="&#39;many&#39; argument"></a><code>&#39;many&#39;</code> argument</h3><ul>
+<li><code>many=True</code><ul>
+<li>Serializing multiple objects</li>
+<li>단일 인스턴스 대신 QuerySet 등을 직렬화 하기 위해서는 serializer를 인스턴스화 할 때 <code>many=True</code>를 키워드 인자로 전달해야 한다.</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>article = Article.objects.<span class="built_in">all</span>()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>serializer = ArticleListSerializer(article)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>serializer.data</span><br><span class="line">...</span><br><span class="line">AttributeError: Got AttributeError when attempting to get a value <span class="keyword">for</span> field `title` on serializer `ArticleListSerializer`.</span><br><span class="line">The serializer field might be named incorrectly <span class="keyword">and</span> <span class="keyword">not</span> match <span class="built_in">any</span> attribute <span class="keyword">or</span> key on the `QuerySet` instance.</span><br><span class="line">Original exception text was: <span class="string">&#x27;QuerySet&#x27;</span> <span class="built_in">object</span> has no attribute <span class="string">&#x27;title&#x27;</span>.</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>serializer = ArticleListSerializer(articles, many=<span class="literal">True</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>serializer.data</span><br><span class="line">[OrderedDict([(<span class="string">&#x27;id&#x27;</span>, <span class="number">1</span>), (<span class="string">&#x27;title&#x27;</span>, <span class="string">&#x27;Agree learn two position threat hope these speak.&#x27;</span>)]), OrderedDict([(<span class="string">&#x27;id&#x27;</span>, <span class="number">2</span>), (<span class="string">&#x27;title&#x27;</span>, <span class="string">&#x27;Brother per six source full which west training.&#x27;</span>)]), OrderedDict([(<span class="string">&#x27;id&#x27;</span>, <span class="number">3</span>), (<span class="string">&#x27;title&#x27;</span>, <span class="string">&#x27;Evidence tend learn door issue.&#x27;</span>)]), OrderedDict([(<span class="string">&#x27;id&#x27;</span>, <span class="number">4</span>), (<span class="string">&#x27;title&#x27;</span>, <span class="string">&#x27;Body option standard manager key best across.&#x27;</span>)]), OrderedDict([(<span class="string">&#x27;id&#x27;</span>, <span class="number">5</span>), (<span class="string">&#x27;title&#x27;</span>, <span class="string">&#x27;Determine food concern prevent wind report play person.&#x27;</span>)]), OrderedDict([(<span class="string">&#x27;id&#x27;</span>, <span class="number">6</span>),</span><br><span class="line">...</span><br><span class="line">)]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Build-RESTful-API"><a href="#Build-RESTful-API" class="headerlink" title="Build RESTful API"></a>Build RESTful API</h2><p><img src="/2022/04/20/Django-REST-API/image-20220421133400608.png" alt="image-20220421133400608"></p>
+<h3 id="GET"><a href="#GET" class="headerlink" title="GET"></a>GET</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> rest_framework.decorators <span class="keyword">import</span> api_view</span><br><span class="line"></span><br><span class="line"><span class="meta">@api_view(<span class="params">[<span class="string">&#x27;GET&#x27;</span>]</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">article_list</span>(<span class="params">request</span>):</span><br><span class="line">    articles = Article.objects.<span class="built_in">all</span>() </span><br><span class="line">    <span class="comment"># DB가 비어있는 경우 404 리턴보다 빈 리스트를 보여주기 위해 get_list_or_404 대신 all 사용</span></span><br><span class="line">    <span class="comment"># articles = get_list_or_404(Article)</span></span><br><span class="line">    serializer = ArticleListSerializer(articles, many=<span class="literal">True</span>)</span><br><span class="line">    <span class="keyword">return</span> Response(serializer.data)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>api_view</code> decorator<ul>
+<li>기본적으로 GET 메서드만 허용되며 다른 메서드 요청에 대해서는 405 Method Not Allowed로 응답</li>
+<li>View 함수가 응답해야 하는 HTTP 메서드의 목록을 리스트의 인자로 받음</li>
+<li>DRF에서는 선택이 아닌 <em><strong>필수적으로 작성</strong></em>해야 해당 view 함수가 정상적으로 동작함</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># articles/serializers.py</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ArticleSerializer</span>(serializers.ModelSerializer):</span><br><span class="line"></span><br><span class="line">    <span class="keyword">class</span> <span class="title class_">Meta</span>:</span><br><span class="line">        model = Article</span><br><span class="line">        fields = <span class="string">&#x27;__all__&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Article List와 Article Detail 을 구분하기 위해 추가 Serailizer 정의</li>
+<li>모든 필드를 직렬화하기 위해 fields 옵션을 <code>__all__</code> 로 설정</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@api_view(<span class="params">[<span class="string">&#x27;GET&#x27;</span>]</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">article_detail</span>(<span class="params">request, article_pk</span>):</span><br><span class="line">    article = get_object_or_404(Article, pk=article_pk)</span><br><span class="line">    serializer = ArticleSerializer(article)</span><br><span class="line">    <span class="keyword">return</span> Response(serializer.data)</span><br></pre></td></tr></table></figure>
 
 
 
-<h1 id="1-N-Relation"><a href="#1-N-Relation" class="headerlink" title="1:N Relation"></a>1:N Relation</h1>
+<h3 id="POST"><a href="#POST" class="headerlink" title="POST"></a>POST</h3><ul>
+<li>201 Created 상태코드 및 메시지 응답</li>
+<li>RESTful 구조에 맞게 작성<ol>
+<li>URI는 자원을 표현</li>
+<li>자원을 조작하는 행위는 HTTP Method</li>
+</ol>
+</li>
+<li>article_list 함수로 게시글을 조회하거나 생성하는 행위를 모두 처리 가능</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> rest_framework <span class="keyword">import</span> status</span><br><span class="line"></span><br><span class="line"><span class="meta">@api_view(<span class="params">[<span class="string">&#x27;GET&#x27;</span>, <span class="string">&#x27;POST&#x27;</span>]</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">article_list</span>(<span class="params">request</span>):</span><br><span class="line">    <span class="comment"># 전체 게시글 조회</span></span><br><span class="line">    <span class="keyword">if</span> request.method == <span class="string">&#x27;GET&#x27;</span>:</span><br><span class="line">        articles = get_list_or_404(Article)</span><br><span class="line">        serializer = ArticleListSerializer(articles, many=<span class="literal">True</span>)</span><br><span class="line">        <span class="keyword">return</span> Response(serializer.data)</span><br><span class="line">    <span class="comment"># 게시글 생성</span></span><br><span class="line">    <span class="keyword">elif</span> request.method == <span class="string">&#x27;POST&#x27;</span>:</span><br><span class="line">        serializer = ArticleSerializer(data=request.data)</span><br><span class="line">        <span class="keyword">if</span> serializer.is_valid(raise_exception=<span class="literal">True</span>):</span><br><span class="line">            serializer.save()</span><br><span class="line">            <span class="keyword">return</span> Response(serializer.data, status=status.HTTP_201_CREATED)</span><br><span class="line">        <span class="comment"># return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Status Codes in DRF<ul>
+<li>DRF에는 status code 를 보다 명확하고 읽기 쉽게 만드는데 사용할 수 있는 정의된 상수 집합을 제공</li>
+<li>status 모듈에 HTTP status code 집합이 모두 포함되어 있음</li>
+</ul>
+</li>
+<li><code>raise_exception</code> argument<ul>
+<li>Raising an exception on invalid data<ul>
+<li><code>is_valid()</code> 는 유효성 검사 오류가 있는 경우 serializers.ValidationError 예외를 발생시키는 선택적 raise_exception 인자를 사용할 수 있음</li>
+<li>DRF 에서 제공하는 기본 예외 처리기에 의해 자동으로 처리되며, 기본적으로 HTTP status code 400을 응답으로 반환함</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="DELETE"><a href="#DELETE" class="headerlink" title="DELETE"></a>DELETE</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@api_view(<span class="params">[<span class="string">&#x27;GET&#x27;</span>, <span class="string">&#x27;DELETE&#x27;</span>]</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">article_detail</span>(<span class="params">request, article_pk</span>):</span><br><span class="line">    article = get_object_or_404(Article, pk=article_pk)</span><br><span class="line">    <span class="keyword">if</span> request.method == <span class="string">&#x27;GET&#x27;</span>:</span><br><span class="line">        serializer = ArticleSerializer(article)</span><br><span class="line">        <span class="keyword">return</span> Response(serializer.data)</span><br><span class="line">    <span class="keyword">elif</span> request.method == <span class="string">&#x27;DELETE&#x27;</span>:</span><br><span class="line">        article.delete()</span><br><span class="line">        data = &#123;</span><br><span class="line">            <span class="string">&#x27;delete&#x27;</span>: <span class="string">f&#x27;데이터 <span class="subst">&#123;article_pk&#125;</span>번이 삭제되었습니다.&#x27;</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> Response(data, status=status.HTTP_204_NO_CONTENT)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>204 No Content 상태 코드 및 메시지 응답</li>
+<li>Article_detail 함수로 상세 게시글을 조회하거나 삭제하는 행위 모두 처리 가능</li>
+</ul>
+<h3 id="PUT"><a href="#PUT" class="headerlink" title="PUT"></a>PUT</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@api_view(<span class="params">[<span class="string">&#x27;GET&#x27;</span>, <span class="string">&#x27;PUT&#x27;</span>, <span class="string">&#x27;DELETE&#x27;</span>]</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">article_detail</span>(<span class="params">request, article_pk</span>):</span><br><span class="line">    ...</span><br><span class="line">    <span class="keyword">elif</span> request.method == <span class="string">&#x27;PUT&#x27;</span>:</span><br><span class="line">        serializer = ArticleSerializer(article, data=request.data)</span><br><span class="line">        <span class="keyword">if</span> serializer.is_valid(raise_exception=<span class="literal">True</span>):</span><br><span class="line">            serializer.save()</span><br><span class="line">            <span class="keyword">return</span> Response(serializer.data)</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="1-N-Relation"><a href="#1-N-Relation" class="headerlink" title="1:N Relation"></a>1:N Relation</h1><ul>
+<li>1:N 관계에서의 모델 data를 직렬화(serialization) 하여 JSON으로 변화하는 방법에 대한 학습</li>
+<li>2개 이상의 1:N 관계를 맻는 모델을 두고 CRUD 로직을 수행 가능하도록 설계하기</li>
+</ul>
+<h3 id="GET-1"><a href="#GET-1" class="headerlink" title="GET"></a>GET</h3><ul>
+<li>Comment model 추가</li>
+<li>Single model 과 동일</li>
+</ul>
+<h3 id="POST-1"><a href="#POST-1" class="headerlink" title="POST"></a>POST</h3><ul>
+<li><p>Article 생성과 달리 Comment 생성은 생성 시에 참조하는 모델의 객체 정보가 필요</p>
+</li>
+<li><p>1:N 관계에서 N은 어떤 1을 참조하는지에 대한 정보가 필요하기 때문(외래키)</p>
+</li>
+<li><p><code>.save()</code> method</p>
+<ul>
+<li>특정 Serializer 인스턴스를 저장하는 과정에서 추가적인 데이터를 받을 수 있음</li>
+<li>인스턴스를 저장하는 시점에 추가 데이터 삽입이 필요한 경우</li>
+</ul>
+<p><img src="/2022/04/20/Django-REST-API/image-20220421230724584.png" alt="image-20220421230724584"></p>
+</li>
+<li><p><code>read_only_fields</code></p>
+<ul>
+<li>어떤 게시글에 작성하는 댓글인지에 대한 정보를 form-data로 넘겨주지 않았기 때문에 직렬화하는 과정에서 article 필드가 유효성 검사(is_valid) 를 통과하지 못함</li>
+<li>이때, 읽기 전용 필드 설정을 통해 직렬화하지 않고 반환값에만 해당 필드가 포함되도록 설정할 수 있음</li>
+</ul>
+<p><img src="/2022/04/20/Django-REST-API/image-20220421230926993.png" alt="image-20220421230926993"></p>
+</li>
+</ul>
+<h3 id="DELETE-amp-PUT"><a href="#DELETE-amp-PUT" class="headerlink" title="DELETE &amp; PUT"></a>DELETE &amp; PUT</h3><p>Single model 과 동일</p>
+
         </div>
 
         
