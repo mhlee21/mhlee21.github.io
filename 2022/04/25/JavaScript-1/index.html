@@ -510,7 +510,102 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fruits = [<span class="string">&#x27;딸기&#x27;</span>, <span class="string">&#x27;바나나&#x27;</span>, <span class="string">&#x27;메론&#x27;</span>]</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> fruit <span class="keyword">of</span> fruits) &#123;</span><br><span class="line">  fruit = fruit + <span class="string">&#x27;!&#x27;</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(fruit)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">const</span> fruit <span class="keyword">of</span> fruits) &#123;</span><br><span class="line">  <span class="comment">//fruit 재할당 불가</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(fruit)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><img src="/2022/04/25/JavaScript-1/image-20220425154149797.png" alt="image-20220425154149797"></p>
-<h1 id="함수"><a href="#함수" class="headerlink" title="함수"></a>함수</h1><h1 id="선언식-vs-표현식"><a href="#선언식-vs-표현식" class="headerlink" title="선언식 vs 표현식"></a>선언식 vs 표현식</h1><h1 id="Arrow-Function"><a href="#Arrow-Function" class="headerlink" title="Arrow Function"></a>Arrow Function</h1><h1 id="문자열-String"><a href="#문자열-String" class="headerlink" title="문자열 (String)"></a>문자열 (String)</h1><h1 id="배열-Arrays"><a href="#배열-Arrays" class="headerlink" title="배열 (Arrays)"></a>배열 (Arrays)</h1><h1 id="객체-Objects"><a href="#객체-Objects" class="headerlink" title="객체 (Objects)"></a>객체 (Objects)</h1><h1 id="this-정리"><a href="#this-정리" class="headerlink" title="this 정리"></a>this 정리</h1>
+<h1 id="함수"><a href="#함수" class="headerlink" title="함수"></a>함수</h1><ul>
+<li>참조 타입 중 하나로써 function 타입에 속함</li>
+<li>JavaScript 에서 함수를 정의하는 방법은 주로 2가지로 구분<ul>
+<li>함수 선언식</li>
+<li>함수 표현식</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<ul>
+<li>💡JavaScript 의 함수는 일급 객체 (First-class citizen)에 해당</li>
+<li>일급 객체 : 다음의 조건을 만족하는 객체를 의미<ul>
+<li>변수에 할당 가능</li>
+<li>함수의 매개변수로 전달 가능</li>
+<li>함수의 반환 값으로 사용 가능</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h2 id="함수-선언식-function-statement-declaration"><a href="#함수-선언식-function-statement-declaration" class="headerlink" title="함수 선언식 (function statement, declaration)"></a>함수 선언식 (function statement, declaration)</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">add</span> (num1, num2) &#123;</span><br><span class="line">  <span class="keyword">return</span> num1 + num2</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">add</span>(<span class="number">1</span>,<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>함수의 이름과 함께 정의하는 방식</li>
+<li>3가지 부분으로 구성<ul>
+<li>함수의 이름</li>
+<li>매개변수</li>
+<li>몸통 (중괄호 내부)</li>
+</ul>
+</li>
+</ul>
+<h2 id="함수-표현식-function-expression"><a href="#함수-표현식-function-expression" class="headerlink" title="함수 표현식 (function expression)"></a>함수 표현식 (function expression)</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> add = <span class="keyword">function</span> (<span class="params">num1, num2</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> num1, num2</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">add</span>(<span class="number">1</span>,<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>함수를 표현식 내에서 정의하는 방식</li>
+<li>함수의 이름을 생략하고 익명 함수로 정의 가능</li>
+<li>3가지 부분으로 구성<ul>
+<li>함수의 이름 (생략 가능)</li>
+<li>매개변수</li>
+<li>몸통</li>
+</ul>
+</li>
+</ul>
+<h2 id="기본-인자-default-arguments"><a href="#기본-인자-default-arguments" class="headerlink" title="기본 인자 (default arguments)"></a>기본 인자 (default arguments)</h2><ul>
+<li>인자 작성 시 ‘&#x3D;’ 문자 뒤 기본 인자 선언 가능</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> greeting = <span class="keyword">function</span> (<span class="params">name = <span class="string">&#x27;Anonymous&#x27;</span></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">`Hi <span class="subst">$&#123;name&#125;</span>`</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">greeting</span>() <span class="comment">// Hi Anonymous</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>매개변수와 인자의 개수 불일치 허용</li>
+</ul>
+<h2 id="Rest-parameter-…"><a href="#Rest-parameter-…" class="headerlink" title="Rest parameter (…)"></a>Rest parameter (…)</h2><ul>
+<li>함수가 정해지지 않은 수의 매개변수를 배열로 받음</li>
+<li>만약 rest parameter로 처리한 매개변수에 인자가 넘어오지 않을 경우에는 빈 배열로 처리</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> restOper = <span class="keyword">function</span> (<span class="params">arg1, arg2, ...restArgs</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> [arg1, arg2, restArgs]</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">restOper</span>(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>) <span class="comment">// [1,2,[3,4,5]]</span></span><br><span class="line"><span class="title function_">restOper</span>(<span class="number">1</span>,<span class="number">2</span>) <span class="comment">// [1,2,[]]</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="spread-operator-…"><a href="#spread-operator-…" class="headerlink" title="spread operator (…)"></a>spread operator (…)</h2><ul>
+<li>배열 인자를 전개하여 전달 가능</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> spreadOpr = <span class="keyword">function</span> (<span class="params">arg1, arg2, arg3</span>) &#123; </span><br><span class="line">	<span class="keyword">return</span> arg1 + arg2 + arg3</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> numbers = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line"><span class="title function_">spreadOpr</span>(...numbers) <span class="comment">// 6</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="선언식-vs-표현식"><a href="#선언식-vs-표현식" class="headerlink" title="선언식 vs 표현식"></a>선언식 vs 표현식</h1><p><img src="/2022/04/25/JavaScript-1/image-20220426232140595.png" alt="image-20220426232140595"></p>
+<ul>
+<li>선언식 함수와 표현식 함수 모두 타입은 function으로 동일</li>
+</ul>
+<h2 id="호이스팅-hoisting"><a href="#호이스팅-hoisting" class="headerlink" title="호이스팅 (hoisting)"></a>호이스팅 (hoisting)</h2><ul>
+<li><p>함수 선언식으로 선언한 함수는 var로 정의한 변수처럼 호이스팅 발생</p>
+</li>
+<li><p>함수 호출 이후에 선언해도 동작</p>
+</li>
+<li><p>반면 함수 표현식으로 선언한 함수는 함수 정의 전에 호출 시 에러 발생</p>
+</li>
+<li><p>함수 표현식으로 정의된 함수는 변수로 평가되어 변수의 scope 규칙을 따름</p>
+</li>
+</ul>
+<h1 id="화살표-함수-Arrow-Function"><a href="#화살표-함수-Arrow-Function" class="headerlink" title="화살표 함수 (Arrow Function)"></a>화살표 함수 (Arrow Function)</h1><ul>
+<li>함수를 비교적 간결하게 정의할 수 있는 문법<ul>
+<li>function 키워드 생략 가능</li>
+<li>함수의 매개변수가 단 하나뿐이라면 ‘()’도 생략 가능</li>
+<li>함수의 몸통이 표현식 하나라면 ‘{}’ 과 return 도 생략 가능</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arrow1 = <span class="keyword">function</span>(<span class="params">name</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">`hello <span class="subst">$&#123;name&#125;</span>`</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 1. function 키워드 삭제</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">arrow2</span> = (<span class="params">name</span>)=&gt;&#123; <span class="keyword">return</span> <span class="string">`hello <span class="subst">$&#123;name&#125;</span>`</span>&#125;</span><br><span class="line"><span class="comment">// 2. 매개변수가 1개일 경우에만 () 생략 가능</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">arrow3</span> = name =&gt; &#123; <span class="keyword">return</span> <span class="string">`hello <span class="subst">$&#123;name&#125;</span>`</span>&#125;</span><br><span class="line"><span class="comment">// 3. 함수 바디가 return 을 포함한 표현식 1개일 경우에 &#123; &#125; &amp; return 생략 가능</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">arrow4</span> = name =&gt; <span class="string">`hello <span class="subst">$&#123;name&#125;</span>`</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="문자열-String"><a href="#문자열-String" class="headerlink" title="문자열 (String)"></a>문자열 (String)</h1><p><img src="/2022/04/25/JavaScript-1/image-20220426232803285.png" alt="image-20220426232803285"></p>
+<h1 id="배열-Arrays"><a href="#배열-Arrays" class="headerlink" title="배열 (Arrays)"></a>배열 (Arrays)</h1><p><img src="/2022/04/25/JavaScript-1/image-20220426234541122.png" alt="image-20220426234541122"></p>
+<h2 id="find"><a href="#find" class="headerlink" title="find"></a>find</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">array.<span class="title function_">find</span>(<span class="function">(<span class="params">element, index, array</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">//do something</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="객체-Objects"><a href="#객체-Objects" class="headerlink" title="객체 (Objects)"></a>객체 (Objects)</h1><h1 id="this-정리"><a href="#this-정리" class="headerlink" title="this 정리"></a>this 정리</h1><h1 id="lodash"><a href="#lodash" class="headerlink" title="lodash"></a>lodash</h1>
         </div>
 
         
