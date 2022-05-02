@@ -13,7 +13,7 @@
 
 
 
-<title>JavaScript-02 | Mihyun&#39;s Blog</title>
+<title>JavaScript-03 | Mihyun&#39;s Blog</title>
 
 
 
@@ -193,7 +193,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">JavaScript-02</h1>
+            <h1 class="post-title">JavaScript-03</h1>
             
                 <div class="post-meta">
                     
@@ -202,7 +202,7 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">April 28, 2022&nbsp;&nbsp;19:24:22</a>
+                        Date: <a href="#">May 2, 2022&nbsp;&nbsp;22:21:01</a>
                         </span>
                     
                     
@@ -218,7 +218,34 @@
         </header>
 
         <div class="post-content">
-            <h1 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h1><h1 id="DOM-조작"><a href="#DOM-조작" class="headerlink" title="DOM 조작"></a>DOM 조작</h1><h1 id="Event"><a href="#Event" class="headerlink" title="Event"></a>Event</h1>
+            <h1 id="AJAX"><a href="#AJAX" class="headerlink" title="AJAX"></a>AJAX</h1><p><a target="_blank" rel="noopener" href="http://latentflip.com/loupe/">http://latentflip.com/loupe/</a></p>
+<h1 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h1><h2 id="Promise-object"><a href="#Promise-object" class="headerlink" title="Promise object"></a>Promise object</h2><ul>
+<li>비동기 작업의 최종 완료 또는 실패를 나타내는 객체<ul>
+<li>미래의 완료 또는 실패와 그 결과 값을 나타냄</li>
+<li>미래의 어떤 상황에 대한 약속</li>
+</ul>
+</li>
+<li>성공(이행)에 대한 약속<ul>
+<li><code>.then()</code></li>
+</ul>
+</li>
+<li>실패(거절)에 대한 약속<ul>
+<li><code>.catch()</code></li>
+</ul>
+</li>
+</ul>
+<img src="JavaScript-03/image-20220502230140654.png" alt="image-20220502230140654" style="zoom:50%;" />
+
+<h3 id="then-callback"><a href="#then-callback" class="headerlink" title=".then(callback)"></a><code>.then(callback)</code></h3><ul>
+<li>이전 작업(promise)이 성공했을 때 수행할 작업을 나타내는 callback 함수</li>
+<li>그리고 각 callback 함수는 이전 작업의 성공 결과를 인자로 전달받음</li>
+<li>따라서 성공했을 때의 코드를 callback 함수 안에 작성</li>
+</ul>
+<h3 id="catch-callback"><a href="#catch-callback" class="headerlink" title=".catch(callback)"></a><code>.catch(callback)</code></h3><ul>
+<li>.then이 하나라도 실패하면 동작</li>
+<li>이전 작업의 실패로 인해 생성된 error 객체는 catch 블록 안에서 사용할 수 있음</li>
+</ul>
+<h1 id="Axios"><a href="#Axios" class="headerlink" title="Axios"></a>Axios</h1>
         </div>
 
         
@@ -254,10 +281,8 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2022/05/02/JavaScript-03/">JavaScript-03</a>
             
-            
-            <a class="next" rel="next" href="/2022/04/25/JavaScript-1/">JavaScript</a>
+            <a class="next" rel="next" href="/2022/04/28/JavaScript-02/">JavaScript-02</a>
             
         </section>
 
