@@ -290,6 +290,56 @@
 <h3 id="디지털-저작권-관리-DRM"><a href="#디지털-저작권-관리-DRM" class="headerlink" title="디지털 저작권 관리(DRM)"></a>디지털 저작권 관리(DRM)</h3><ul>
 <li>인터넷이나 기타 디지털 매체를 통해 유통되는 데이터의 저작권 보호를 위해 데이터의 안전한 배포를 활성화하거나 불법 배포를 방지하기 위한 시스템이다.</li>
 </ul>
+<h3 id="디지털-저작권-관리-구성요소"><a href="#디지털-저작권-관리-구성요소" class="headerlink" title="디지털 저작권 관리 구성요소"></a>디지털 저작권 관리 구성요소</h3><p>- Clearing House (클리어링 하우스) : 저작권에 대한 사용권한, 라이선스 발급, 사용량에 따른 결제 관리 등을 수행하는 곳<br>- Contents Provider (콘텐츠 제공자) : 콘텐츠를 제공하는 저작권자<br>- Packager (패키저) : 콘텐츠를 메타 데이터와 함께 배포 가능한 형태로 묶어 암호화 하는 프로그램<br>- Contents Distributor (콘텐츠 분배자) : 암호화된 콘텐츠를 유통하는 곳이나 사람<br>- Customer (콘텐츠 소비자) : 콘텐츠를 구매해서 사용하는 주체<br>- DRM Controller (DRM 컨트롤러) : 배포된 콘텐츠의 이용권한을 통제하는 프로그램<br>- Security Container (보안 컨테이너) : 콘텐츠 원본을 안전하게 유통하기 위한 전자적 보안장치</p>
+<h3 id="상향식-비용-산정-방법"><a href="#상향식-비용-산정-방법" class="headerlink" title="상향식 비용 산정 방법"></a>상향식 비용 산정 방법</h3><p>- LOC (Line Of Code) : 코드라인 수의 낙관치, 중간치, 비관치를 측정하여 1:4:1의 가중치를 두어 평균을 내는 방식으로 예측치를 구하는 것<br>- MM (Man Month) : 인월. 한 사람이 1개월 동안 할 수 있는 일의 양<br>- COCOMO : 프로그램의 규모에 따라 조직형, 반분리형, 임베디드형으로 구분하여 비용을 산정하는 방식. 5만라인을 기준으로 조직형과 반분리형을 구분하고, 3만 라인을 기준으로 반분리형과 임베디드형을 구분<br>- Putnam : 가로축이 시간, 세로축이 노력인 Rayleigh-Norden 곡선을 기초로함. 가로축의 시간은 소프트웨어 개발주기의 단계를 나타내기 때문에 단계별 필요한 인력의 분포를 구하는 것.<br>- FP (Function Point) : 기능점수 모형</p>
+<h3 id="UML의-관계"><a href="#UML의-관계" class="headerlink" title="UML의 관계"></a>UML의 관계</h3><p>연관관계 Association<br>- 2개 이상의 사물이 서로 관련되어 있는 관계<br>- 사물 사이를 실선으로 연결하여 표현<br>- 방향성은 화살표로 표현<br>- 양방향의 경우 화살표를 생략하고 실선으로만 연결</p>
+<p>집합관계 Aggregation<br>- 하나의 사물이 다른 사물에 포함되어 있는 관계<br>- 포함하는 쪽과 포함되는 쪽은 서로 독립적이다<br>- 포함되는 쪽에서 포함하는 쪽으로 속이 빈 마름모 화살표로 연결하여 표현</p>
+<p>포함관계 Composition<br>- 포함하는 사물의 변화가 포함되는 사물에게 영향을 미치는 관계<br>- 포함하는 쪽과 포함되는 쪽은 서로 독립이 될 수 없고 생명주기를 함께 함<br>- 포함되는 쪽에서 포함하는 쪽으로 속이 채워진 마름모 연결</p>
+<p>일반화관계 Generalization<br>- 하나의 사물이 다른 사물에 비해 더 일반적인지 구체적인지 표현<br>- 상위(일반적인 개념) 하위(구체적인 개념)<br>- 하위 사물에서 상위 사물인 쪽으로 속이 빈 화살표 연결</p>
+<p>의존관계 Dependency<br>- 사물 사이에 서로 연관은 있으나 필요에 의해 서로에게 영향을 주는 짧은 시간 동안만 연관을 유지하는 관계<br>- 소유 관계는 아니지만 사물의 변화가 다른 사물에도 영향을 미침<br>- 영향을 주는 사물(이용자)이 영향을 받는 사물(제공자)쪽으로 점선 화살표 연결</p>
+<p>실체화관계 Realization<br>- 사물이 할 수 있거나 해야하는 기능(행위, 인터페이스)로 서로를 그룹화 할 수 있는 관계<br>- 사물에서 기능쪽으로 속이 빈 점선 화살표 연결</p>
+<hr>
+<p><strong>1. 다음에서 설명하는 시스템은 무엇인가?</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- 비정상적인 접근의 탐지를 위해 의도적으로 설치해 둔 시스템</span><br><span class="line">- 침입자를 속여 실제 공격당하는 것처럼 보여줌으로써 크래커를 추적하고, 공격기법의 정보를 수집하는 역할을 하는 시스템</span><br></pre></td></tr></table></figure>
+
+<p>정답) 허니팟(Honeypot)</p>
+<p><strong>2. 다음은 테스트에 대한 설명이다. 괄호(     ) 안에 들어갈 테스트의 유형을 보기에서 골라 쓰시오.</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">• (      ①      ) : 오류를 제거하거나 수정한 시스템에서 오류 제거와 수정에 의해 새로이 유입된 오류가 없는지 확인하는 일종의 반복 테스트 기법</span><br><span class="line">• (      ②      ) : 짧은 시간에 사용자가 몰릴 때 시스템의 반응을 측정하는 테스트 기법</span><br><span class="line"></span><br><span class="line">| 보기 |</span><br><span class="line">Recovery Testing, Security Testing, Generalization, Structure Testing, Regression Testing, Stress Testing, Spike Testing</span><br></pre></td></tr></table></figure>
+
+<p> <strong>① Regression Testing</strong></p>
+<p><strong>② Spike Testing</strong></p>
+<p><strong>3. 아래는 상호배제를 해결하기 위한 기법이다. 괄호(        ) 안에 들어갈 용어를 쓰시오.</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">• (                )은/는 멀티프로그래밍 환경에서 공유 자원에 대한 접근을 제한하는 기법이다.• 한 프로세스(또는 스레드)에서 (             )의 값을 변경하는 동안 다른 프로세스가 동시에 이 값을 변경해서는 안 된다.• (                )은/는 P, V 연산을 기반으로 구현한다.</span><br></pre></td></tr></table></figure>
+
+<p>정답) <strong>세마포어 (Semaphore)</strong></p>
+<p><strong>4. 아래는 저작권 관리 구성요소에 대한 설명이다. 각각이 설명하는 저작권 관리 구성 요소를 쓰시오.</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">① 저작권에 대한 사용 권한, 라이센스 발급, 사용량 관리 및 키 관리, 라이센서 발급 관리 등을 수행하는 도구</span><br><span class="line">② 콘텐츠를 메타데이터와 함께 배포 가능한 단위로 묶는 도구</span><br></pre></td></tr></table></figure>
+
+<p>① 클리어링 하우스(Clearing House)</p>
+<p>② 패키저(Packager)</p>
+<p><strong>5. 상향식 비용 산정 기법 중 소프트웨어 각 기능의 원시 코드 라인 수의 낙관치, 중간치, 비관치를 측정하여 예측치를 구하고 이를 이용하여 비용을 산정하는 기법을 무엇이라고 하는지 쓰시오.</strong></p>
+<p>정답) <strong>LOC(Lines of Code) 기법</strong></p>
+<p><strong>6. 최근 클라우드 기반의 대용량 데이터를 다루는 기술이 다양하게 활용되고 있다. 아래는 클라우드와 빅데이터 관련 기술에 대한 설명이다. 괄호(      ) 안에 들어갈 용어를 쓰시오.</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">• (       ①      )은/는 컨테이너 응용 프로그램의 배포를 자동화하는 오픈소스 엔진으로 소프트웨어 컨테이너 안에 응용 프로그램들을 배치시키는 일을 자동화해 주는 오픈 소스 프로젝트이자 소프트웨어이다.</span><br><span class="line">• (       ②      )은/는 웹 사이트를 크롤링하여 구조화된 데이터를 수집하는 파이썬(Python) 기반의 애플리케이션 프레임워크이다. </span><br></pre></td></tr></table></figure>
+
+<p>정답)</p>
+<p>① <strong>도커(Docker)</strong></p>
+<p>② <strong>스크레파이Scrapy</strong></p>
+<p><strong>7. 다음은 UML의 관계(Relationships)에 대한 설명이다. 괄호(       ) 안에 공통적으로 들어갈 용어를 쓰시오.</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">• (              ) 관계는 하나의 객체에 여러 개의 독립적인 객체들이 구성되는 관계이다.</span><br><span class="line">• (              ) 관계는 하나의 사물이 다른 사물에 포함되어 있는 관계를 표현한다.</span><br><span class="line">• (              ) 관계는 포함되는 쪽(Part; 부분)에서 포함하는 쪽(Whole; 전체)으로 속이 빈 마름모를 연결하여 표현한다.</span><br></pre></td></tr></table></figure>
+
+<p>정답) 집합(Aggregation)</p>
+<p><strong>39. 다음은 애자일(Agile) 기법 중 스크럼(Scrum)과 관련된 용어 설명이다. 괄호(       ) 안에 들어갈 용어를 쓰시오.</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- (          ①          )은/는 스크럼 프로세스를 따르고, 프로젝트 리더로 팀이 스크럼을 효과적으로 활용할 수 있도록 보장하는 역할 등을 맡는다.</span><br><span class="line">- (          ②          )은/는 2~4주의 짧은 개발 기간으로 반복적 수행을 통해 개발품질을 향상시킬 수 있다.</span><br><span class="line">- (          ③          )은/는 남아있는 백로그 대비 시간을 그래픽적으로 표현한 차트이다.</span><br></pre></td></tr></table></figure>
+
+<p>① 스크럼 마스터(Scrum Master)</p>
+<p>② 스프린트(Sprint)</p>
+<p>③ 번 다운 차트(Burn Down Chart)</p>
+<p><strong>40. 다음은 소프트웨어 공학의 소프트웨어 설계에서 공통으로 발생하는 문제에 대해 자주 쓰이는 설계 방법을 정리한 디자인 패턴에 대한 설명이다. 괄호(       ) 안에 들어갈 패턴의 이름을 쓰시오.</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- (       ①       )은/는 복잡한 시스템에 대하여 단순한 인터페이스를 제공함으로써 사용자와 시스템 간 또는 여타 시스템과의 결합도를 낮추어 시스템 구조에 대한 파악을 쉽게 하는 패턴으로 오류에 대해서 단위별로 확인할 수 있게 하며, 사용자의 측면에서 단순한 인터페이스 제공을 통해 접근성을 높일 수 있는 디자인 패턴이다.</span><br><span class="line">- (       ②       )은/는 스스로 캡슐화한 다음, 필요할 때 서로 교환해서 사용할 수 있게 하는 패턴으로, 행위를 클래스로 캡슐화해 동적으로 행위를 자유롭게 바꿀 수 있게 해주는 디자인 패턴이다.</span><br></pre></td></tr></table></figure>
+
+<p>① Facade (pattern)</p>
+<p>② Strategy (pattern)</p>
 
         </div>
 
