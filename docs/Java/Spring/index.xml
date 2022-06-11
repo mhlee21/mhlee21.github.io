@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Spring on mhlee</title>
+    <link>https://mhlee21.github.io/docs/Java/Spring/</link>
+    <description>Recent content in Spring on mhlee</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ko-KR</language><atom:link href="https://mhlee21.github.io/docs/Java/Spring/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

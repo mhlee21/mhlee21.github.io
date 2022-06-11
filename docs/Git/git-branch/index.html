@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="ko-KR" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Branch # Git에서 Branch라는 개념은 매우 중요합니다.
+사실상 버전 관리의 꽃이라고 할 수 있습니다.
+https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell
+나뭇가지처럼 여러 갈래로 작업 공간을 나누어 독립적으로 작업할 수 있도록 도와주는 Git의 도구 개발을 하다 보면 코드를 여러 개로 복사해야 하는 일이 자주 생기는데, 코드를 통째로 복사하고 나서 원래 코드와는 상관없이 독립적으로 개발을 진행할 수 있도록 도움 장점
+독립 공간을 형성하기 때문에 원본(master)에 대해 안전 하나의 작업은 하나의 브랜치로 나누어 진행되므로 체계적인 개발이 가능 특히나 Git의 브랜치는 매우 가벼우며 순식간에 브랜치를 새로 만들고 브랜치 사이를 이동할 수 있음 브랜치를 꼭 써야할까?">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="git branch" />
+<meta property="og:description" content="Branch # Git에서 Branch라는 개념은 매우 중요합니다.
+사실상 버전 관리의 꽃이라고 할 수 있습니다.
+https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell
+나뭇가지처럼 여러 갈래로 작업 공간을 나누어 독립적으로 작업할 수 있도록 도와주는 Git의 도구 개발을 하다 보면 코드를 여러 개로 복사해야 하는 일이 자주 생기는데, 코드를 통째로 복사하고 나서 원래 코드와는 상관없이 독립적으로 개발을 진행할 수 있도록 도움 장점
+독립 공간을 형성하기 때문에 원본(master)에 대해 안전 하나의 작업은 하나의 브랜치로 나누어 진행되므로 체계적인 개발이 가능 특히나 Git의 브랜치는 매우 가벼우며 순식간에 브랜치를 새로 만들고 브랜치 사이를 이동할 수 있음 브랜치를 꼭 써야할까?" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://mhlee21.github.io/docs/Git/git-branch/" /><meta property="article:section" content="docs" />
+<meta property="article:published_time" content="2022-03-11T09:04:34+00:00" />
+<meta property="article:modified_time" content="2022-03-11T09:04:34+00:00" />
+
+<title>git branch | mhlee</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/book.min.82c5dbd23447cee0b4c2aa3ed08ce0961faa40e1fa370eee4f8c9f02e0d46b5f.css" integrity="sha256-gsXb0jRHzuC0wqo&#43;0Izglh&#43;qQOH6Nw7uT4yfAuDUa18=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.a70dab9f72b7f4474c620f79cbfce8dd5239cd7996056d334fb72f8bd6693312.js" integrity="sha256-pw2rn3K39EdMYg95y/zo3VI5zXmWBW0zT7cvi9ZpMxI=" crossorigin="anonymous"></script>
+
+  <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>mhlee</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  <ul>
+<li>
+  <a href="/docs/Git/git/">Git</a>
+<ul>
+<li>
+  <a href="/docs/Git/git-branch/"class=active>branch</a></li>
+</ul>
+</li>
+<li>
+  <a href="/docs/Java/">Java</a>
+<ul>
+<li>
+  <a href="/docs/Java/Spring/">Spring</a>
+<!-- raw HTML omitted --></li>
+</ul>
+</li>
+</ul>
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/posts/" >
+        Blog
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>git branch</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#branch">Branch</a>
+      <ul>
+        <li><a href="#branch-command">Branch command</a></li>
+      </ul>
+    </li>
+    <li><a href="#branch-scenario">Branch scenario</a>
+      <ul>
+        <li><a href="#1-사전-세팅">(1) 사전 세팅</a></li>
+        <li><a href="#2-브랜치-생성-및-조회">(2) 브랜치 생성 및 조회</a></li>
+        <li><a href="#3-브랜치-이동">(3) 브랜치 이동</a></li>
+        <li><a href="#4-login-브랜치에서-커밋-생성">(4) login 브랜치에서 커밋 생성</a></li>
+      </ul>
+    </li>
+    <li><a href="#branch-merge">Branch Merge</a>
+      <ul>
+        <li><a href="#git-merge">git merge</a></li>
+        <li><a href="#merge의-세-종류">Merge의 세 종류</a></li>
+      </ul>
+    </li>
+    <li><a href="#branch-merge-scenario">Branch Merge scenario</a>
+      <ul>
+        <li><a href="#3가지-병합-상황">3가지 병합 상황</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><hr>
+<h2 id="branch">
+  Branch
+  <a class="anchor" href="#branch">#</a>
+</h2>
+<blockquote>
+<p>Git에서 Branch라는 개념은 매우 중요합니다.</p>
+<p>사실상 버전 관리의 꽃이라고 할 수 있습니다.</p>
+<p>
+  <a href="https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell">https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell</a></p>
+</blockquote>
+<p>
+  <img src="branch-16469962352881.png" alt="branch" /></p>
+<ul>
+<li>나뭇가지처럼 여러 갈래로 작업 공간을 나누어 독립적으로 작업할 수 있도록 도와주는 Git의 도구
+<ul>
+<li>개발을 하다 보면 코드를 여러 개로 복사해야 하는 일이 자주 생기는데, 코드를 통째로 복사하고 나서 원래 코드와는 상관없이 독립적으로 개발을 진행할 수 있도록 도움</li>
+</ul>
+</li>
+</ul>
+<p><strong>장점</strong></p>
+<ol>
+<li>독립 공간을 형성하기 때문에 원본(master)에 대해 안전</li>
+<li>하나의 작업은 하나의 브랜치로 나누어 진행되므로 체계적인 개발이 가능</li>
+<li>특히나 Git의 브랜치는 매우 가벼우며 순식간에 브랜치를 새로 만들고 브랜치 사이를 이동할 수 있음</li>
+</ol>
+<p><strong>브랜치를 꼭 써야할까?</strong></p>
+<ol>
+<li>일단 master 브랜치는 상용을 의미합니다. 그래서 언제든 세상에 공개되어 있습니다.</li>
+<li>만약 상용에 에러가 있어서 고쳐야 한다면 어떻게 해야할까요?</li>
+<li>고객들이 사용하고 있는데, 함부로 버전을 되돌리거나 삭제할 수 있을까요?</li>
+<li>따라서 브랜치를 통해 별도의 작업 공간을 만들고, 그곳에서 되돌리거나 삭제를 합니다.</li>
+<li>브랜치는 완전하게 독립이 되어있어서 어떤 작업을 해도 master에는 영향을 끼치지 못하죠.</li>
+<li>그리고 이후에 에러를 해결했다면? 그 내용을 master에 반영할 수도 있습니다!</li>
+<li>이러한 이유 때문에 Git에서 브랜치는 정말 강력한 기능 중의 하나라고 할 수 있습니다.</li>
+</ol>
+<!-- raw HTML omitted -->
+<hr>
+<!-- raw HTML omitted -->
+<h3 id="branch-command">
+  Branch command
+  <a class="anchor" href="#branch-command">#</a>
+</h3>
+<h4 id="git-branch">
+  git branch
+  <a class="anchor" href="#git-branch">#</a>
+</h4>
+<blockquote>
+<p>브랜치 조회, 생성, 삭제 등 브랜치와 관련된 Git 명령어</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 브랜치 목록 확인</span>
+</span></span><span style="display:flex;"><span>$ git branch
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 원격 저장소의 브랜치 목록 확인</span>
+</span></span><span style="display:flex;"><span>$ git branch -r
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 새로운 브랜치 생성</span>
+</span></span><span style="display:flex;"><span>$ git branch &lt;브랜치 이름&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 특정 브랜치 삭제</span>
+</span></span><span style="display:flex;"><span>$ git branch -d &lt;브랜치 이름&gt; <span style="color:#75715e"># 병합된 브랜치만 삭제 가능</span>
+</span></span><span style="display:flex;"><span>$ git branch -D &lt;브랜치 이름&gt; <span style="color:#75715e"># (주의) 강제 삭제 (병합되지 않은 브랜치도 삭제 가능)</span>
+</span></span></code></pre></div><!-- raw HTML omitted -->
+<h4 id="git-switch">
+  git switch
+  <a class="anchor" href="#git-switch">#</a>
+</h4>
+<blockquote>
+<p>“Switch branches”</p>
+<ul>
+<li>현재 브랜치에서 다른 브랜치로 <code>HEAD</code>를 이동시키는 명령어</li>
+<li><code>HEAD</code>란 현재 브랜치를 가리키는 포인터를 의미합니다.</li>
+<li>2019년 8월 git 2.23 버전에서 출시</li>
+</ul>
+<p>
+  <a href="https://git-scm.com/docs/git-switch">https://git-scm.com/docs/git-switch</a></p>
+<p>
+  <a href="https://github.blog/2019-08-16-highlights-from-git-2-23/">https</a>
+  <a href="https://github.blog/2019-08-16-highlights-from-git-2-23/">://github.blog/2019-08-16-highlights-from-git-2-23/</a></p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 다른 브랜치로 이동</span>
+</span></span><span style="display:flex;"><span>$ git switch &lt;다른 브랜치 이름&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 브랜치를 새로 생성과 동시에 이동</span>
+</span></span><span style="display:flex;"><span>$ git switch -c &lt;브랜치 이름&gt;
+</span></span></code></pre></div><p><strong>git switch 주의사항</strong></p>
+<blockquote>
+<p>“git switch 하기 전에, 워킹 디렉토리 파일이 모두 버전 관리가 되고 있나요?</p>
+</blockquote>
+<ol>
+<li>master 브랜치와 feature 브랜치가 있다고 가정해보자</li>
+<li>feature 브랜치에서 test.txt를 만들고 git add 하지 않은 상태에서
+git switch master를 하면 어떤 일이 발생할까?</li>
+<li>바로 feature 브랜치에서 만들었던 test.txt가 master 브랜치에도 똑같이 생성됨</li>
+</ol>
+<ul>
+<li><strong>“왜 그럴까?”</strong></li>
+</ul>
+<ol>
+<li>Git의 브랜치는 독립적인 작업 공간을 가지지만, 어디까지나 Git이 관리하는 파일 트리에 한해서임</li>
+<li>git add를 하지 않은, 즉 Staging Area에 한 번도 올라가지 않은 새 파일은
+Git의 버전 관리를 받고 있지 않기 때문에 브랜치가 바뀌더라도 계속 유지되는 것</li>
+<li>따라서 반드시 git switch를 하기 전에는 모든 워킹 디렉토리의 파일이 버전 관리가 되고 있는지 확인해야 함</li>
+</ol>
+<hr>
+<h2 id="branch-scenario">
+  Branch scenario
+  <a class="anchor" href="#branch-scenario">#</a>
+</h2>
+<blockquote>
+<p>git branch와 git switch를 통해 브랜치를 조회, 생성, 이동하는 실습을 진행</p>
+</blockquote>
+<h3 id="1-사전-세팅">
+  (1) 사전 세팅
+  <a class="anchor" href="#1-%ec%82%ac%ec%a0%84-%ec%84%b8%ed%8c%85">#</a>
+</h3>
+<ol>
+<li>
+<p>홈 디렉토리에 git-branch-practice 폴더를 생성하고 이동 후 vscode를 엽니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ mkdir git-branch-practice
+</span></span><span style="display:flex;"><span>$ cd git-branch-practice
+</span></span><span style="display:flex;"><span>$ code .
+</span></span></code></pre></div></li>
+<li>
+<p>Git 저장소를 생성합니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ git init
+</span></span><span style="display:flex;"><span>Initialized empty Git repository in C:/Users/kyle/git-branch-practice/.git/
+</span></span></code></pre></div></li>
+<li>
+<p>test.txt를 생성하고 각각 master-1, master-2, master-3 이라는 내용을 순서대로 입력하여 커밋 3개를 작성합니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ touch test.txt
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># test.txt에 master-1 작성</span>
+</span></span><span style="display:flex;"><span>$ git add .
+</span></span><span style="display:flex;"><span>$ git commit -m <span style="color:#e6db74">&#34;master-1&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># test.txt에 master-2 작성</span>
+</span></span><span style="display:flex;"><span>$ git add .
+</span></span><span style="display:flex;"><span>$ git commit -m <span style="color:#e6db74">&#34;master-2&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># test.txt에 master-3 작성</span>
+</span></span><span style="display:flex;"><span>$ git add .
+</span></span><span style="display:flex;"><span>$ git commit -m <span style="color:#e6db74">&#34;master-3&#34;</span>
+</span></span></code></pre></div></li>
+<li>
+<p><code>git log --oneline</code>을 입력했을 때 아래와 같이 나와야 정상입니다.
+총 3개의 버전이 master 브랜치에 만들어졌습니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ git log --oneline
+</span></span><span style="display:flex;"><span>0604dcd <span style="color:#f92672">(</span>HEAD -&gt; master<span style="color:#f92672">)</span> master-3
+</span></span><span style="display:flex;"><span>9c22c89 master-2
+</span></span><span style="display:flex;"><span>3d71510 master-1
+</span></span></code></pre></div></li>
+<li>
+<p>현재 모습</p>
+<p>
+  <img src="11-16469962603232.png" alt="11" /></p>
+</li>
+</ol>
+<h3 id="2-브랜치-생성-및-조회">
+  (2) 브랜치 생성 및 조회
+  <a class="anchor" href="#2-%eb%b8%8c%eb%9e%9c%ec%b9%98-%ec%83%9d%ec%84%b1-%eb%b0%8f-%ec%a1%b0%ed%9a%8c">#</a>
+</h3>
+<ol>
+<li>
+<p>현재 위치(master 브랜치의 최신 커밋)에서 login이라는 이름으로 브랜치를 생성합니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ git branch login
+</span></span></code></pre></div></li>
+<li>
+<p>login브랜치가 잘 생성되었는지 확인합니다.
+<code>* master</code>의 의미는 현재 HEAD가 가리키는 브랜치는 <code>master</code>라는 것입니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ git branch
+</span></span><span style="display:flex;"><span>  login
+</span></span><span style="display:flex;"><span>* master
+</span></span></code></pre></div></li>
+<li>
+<p><code>git log --oneline</code>을 입력했을 때 아래와 같이 나와야 정상입니다.
+<code>0604dcd</code> 커밋 기준으로 <code>master</code>와 <code>login</code>브랜치가 위치한 것을 볼 수 있습니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ git log --oneline
+</span></span><span style="display:flex;"><span>0604dcd <span style="color:#f92672">(</span>HEAD -&gt; master, login<span style="color:#f92672">)</span> master-3
+</span></span><span style="display:flex;"><span>9c22c89 master-2
+</span></span><span style="display:flex;"><span>3d71510 master-1
+</span></span></code></pre></div></li>
+<li>
+<p><code>master</code> 브랜치에서 1개의 커밋을 더 작성합니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># test.txt에 master-4 작성</span>
+</span></span><span style="display:flex;"><span>$ git add .
+</span></span><span style="display:flex;"><span>$ git commit -m <span style="color:#e6db74">&#34;master-4&#34;</span>
+</span></span></code></pre></div></li>
+<li>
+<p>현재 브랜치와 커밋의 상태 확인</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ git log --oneline
+</span></span><span style="display:flex;"><span>5ca7701 <span style="color:#f92672">(</span>HEAD -&gt; master<span style="color:#f92672">)</span> master-4
+</span></span><span style="display:flex;"><span>0604dcd <span style="color:#f92672">(</span>login<span style="color:#f92672">)</span> master-3
+</span></span><span style="display:flex;"><span>9c22c89 master-2
+</span></span><span style="display:flex;"><span>3d71510 master-1
+</span></span></code></pre></div></li>
+<li>
+<p>현재까지 결과</p>
+<p>
+  <img src="22-16469962725383.png" alt="22" /></p>
+</li>
+</ol>
+<h3 id="3-브랜치-이동">
+  (3) 브랜치 이동
+  <a class="anchor" href="#3-%eb%b8%8c%eb%9e%9c%ec%b9%98-%ec%9d%b4%eb%8f%99">#</a>
+</h3>
+<ol>
+<li>
+<p>현재 브랜치와 커밋의 상태는 다음과 같습니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ git log --oneline
+</span></span><span style="display:flex;"><span>5ca7701 <span style="color:#f92672">(</span>HEAD -&gt; master<span style="color:#f92672">)</span> master-4
+</span></span><span style="display:flex;"><span>0604dcd <span style="color:#f92672">(</span>login<span style="color:#f92672">)</span> master-3
+</span></span><span style="display:flex;"><span>9c22c89 master-2
+</span></span><span style="display:flex;"><span>3d71510 master-1
+</span></span></code></pre></div></li>
+<li>
+<p>이때 login브랜치로 이동하면 어떤 일이 일어날까요?</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ git switch login
+</span></span></code></pre></div></li>
+<li>
+<p>master 브랜치의 test.txt에 작성한 master-4가 지워졌습니다!</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># login 브랜치의 test.txt 모습</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>master-1
+</span></span><span style="display:flex;"><span>master-2
+</span></span><span style="display:flex;"><span>master-3
+</span></span></code></pre></div></li>
+<li>
+<p>그리고 <code>git log --oneline</code>을 입력하면 아래와 같이 나타납니다.
+이제 <code>HEAD</code>는 <code>login</code> 브랜치를 가리키고, <code>master</code> 브랜치가 보이지 않습니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ git log --oneline
+</span></span><span style="display:flex;"><span>0604dcd <span style="color:#f92672">(</span>HEAD -&gt; login<span style="color:#f92672">)</span> master-3
+</span></span><span style="display:flex;"><span>9c22c89 master-2
+</span></span><span style="display:flex;"><span>3d71510 master-1
+</span></span></code></pre></div></li>
+<li>
+<p>master 브랜치는 삭제된 걸까요?
+아닙니다! 브랜치를 조회 해보면 다음과 같이 나타납니다.
+HEAD가 <code>login</code> 브랜치를 가리키면서, log도 <code>login</code> 브랜치 기준으로 보이는 것이었습니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ git branch
+</span></span><span style="display:flex;"><span>* login
+</span></span><span style="display:flex;"><span>  master
+</span></span></code></pre></div></li>
+<li>
+<p><code>git log --oneline --all</code>을 입력하면 모든 브랜치의 로그를 볼 수 있습니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ git log --oneline --all
+</span></span><span style="display:flex;"><span>5ca7701 <span style="color:#f92672">(</span>master<span style="color:#f92672">)</span> master-4
+</span></span><span style="display:flex;"><span>0604dcd <span style="color:#f92672">(</span>HEAD -&gt; login<span style="color:#f92672">)</span> master-3
+</span></span><span style="display:flex;"><span>9c22c89 master-2
+</span></span><span style="display:flex;"><span>3d71510 master-1
+</span></span></code></pre></div></li>
+<li>
+<p>현재까지 결과</p>
+<p>
+  <img src="33-16469962830934.png" alt="33" /></p>
+</li>
+</ol>
+<blockquote>
+<p>즉, 브랜치를 이동한다는건 HEAD가 해당 브랜치를 가리킨다는 것을 의미하고,</p>
+<p>브랜치는 최신 커밋을 가리키므로, HEAD가 해당 브랜치의 최신 커밋을 가리키게 됩니다.</p>
+<p>따라서 워킹 디렉토리의 내용도 HEAD가 가리키는 브랜치의 최신 커밋 상태로 변화합니다.</p>
+</blockquote>
+<h3 id="4-login-브랜치에서-커밋-생성">
+  (4) login 브랜치에서 커밋 생성
+  <a class="anchor" href="#4-login-%eb%b8%8c%eb%9e%9c%ec%b9%98%ec%97%90%ec%84%9c-%ec%bb%a4%eb%b0%8b-%ec%83%9d%ec%84%b1">#</a>
+</h3>
+<ol>
+<li>
+<p>test.txt 파일에 login-1이라고 작성합니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># login 브랜치의 test.txt</span>
+</span></span><span style="display:flex;"><span>master-1
+</span></span><span style="display:flex;"><span>master-2
+</span></span><span style="display:flex;"><span>master-3
+</span></span><span style="display:flex;"><span>login-1
+</span></span></code></pre></div></li>
+<li>
+<p>추가적으로 test_login.txt도 생성하고 login-1이라고 작성해봅시다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ touch test_login.txt
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 이후 test_login.txt에 작성</span>
+</span></span><span style="display:flex;"><span>login-1
+</span></span></code></pre></div></li>
+<li>
+<p>커밋을 생성합니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ git add .
+</span></span><span style="display:flex;"><span>$ git commit -m <span style="color:#e6db74">&#34;login-1&#34;</span>
+</span></span></code></pre></div></li>
+<li>
+<p><code>git log --oneline --all --graph</code>를 통해 아래와 같은 내용을 확인합니다.
+<code>master</code> 브랜치와 <code>login</code> 브랜치가 다른 갈래로 갈라진 것을 확인할 수 있습니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ git log --oneline --graph --all
+</span></span><span style="display:flex;"><span>* 3b0a091 <span style="color:#f92672">(</span>HEAD -&gt; login<span style="color:#f92672">)</span> login-1
+</span></span><span style="display:flex;"><span>| * 5ca7701 <span style="color:#f92672">(</span>master<span style="color:#f92672">)</span> master-4
+</span></span><span style="display:flex;"><span>|/
+</span></span><span style="display:flex;"><span>* 0604dcd master-3
+</span></span><span style="display:flex;"><span>* 9c22c89 master-2
+</span></span><span style="display:flex;"><span>* 3d71510 master-1
+</span></span></code></pre></div></li>
+<li>
+<p>현재까지 결과</p>
+<p>
+  <img src="44-16469962898755.png" alt="44" /></p>
+</li>
+</ol>
+<h2 id="branch-merge">
+  Branch Merge
+  <a class="anchor" href="#branch-merge">#</a>
+</h2>
+<blockquote>
+<p>이제 각 브랜치에서의 작업이 끝나면 어떻게 할까요?
+그 작업 내용을 master에 반영해야 하지 않을까요?
+지금부터는 Merge라고 하는 병합을 학습하면서 브랜치를 합치는 것을 살펴보자.</p>
+</blockquote>
+<h3 id="git-merge">
+  git merge
+  <a class="anchor" href="#git-merge">#</a>
+</h3>
+<ul>
+<li>
+<p>분기된 브랜치들을 하나로 합치는 명령어</p>
+</li>
+<li>
+<p><code>git merge &lt;합칠 브랜치 이름&gt;</code>의 형태로 사용합니다.</p>
+</li>
+<li>
+<p><strong>Merge하기 전에 일단 다른 브랜치를 합치려고 하는, 즉 메인 브랜치로 switch 해야합니다.</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 1. 현재 branch1과 branch2가 있고, HEAD가 가리키는 곳은 branch1 입니다.</span>
+</span></span><span style="display:flex;"><span>$ git branch
+</span></span><span style="display:flex;"><span>* branch1
+</span></span><span style="display:flex;"><span>  branch2
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 2. branch2를 branch1에 합치려면?</span>
+</span></span><span style="display:flex;"><span>$ git merge branch2
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 3. branch1을 branch2에 합치려면?</span>
+</span></span><span style="display:flex;"><span>$ git switch branch2
+</span></span><span style="display:flex;"><span>$ git merge branch1
+</span></span></code></pre></div></li>
+</ul>
+<!-- raw HTML omitted -->
+<h3 id="merge의-세-종류">
+  Merge의 세 종류
+  <a class="anchor" href="#merge%ec%9d%98-%ec%84%b8-%ec%a2%85%eb%a5%98">#</a>
+</h3>
+<h4 id="1-fast-forward">
+  1. Fast-Forward
+  <a class="anchor" href="#1-fast-forward">#</a>
+</h4>
+<blockquote>
+<p>브랜치를 병합할 때 마치 빨리감기처럼 브랜치가 가리키는 커밋을 앞으로 이동시키는 것</p>
+</blockquote>
+<ol>
+<li>
+<p>현재 master는 C2 커밋을, hotfix는 C4 커밋을 가리키고 있습니다.</p>
+<p>
+  <img src="1-16469963276646.png" alt="1" /></p>
+</li>
+<li>
+<p>master에 hotfix를 병합하면 어떻게 될까요?</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ git switch master
+</span></span><span style="display:flex;"><span>$ git merge hotfix
+</span></span><span style="display:flex;"><span>Updating s1d5f1s..1325sd4
+</span></span><span style="display:flex;"><span>Fast-forward
+</span></span><span style="display:flex;"><span> index.html | <span style="color:#ae81ff">2</span> ++
+</span></span><span style="display:flex;"><span> <span style="color:#ae81ff">1</span> file changed, <span style="color:#ae81ff">2</span> insertions<span style="color:#f92672">(</span>+<span style="color:#f92672">)</span>
+</span></span></code></pre></div></li>
+<li>
+<p>hotfix가 가리키는 C4는 C2에 기반한 커밋이므로, master가 C4에 이동하게 됩니다.
+이렇게 따로 merge 과정 없이 브랜치의 포인터가 이동하는 것을 Fast-Forward라고 합니다.
+
+  <img src="2-16469963328817.png" alt="2" /></p>
+</li>
+<li>
+<p>병합이 완료된 hotfix는 더 이상 필요 없으므로 삭제합니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ git branch -d hotfix
+</span></span><span style="display:flex;"><span>Deleted branch hotfix <span style="color:#f92672">(</span>1325sd4<span style="color:#f92672">)</span>.
+</span></span></code></pre></div></li>
+</ol>
+<!-- raw HTML omitted -->
+<h4 id="2-3-way-merge-merge-commit">
+  2. 3-Way Merge (Merge commit)
+  <a class="anchor" href="#2-3-way-merge-merge-commit">#</a>
+</h4>
+<blockquote>
+<ul>
+<li>브랜치를 병합할 때 <code>각 브랜치의 커밋 두개와 공통 조상 하나</code>를 사용하여 병합하는 것</li>
+<li>두 브랜치에서 <code>다른 파일</code> 혹은 <code>같은 파일의 다른 부분</code>을 수정했을 때 가능합니다.</li>
+</ul>
+</blockquote>
+<ol>
+<li>
+<p>현재 master는 C4 커밋을, iss53은 C5 커밋을 가리키고 있습니다.
+master와 iss53의 공통 조상은 C2 커밋입니다.
+
+  <img src="3-16469963412088.png" alt="3" /></p>
+</li>
+<li>
+<p>이 상황에서 master에 iss53을 병합하면 어떻게 될까요?</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ git switch master
+</span></span><span style="display:flex;"><span>Switched to branch <span style="color:#e6db74">&#39;master&#39;</span>
+</span></span><span style="display:flex;"><span>$ git merge iss53
+</span></span><span style="display:flex;"><span>Merge made by the <span style="color:#e6db74">&#39;ort&#39;</span> strategy.
+</span></span><span style="display:flex;"><span>index.html |    <span style="color:#ae81ff">1</span> +
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">1</span> file changed, <span style="color:#ae81ff">1</span> insertion<span style="color:#f92672">(</span>+<span style="color:#f92672">)</span>
+</span></span></code></pre></div></li>
+<li>
+<p>master와 iss53은 갈래가 나누어져 있기 때문에 Fast-Forward로 합쳐질 수 없습니다.
+따라서 공통 조상인 C2와 각자가 가리키는 커밋인 C4, C5를 비교하여 <code>3-way merge</code>를 진행합니다.</p>
+<p>
+  <img src="4-16469963471989.png" alt="4" /></p>
+</li>
+<li>
+<p>이때 생긴 C6는 master와 iss53이 병합되면서 발생한 Merge Commit입니다.</p>
+</li>
+<li>
+<p>병합이 완료된 iss53은 더 이상 필요 없으므로 삭제합니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ git branch -d iss53
+</span></span><span style="display:flex;"><span>Deleted branch iss53 <span style="color:#f92672">(</span>58sdf23<span style="color:#f92672">)</span>.
+</span></span></code></pre></div></li>
+</ol>
+<!-- raw HTML omitted -->
+<h4 id="3-merge-conflict">
+  3. Merge Conflict
+  <a class="anchor" href="#3-merge-conflict">#</a>
+</h4>
+<blockquote>
+<ul>
+<li>병합하는 두 브랜치에서 <code>같은 파일의 같은 부분</code>을 수정한 경우, Git이 어느 브랜치의 내용으로 작성해야 하는지 판단하지 못해 발생하는 충돌(Conflict) 현상</li>
+<li>결국은 사용자가 직접 내용을 선택해서 Conflict를 해결해야 합니다.</li>
+</ul>
+</blockquote>
+<ol>
+<li>
+<p>현재 master는 C4 커밋을, iss53은 C5 커밋을 가리키고 있습니다.
+master와 iss53의 공통 조상은 C2 커밋입니다. <code>(3-way merge에서의 상황과 같습니다)</code></p>
+<p>
+  <img src="5-164699635184310.png" alt="5" /></p>
+</li>
+<li>
+<p>3-way merge와는 달리, 만약 master와 iss53이 같은 파일의 같은 부분을 수정하고 병합한다면 어떤 일이 발생할까요?</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ git merge iss53
+</span></span><span style="display:flex;"><span>Auto-merging index.html
+</span></span><span style="display:flex;"><span>CONFLICT <span style="color:#f92672">(</span>content<span style="color:#f92672">)</span>: Merge conflict in index.html
+</span></span><span style="display:flex;"><span>Automatic merge failed; fix conflicts and <span style="color:#66d9ef">then</span> commit the result.
+</span></span></code></pre></div></li>
+<li>
+<p>충돌이 일어난 파일을 확인하기 위해 git status를 입력합니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ git status
+</span></span><span style="display:flex;"><span>On branch master
+</span></span><span style="display:flex;"><span>You have unmerged paths.
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">(</span>fix conflicts and run <span style="color:#e6db74">&#34;git commit&#34;</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Unmerged paths:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">(</span>use <span style="color:#e6db74">&#34;git add &lt;file&gt;...&#34;</span> to mark resolution<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    both modified:      index.html
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>no changes added to commit <span style="color:#f92672">(</span>use <span style="color:#e6db74">&#34;git add&#34;</span> and/or <span style="color:#e6db74">&#34;git commit -a&#34;</span><span style="color:#f92672">)</span>
+</span></span></code></pre></div></li>
+<li>
+<p><code>index.html</code>을 열어보면 아래와 같이 충돌 내역이 나옵니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">&lt;&lt;&lt;&lt;&lt;&lt;</span>&lt; <span style="color:#f92672">HEAD:index.html</span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">&lt;</span><span style="color:#a6e22e">div</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;footer&#34;</span>&gt;contact : email.support@github.com&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>=======
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;footer&#34;</span>&gt;
+</span></span><span style="display:flex;"><span> please contact us at support@github.com
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>&gt;&gt;&gt;&gt;&gt;&gt;&gt; iss53:index.html
+</span></span></code></pre></div></li>
+<li>
+<p><code>=======</code> 를 기준으로 위는 master의 내용, 아래는 iss53의 내용입니다.
+이 중 하나를 선택할 수도 있고, 둘 다 선택할 수도 있고, 아예 새롭게 작성할 수도 있습니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;footer&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>please contact us at email.support@github.com
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span></code></pre></div></li>
+<li>
+<p>이후 git add와 git commit을 통해 병합한 내용을 커밋할 수 있습니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ git add .
+</span></span><span style="display:flex;"><span>$ git commit
+</span></span></code></pre></div></li>
+<li>
+<p>Vim 편집기가 켜지며 이를 이용해서 커밋 내역을 수정할 수 있습니다.
+(수정을 마치거나 수정할 것이 더이상 없을 경우 <code>esc</code> 를 누른후<code>:wq</code> 를 입력하여 저장 &amp; 종료)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Merge branch <span style="color:#e6db74">&#39;iss53&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Conflicts:
+</span></span><span style="display:flex;"><span>    index.html
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># It looks like you may be committing a merge.</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># If this is not correct, please remove the file</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#	.git/MERGE_HEAD</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># and try again.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Please enter the commit message for your changes. Lines starting</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># with &#39;#&#39; will be ignored, and an empty message aborts the commit.</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># On branch master</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># All conflicts fixed but you are still merging.</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Changes to be committed:</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#	modified:   index.html</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#</span>
+</span></span></code></pre></div></li>
+</ol>
+<!-- raw HTML omitted -->
+<hr>
+<!-- raw HTML omitted -->
+<h2 id="branch-merge-scenario">
+  Branch Merge scenario
+  <a class="anchor" href="#branch-merge-scenario">#</a>
+</h2>
+<p><strong>사전 세팅</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ mkdir git_merge
+</span></span><span style="display:flex;"><span>$ cd git_merge
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ git init
+</span></span><span style="display:flex;"><span>$ touch test.txt
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># test.txt 에 master test 1 을 입력 후 저장</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ git status
+</span></span><span style="display:flex;"><span>$ git add .
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ git commit -m <span style="color:#e6db74">&#34;master test 1&#34;</span>
+</span></span></code></pre></div><!-- raw HTML omitted -->
+<h3 id="3가지-병합-상황">
+  3가지 병합 상황
+  <a class="anchor" href="#3%ea%b0%80%ec%a7%80-%eb%b3%91%ed%95%a9-%ec%83%81%ed%99%a9">#</a>
+</h3>
+<h4 id="1-fast-forward-1">
+  1. fast-forward
+  <a class="anchor" href="#1-fast-forward-1">#</a>
+</h4>
+<blockquote>
+<p>&ldquo;login 브랜치가 생성된 이후 master 브랜치에 변경 사항이 없는 상황&rdquo;</p>
+<p>즉, master 브랜치에서 login 브랜치를 Merge 할 때
+login 브랜치가 master 브랜치 이후의 커밋을 가리키고 있으면
+그저 master 브랜치가 login 브랜치와 동일한 커밋을 가리키도록 이동시킬 뿐</p>
+</blockquote>
+<p>
+  <img src="fast-164699636449311.png" alt="fast" /></p>
+<ol>
+<li>
+<p>login branch 생성 및 이동</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ git switch -c login
+</span></span></code></pre></div></li>
+<li>
+<p>특정 작업 완료 후 commit</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ touch login.txt
+</span></span><span style="display:flex;"><span>$ git add .
+</span></span><span style="display:flex;"><span>$ git commit -m <span style="color:#e6db74">&#34;login test 1&#34;</span>
+</span></span></code></pre></div></li>
+<li>
+<p>master 브랜치로 이동</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ git switch master
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ git log --oneline --all --graph
+</span></span><span style="display:flex;"><span>* df231d0 <span style="color:#f92672">(</span>login<span style="color:#f92672">)</span> login test <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>* 1e62b4c <span style="color:#f92672">(</span>HEAD -&gt; master<span style="color:#f92672">)</span> master test <span style="color:#ae81ff">1</span>
+</span></span></code></pre></div></li>
+<li>
+<p>master 에 병합 login을 병합</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ git merge login
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Updating 43fab3e..2fe539c
+</span></span><span style="display:flex;"><span>Fast-forward
+</span></span><span style="display:flex;"><span> login.txt | <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span> <span style="color:#ae81ff">1</span> file changed, <span style="color:#ae81ff">0</span> insertions<span style="color:#f92672">(</span>+<span style="color:#f92672">)</span>, <span style="color:#ae81ff">0</span> deletions<span style="color:#f92672">(</span>-<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span> create mode <span style="color:#ae81ff">100644</span> login.txt
+</span></span></code></pre></div></li>
+<li>
+<p>결과 확인 (fast-foward, 단순히 HEAD를 앞으로 빨리감기)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ git log --oneline --all --graph
+</span></span><span style="display:flex;"><span>* 2fe539c <span style="color:#f92672">(</span>HEAD -&gt; master, login<span style="color:#f92672">)</span> login test <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>* 43fab3e master test <span style="color:#ae81ff">1</span>
+</span></span></code></pre></div></li>
+<li>
+<p>login 브랜치를 삭제</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ git branch -d login
+</span></span><span style="display:flex;"><span>Deleted branch login <span style="color:#f92672">(</span>was df231d0<span style="color:#f92672">)</span>.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ git log --oneline --all --graph
+</span></span><span style="display:flex;"><span>* 2fe539c <span style="color:#f92672">(</span>HEAD -&gt; master<span style="color:#f92672">)</span> login test <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>* 43fab3e master test <span style="color:#ae81ff">1</span>
+</span></span></code></pre></div></li>
+</ol>
+<!-- raw HTML omitted -->
+<h4 id="2-3-way-merge-merge-commit-1">
+  2. 3-way Merge (Merge commit)
+  <a class="anchor" href="#2-3-way-merge-merge-commit-1">#</a>
+</h4>
+<blockquote>
+<p>현재 브랜치(master)가 가리키는 커밋이 Merge 할 브랜치의 조상이 아니면,
+git 은 각 브랜치가 가리키는 커밋 2 개와 공통조상 하나를 사용하며 3-way Merge 한다.</p>
+<p>단순히 브랜치 포인터를 최신 커밋으로 옮기는 게 아니라 3-way Merge 의 결과를
+별도의 커밋으로 만들고 나서 해당 브랜치가 그 커밋을 가리키도록 이동시킨다.
+그래서 이런 커밋은 부모가 여러 개고 Merge commit 이라고 부른다.</p>
+</blockquote>
+<p>
+  <img src="way-164699638512113.png" alt="way" /></p>
+<ol>
+<li>
+<p>signout 브랜치 생성 및 이동</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ git switch -c signout
+</span></span></code></pre></div></li>
+<li>
+<p>특정 작업 완료 후 commit</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ touch signout.txt
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ git add .
+</span></span><span style="display:flex;"><span>$ git commit -m <span style="color:#e6db74">&#34;signout test 1&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>signout d9f33e2<span style="color:#f92672">]</span> signout test <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span> <span style="color:#ae81ff">1</span> file changed, <span style="color:#ae81ff">0</span> insertions<span style="color:#f92672">(</span>+<span style="color:#f92672">)</span>, <span style="color:#ae81ff">0</span> deletions<span style="color:#f92672">(</span>-<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span> create mode <span style="color:#ae81ff">100644</span> signout.txt
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ git log --oneline --all --graph
+</span></span><span style="display:flex;"><span>* d9f33e2 <span style="color:#f92672">(</span>HEAD -&gt; signout<span style="color:#f92672">)</span> signout test <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>* 2fe539c <span style="color:#f92672">(</span>master<span style="color:#f92672">)</span> login test <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>* 43fab3e master test <span style="color:#ae81ff">1</span>
+</span></span></code></pre></div></li>
+<li>
+<p>master 브랜치로 이동</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ git switch master
+</span></span></code></pre></div></li>
+<li>
+<p>master 에 추가 작업 후 commit (단, <strong>signout 브랜치와 다른 파일</strong>을 생성 혹은 수정)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ touch master.txt
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ git add .
+</span></span><span style="display:flex;"><span>$ git commit -m <span style="color:#e6db74">&#34;master test 2&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ git log --oneline --all --graph
+</span></span><span style="display:flex;"><span>* 07fae72 <span style="color:#f92672">(</span>HEAD -&gt; master<span style="color:#f92672">)</span> master test <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>| * d9f33e2 <span style="color:#f92672">(</span>signout<span style="color:#f92672">)</span> signout test <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>|/
+</span></span><span style="display:flex;"><span>* 2fe539c login test <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>* 43fab3e master test <span style="color:#ae81ff">1</span>
+</span></span></code></pre></div></li>
+<li>
+<p>master에 signout을 병합 (자동 merge commit 발생)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ git merge signout
+</span></span><span style="display:flex;"><span>Merge made by the <span style="color:#e6db74">&#39;recursive&#39;</span> strategy.
+</span></span><span style="display:flex;"><span> signout.txt | <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span> <span style="color:#ae81ff">1</span> file changed, <span style="color:#ae81ff">0</span> insertions<span style="color:#f92672">(</span>+<span style="color:#f92672">)</span>, <span style="color:#ae81ff">0</span> deletions<span style="color:#f92672">(</span>-<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span> create mode <span style="color:#ae81ff">100644</span> signout.txt
+</span></span></code></pre></div></li>
+<li>
+<p>log 확인</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ git log --oneline --all --graph
+</span></span><span style="display:flex;"><span>*   1170a02 <span style="color:#f92672">(</span>HEAD -&gt; master<span style="color:#f92672">)</span> Merge branch <span style="color:#e6db74">&#39;signout&#39;</span>
+</span></span><span style="display:flex;"><span>|<span style="color:#ae81ff">\ </span> 
+</span></span><span style="display:flex;"><span>| * d9f33e2 <span style="color:#f92672">(</span>signout<span style="color:#f92672">)</span> signout test <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>* | 07fae72 master test <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>|/  
+</span></span><span style="display:flex;"><span>* 2fe539c login test <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>* 43fab3e master test <span style="color:#ae81ff">1</span>
+</span></span></code></pre></div></li>
+<li>
+<p>signout 브랜치 삭제</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ git branch -d signout
+</span></span><span style="display:flex;"><span>Deleted branch signout <span style="color:#f92672">(</span>was d9f33e2<span style="color:#f92672">)</span>.
+</span></span></code></pre></div></li>
+</ol>
+<!-- raw HTML omitted -->
+<h4 id="3-merge-conflict-1">
+  3. Merge Conflict
+  <a class="anchor" href="#3-merge-conflict-1">#</a>
+</h4>
+<blockquote>
+<p>Merge 하는 두 브랜치에서 <strong>같은 파일의 같은 부분을 동시에 수정</strong>하고 Merge 하면
+Git은 해당 부분을 자동으로 Merge 하지 못하고 충돌이 일어남
+<strong>(반면 동일 파일이더라도 서로 다른 부분을 수정했다면, Conflict 없이 자동으로 Merge Commit 된다.)</strong></p>
+</blockquote>
+<p>
+  <img src="conflict_solve-164699639271114.png" alt="conflict_solve" /></p>
+<ol>
+<li>
+<p>hotfix 브랜치 생성 및 이동</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ git switch -c hotfix
+</span></span></code></pre></div></li>
+<li>
+<p>특정 작업 완료 후 commit</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># test.txt 수정</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>master test <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>이건 hotfix 에서 작성한 문장이에요!!
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ git add .
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ git commit -m <span style="color:#e6db74">&#34;hotfix test 1&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>hotfix e6cf5ec<span style="color:#f92672">]</span> hotfix test <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span> <span style="color:#ae81ff">1</span> file changed, <span style="color:#ae81ff">2</span> insertions<span style="color:#f92672">(</span>+<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ git log --graph --oneline --all
+</span></span><span style="display:flex;"><span>* e6cf5ec <span style="color:#f92672">(</span>HEAD -&gt; hotfix<span style="color:#f92672">)</span> hotfix test <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>*   1170a02 <span style="color:#f92672">(</span>master<span style="color:#f92672">)</span> Merge branch <span style="color:#e6db74">&#39;signout&#39;</span>
+</span></span><span style="display:flex;"><span>|<span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>| * d9f33e2 signout test <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>* | 07fae72 master test <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>|/
+</span></span><span style="display:flex;"><span>* 2fe539c login test <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>* 43fab3e master test <span style="color:#ae81ff">1</span>
+</span></span></code></pre></div></li>
+<li>
+<p>master 브랜치로 이동</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ git switch master
+</span></span></code></pre></div></li>
+<li>
+<p>특정 작업(hotfix 와 동일 파일의 동일 부분 수정) 완료 후 commit</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># text.txt 수정</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>master test <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>이건 master 에서 작성한 코드에용ㅎㅎ!!
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ git add .
+</span></span><span style="display:flex;"><span>$ git commit -m <span style="color:#e6db74">&#34;master test 3&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ git log --oneline --all --graph
+</span></span><span style="display:flex;"><span>* 1bc2eeb <span style="color:#f92672">(</span>HEAD -&gt; master<span style="color:#f92672">)</span> master test <span style="color:#ae81ff">3</span>
+</span></span><span style="display:flex;"><span>| * e6cf5ec <span style="color:#f92672">(</span>hotfix<span style="color:#f92672">)</span> hotfix test <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>|/
+</span></span><span style="display:flex;"><span>*   1170a02 Merge branch <span style="color:#e6db74">&#39;signout&#39;</span>
+</span></span><span style="display:flex;"><span>|<span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>| * d9f33e2 signout test <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>* | 07fae72 master test <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>|/
+</span></span><span style="display:flex;"><span>* 2fe539c login test <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>* 43fab3e master test <span style="color:#ae81ff">1</span>
+</span></span></code></pre></div></li>
+<li>
+<p>master에 hotfix를 병합</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ git merge hotfix
+</span></span></code></pre></div></li>
+<li>
+<p>결과 → <code>merge conflict</code> 발생 (같은 파일의 같은 문장을 수정했기 때문)</p>
+<p>
+  <img src="merge_conflict-164699640080115.png" alt="merge_conflict" /></p>
+</li>
+<li>
+<p>충돌 확인 및 해결</p>
+<ul>
+<li>Merge 충돌이 일어났을 때 Git이 어떤 파일을 Merge 할 수 없었는지 살펴보려면
+git status 명령을 이용한다.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ git status
+</span></span><span style="display:flex;"><span>On branch master
+</span></span><span style="display:flex;"><span>You have unmerged paths.
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">(</span>fix conflicts and run <span style="color:#e6db74">&#34;git commit&#34;</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">(</span>use <span style="color:#e6db74">&#34;git merge --abort&#34;</span> to abort the merge<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Unmerged paths:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">(</span>use <span style="color:#e6db74">&#34;git add &lt;file&gt;...&#34;</span> to mark resolution<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>        both modified:   test.txt
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>no changes added to commit <span style="color:#f92672">(</span>use <span style="color:#e6db74">&#34;git add&#34;</span> and/or <span style="color:#e6db74">&#34;git commit -a&#34;</span><span style="color:#f92672">)</span> 
+</span></span></code></pre></div><pre tabindex="0"><code>master test 1
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+이건 master 에서 작성한코드에용ㅎㅎ!!
+=======
+이건 hotfix 에서 작성한문장이에요!!
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; hotfix
+</code></pre><ul>
+<li><code>=======</code> 위쪽의 내용은 HEAD 버전(merge 명령을 실행할 때 작업하던 master 브랜치)의 내용이고 아래쪽은 <code>hotfix</code> 브랜치의 내용이다.
+충돌을 해결하려면 위쪽이나 아래쪽 내용 중에서 고르거나 새로 작성하여 Merge 해야 한다.(<code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;, =======, &gt;&gt;&gt;&gt;&gt;&gt;&gt;</code> 가 포함된 행을 삭제)</li>
+</ul>
+<p>
+  <img src="conflict_solve-164699640795016.png" alt="conflict_solve" /></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># test.txt 최종본</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>master test <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>충돌을 해결해보자!!
+</span></span></code></pre></div></li>
+<li>
+<p>merge commit 진행</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ git add .
+</span></span><span style="display:flex;"><span>$ git commit
+</span></span></code></pre></div><ul>
+<li>
+<p>VIM 에디터 등장</p>
+<p>
+  <img src="vim_editor-164699641261917.png" alt="vim_editor" /></p>
+<ul>
+<li>
+<p>자동으로 작성된 커밋 메세지(<code>Merge branch 'hotfix'</code>)를 확인하고
+<code>esc</code> 를 누른후<code>:wq</code> 를 입력하여 저장 &amp; 종료</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>master eec8da4<span style="color:#f92672">]</span> Merge branch <span style="color:#e6db74">&#39;hotfix&#39;</span>
+</span></span></code></pre></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>log 확인</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ git log --oneline --all --graph
+</span></span><span style="display:flex;"><span>*   eec8da4 <span style="color:#f92672">(</span>HEAD -&gt; master<span style="color:#f92672">)</span> Merge branch <span style="color:#e6db74">&#39;hotfix&#39;</span>
+</span></span><span style="display:flex;"><span>|<span style="color:#ae81ff">\ </span> 
+</span></span><span style="display:flex;"><span>| * e6cf5ec <span style="color:#f92672">(</span>hotfix<span style="color:#f92672">)</span> hotfix test <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>* | 1bc2eeb master test <span style="color:#ae81ff">3</span>
+</span></span><span style="display:flex;"><span>|/  
+</span></span><span style="display:flex;"><span>*   1170a02 Merge branch <span style="color:#e6db74">&#39;signout&#39;</span>
+</span></span><span style="display:flex;"><span>|<span style="color:#ae81ff">\ </span> 
+</span></span><span style="display:flex;"><span>| * d9f33e2 signout test <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>* | 07fae72 master test <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>|/
+</span></span><span style="display:flex;"><span>* 2fe539c login test <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>* 43fab3e master test <span style="color:#ae81ff">1</span>
+</span></span></code></pre></div></li>
+<li>
+<p>hotfix 브랜치를 삭제</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ git branch -d hotfix
+</span></span><span style="display:flex;"><span>Deleted branch hotfix <span style="color:#f92672">(</span>was e6cf5ec<span style="color:#f92672">)</span>.
+</span></span></code></pre></div></li>
+</ol>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(n){const e=window.getSelection(),t=document.createRange();t.selectNodeContents(n),e.removeAllRanges(),e.addRange(t)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#branch">Branch</a>
+      <ul>
+        <li><a href="#branch-command">Branch command</a></li>
+      </ul>
+    </li>
+    <li><a href="#branch-scenario">Branch scenario</a>
+      <ul>
+        <li><a href="#1-사전-세팅">(1) 사전 세팅</a></li>
+        <li><a href="#2-브랜치-생성-및-조회">(2) 브랜치 생성 및 조회</a></li>
+        <li><a href="#3-브랜치-이동">(3) 브랜치 이동</a></li>
+        <li><a href="#4-login-브랜치에서-커밋-생성">(4) login 브랜치에서 커밋 생성</a></li>
+      </ul>
+    </li>
+    <li><a href="#branch-merge">Branch Merge</a>
+      <ul>
+        <li><a href="#git-merge">git merge</a></li>
+        <li><a href="#merge의-세-종류">Merge의 세 종류</a></li>
+      </ul>
+    </li>
+    <li><a href="#branch-merge-scenario">Branch Merge scenario</a>
+      <ul>
+        <li><a href="#3가지-병합-상황">3가지 병합 상황</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

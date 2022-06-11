@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Introduction on mhlee</title>
-    <link>https://mhlee21.github.io/</link>
-    <description>Recent content in Introduction on mhlee</description>
+    <title>Docs on mhlee</title>
+    <link>https://mhlee21.github.io/docs/</link>
+    <description>Recent content in Docs on mhlee</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-KR</language>
-    <lastBuildDate>Fri, 11 Mar 2022 09:04:34 +0000</lastBuildDate><atom:link href="https://mhlee21.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 11 Mar 2022 09:04:34 +0000</lastBuildDate><atom:link href="https://mhlee21.github.io/docs/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>git branch</title>
       <link>https://mhlee21.github.io/docs/Git/git-branch/</link>
@@ -31,15 +31,6 @@ https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell
 분산 버전 관리
 2. Github 를 이용한 포트폴리오 # TIL Git # git 은 분산버전관리시스템(DVCS) Distributed Control System
 소스코드의 버전을 관리하고 이력도 관리할 수 있다.</description>
-    </item>
-    
-    <item>
-      <title>Hugo 사용법</title>
-      <link>https://mhlee21.github.io/posts/hugo/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://mhlee21.github.io/posts/hugo/</guid>
-      <description> 로컬 서버 실행 # $ hugo server -D </description>
     </item>
     
   </channel>
